@@ -1,0 +1,7 @@
+[[dictionaries]]
+name = "waseda"
+filename = "waseda_asy.toml"
+
+#[[dictionaries]]
+#name = "gregg"
+#filename = "gregg.toml"

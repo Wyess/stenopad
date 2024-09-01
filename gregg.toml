@@ -1,0 +1,843 @@
+[gregg]
+name = "gregg"
+
+[gregg.dictionary]
+" " = ["Space"]
+"\n" = ["Newline"]
+a = ["A"]
+AI = ["Ai"]
+b = ["B"]
+CH = ["Ch"]
+d = ["D"]
+DF = ["Df"]
+e = ["E"]
+f = ["F"]
+g = ["G"]
+h = ["H"]
+i = ["E"]
+ING = ["PosIng", "Ing"]
+"?" = ["Interrogation"]
+j = ["J"]
+JNT = ["Jnt"]
+k = ["K"]
+l = ["L"]
+"{" = ["Lparen"]
+"}" = ["Rparen"]
+m = ["M"]
+MT = ["Mt"]
+n = ["N"]
+NG = ["Ng"]
+NK = ["Nk"]
+NT = ["Nt"]
+o = ["O"]
+p = ["P"]
+r = ["R"]
+s = ["S_R"]
+S = ["S"]
+SH = ["Sh"]
+t = ["T"]
+TH = ["Th"]
+TM = ["Tem"]
+TN = ["Ten"]
+u = ["U"]
+v = ["V"]
+"," = ["Comma"]
+"=" = ["Dash"]
+"-" = ["Hyphen"]
+"~" = ["MarkLong"]
+">" = ["Paragraph"]
+"." = ["Period"]
+";" = ["Semicolon"]
+
+[gregg.group]
+a = ["A"]
+sr = ["S_R"]
+swr = ["S_R", "F", "V"]
+f = ["F"]
+v = ["V"]
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "$f[-1]&$sr[1]"
+left = -1.413
+right = 1.957
+top = -2.165
+bottom = 0.189
+dx = 1.957
+dy = -1.327
+ascent = -0.988
+length = 6.437
+path = "M 0 0 c -0.668749 0.386102 -1.26996 0.132973 -1.38762 -0.327479 c -0.226097 -0.884798 1.12755 -1.75592 2.03766 -1.83134 c 0.51445 -0.0426359 1.30652 0.108889 1.30652 0.831451"
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "$swr[-1]&$swr[1]"
+left = -3.595
+right = 0
+top = -0.148
+bottom = 2.009
+dx = -0.497
+dy = 0.559
+ascent = 0.931
+length = 8.749
+path = "M 0 0 c -0.573038 0.838838 -2.79684 2.50474 -3.49258 1.86686 c -0.285621 -0.29712 0.083336 -0.897181 0.389006 -1.17363 c 0.786177 -0.711028 2.26543 -1.40598 2.60628 -0.133923"
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "$v[-1]"
+left = -1.574
+right = 2.543
+top = -2.691
+bottom = 0.285
+dx = 2.524
+dy = -1.707
+ascent = -1.203
+length = 7.909
+path = "M 0 0 c -0.42669 0.233195 -1.20608 0.475092 -1.45757 0.058927 c -0.454777 -0.752542 0.519646 -1.91955 1.31989 -2.28389 c 0.822728 -0.374582 2.89664 -1.0373 2.66198 0.518254"
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "$sr[-1]"
+left = -3.595
+right = 0
+top = -0.454
+bottom = 2.009
+dx = 0
+dy = 0
+ascent = 0.777
+length = 9.216
+path = "M 0 0 c -0.573038 0.838838 -2.79684 2.50474 -3.49258 1.86686 c -0.285621 -0.29712 0.083336 -0.897181 0.389006 -1.17363 c 0.786177 -0.711028 3.10063 -1.75733 3.10357 -0.693225"
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "$f[-1]"
+left = -1.221
+right = 2.736
+top = -2.681
+bottom = 0.236
+dx = 2.736
+dy = -2.071
+ascent = -1.222
+length = 6.901
+path = "M 0 0 c -0.463923 0.267846 -0.903764 0.342474 -1.12897 0.0406706 c -0.26756 -0.358562 0.0986383 -0.969419 0.428146 -1.27204 c 0.868682 -0.797801 3.43721 -2.29116 3.43721 -0.839894"
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "$swr[-1]"
+left = -4.108
+right = 0
+top = -0.422
+bottom = 2.327
+dx = 0
+dy = 0
+ascent = 0.953
+length = 10.354
+path = "M 0 0 c -0.735797 0.798888 -3.24343 2.89092 -3.99057 2.18281 c -0.326928 -0.309848 0.096832 -0.966742 0.428146 -1.27204 c 0.895561 -0.82525 3.27729 -1.95798 3.56242 -0.91077"
+
+[[gregg.character.A.glyph]]
+name = "A"
+key = "default"
+left = -3.071
+right = 1.354
+top = -0.009
+bottom = 3.54
+dx = 0
+dy = 0
+ascent = 1.766
+length = 12.359
+path = "M 0 0 c -1.2047 -0.10718 -2.8967 0.74715 -3.06293 1.94513 c -0.0975 0.70262 0.711768 1.51973 1.41794 1.58685 c 1.25154 0.11895 2.94049 -1.03272 2.99782 -2.28859 c 0.02793 -0.61184 -0.74276 -1.18911 -1.35283 -1.24339"
+
+[[gregg.character.Null.glyph]]
+name = "Null"
+key = "default"
+left = 1
+right = 4
+top = -1.5
+bottom = 1.5
+dx = 5
+dy = 0
+length = 16.243
+ascent = 1.5
+path = "M1,1.5h3v-3h-3v3l3,-3"
+
+[[gregg.character.Newline.glyph]]
+name = "Newline"
+key = "default"
+dx = 0
+dy = 15
+is_newline = true
+
+[[gregg.character.Space.glyph]]
+name = "Space"
+key = "default"
+dx = 4
+dy = 0
+is_space = true
+
+[[gregg.character.B.glyph]]
+name = "B"
+key = "default"
+left = -10.628
+right = 0.000
+top = 0.000
+bottom = 9.899
+dx = -9.899
+dy = 9.899
+length = 15.739
+ascent = 4.950
+path = "m 0 0 c -4.22191 0.909691 -13.2433 7.74135 -9.8995 9.8995"
+
+[[gregg.character.Ch.glyph]]
+name = "Ch"
+key = "default"
+left = -4.015
+right = 0
+top = 0
+bottom = 5.734
+dx = -4.015
+dy = 5.734
+ascent = 2.867
+length = 7
+path = "M 0 0 l -4.01504 5.73406"
+
+[[gregg.character.D.glyph]]
+name = "D"
+key = "default"
+left = 0
+right = 8.66
+top = -5
+bottom = 0
+dx = 8.66
+dy = -5
+ascent = -2.5
+length = 10
+path = "M 0 0 l 8.66025 -5"
+
+[[gregg.character.E.glyph]]
+name = "E"
+key = "default"
+left = -1.032
+right = 0.455
+top = -0.003
+bottom = 1.19
+dx = 0
+dy = 0
+ascent = 0.594
+length = 4.155
+path = "M 0 0 c -0.405 -0.036 -0.97382 0.25118 -1.02971 0.65392 c -0.0328 0.23621 0.23929 0.51091 0.47668 0.53348 c 0.42076 0.0399 0.98856 -0.34718 1.00783 -0.76939 c 0.009 -0.20569 -0.24971 -0.39976 -0.4548 -0.41801"
+
+
+[[gregg.character.F.glyph]]
+name = "F"
+key = "$sr[-2]&$a[-1]"
+left = -4.015
+right = 0.119
+top = 0
+bottom = 5.734
+dx = -4.015
+dy = 5.734
+ascent = 2.867
+length = 7.55
+path = "M 0 0 c 0.681695 2.54412 -1.67707 4.31762 -4.01504 5.73406"
+
+[[gregg.character.F.glyph]]
+name = "F"
+key = "$a[1]"
+left = -4.179
+right = 0.66
+top = 0
+bottom = 5.465
+dx = -4.179
+dy = 5.465
+ascent = 2.732
+length = 7.994
+path = "M 0 0 c 2.55794 0.627846 -3.06559 5.00545 -4.17894 5.46453"
+[[gregg.character.F.glyph]]
+name = "F"
+key = "default"
+left = -4.015
+right = 0.794
+top = 0
+bottom = 5.734
+dx = -4.015
+dy = 5.734
+ascent = 2.867
+length = 8.277
+path = "M 0 0 c 2.55794 0.627846 -1.67707 4.31762 -4.01504 5.73406"
+
+[[gregg.character.G.glyph]]
+name = "G"
+key = "default"
+left = 0
+right = 15.076
+top = -2.616
+bottom = 0
+dx = 14.888
+dy = -0.301
+ascent = -1.308
+length = 16.948
+path = "M 0 0 c 3.86615 -2.10782 16.7769 -4.49967 14.8883 -0.300773"
+
+[[gregg.character.H.glyph]]
+name = "H"
+key = "default"
+left = 0
+right = 0
+top = 0
+bottom = 0.1
+dx = 0
+dy = 1
+ascent = 0
+length = 0.1
+path = "M 0 0 v 0.1"
+
+[[gregg.character.J.glyph]]
+name = "J"
+key = "default"
+left = -7
+right = 0
+top = 0
+bottom = 12.124
+dx = -7
+dy = 12.124
+ascent = 6.062
+length = 14
+path = "M 0 0 l -7 12.1243"
+
+[[gregg.character.K.glyph]]
+name = "K"
+key = "default"
+left = 0
+right = 7.03
+top = -1.092
+bottom = 0
+dx = 7
+dy = 0
+ascent = -0.546
+length = 7.781
+path = "M 0 0 c 2.178 -1.244 7.474 -1.654 7 0"
+
+[[gregg.character.L.glyph]]
+name = "L"
+key = "default"
+left = 0
+right = 16
+top = 0
+bottom = 2.565
+dx = 16
+dy = 0
+ascent = 1.282
+length = 17.667
+path = "M 0 0 c -0.038 4.565 10.817 2.051 16 0"
+
+[[gregg.character.M.glyph]]
+name = "M"
+key = "default"
+left = 0
+right = 10
+top = 0
+bottom = 0
+dx = 10
+dy = 0
+ascent = 0
+length = 10
+path = "M 0 0 h 10"
+
+[[gregg.character.N.glyph]]
+name = "N"
+key = "default"
+left = 0
+right = 4
+top = 0
+bottom = 0
+dx = 4
+dy = 0
+ascent = 0
+length = 4
+path = "M 0 0 h 4"
+
+[[gregg.character.O.glyph]]
+name = "O"
+key = "default"
+left = -0.794
+right = 1.552
+top = 0
+bottom = 1.681
+dx = 1.552
+dy = 0.375
+ascent = 0.841
+length = 4.562
+path = "M 0 0 c 0 0 -1.2339 1.20111 -0.62581 1.60208 c 0.69557 0.45865 2.17784 -1.2266 2.17784 -1.2266"
+
+[[gregg.character.P.glyph]]
+name = "P"
+key = "default"
+left = -4.713
+right = 0
+top = 0
+bottom = 5.734
+dx = -4.015
+dy = 5.734
+ascent = 2.867
+length = 8.144
+path = "M 0 0 c -2.00147 1.15832 -6.41868 4.61076 -4.01503 5.73407"
+
+[[gregg.character.R.glyph]]
+name = "R"
+key = "default"
+left = 0
+right = 7
+top = 0
+bottom = 1.382
+dx = 7
+dy = 0
+ascent = 0.691
+length = 7.965
+path = "M 0 0 c 0.07 2.371 4.874 1.227 7 0"
+
+[[gregg.character.S.glyph]]
+name = "S"
+key = "default"
+left = -1.797
+right = 0
+top = 0
+bottom = 2.598
+dx = -1.5
+dy = 2.598
+ascent = 1.299
+length = 3.47
+path = "M 0 0 c -0.771314 0.491248 -2.48487 1.68084 -1.5 2.59808"
+
+[[gregg.character.T.glyph]]
+name = "T"
+key = "default"
+left = 0
+right = 3.464
+top = -2
+bottom = 0
+dx = 3.464
+dy = -2
+ascent = -1
+length = 4
+path = "M 0 0 l 3.4641 -2"
+
+[[gregg.character.U.glyph]]
+name = "U"
+key = "default"
+left = 0
+right = 2.263
+top = -1.213
+bottom = 0.154
+dx = 1.576
+dy = 0.154
+ascent = -0.529
+length = 4.114
+path = "M 0 0 c 0 0 1.50684 -1.63569 2.128 -1.10768 c 0.40108 0.34093 -0.18201 0.96527 -0.55219 1.26141"
+
+[[gregg.character.V.glyph]]
+name = "V"
+key = "$a[1]"
+left = -8.03
+right = 1.231
+top = 0
+bottom = 11.468
+dx = -8.03
+dy = 11.468
+ascent = 5.734
+length = 16.04
+path = "M 0 0 c 4.35631 1.1221 -3.93507 9.2301 -8.03007 11.4681"
+
+[[gregg.character.V.glyph]]
+name = "V"
+key = "default"
+left = -8.03
+right = 1.247
+top = 0
+bottom = 11.468
+dx = -8.03
+dy = 11.468
+ascent = 5.734
+length = 16.045
+path = "M 0 0 c 4.35631 1.1221 -3.77167 8.9541 -8.03007 11.4681"
+
+[[gregg.character.Ai.glyph]]
+name = "Ai"
+key = "default"
+left = -3.071
+right = 1.353
+top = -0.009
+bottom = 3.54
+dx = -1.494
+dy = 1.086
+ascent = 1.766
+length = 14.277
+path = "M 0 0 c -1.205 -0.107 -2.897 0.747 -3.063 1.945 c -0.097 0.703 0.712 1.52 1.418 1.587 c 1.252 0.119 2.965 -1.032 2.998 -2.289 c 0.013 -0.514 -0.436 -1.032 -0.969 -1.199 c -0.527 -0.165 -1.6 0.497 -1.878 1.042"
+
+[[gregg.character.Comma.glyph]]
+name = "Comma"
+key = "default"
+left = -0.767
+right = 0.142
+top = -0.704
+bottom = 0.939
+dx = -0.767
+dy = 0.939
+ascent = 0.117
+length = 3.084
+path = "M 0 0 c -0.0503 0.0587 -0.62881 -0.49788 -0.0457 -0.69136 c 0.22191 -0.0736 0.18473 0.18808 0.18546 0.30789 c 0.003 0.53578 -0.69905 1.3394 -0.90698 1.32207"
+
+[[gregg.character.Dash.glyph]]
+name = "Dash"
+key = "default"
+left = 0
+right = 9.27
+top = -1.152
+bottom = 0.952
+dx = 8.819
+dy = 0
+ascent = -0.1
+length = [
+    9.341,
+    8.671,
+]
+path = [
+    "M 0 0 l 9.26999 -1.15249",
+    "M 0.20043 0.95205 l 8.61859 -0.95205",
+]
+
+[[gregg.character.Df.glyph]]
+name = "Df"
+key = "default"
+left = -0.381
+right = 10.948
+top = -6.8
+bottom = 0.755
+dx = 6.289
+dy = 0.755
+ascent = -3.022
+length = 23.166
+path = "M 0 0 c -2.44631 -1.41238 7.57213 -9.02184 10.4194 -6.16259 c 1.89499 1.90292 -1.73645 5.66827 -4.13039 6.91728"
+
+[[gregg.character.Hyphen.glyph]]
+name = "Hyphen"
+key = "default"
+left = 0
+right = 3.626
+top = -0.907
+bottom = 0.544
+dx = 3.626
+dy = -0.504
+ascent = -0.181
+length = [
+    3.001,
+    3.294,
+]
+path = [
+    "M 0 0 l 2.86062 -0.90653",
+    "M 0.50364 0.54392 l 3.12249 -1.04755",
+]
+
+[[gregg.character.Ing.glyph]]
+name = "Ing"
+key = "default"
+left = 0
+right = 0
+top = 0
+bottom = 0.1
+dx = 0
+dy = 0.1
+ascent = 0
+length = 0.1
+path = "M 0 0 v 0.1"
+
+[[gregg.character.PosIng.glyph]]
+name = "PosIng"
+key = "default"
+dx = -0.5
+dy = 2
+
+[[gregg.character.Interrogation.glyph]]
+name = "Interrogation"
+key = "default"
+left = -2.652
+right = 0
+top = -0.026
+bottom = 1.861
+dx = -0.561
+dy = 1.632
+ascent = 0.918
+length = [
+    3.24,
+    2.001,
+]
+path = [
+    "M 0 0 l -2.65193 1.86145",
+    "M -1.68295 -0.0255 l 1.12197 1.65746",
+]
+
+[[gregg.character.Jnt.glyph]]
+name = "Jnt"
+key = "default"
+left = -4.079
+right = 5.576
+top = 0
+bottom = 8.095
+dx = 5.485
+dy = 1.419
+ascent = 4.047
+length = 21.87
+path = "M 0 0 c -4.84052 2.79467 -4.86817 6.02382 -2.69529 7.61302 c 2.76078 2.01917 9.10396 -2.7478 8.18044 -6.19444"
+
+[[gregg.character.Lparen.glyph]]
+name = "Lparen"
+key = "default"
+left = -9.555
+right = 0
+top = 0
+bottom = 12.033
+dx = -5.056
+dy = 7.786
+ascent = 6.016
+length = [
+    16.148,
+    4.51,
+]
+path = [
+    "M 0 0 c -4.3274 2.49843 -11.5186 9.32289 -6.82522 12.0326",
+    "M -9.55531 8.08915 l 4.49959 -0.30335",
+]
+
+[[gregg.character.MarkLong.glyph]]
+name = "MarkLong"
+key = "default"
+left = -0.964
+right = 0
+top = 0
+bottom = 1.149
+dx = -0.964
+dy = 1.149
+ascent = 0.575
+length = 1.5
+path = "M 0 0 l -0.96418 1.14907"
+is_marker = true
+
+[[gregg.character.Mt.glyph]]
+name = "Mt"
+key = "default"
+left = 0
+right = 12.287
+top = -8.604
+bottom = 0.126
+dx = 12.287
+dy = -8.604
+ascent = -4.239
+length = 16.014
+path = "M 0 0 c 4.2672 1.14339 12.2873 -5.77168 12.2873 -8.60365"
+
+[[gregg.character.Ng.glyph]]
+name = "Ng"
+key = "default"
+left = 0
+right = 4.33
+top = 0
+bottom = 2.5
+dx = 4.33
+dy = 2.5
+ascent = 1.25
+length = 5
+path = "M 0 0 l 4.33013 2.5"
+
+[[gregg.character.Nk.glyph]]
+name = "Nk"
+key = "default"
+left = 0
+right = 8.66
+top = 0
+bottom = 5
+dx = 8.66
+dy = 5
+ascent = 2.5
+length = 10
+path = "M 0 0 l 8.66025 5"
+
+[[gregg.character.Nt.glyph]]
+name = "Nt"
+key = "default"
+left = 0
+right = 8.192
+top = -5.736
+bottom = 0
+dx = 8.192
+dy = -5.736
+ascent = -2.868
+length = 10.401
+path = "M 0 0 c 3.13717 0 6.54403 -2.88223 8.19152 -5.73577"
+
+[[gregg.character.Paragraph.glyph]]
+name = "Paragraph"
+key = "default"
+left = -0.188
+right = 3.011
+top = 0
+bottom = 3.011
+dx = -0.188
+dy = 3.011
+ascent = 1.505
+length = 6.901
+path = "M 0 0 l 3.01068 1.44262 l -3.19884 1.56806"
+
+[[gregg.character.Period.glyph]]
+name = "Period"
+key = "default"
+left = 0
+right = 1.768
+top = 0
+bottom = 1.768
+dx = 1.768
+dy = 1.768
+ascent = 0.884
+length = 2.5
+path = "M 0 0 l 1.76777 1.76777"
+
+[[gregg.character.Rparen.glyph]]
+name = "Rparen"
+key = "default"
+left = -7.735
+right = 1.187
+top = 0
+bottom = 11.78
+dx = 1.011
+dy = 7.28
+ascent = 5.89
+length = [
+    16.192,
+    5.122,
+]
+path = [
+    "M 0 0 c 4.36948 1.1708 -4.489 11.2391 -7.73525 11.7798",
+    "M -4.09513 7.68469 l 5.10627 -0.40445",
+]
+
+[[gregg.character.Semicolon.glyph]]
+name = "Semicolon"
+key = "default"
+left = -0.907
+right = 0.002
+top = -2.073
+bottom = 1.322
+dx = -0.391
+dy = -1.707
+ascent = -0.375
+length = [
+    2.89,
+    0.851,
+]
+path = [
+    "M 0 0 c -0.05 0.059 -0.769 -0.114 -0.185 -0.308 c 0.221 -0.073 0.184 0.188 0.185 0.308 c 0.003 0.536 -0.699 1.339 -0.907 1.322",
+    "M -0.376 -2.073 c 0.409 0.006 0.485 0.381 -0.015 0.366",
+]
+
+[[gregg.character.Sh.glyph]]
+name = "Sh"
+key = "default"
+left = -2
+right = 0
+top = 0
+bottom = 3.464
+dx = -2
+dy = 3.464
+ascent = 1.732
+length = 4
+path = "M 0 0 l -2 3.4641"
+
+[[gregg.character.Tem.glyph]]
+name = "Tem"
+key = "default"
+left = -0.207
+right = 14.722
+top = -8.567
+bottom = 0
+dx = 14.722
+dy = -8.5
+ascent = -4.283
+length = 18.442
+path = "M 0 0 c -2.04411 -3.54051 11.6218 -9.24816 14.7224 -8.5"
+
+[[gregg.character.Ten.glyph]]
+name = "Ten"
+key = "default"
+left = 0
+right = 7.392
+top = -5.321
+bottom = 0
+dx = 7.392
+dy = -5.321
+ascent = -2.66
+length = 9.715
+path = "M 0 0 c 0 -2.6277 4.99909 -5.32084 7.39164 -5.32084"
+
+[[gregg.character.Th.glyph]]
+name = "Th"
+key = "default"
+left = -0.048
+right = 3.277
+top = -2.351
+bottom = 0
+dx = 3.277
+dy = -2.294
+ascent = -1.176
+length = 4.594
+path = "M 0 0 c -0.438 -1.506 2.251 -2.621 3.277 -2.294"
+
+[[gregg.character.ThL.glyph]]
+name = "ThL"
+key = "default"
+left = 0
+right = 3.277
+top = -2.294
+bottom = 0.001
+dx = 3.277
+dy = -2.294
+ascent = -1.147
+length = 4.183
+path = "M 0 0 c 1.32922 0.043491 2.69759 -1.20187 3.27661 -2.29431"
+
+
+[[gregg.character.S_R.glyph]]
+name = "S_R"
+key = "$sr[-2]&$a[-1]"
+left = -2.009
+right = 0.05
+top = 0
+bottom = 2.908
+dx = -2.009
+dy = 2.908
+ascent = 1.454
+length = 3.786
+path = "M 0 0 c 0.329068 1.25582 -1.02788 2.34111 -2.00901 2.90757"
+
+[[gregg.character.S_R.glyph]]
+name = "S_R"
+key = "$a[1]"
+left = -0.544
+right = 0.137
+top = 0
+bottom = 1.94
+dx = -0.544
+dy = 1.94
+ascent = 0.97
+length = 2.142
+path = "M 0 0 c 0.417578 0.723267 -0.221278 1.43938 -0.543686 1.94006"
+
+[[gregg.character.S_R.glyph]]
+name = "S_R"
+key = "default"
+left = -2.121
+right = 0.23
+top = 0
+bottom = 2.121
+dx = -2.121
+dy = 2.121
+ascent = 1.061
+length = 3.584
+path = "M 0 0 c 0.880428 0.925001 -0.975988 1.91308 -2.12133 2.12133"

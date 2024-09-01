@@ -1,0 +1,1477 @@
+[waseda.character.Null]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Null.glyph]]
+key = "default"
+left = 5
+right = 8
+top = -1.5
+bottom = 1.5
+dx = 13
+dy = 0
+ascent = 0
+
+[[waseda.character.Null.glyph.path]]
+d = "M5 1.5C6 1.5 7 1.5 8 1.5C8 0.5 8 -0.5 8 -1.5C7 -1.5 6 -1.5 5 -1.5C5 -0.5 5 0.5 5 1.5C6 0.5 7 -0.5 8 -1.5"
+length = 16.242641
+
+[waseda.character.Newline]
+mark = false
+space = false
+newline = true
+
+[[waseda.character.Newline.glyph]]
+key = "default"
+left = 0
+right = 0
+top = 0
+bottom = 0
+dx = 0
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0", length = 0 },
+]
+
+[waseda.character.Space]
+mark = false
+space = true
+newline = false
+
+[[waseda.character.Space.glyph]]
+key = "default"
+left = 0
+right = 0
+top = 0
+bottom = 0
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0", length = 0 },
+]
+
+[waseda.character.A]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.A.glyph]]
+key = "default"
+left = 0
+right = 4
+top = 0
+bottom = 0.810069
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.578905 0.911581 4 1.236455 4 0", length = 4.574347 },
+]
+
+[[waseda.character.A.glyph]]
+key = "$i[1]"
+left = 0
+right = 4
+top = 0
+bottom = 0.446582
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.031337 0.595443 2.968663 0.595443 4 0", length = 4.141915 },
+]
+
+[[waseda.character.A.glyph]]
+key = "$head_sw[1] | $wa[1]"
+left = 0
+right = 4
+top = 0
+bottom = 0.668892
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.222266 0.705675 3.387689 1.060554 4 0", length = 4.334355 },
+]
+
+[[waseda.character.A.glyph]]
+key = "$head_s[1]"
+left = 0
+right = 4
+top = 0
+bottom = 0.810069
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.578905 0.911581 4 1.236455 4 0", length = 4.574347 },
+]
+
+[[waseda.character.A.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 4.16471
+top = 0
+bottom = 1.048859
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.335637 1.348481 4.835772 1.4476 4 0", length = 5.174875 },
+]
+
+[waseda.character.Kari]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Kari.glyph]]
+key = "default"
+left = 0
+right = 8
+top = 0
+bottom = 0
+dx = 11
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.666667 0 5.333333 0 8 0", length = 8 },
+]
+
+[[waseda.character.Kari.glyph.mask]]
+d = "M-0.850394 0.850394C2.666667 0.850394 6.183727 0.850394 9.700788 0.850394C9.700788 0.283465 9.700788 -0.283465 9.700788 -0.850394C6.183727 -0.850394 2.666667 -0.850394 -0.850394 -0.850394C-0.850394 -0.283465 -0.850394 0.283465 -0.850394 0.850394C-0.850394 0.850394 -0.850394 0.850394 -0.850394 0.850394"
+
+[[waseda.character.Kari.glyph.mask]]
+d = "M6.195276 -0.233858C7.085458 -0.233858 7.960212 0 8.850394 0C7.960212 0 7.085458 0.233858 6.195276 0.233858C7.080996 0.233858 7.964674 0.318898 8.850394 0.318898C9.01103 0.318898 8.850394 0.125586 8.850394 0C8.850394 -0.125586 9.01103 -0.318898 8.850394 -0.318898C7.964674 -0.318898 7.080996 -0.233858 6.195276 -0.233858"
+
+[waseda.character.Nihon]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Nihon.glyph]]
+key = "default"
+left = 0
+right = 4
+top = 0
+bottom = 2
+dx = 4
+dy = 2
+ascent = 1
+path = [
+    { d = "M0 0C1.333333 0 2.666667 0 4 0", length = 4 },
+    { d = "M0 2C1.333333 2 2.666667 2 4 2", length = 4 },
+]
+
+[[waseda.character.Nihon.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 4
+top = 0
+bottom = 2.17101
+dx = 3.530154
+dy = 2.17101
+ascent = 1
+
+[[waseda.character.Nihon.glyph.path]]
+d = "M0 0C1.333333 0 2.666667 0 4 0"
+length = 4
+
+[[waseda.character.Nihon.glyph.path]]
+d = "M0 2C1.333333 2 2.666667 2 4 2C3.843385 2.057003 3.686769 2.114007 3.530154 2.17101"
+length = 4.5
+
+[waseda.character.Ma]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ma.glyph]]
+key = "default"
+left = 0
+right = 8
+top = -1.211209
+bottom = 0
+dx = 8
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.520912 -1.070064 8 -2.082332 8 0", length = 8.752312 },
+]
+
+[waseda.character.Pos_Aru]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Pos_Aru.glyph]]
+key = "default"
+left = 0
+right = 0
+top = 0
+bottom = 0
+dx = 3
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0", length = 0 },
+]
+
+[waseda.character.U]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.U.glyph]]
+key = "default"
+left = 0
+right = 0
+top = 0
+bottom = 4
+dx = 0
+dy = 4
+ascent = 2
+path = [
+    { d = "M0 0C0 1.333333 0 2.666667 0 4", length = 4 },
+]
+
+[waseda.character.E]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.E.glyph]]
+key = "default"
+left = 0
+right = 2
+top = 0
+bottom = 3.464102
+dx = 2
+dy = 3.464102
+ascent = 2
+path = [
+    { d = "M0 0C0.666667 1.154701 1.333333 2.309401 2 3.464102", length = 4 },
+]
+
+[[waseda.character.E.glyph]]
+key = "$tail_s[-1]"
+left = 0
+right = 2.828427
+top = 0
+bottom = 2.828427
+dx = 2.828427
+dy = 2.828427
+ascent = 2
+path = [
+    { d = "M0 0C0.942809 0.942809 1.885618 1.885618 2.828427 2.828427", length = 4 },
+]
+
+[waseda.character.O]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.O.glyph]]
+key = "default"
+left = -2
+right = 0
+top = 0
+bottom = 3.464102
+dx = -2
+dy = 3.464102
+ascent = 2
+path = [
+    { d = "M0 0C-0.666667 1.154701 -1.333333 2.309401 -2 3.464102", length = 4 },
+]
+
+[waseda.character.Masu]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Masu.glyph]]
+key = "default"
+left = 0
+right = 24
+top = 0
+bottom = 0
+dx = 27
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C8 0 16 0 24 0", length = 24 },
+]
+
+[[waseda.character.Masu.glyph.clip_path]]
+d = "M-0.850394 0.850394C8 0.850394 16.850394 0.850394 25.700788 0.850394C25.700788 0.283465 25.700788 -0.283465 25.700788 -0.850394C16.850394 -0.850394 8 -0.850394 -0.850394 -0.850394C-0.850394 -0.283465 -0.850394 0.283465 -0.850394 0.850394C-0.850394 0.850394 -0.850394 0.850394 -0.850394 0.850394"
+
+[[waseda.character.Masu.glyph.clip_path]]
+d = "M17.395276 -0.233858C19.882149 -0.233858 22.363521 0 24.850394 0C22.363521 0 19.882149 0.233858 17.395276 0.233858C19.880558 0.233858 22.365112 0.318898 24.850394 0.318898C25.01103 0.318898 24.850394 0.125586 24.850394 0C24.850394 -0.125586 25.01103 -0.318898 24.850394 -0.318898C22.365112 -0.318898 19.880558 -0.233858 17.395276 -0.233858"
+
+[waseda.character.Ka]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ka.glyph]]
+key = "default"
+left = 0
+right = 8
+top = 0
+bottom = 0
+dx = 8
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.666667 0 5.333333 0 8 0", length = 8 },
+]
+
+[[waseda.character.Ka.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 8
+top = 0
+bottom = 0.17101
+dx = 7.530154
+dy = 0.17101
+ascent = 0
+
+[[waseda.character.Ka.glyph.path]]
+d = "M0 0C2.666667 0 5.333333 0 8 0C7.843385 0.057003 7.686769 0.114007 7.530154 0.17101"
+length = 8.5
+
+[waseda.character.Ki]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ki.glyph]]
+key = "default"
+left = 0
+right = 8
+top = -1.211346
+bottom = 0
+dx = 6.389562
+dy = 0
+ascent = 0
+
+[[waseda.character.Ki.glyph.path]]
+d = "M0 0C2.463187 0 4.926375 0 7.389562 0C8.072413 0 8.238827 -0.949919 7.59794 -1.181769C7.327021 -1.279778 7.038451 -1.123908 6.889562 -0.866025C6.722895 -0.57735 6.556229 -0.288675 6.389562 0"
+length = 10.941943
+
+[[waseda.character.Ki.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 8.5
+top = -1
+bottom = 0
+dx = 8
+dy = 0
+ascent = 0
+
+[[waseda.character.Ki.glyph.path]]
+d = "M0 0C2.666667 0 5.333333 0 8 0C8.666667 0 8.666667 -1 8 -1C7.333333 -1 7.333333 0 8 0"
+length = 11.171649
+
+[[waseda.character.Ki.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 8
+top = -1.09816
+bottom = 0
+dx = 7.307141
+dy = 0
+ascent = 0
+
+[[waseda.character.Ki.glyph.path]]
+d = "M0 0C2.435714 0 4.871428 0 7.307141 0C7.648085 0 8.004244 -0.106049 7.999962 -0.4C7.990142 -1.074075 6.708066 -1.377953 6.387888 -0.771345C6.174445 -0.366958 6.777311 -0.172152 7.307141 0"
+length = 11.637722
+
+[waseda.character.Ku]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ku.glyph]]
+key = "default"
+left = 0
+right = 8.146668
+top = -3.113821
+bottom = 0
+dx = 5
+dy = 0
+ascent = 0
+
+[[waseda.character.Ku.glyph.path]]
+d = "M0 0C2.4 0 4.8 0 7.2 0C8.030622 0 8.563954 -2.196954 7.720945 -2.954423C7.131262 -3.48427 6.497964 -2.59455 6 -1.732051C5.666667 -1.154701 5.333333 -0.57735 5 0"
+length = 15.080148
+
+[[waseda.character.Ku.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 7.930842
+top = -3.491962
+bottom = 0
+dx = 7
+dy = 0
+ascent = 0
+
+[[waseda.character.Ku.glyph.path]]
+d = "M0 0C2.333333 0 4.666667 0 7 0C8.320234 0 8.494623 -2.646618 5.802929 -3.288924C5.369883 -3.39226 4.534979 -3.57742 4.107456 -3.4472C2.429151 -2.936002 4.161747 -0.922204 7 0"
+length = 19.343336
+
+[[waseda.character.Ku.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 8.063305
+top = -2
+bottom = 0
+dx = 7.5
+dy = 0
+ascent = 0
+
+[[waseda.character.Ku.glyph.path]]
+d = "M0 0C2.5 0 5 0 7.5 0C8.445822 0 8.3095 -2 6.25 -2C4.1905 -2 4.054178 0 5 0C5.416667 0 5.833333 0 6.25 0C6.666667 0 7.083333 0 7.5 0"
+length = 16.955453
+
+[waseda.character.Ke]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ke.glyph]]
+key = "default"
+left = 0
+right = 16
+top = -1.211346
+bottom = 0
+dx = 14.389562
+dy = 0
+ascent = 0
+
+[[waseda.character.Ke.glyph.path]]
+d = "M0 0C5.129854 0 10.259708 0 15.389562 0C16.072413 0 16.238827 -0.949919 15.59794 -1.181769C15.327021 -1.279778 15.038451 -1.123908 14.889562 -0.866025C14.722895 -0.57735 14.556229 -0.288675 14.389562 0"
+length = 18.941943
+
+[[waseda.character.Ke.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 16.5
+top = -1
+bottom = 0
+dx = 16
+dy = 0
+ascent = 0
+
+[[waseda.character.Ke.glyph.path]]
+d = "M0 0C5.333333 0 10.666667 0 16 0C16.666667 0 16.666667 -1 16 -1C15.333333 -1 15.333333 0 16 0"
+length = 19.171649
+
+[[waseda.character.Ke.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 16.192859
+top = -1.09816
+bottom = 0
+dx = 15.5
+dy = 0
+ascent = 0
+
+[[waseda.character.Ke.glyph.path]]
+d = "M0 0C5.166667 0 10.333333 0 15.5 0C15.840944 0 16.197103 -0.106049 16.19282 -0.4C16.183001 -1.074075 14.900925 -1.377953 14.580747 -0.771345C14.367304 -0.366958 14.97017 -0.172152 15.5 0"
+length = 19.83058
+
+[waseda.character.Kei]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Kei.glyph]]
+key = "default"
+left = 0
+right = 4.610438
+top = -1.211346
+bottom = 0
+dx = 3
+dy = 0
+ascent = 0
+
+[[waseda.character.Kei.glyph.path]]
+d = "M0 0C1.333333 0 2.666667 0 4 0C4.682851 0 4.849265 -0.949919 4.208378 -1.181769C3.937459 -1.279778 3.648889 -1.123908 3.5 -0.866025C3.333333 -0.57735 3.166667 -0.288675 3 0"
+length = 7.55238
+
+[[waseda.character.Kei.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 4
+top = -1.09816
+bottom = 0
+dx = 3.307141
+dy = 0
+ascent = 0
+
+[[waseda.character.Kei.glyph.path]]
+d = "M0 0C1.10238 0 2.204761 0 3.307141 0C3.648085 0 4.004244 -0.106049 3.999962 -0.4C3.990142 -1.074075 2.708066 -1.377953 2.387888 -0.771345C2.174445 -0.366958 2.777311 -0.172152 3.307141 0"
+length = 7.637722
+
+[waseda.character.Ko]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ko.glyph]]
+key = "default"
+left = 0
+right = 16
+top = 0
+bottom = 0
+dx = 16
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C5.333333 0 10.666667 0 16 0", length = 16 },
+]
+
+[[waseda.character.Ko.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 16
+top = 0
+bottom = 0.17101
+dx = 15.530154
+dy = 0.17101
+ascent = 0
+
+[[waseda.character.Ko.glyph.path]]
+d = "M0 0C5.333333 0 10.666667 0 16 0C15.843385 0.057003 15.686769 0.114007 15.530154 0.17101"
+length = 16.5
+
+[waseda.character.Sa]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Sa.glyph]]
+key = "default"
+left = 0
+right = 5.656854
+top = -5.656854
+bottom = 0
+dx = 5.656854
+dy = -5.656854
+ascent = -3
+path = [
+    { d = "M0 0C2.540967 -1.467028 5.656854 -2.783827 5.656854 -5.656854", length = 8.42091 },
+]
+
+[[waseda.character.Sa.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 5.656854
+top = -5.656854
+bottom = 0
+dx = 5.656854
+dy = -5.656854
+ascent = -3
+path = [
+    { d = "M0 0C2.540967 -1.467028 5.656854 -2.783827 5.656854 -5.656854", length = 8.42091 },
+]
+
+[waseda.character.Su]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Su.glyph]]
+key = "default"
+left = 0
+right = 5.504378
+top = -5.766693
+bottom = 0
+dx = 4.502505
+dy = -2.954678
+ascent = -3
+
+[[waseda.character.Su.glyph.path]]
+d = "M0 0C2.159822 -1.246974 4.735024 -2.385407 5.458988 -4.463278C5.670582 -5.07058 5.113298 -5.656323 4.391115 -5.752462C3.354181 -5.8905 2.650412 -4.994248 3.088292 -4.368892C3.473603 -3.81861 3.952224 -3.339989 4.502505 -2.954678"
+length = 13.516583
+
+[[waseda.character.Su.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 5.616273
+top = -5.68652
+bottom = 0
+dx = 4.032242
+dy = -2.508781
+ascent = -3
+
+[[waseda.character.Su.glyph.path]]
+d = "M0 0C2.33769 -1.349666 5.161992 -2.572178 5.598919 -4.996334C5.807245 -6.152166 4.100402 -5.753798 2.602107 -4.559321C1.513806 -3.691701 1.252921 -2.508781 2.032242 -2.508781C2.698908 -2.508781 3.365575 -2.508781 4.032242 -2.508781"
+length = 16.216851
+
+[[waseda.character.Su.glyph]]
+key = "$head_er8[1]"
+left = 0
+right = 5.570669
+top = -5.590898
+bottom = 0
+dx = 4.579503
+dy = -3.037284
+ascent = -3
+
+[[waseda.character.Su.glyph.path]]
+d = "M0 0C2.261461 -1.305655 4.978316 -2.492314 5.54866 -4.762975C5.771286 -5.649294 4.261594 -6.038553 2.981748 -4.828143C1.80762 -3.717716 1.814686 -2.255822 2.738493 -2.255822C3.422316 -2.255822 3.956707 -2.772923 4.579503 -3.037284"
+length = 16.075002
+
+[[waseda.character.Su.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 5.623122
+top = -5.781614
+bottom = 0
+dx = 4.092994
+dy = -2.561746
+ascent = -3
+
+[[waseda.character.Su.glyph.path]]
+d = "M0 0C2.363099 -1.364336 5.223447 -2.598739 5.612317 -5.07581C5.768605 -6.071352 4.199527 -6.030958 2.849001 -4.844833C2.235085 -4.305649 1.826751 -3.580189 2.353448 -3.30014C2.910699 -3.003844 3.492758 -2.756775 4.092994 -2.561746"
+length = 15.094502
+
+[[waseda.character.Su.glyph]]
+key = "$head_ne[1]"
+left = 0
+right = 5.622065
+top = -5.774866
+bottom = 0
+dx = 4.787586
+dy = -3.279474
+ascent = -3
+
+[[waseda.character.Su.glyph.path]]
+d = "M0 0C2.363099 -1.364336 5.223447 -2.598739 5.612317 -5.07581C5.756917 -5.996905 4.264515 -6.076688 3.016359 -4.898965C1.505697 -3.473549 2.208939 -1.790691 3.055536 -2.279474C3.632886 -2.612807 4.210236 -2.94614 4.787586 -3.279474"
+length = 16.71755
+
+[[waseda.character.Su.glyph]]
+key = "$head_s[1]"
+left = 0
+right = 5.417666
+top = -5.773831
+bottom = 0
+dx = 3.453086
+dy = -2.051876
+ascent = -3
+
+[[waseda.character.Su.glyph.path]]
+d = "M0 0C2.032774 -1.173622 4.433496 -2.251098 5.312474 -4.106134C5.506874 -4.516403 5.423608 -5.000465 5.130508 -5.349793C4.508502 -6.091123 3.453086 -5.776358 3.453086 -5.051876C3.453086 -4.051876 3.453086 -3.051876 3.453086 -2.051876"
+length = 13.35328
+
+[waseda.character.Na]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Na.glyph]]
+key = "default"
+left = 0
+right = 8
+top = 0
+bottom = 0.979379
+dx = 8
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0", length = 8.497373 },
+]
+
+[[waseda.character.Na.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 8
+top = 0
+bottom = 1.109962
+dx = 8
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.312822 0.751481 7.635301 2.068312 8 0", length = 8.604864 },
+]
+
+[waseda.character.No]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.No.glyph]]
+key = "default"
+left = 0
+right = 16
+top = 0
+bottom = 1.391036
+dx = 16
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.881101 0.665155 16 2.766284 16 0", length = 16.658531 },
+]
+
+[waseda.character.Ni]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ni.glyph]]
+key = "default"
+left = 0
+right = 8.016049
+top = -0.99863
+bottom = 0.979379
+dx = 7.623995
+dy = 0.568379
+ascent = 0
+
+[[waseda.character.Ni.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.201729 -1.144064 6.427699 -1.25963 6.820988 -0.578434C7.054767 -0.173518 7.323456 0.21021 7.623995 0.568379"
+length = 12.100721
+
+[[waseda.character.Ni.glyph]]
+key = "$o[1]"
+left = 0
+right = 8.005917
+top = -0.430731
+bottom = 0.979379
+dx = 6.592001
+dy = 0.919771
+ascent = 0
+
+[[waseda.character.Ni.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.071065 -0.403031 7.483194 -0.623821 7.242001 -0.206062C7.025334 0.169216 6.808668 0.544493 6.592001 0.919771"
+length = 10.914164
+
+[[waseda.character.Ni.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 8.007809
+top = -0.738124
+bottom = 0.979379
+dx = 7.775662
+dy = 0.438453
+ascent = 0
+
+[[waseda.character.Ni.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.108719 -0.616578 7.052494 -1.033146 6.68443 -0.478828C6.379788 -0.020025 7.118398 0.224895 7.775662 0.438453"
+length = 11.978186
+
+[[waseda.character.Ni.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 8.023611
+top = -0.821755
+bottom = 0.979379
+dx = 7.896969
+dy = 0.279994
+ascent = 0
+
+[[waseda.character.Ni.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.356358 -2.021009 4.52114 0.321863 7.098065 0.321863C7.363453 0.29397 7.630119 0.279994 7.896969 0.279994"
+length = 13.094853
+
+[[waseda.character.Ni.glyph]]
+key = "$wa[1]"
+left = 0
+right = 8.005913
+top = -0.188012
+bottom = 0.979379
+dx = 5.894651
+dy = 0.976057
+ascent = 0
+
+[[waseda.character.Ni.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.100205 -0.568289 6.907502 0.266851 5.894651 0.976057"
+length = 11.080432
+
+[waseda.character.Ne]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ne.glyph]]
+key = "default"
+left = 0
+right = 16
+top = -0.839973
+bottom = 1.391036
+dx = 15.570925
+dy = 0.733506
+ascent = 0
+
+[[waseda.character.Ne.glyph.path]]
+d = "M0 0C2.881101 0.665155 16 2.766284 16 0C16 -1.120341 14.445776 -0.971273 14.767918 -0.413307C15.001696 -0.008391 15.270385 0.375337 15.570925 0.733506"
+length = 20.123651
+
+[[waseda.character.Ne.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 16
+top = -0.610472
+bottom = 1.391036
+dx = 15.790896
+dy = 0.540191
+ascent = 0
+
+[[waseda.character.Ne.glyph.path]]
+d = "M0 0C2.881101 0.665155 16 2.766284 16 0C16 -1.638544 12.922057 0.540191 14.790896 0.540191C15.12423 0.540191 15.457563 0.540191 15.790896 0.540191"
+length = 20.958114
+
+[[waseda.character.Ne.glyph]]
+key = "$o[1]"
+left = 0
+right = 16
+top = -0.291257
+bottom = 1.391036
+dx = 14.5
+dy = 1.152829
+ascent = 0
+
+[[waseda.character.Ne.glyph.path]]
+d = "M0 0C2.881101 0.665155 16 2.766284 16 0C16 -0.285063 15.357074 -0.410399 15.25 -0.146209C15 0.286804 14.75 0.719816 14.5 1.152829"
+length = 19.098254
+
+[waseda.character.Nu]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Nu.glyph]]
+key = "default"
+left = 0
+right = 8.019481
+top = -0.801555
+bottom = 0.979379
+dx = 3.903052
+dy = 0.852867
+ascent = 0
+
+[[waseda.character.Nu.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.266312 -1.510333 5.745514 -0.693142 3.903052 0.852867"
+length = 13.607872
+
+[[waseda.character.Nu.glyph]]
+key = "$head_er8[1]"
+left = 0
+right = 8.013561
+top = -1.316695
+bottom = 0.979379
+dx = 7.942631
+dy = 0.191099
+ascent = 0
+
+[[waseda.character.Nu.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.126757 -0.718873 7.344435 -1.191849 6.508274 -1.288449C5.440319 -1.411828 4.296021 -1.145964 3.93086 -0.194402C3.739045 0.305444 3.938924 0.863692 4.399738 0.910204C5.619234 1.033291 6.815693 0.669456 7.942631 0.191099"
+length = 18.758748
+
+[[waseda.character.Nu.glyph]]
+key = "$head_e[1]"
+left = 0
+right = 8.02093
+top = -1.5471
+bottom = 0.979379
+dx = 7.775662
+dy = 0.438453
+ascent = 0
+
+[[waseda.character.Nu.glyph.path]]
+d = "M0 0C2.040725 0.663072 7.678207 1.824982 8 0C8.258548 -1.466298 6.075284 -2.121616 4.016892 -0.929627C3.185632 -0.448255 3.272242 0.438453 3.775662 0.438453C5.108996 0.438453 6.442329 0.438453 7.775662 0.438453"
+length = 19.349697
+
+[waseda.character.I]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.I.glyph]]
+key = "default"
+left = 0
+right = 4
+top = -0.810069
+bottom = 0
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.578905 -0.911581 4 -1.236455 4 0", length = 4.574347 },
+]
+
+[[waseda.character.I.glyph]]
+key = "$head_el4[1]"
+left = 0
+right = 4
+top = -0.446582
+bottom = 0
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.031337 -0.595443 2.968663 -0.595443 4 0", length = 4.141915 },
+]
+
+[[waseda.character.I.glyph]]
+key = "$head_el8[1]"
+left = 0
+right = 4
+top = -0.357694
+bottom = 0
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C1.005555 -0.580558 2.889581 -0.360797 4 0", length = 4.092418 },
+]
+
+[[waseda.character.I.glyph]]
+key = "$head_se[1] | $head_e[1]"
+left = 0
+right = 4.269991
+top = -1.311074
+bottom = 0
+dx = 4
+dy = 0
+ascent = 0
+path = [
+    { d = "M0 0C2.919547 -1.685601 5.044715 -1.8095 4 0", length = 5.666073 },
+]
+
+[waseda.character.Ta]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ta.glyph]]
+key = "default"
+left = -2.736161
+right = 0
+top = 0
+bottom = 7.517541
+dx = -2.736161
+dy = 7.517541
+ascent = 2
+path = [
+    { d = "M0 0C-0.912054 2.505847 -1.824107 5.011694 -2.736161 7.517541", length = 8 },
+]
+
+[waseda.character.Cha]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Cha.glyph]]
+key = "default"
+left = 0
+right = 6.928203
+top = -4
+bottom = 0
+dx = 6.928203
+dy = -4
+ascent = -2
+path = [
+    { d = "M0 0C2.309401 -1.333333 4.618802 -2.666667 6.928203 -4", length = 8 },
+]
+
+[waseda.character.Ha]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ha.glyph]]
+key = "default"
+left = 0
+right = 4.588611
+top = 0
+bottom = 6.553216
+dx = 4.588611
+dy = 6.553216
+ascent = 2
+path = [
+    { d = "M0 0C0 4.138497 0.874411 6.553216 4.588611 6.553216", length = 9.243899 },
+]
+
+[waseda.character.Ya]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ya.glyph]]
+key = "default"
+left = 0
+right = 6.128356
+top = -5.142301
+bottom = 0
+dx = 6.128356
+dy = -5.142301
+ascent = -2
+path = [
+    { d = "M0 0C0.925272 -2.542165 3.494497 -5.142301 6.128356 -5.142301", length = 8.451055 },
+]
+
+[waseda.character.Yan]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Yan.glyph]]
+key = "default"
+left = 0
+right = 6.128356
+top = -5.142301
+bottom = 0
+dx = 9.128356
+dy = -5.142301
+ascent = -2
+path = [
+    { d = "M0 0C0.925272 -2.542165 3.494497 -5.142301 6.128356 -5.142301", length = 8.451055 },
+]
+
+[[waseda.character.Yan.glyph.mask]]
+d = "M-0.850394 0.850394C2.042785 0.850394 4.935964 0.850394 7.829144 0.850394C7.829144 -1.430636 7.829144 -3.711665 7.829144 -5.992695C4.935964 -5.992695 2.042785 -5.992695 -0.850394 -5.992695C-0.850394 -3.711665 -0.850394 -1.430636 -0.850394 0.850394C-0.850394 0.850394 -0.850394 0.850394 -0.850394 0.850394"
+
+[[waseda.character.Yan.glyph.mask]]
+d = "M4.154386 -4.936614C5.034071 -5.323381 6.022849 -5.142301 6.97875 -5.142301C6.064681 -5.142301 5.178722 -4.876052 4.342634 -4.508453C5.164254 -4.869691 6.083797 -4.823403 6.97875 -4.823403C7.139386 -4.823403 6.97875 -5.016715 6.97875 -5.142301C6.97875 -5.267887 7.139386 -5.461199 6.97875 -5.461199C6.011035 -5.461199 5.040837 -5.326356 4.154386 -4.936614"
+
+[waseda.character.Ra]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Ra.glyph]]
+key = "default"
+left = 0
+right = 4.28593
+top = 0
+bottom = 6.928203
+dx = 4
+dy = 6.928203
+ascent = 3
+path = [
+    { d = "M0 0C2.26387 1.585179 5.223234 4.8095 4 6.928203", length = 8.604155 },
+]
+
+[waseda.character.Wa]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Wa.glyph]]
+key = "default"
+left = -1.717915
+right = 0.235031
+top = 0
+bottom = 3.210809
+dx = 0.235031
+dy = 3.071856
+ascent = 1
+
+[[waseda.character.Wa.glyph.path]]
+d = "M0 0C-0.848311 0.243249 -1.942402 1.71801 -1.677579 2.487113C-1.422072 3.229159 -0.58443 3.354019 0.235031 3.071856"
+length = 5.451492
+
+[[waseda.character.Wa.glyph]]
+key = "$tail_el[-1]"
+left = -1.320335
+right = 0.644755
+top = 0
+bottom = 3.442619
+dx = 0.644755
+dy = 3.303667
+ascent = 1
+
+[[waseda.character.Wa.glyph.path]]
+d = "M0 0C-0.750197 0.349823 -1.532118 1.951448 -1.267855 2.718923C-1.012348 3.46097 -0.174706 3.58583 0.644755 3.303667"
+length = 5.409757
+
+[[waseda.character.Wa.glyph]]
+key = "$ni[-1]"
+left = -1.313587
+right = 0.644755
+top = 0
+bottom = 3.442619
+dx = 0.644755
+dy = 3.303667
+ascent = 1
+
+[[waseda.character.Wa.glyph.path]]
+d = "M0 0C-0.666843 0.466928 -1.521596 1.982004 -1.267855 2.718923C-1.012348 3.46097 -0.174706 3.58583 0.644755 3.303667"
+length = 5.370043
+
+[[waseda.character.Wa.glyph]]
+key = "$head_e[1]"
+left = -1.717915
+right = 0.235031
+top = 0
+bottom = 3.083536
+dx = 0.235031
+dy = 3.071856
+ascent = 1
+
+[[waseda.character.Wa.glyph.path]]
+d = "M0 0C-0.848311 0.243249 -1.942402 1.71801 -1.677579 2.487113C-1.426402 3.216582 -0.576539 3.071856 0.235031 3.071856"
+length = 5.372034
+
+[[waseda.character.Wa.glyph]]
+key = "$head_el[1]"
+left = -1.717915
+right = 0.784441
+top = 0
+bottom = 3.432941
+dx = 0.784441
+dy = 2.921233
+ascent = 1
+
+[[waseda.character.Wa.glyph.path]]
+d = "M0 0C-0.848311 0.243249 -1.942402 1.71801 -1.677579 2.487113C-1.31635 3.536198 -0.053111 3.758785 0.784441 2.921233"
+length = 6.235934
+
+[waseda.character.Shou]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Shou.glyph]]
+key = "default"
+left = -2.736161
+right = 0
+top = 0
+bottom = 7.517541
+dx = -3.762222
+dy = 10.336619
+ascent = 2
+path = [
+    { d = "M0 0C-0.912054 2.505847 -1.824107 5.011694 -2.736161 7.517541", length = 8 },
+]
+
+[waseda.character.Souiu]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Souiu.glyph]]
+key = "default"
+left = -4
+right = 2.928203
+top = 0
+bottom = 6.928203
+dx = 2.928203
+dy = 2.928203
+ascent = 3
+
+[[waseda.character.Souiu.glyph.path]]
+d = "M0 0C0 2.779066 -2.028513 4.956716 -4 6.928203C-2.028513 4.956716 0.149138 2.928203 2.928203 2.928203"
+length = 16.443512
+
+[waseda.character.Uu]
+mark = false
+space = false
+newline = false
+
+[[waseda.character.Uu.glyph]]
+key = "default"
+left = -0.320818
+right = 0
+top = 0
+bottom = 4.436535
+dx = 0
+dy = 3.5
+ascent = 2
+path = [
+    { d = "M0 0C0 1.333333 0 2.666667 0 4C0 5.297836 -0.72184 3.26546 0 3.5", length = 5.71128 },
+]
+
+[waseda.groups]
+null = [
+    "Null",
+]
+newline = [
+    "Newline",
+]
+space = [
+    "Space",
+]
+a = [
+    "A",
+]
+head_el4 = [
+    "A",
+]
+tail_el = [
+    "A",
+    "Na",
+    "No",
+]
+kari = [
+    "Kari",
+]
+head_e = [
+    "Kari",
+    "Nihon",
+    "Masu",
+    "Ka",
+    "Ki",
+    "Ku",
+    "Ke",
+    "Kei",
+    "Ko",
+]
+nihon = [
+    "Nihon",
+]
+ma = [
+    "Ma",
+]
+head_er8 = [
+    "Ma",
+]
+pos_aru = [
+    "Pos_Aru",
+]
+u = [
+    "U",
+]
+head_s = [
+    "U",
+]
+tail_s = [
+    "U",
+]
+e = [
+    "E",
+]
+head_se = [
+    "E",
+]
+o = [
+    "O",
+]
+head_sw = [
+    "O",
+    "Ta",
+]
+masu = [
+    "Masu",
+]
+ka = [
+    "Ka",
+]
+ki = [
+    "Ki",
+]
+ku = [
+    "Ku",
+]
+ke = [
+    "Ke",
+]
+kei = [
+    "Kei",
+]
+ko = [
+    "Ko",
+]
+sa = [
+    "Sa",
+]
+su = [
+    "Su",
+]
+na = [
+    "Na",
+]
+head_el = [
+    "Na",
+]
+head_el8 = [
+    "Na",
+    "Ni",
+]
+no = [
+    "No",
+]
+head_el16 = [
+    "No",
+    "Ne",
+]
+ni = [
+    "Ni",
+]
+ne = [
+    "Ne",
+]
+nu = [
+    "Nu",
+]
+i = [
+    "I",
+]
+head_er4 = [
+    "I",
+]
+ta = [
+    "Ta",
+]
+cha = [
+    "Cha",
+]
+head_ne = [
+    "Cha",
+]
+ha = [
+    "Ha",
+]
+head_sel = [
+    "Ha",
+]
+ya = [
+    "Ya",
+]
+yan = [
+    "Yan",
+]
+ra = [
+    "Ra",
+]
+wa = [
+    "Wa",
+]
+shou = [
+    "Shou",
+]
+souiu = [
+    "Souiu",
+]
+uu = [
+    "Uu",
+]
+
+[waseda.dictionary]
+"\n" = [
+    "Newline",
+]
+" " = [
+    "Space",
+]
+"あ" = [
+    "A",
+]
+"カリ" = [
+    "Kari",
+]
+"日本" = [
+    "Nihon",
+]
+"ま" = [
+    "Ma",
+]
+"う" = [
+    "U",
+]
+"え" = [
+    "E",
+]
+"お" = [
+    "O",
+]
+"を" = [
+    "O",
+]
+"マス" = [
+    "Masu",
+]
+"か" = [
+    "Ka",
+]
+"カ" = [
+    "Ka",
+]
+"き" = [
+    "Ki",
+]
+"く" = [
+    "Ku",
+]
+"け" = [
+    "Ke",
+]
+"ケー" = [
+    "Kei",
+]
+"こ" = [
+    "Ko",
+]
+"さ" = [
+    "Sa",
+]
+"す" = [
+    "Su",
+]
+"な" = [
+    "Na",
+]
+"の" = [
+    "No",
+]
+"に" = [
+    "Ni",
+]
+"ね" = [
+    "Ne",
+]
+"ぬ" = [
+    "Nu",
+]
+"い" = [
+    "I",
+]
+"た" = [
+    "Ta",
+]
+"ちゃ" = [
+    "Cha",
+]
+"は" = [
+    "Ha",
+]
+"や" = [
+    "Ya",
+]
+"やん" = [
+    "Yan",
+]
+"ら" = [
+    "Ra",
+]
+"わ" = [
+    "Wa",
+]
+"ショー" = [
+    "Shou",
+]
+"タラ" = [
+    "Shou",
+]
+"タリ" = [
+    "Shou",
+]
+"ソウイウ" = [
+    "Souiu",
+]
+"ソーユー" = [
+    "Souiu",
+]
+"ウー" = [
+    "Uu",
+]
+"ウウ" = [
+    "Uu",
+]
+
