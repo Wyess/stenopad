@@ -2017,18 +2017,17 @@ guide path_su_ka_orig() {
     return su;
 }
 
-guide path_su_ka() {
+guide path_su_ka(guide next = path_ka()) {
     guide sa = (0, 0){dir(30)} .. {N}dir(45) * 8;
-    guide base = subpath(sa, 0, 0.92);
+    guide base = subarc(sa, 0, -0.7);
 
-    pair ze = arcpoint(reverse(base), 3);
-    pair z2 = ze + dir(180) * 2;
-    real h = relpoint(sa, 1).y;
-    //pair z3 = relpoint(base, 1) + dir(160) * 2;
-    pair z3 = ze + dir(relpoint(base, 1) - z2) * I * 2.5;
-    //guide su = base .. {W}top .. {dir(-60 - 10)}z2 .. {dir(-60 + 10)}ze;
-    guide su = base .. z3 .. {E}z2 .. {E}ze;
-    return su;
+    pair z1 = relpoint(base, 1);
+    pair z4 = arcpoint(reverse(base), 3);
+    guide arc34 = prearc(shift(z4) * next, 2);
+    pair z3 = point(arc34, 0);
+    pair z2 = z4 + dir(z3 - z1) * -I * 2.5;
+
+    return base .. z2 .. {dir(arc34, 0)}arc34;
 }
 
 
@@ -2116,15 +2115,16 @@ guide path_ma(path p = (0, 0)--dir(-90)) {
 //}
 
 guide path_su_ma(guide next = path_ma()) {
-    guide base = subpath(path_sa(), 0, 0.89);
+    //guide base = subpath(path_sa(), 0, 0.89);
+    guide base = subarc(path_sa(), 0, -0.8);
 
     pair z1 = relpoint(base, 1);
     pair z4 = arcpoint(reverse(base), 2);
-    pair z3 = z4 - 2 * dir(next, 0);
+    guide arc34 = prearc(shift(z4) * next, 2);
+    pair z3 = point(arc34, 0);
     pair z2 = z4 + dir(z1 - z3) * I * 2.4;
-    guide g = base .. z2 .. {E}z3 .. shift(z4) * next;
 
-    return subpath(g, 0, length(g) - length(next));
+    return base .. z2 .. arc34;
 }
 
 guide[] paths_hasa() {
