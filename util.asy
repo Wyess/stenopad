@@ -126,11 +126,12 @@ guide make_guide(pair[] p, int[] d) {
     return g;
 }
 
-real get_rot_dir(guide g) {
-    real ori = orient(point(g, 0), postcontrol(g, 0), point(g, 1));
-
-    if (ori == 0.0) return 0;
-    return  (ori > 0.0) ? 1.0 : -1.0;
+real orient(guide g) {
+    if (straight(g, 0)) {
+        return 0.0;
+    } else {
+        return orient(point(g, 0), postcontrol(g, 0), point(g, 1));
+    }
 }
 
 real get_head_dir_diff(guide g) {
@@ -410,4 +411,30 @@ guide append_circle(
 
     //g = g .. z2 .. {rotate(-10) * dir(next_path, 0)}z3 .. shift(z4) * next_path;
     return subpath(g, 0, length(g) - length(next_path));
+}
+
+guide prearc(guide g, real l) {
+    pair z0 = point(g, 0);
+    pair d0 = dir(g, 0);
+    real ori = orient(g);
+
+    if (ori == 0.0) {
+        pair z1 = z0 - d0 * l;
+        return z1-- z0;
+    } else {
+        real r = radius(g, 0);
+        pair n = (ori > 0 ? I : -I) * d0;
+        real a = (ori > 0 ? 1 : -1) * degrees(l / r);
+        pair z1 = z0 + r * (rotate(a) * n - n);
+        pair d1 = rotate(a) * d0;
+        return subpath(z1{d1} .. g, 0, 1);
+    }
+}
+
+guide subarc(guide g, real a, real b) {
+    real l = arclength(g);
+    if (a < 0) a += l;
+    if (b < 0) b += l;
+
+    return subpath(g, arctime(g, a), arctime(g, b));
 }
