@@ -438,3 +438,22 @@ guide subarc(guide g, real a, real b) {
 
     return subpath(g, arctime(g, a), arctime(g, b));
 }
+
+guide add_circle_14(
+    guide base,
+    guide next,
+    real l1 = 0.5,
+    real l4 = 2,
+    real l24 = 2,
+    real l34 = 2,
+    bool direction = CCW
+) {
+    base = subarc(base, 0, -l1);
+
+    pair z1 = relpoint(base, 1);
+    pair z4 = arcpoint(reverse(base), l4);
+    guide arc34 = prearc(shift(z4) * next, l34);
+    pair z3 = point(arc34, 0);
+    pair z2 = z4 + dir(z3 - z1) * (direction == CCW ? -I : I) * l24;
+    return base .. z2 .. {dir(arc34, 0)}arc34;
+}
