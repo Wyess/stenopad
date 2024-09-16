@@ -2017,17 +2017,16 @@ guide path_su_ka_orig() {
     return su;
 }
 
-guide path_su_ka(guide next = path_ka()) {
-    guide sa = (0, 0){dir(30)} .. {N}dir(45) * 8;
-    guide base = subarc(sa, 0, -0.7);
-
-    pair z1 = relpoint(base, 1);
-    pair z4 = arcpoint(reverse(base), 3);
-    guide arc34 = prearc(shift(z4) * next, 2);
-    pair z3 = point(arc34, 0);
-    pair z2 = z4 + dir(z3 - z1) * -I * 2.5;
-
-    return base .. z2 .. {dir(arc34, 0)}arc34;
+guide path_su_ka() {
+    return  add_circle_14(
+        path_sa(),
+        path_ka(),
+        l1 = 0.7,
+        l4 = 3,
+        l24 = 2.5,
+        l34 = 2,
+        direction = CCW
+    );
 }
 
 
@@ -2391,18 +2390,16 @@ guide path_cha(int a = 30) {
     return (0, 0) -- dir(a) * 8;
 }
 
-guide path_su_cha(guide cha = path_cha()) {
-    guide base = subpath(path_sa(), 0, 0.93);
-
-    pair d = dir(cha, 0);
-
-    pair z1 = relpoint(base, 1);
-    pair z4 = arcpoint(reverse(base), 2);
-    pair z3 = z4 - d * 2;
-    pair z2 = z4 + unit(z1 - z3) * I * 2.4;
-    guide sucha = base .. z2 .. {d}z3 .. shift(z4) * cha;
-
-    return subpath(sucha, 0, length(sucha) - length(cha));
+guide path_su_cha() {
+    return  add_circle_14(
+        path_sa(),
+        path_cha(),
+        l1 = 0.7,
+        l4 = 2,
+        l24 = 2.4,
+        l34 = 2,
+        direction = CCW
+    );
 }
 
 guide path_su_u(guide next = path_u()) {
