@@ -457,3 +457,21 @@ guide add_circle_14(
     pair z2 = z4 + dir(z3 - z1) * (direction == CCW ? -I : I) * l24;
     return base .. z2 .. {dir(arc34, 0)}arc34;
 }
+
+guide add_circle_between_lines_of_same_dir(
+    guide base,
+    real l1 = 0.5,
+    real w = 2,
+    real h = 2,
+    bool direction = CCW
+) {
+    base = subarc(base, 0, -l1);
+    pair d = dir(base);
+    pair z1 = relpoint(base, 1);
+    pair z4 = arcpoint(reverse(base), w / 2);
+    pair z3 = arcpoint(reverse(base), w);
+    pair z2 = z4 + h * (direction == CCW ? I : -I);
+    pair z5 = z1;
+
+    return base .. z2 .. {d}z3 -- z4 -- z5;
+}
