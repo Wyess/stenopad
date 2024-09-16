@@ -2057,29 +2057,31 @@ guide path_ku(path p = (0, 0) -- -dir(60)) {
     return subpath(g, 0, length(g) - length(p));
 }
 
-guide path_ku_ka(path p = (0, 0)--dir(-135)) {
-//    real b = 2;
-//    guide base = path_ka();
+//guide path_ku_ka(guide g) {
+//    guide ka = path_ka();
+//    guide base = subarc(ka, 0, -0.5);
+//    pair d = dir(base);
+//    pair z1, z2, z3, z4, z5;
+//    real w = 2.5;
+//    real h = 2;
 //
-//    pair z1 = relpoint(base, 1) + (0, 0.1);
-//    pair z2 = z1 + 2.4 * dir(125);
-//    pair z3 = z1 + 2.8 * dir(180);
+//    z1 = arcpoint(reverse(base), 0);
+//    z4 = arcpoint(reverse(base), w / 2);
+//    z3 = arcpoint(reverse(base), w);
+//    z2 = z4 + h * d * I;
+//    z5 = z1;
 //
-//    return base .. {dir(180)}z2 .. {dir(0)}z3 -- z1;
-    guide ka = path_ka();
-    guide base = subpath(ka, 0, arctime(ka, arclength(ka) - 0.5));
-    pair z1, z2, z3, z4, z5;
-    real w = 2.5;
-    real h = 2;
+//    return base .. z2 .. {E}z3 -- z4 -- z5;
+//}
 
-    z1 = arcpoint(reverse(base), 0);
-    z4 = arcpoint(reverse(base), w / 2);
-    z3 = arcpoint(reverse(base), w);
-    z2 = z4 + h * dir(90);
-    z5 = z1;
-
-    guide ku = base .. z2 .. {E}z3 -- z4 -- z5;
-    return ku;
+guide path_ku_ka() {
+    return add_circle_between_lines_of_same_dir(
+        path_ka(),
+        l1 = 0.5,
+        w = 2.5,
+        h = 2,
+        direction = CCW
+    );
 }
 
 guide[] paths_nihon() {
