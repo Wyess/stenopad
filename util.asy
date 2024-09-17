@@ -420,11 +420,11 @@ guide prearc(guide g, real l) {
 
     if (ori == 0.0) {
         pair z1 = z0 - d0 * l;
-        return z1-- z0;
+        return z1 -- z0;
     } else {
         real r = radius(g, 0);
-        pair n = (ori > 0 ? I : -I) * d0;
-        real a = (ori > 0 ? 1 : -1) * degrees(l / r);
+        pair n = (ori < 0 ? I : -I) * d0;
+        real a = (ori < 0 ? 1 : -1) * degrees(l / r);
         pair z1 = z0 + r * (rotate(a) * n - n);
         pair d1 = rotate(a) * d0;
         return subpath(z1{d1} .. g, 0, 1);
