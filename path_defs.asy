@@ -2189,21 +2189,16 @@ guide path_na(path p = (0, 0)-- dir(80), real ha = -18, real tn = 1.7, real ta =
     return subpath(g, 0, length(g) - length(p));
 }
 
-guide path_su_na(guide na = path_na()) {
-    guide base = subpath(path_sa(), 0, 0.93);
-
-    pair z1 = relpoint(base, 1);
-    pair z4 = arcpoint(reverse(base), 3);
-
-    real th = -10;
-    real r = radius(na, 0);
-    pair d = dir(na, 0);
-    pair m = -I * d * r;
-    pair z3 = z4 + rotate(th) * m  - m;
-    pair z2 = z4 + dir(z1 - z3) * I * 2.6;
-    guide suna = base .. z2 .. {rotate(th) * d}z3 .. shift(z4) * na;
-
-    return subpath(suna, 0, length(suna) - 1);
+guide path_su_na(guide next = path_na()) {
+    return add_circle_14(
+        path_sa(),
+        next,
+        l1 = 0.5,
+        l4 = 3,
+        l24 = 2.6,
+        l34 = 2.0,
+        direction = CCW
+    );
 }
 
 guide path_ki_na(real a = 0, path p = path_na()) {
@@ -2333,20 +2328,18 @@ guide path_nu(path p = (0, 0) -- dir(40 + 180)) {
     return subpath(g, 0, length(g) - length(p));
 }
 
-guide path_nu_ma(path base = path_na(), path p = path_ma()) {
+guide path_nu_ma(guide base = path_na(), guide p = path_ma()) {
     real ra = degrees(dir(p, 0)) + 180;
     real cx1 = 2.8;
     real cx2 = 1;
     real cy = 1.2;
 
-    pair p0 = relpoint(base, 1);
-    pair pe = arcpoint(reverse(base), 0.2);
-    pair p3 = arcpoint(base, 4.5);
-    real a = arctime(base, 4.5);
-    pair p2 = p3 + rotate(ra) * (0, -cy);
-    pair p1 = p2 - rotate(ra) * (cx1, 0);
-
-    guide g = base  .. p1 .. p2 .. {dir(base, a)}p3 .. shift(pe) * p;
+    pair z1 = relpoint(base, 1);
+    real t3 = arctime(base, 5);
+    pair z3 = point(base, t3);
+    pair z4 = arcpoint(base, 6);
+    pair z2 = z4 + dir(z3 - z1) * -I * 2.2;
+    guide g = base .. z2 .. {dir(base, t3)}z3 .. shift(z1) * p;
     return subpath(g, 0, length(g) - length(p));
 }
 
