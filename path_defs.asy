@@ -2189,6 +2189,18 @@ guide path_na(path p = (0, 0)-- dir(80), real ha = -18, real tn = 1.7, real ta =
     return subpath(g, 0, length(g) - length(p));
 }
 
+guide path_shi_na(guide next = path_na()) {
+    return add_circle_14(
+        path_sa(),
+        next,
+        l1 = 2.1 / 1.8,
+        l4 = 1.2 / 1.8,
+        l24 = 3.0 / 1.8,
+        l34 = 1.5 / 1.8,
+        direction = CCW
+    );
+}
+
 guide path_su_na(guide next = path_na(), bool round = true) {
     if (round) {
         return add_circle_14(
