@@ -2260,6 +2260,20 @@ guide path_ku_na(path p = path_na()) {
     return subpath(g, 0, length(g) - length(p));
 }
 
+guide path_ku_ma(guide next = path_ma()) {
+    guide ka = path_ka();
+    guide base = subarc(ka, 0, -0.5);
+
+    pair z1 = arcpoint(reverse(base), 0);
+    pair z4 = arcpoint(reverse(base), 2.5);
+    pair z2 = extension(z4, z4 + dir(15), z1 + (0.5, 0), z1 + (0.5, 1));
+    pair z5 = z2;
+    pair z3 = interp(z4, z1, 0.2) + (0, 2);
+
+    guide ku = base .. z2 .. z3 .. {E}z4 .. shift(z5) * next;
+    return subpath(ku, 0, length(ku) - length(next));
+}
+
 guide path_no(path p = (0, 0) -- dir(90), real ha = -13, real tn = 2.5, real ta = 90) {
     guide g = (0, 0){dir(ha)} .. tension tn .. shift(16, 0) * p;
     return subpath(g, 0, length(g) - length(p));
