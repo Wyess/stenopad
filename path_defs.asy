@@ -2189,16 +2189,28 @@ guide path_na(path p = (0, 0)-- dir(80), real ha = -18, real tn = 1.7, real ta =
     return subpath(g, 0, length(g) - length(p));
 }
 
-guide path_su_na(guide next = path_na()) {
-    return add_circle_14(
-        path_sa(),
-        next,
-        l1 = 0.5,
-        l4 = 3,
-        l24 = 2.6,
-        l34 = 2.0,
-        direction = CCW
-    );
+guide path_su_na(guide next = path_na(), bool round = true) {
+    if (round) {
+        return add_circle_14(
+            path_sa(),
+            next,
+            l1 = 2.1,
+            l4 = 1.2,
+            l24 = 3.0,
+            l34 = 1.5,
+            direction = CCW
+        );
+    } else {
+         return add_circle_14(
+            path_sa(),
+            next,
+            l1 = 0.5,
+            l4 = 3,
+            l24 = 2.6,
+            l34 = 2.0,
+            direction = CCW
+        );
+    }
 }
 
 guide path_ki_na(real a = 0, path p = path_na()) {
