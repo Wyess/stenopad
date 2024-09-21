@@ -2203,15 +2203,13 @@ guide path_shi_na(guide next = path_na()) {
 
 guide path_su_na(guide next = path_na(), bool round = true) {
     if (round) {
-        return add_circle_14(
-            path_sa(),
-            next,
-            l1 = 2.1,
-            l4 = 1.2,
-            l24 = 3.0,
-            l34 = 1.5,
-            direction = CCW
-        );
+        guide base = subarc(path_sa(), 0, -2.0);
+        pair z1 = relpoint(base, 1);
+        pair z4 = arcpoint(reverse(base), 1.3);
+        guide arc34 = prearc(shift(z4) * next, 3.0);
+        pair z3 = point(arc34, 0);
+        pair z2 = interp(z3, z1, 0.3) + dir(z3 - z1) * -I * 1.7;
+        return base .. z2 .. {dir(arc34, 0)}arc34;
     } else {
          return add_circle_14(
             path_sa(),
