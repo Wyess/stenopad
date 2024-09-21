@@ -2264,11 +2264,12 @@ guide path_ku_ma(guide next = path_ma()) {
     guide ka = path_ka();
     guide base = subarc(ka, 0, -0.5);
 
+    pair z0 = relpoint(ka, 1);
     pair z1 = arcpoint(reverse(base), 0);
     pair z4 = arcpoint(reverse(base), 2.5);
-    pair z2 = extension(z4, z4 + dir(15), z1 + (0.5, 0), z1 + (0.5, 1));
+    pair z2 = z0 + dir(base) * I * 0.8;
     pair z5 = z2;
-    pair z3 = interp(z4, z1, 0.2) + (0, 2);
+    pair z3 = interp(z4, z1, 0.2) + dir(z4 - z1) * -I * 2.5;
 
     guide ku = base .. z2 .. z3 .. {E}z4 .. shift(z5) * next;
     return subpath(ku, 0, length(ku) - length(next));
