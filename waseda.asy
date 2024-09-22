@@ -247,6 +247,14 @@ Glyph.Glyph(
 ).toml();
 
 Glyph.Glyph(
+    "Ku",
+    "$head_er8[1]",
+    fn_dz(),
+    ascent = 0,
+    path_ku_ma()
+).toml();
+
+Glyph.Glyph(
     "Ke",
     "default",
     fn_dz(),
@@ -367,6 +375,14 @@ Glyph.Glyph(
     fn_dz(),
     ascent = -3,
     path_su_u()
+).toml();
+
+Glyph.Glyph(
+    "Su",
+    "$head_se[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_e()
 ).toml();
 
 Glyph.Glyph(
