@@ -2029,6 +2029,18 @@ guide path_su_ka() {
     );
 }
 
+guide path_su_e(guide next = path_e()) {
+    return  add_circle_14(
+        path_sa(),
+        next,
+        l1 = 1.9,
+        l4 = 1.7,
+        l24 = 2.8,
+        l34 = 2.0,
+        direction = CCW
+    );
+}
+
 
 
 //guide path_ku(path p = (0, 0)--dir(-135)) {
