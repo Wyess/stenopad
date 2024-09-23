@@ -51,6 +51,7 @@ struct Glyph {
     static file fout;
 
     string name;
+    string glyph_name;
     string key;
     string desc;
     pair dz;
@@ -72,11 +73,13 @@ struct Glyph {
         real ascent
         ... path[] paths,
         path[] keyword clip_paths = {},
-        path[] keyword mask = {}
+        path[] keyword mask = {},
+        string keyword glyph_name = ""
         //Mask[] keyword mask = {}
     ) {
         Glyph g = new Glyph;
         g.name = name;
+        g.glyph_name = glyph_name;
         g.key = key;
         g.ascent = ascent;
         g.dz = yscale(-1) * dz(paths);
@@ -241,6 +244,9 @@ struct Glyph {
         }
         writeln('[[' + node + '.glyph]]');
         writeln('key = "' + this.key + '"');
+        if (this.glyph_name != "") {
+            writeln('name = "' + this.glyph_name + '"');
+        }
         writeln('left = ' + format('%f', left));
         writeln('right = ' + format('%f', right));
         writeln('top = ' + format('%f', bottom));
