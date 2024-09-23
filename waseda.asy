@@ -428,6 +428,14 @@ Glyph.Glyph(
 ).toml();
 
 Glyph.Glyph(
+    "Su",
+    "$head_sl8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_kya()
+).toml();
+
+Glyph.Glyph(
     "Na",
     "default",
     fn_dz(),
@@ -711,3 +719,22 @@ Glyph.Glyph(
 ).toml()
  .dict("しゃ")
  .group("head_sr8");
+
+Glyph.Glyph(
+    "Kya",
+    "default",
+    fn_dz(),
+    4,
+    path_kya()
+).toml()
+ .dict("きゃ")
+ .group("head_sl")
+ .group("head_sl8");
+
+Glyph.Glyph(
+    "Kya",
+    "$su[-1]",
+    fn_dz(),
+    4,
+    path_kya(ha = -110)
+).toml();
