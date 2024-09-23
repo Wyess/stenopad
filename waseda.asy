@@ -319,7 +319,9 @@ Glyph.Glyph(
     fn_dz(),
     ascent = -3,
     path_sa()
-).toml().dict("さ");
+).toml().dict("さ")
+ .group("head_nel")
+ .group("head_nel8");
 
 Glyph.Glyph(
     "Sa",
@@ -415,6 +417,14 @@ Glyph.Glyph(
     fn_dz(),
     ascent = -3,
     path_su_ha()
+).toml();
+
+Glyph.Glyph(
+    "Su",
+    "$head_nel8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_sa()
 ).toml();
 
 Glyph.Glyph(

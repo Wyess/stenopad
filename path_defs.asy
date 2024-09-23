@@ -2105,6 +2105,18 @@ guide path_su_ha(guide next = path_ha()) {
     );
 }
 
+guide path_su_sa(guide next = path_sa()) {
+    return  add_circle_14(
+        path_sa(),
+        next,
+        l1 = 0.5,
+        l4 = 1.5,
+        l24 = 2.5,
+        l34 = 2.0,
+        direction = CCW
+    );
+}
+
 //guide path_ku(path p = (0, 0)--dir(-135)) {
 //    guide base = xscale(0.9) * path_ka();
 //
