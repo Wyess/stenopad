@@ -2041,6 +2041,36 @@ guide path_su_e(guide next = path_e()) {
     );
 }
 
+guide path_su_o(guide next = path_o()) {
+    real l1 = 0.5;
+    guide base = subarc(path_sa(), 0, -l1);
+    real l4 = 4.5;
+    real l24 = 2.0;
+    real l34 = 2.0;
+    bool direction = CCW;
+    pair z1 = relpoint(base, 1);
+    pair z4 = arcpoint(reverse(base), l4);
+    guide arc34 = prearc(shift(z4) * next, l34);
+    pair z3 = point(arc34, 0);
+    pair z2 = z4 + dir(z3 - z1) * (direction == CCW ? -I : I) * l24;
+    return base .. {dir(arc34, 0)}arc34;
+}
+
+guide path_ra(real ha = -35, real tn = 1.2, real ta = -120, real d = -60, pair dz = (0, 0)) {
+    return (0, 0){dir(ha)} .. tension tn .. {dir(ta)}(8 * dir(d) + dz);
+}
+
+guide path_su_ra(guide next = path_ra()) {
+    return  add_circle_14(
+        path_sa(),
+        next,
+        l1 = 1.9,
+        l4 = 2.5,
+        l24 = 2.8,
+        l34 = 2.5,
+        direction = CCW
+    );
+}
 
 
 //guide path_ku(path p = (0, 0)--dir(-135)) {
@@ -2170,9 +2200,6 @@ guide path_ya(pair hd = dir(70), real tn = 1.1, pair td = dir(0), real d = 40, p
     return (0, 0){hd} .. tension tn .. {td}(8 * dir(d) + dz);
 }
 
-guide path_ra(real ha = -35, real tn = 1.2, real ta = -120, real d = -60, pair dz = (0, 0)) {
-    return (0, 0){dir(ha)} .. tension tn .. {dir(ta)}(8 * dir(d) + dz);
-}
 
 guide path_wa(real ha = -164, real a0 = 40, real ta = 19) {
     pair z0 = (0, 0);
