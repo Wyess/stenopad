@@ -2159,6 +2159,22 @@ guide path_su_hya(guide next = path_hya_flat()) {
     return base .. {dir(arc34, 0)}arc34;
 }
 
+guide path_sahenki(real ha = -90, real tn = 1.2, real ta = 180, pair dz = (0, 0), real d = -120) {
+    return (0.0, 0.0){dir(ha)} .. tension tn .. {dir(ta)}(shift(dz) * 8.0 * dir(d));
+}
+
+guide path_su_sahenki(guide next = path_sahenki()) {
+    return  add_circle_14(
+        path_sa(),
+        next,
+        l1 = 1.9,
+        l4 = 2.5,
+        l24 = 3.0,
+        l34 = 2.0,
+        direction = CCW
+    );
+}
+
 //guide path_ku(path p = (0, 0)--dir(-135)) {
 //    guide base = xscale(0.9) * path_ka();
 //

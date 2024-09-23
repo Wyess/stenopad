@@ -332,6 +332,16 @@ Glyph.Glyph(
 ).toml();
 
 Glyph.Glyph(
+    "SaHenki",
+    "default",
+    fn_dz(),
+    ascent = 3,
+    path_sahenki()
+).toml().dict("さ変")
+ .group("head_swr")
+ .group("head_swr8");
+
+Glyph.Glyph(
     "Su",
     "default",
     fn_dz(),
@@ -441,6 +451,14 @@ Glyph.Glyph(
     fn_dz(),
     ascent = -3,
     path_su_hya()
+).toml();
+
+Glyph.Glyph(
+    "Su",
+    "$head_swr8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_sahenki()
 ).toml();
 
 Glyph.Glyph(
