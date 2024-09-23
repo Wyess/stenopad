@@ -2175,6 +2175,20 @@ guide path_su_sahenki(guide next = path_sahenki()) {
     );
 }
 
+guide path_ya(pair hd = dir(70), real tn = 1.1, pair td = dir(0), real d = 40, pair dz = (0, 0)) {
+    return (0, 0){hd} .. tension tn .. {td}(8 * dir(d) + dz);
+}
+
+guide path_su_ya(guide base = path_sa(), guide p = path_ya()) {
+    base = subarc(base, 0, -1.0);
+    pair z1 = relpoint(base, 1);
+    real t3 = arctime(base, 5);
+    pair z3 = point(base, t3);
+    pair z2 = interp(z3, z1, 0.5) + dir(z3 - z1) * -I * 2.2;
+    guide g = base .. z2 .. {dir(base, t3)}z3 .. shift(z1) * p;
+    return subpath(g, 0, length(g) - length(p));
+}
+
 //guide path_ku(path p = (0, 0)--dir(-135)) {
 //    guide base = xscale(0.9) * path_ka();
 //
@@ -2293,11 +2307,6 @@ guide path_none() {
 guide path_ta(real len = 8, real a = 180 + 70) {
     return (0, 0) -- len * dir(a);
 }
-
-guide path_ya(pair hd = dir(70), real tn = 1.1, pair td = dir(0), real d = 40, pair dz = (0, 0)) {
-    return (0, 0){hd} .. tension tn .. {td}(8 * dir(d) + dz);
-}
-
 
 guide path_wa(real ha = -164, real a0 = 40, real ta = 19) {
     pair z0 = (0, 0);

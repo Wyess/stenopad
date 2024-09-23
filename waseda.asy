@@ -325,19 +325,19 @@ Glyph.Glyph(
 
 Glyph.Glyph(
     "Sa",
-    "$head_e[1]",
-    fn_dz(),
-    ascent = -3,
-    path_sa_bend()
-).toml();
-
-Glyph.Glyph(
-    "Sa",
     "$reverse_sa[-1]",
     fn_dz(),
     ascent = -3,
     path_sahenki(),
     glyph_name = "SaHenki"
+).toml();
+
+Glyph.Glyph(
+    "Sa",
+    "$head_e[1]",
+    fn_dz(),
+    ascent = -3,
+    path_sa_bend()
 ).toml();
 
 Glyph.Glyph(
@@ -470,6 +470,14 @@ Glyph.Glyph(
     fn_dz(),
     ascent = -3,
     path_su_hya()
+).toml();
+
+Glyph.Glyph(
+    "Su",
+    "$head_ner8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_ya()
 ).toml();
 
 Glyph.Glyph(
@@ -655,7 +663,10 @@ Glyph.Glyph(
     fn_dz(),
     -2.0,
     path_ya()
-).toml().dict("や");
+).toml()
+ .dict("や")
+ .group("head_ner")
+ .group("head_ner8");
 
 Glyph.Glyph(
     "Yan",
