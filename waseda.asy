@@ -410,6 +410,14 @@ Glyph.Glyph(
 ).toml();
 
 Glyph.Glyph(
+    "Su",
+    "$head_sel8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_ha()
+).toml();
+
+Glyph.Glyph(
     "Na",
     "default",
     fn_dz(),
@@ -582,7 +590,9 @@ Glyph.Glyph(
     fn_dz(),
     2.0,
     path_ha()
-).toml().dict("は").group("head_sel");
+).toml().dict("は")
+ .group("head_sel")
+ .group("head_sel8");
 
 Glyph.Glyph(
     "Ya",

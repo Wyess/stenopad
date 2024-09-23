@@ -2089,6 +2089,22 @@ guide path_su_sha(guide next = path_sha()) {
     );
 }
 
+guide path_ha(real ha = -90, real tn = 0.8, real ta = 0, real d = -55, real len = 8, pair dz = (0, 0)) {
+    return (0, 0){dir(ha)} .. tension tn .. {dir(ta)}(dz + len * dir(d));
+}
+
+guide path_su_ha(guide next = path_ha()) {
+    return  add_circle_14(
+        path_sa(),
+        next,
+        l1 = 1.9,
+        l4 = 2.5,
+        l24 = 3.0,
+        l34 = 2.0,
+        direction = CCW
+    );
+}
+
 //guide path_ku(path p = (0, 0)--dir(-135)) {
 //    guide base = xscale(0.9) * path_ka();
 //
@@ -2206,10 +2222,6 @@ guide path_none() {
 
 guide path_ta(real len = 8, real a = 180 + 70) {
     return (0, 0) -- len * dir(a);
-}
-
-guide path_ha(real ha = -90, real tn = 0.8, real ta = 0, real d = -55, real len = 8, pair dz = (0, 0)) {
-    return (0, 0){dir(ha)} .. tension tn .. {dir(ta)}(dz + len * dir(d));
 }
 
 guide path_ya(pair hd = dir(70), real tn = 1.1, pair td = dir(0), real d = 40, pair dz = (0, 0)) {
