@@ -386,6 +386,30 @@ Glyph.Glyph(
 ).toml();
 
 Glyph.Glyph(
+    "Su",
+    "$head_sw[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_o()
+).toml();
+
+Glyph.Glyph(
+    "Su",
+    "$head_ser8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_ra()
+).toml();
+
+Glyph.Glyph(
+    "Su",
+    "$head_sr8[1]",
+    fn_dz(),
+    ascent = -3,
+    path_su_sha()
+).toml();
+
+Glyph.Glyph(
     "Na",
     "default",
     fn_dz(),
@@ -583,7 +607,7 @@ Glyph.Glyph(
     fn_dz(),
     3.0,
     path_ra()
-).toml().dict("ら");
+).toml().dict("ら").group("head_ser8");
 
 Glyph.Glyph(
     "Wa",
@@ -657,3 +681,13 @@ Glyph.Glyph(
 ).toml()
  .dict("ウー")
  .dict("ウウ");
+
+Glyph.Glyph(
+    "Sha",
+    "default",
+    fn_dz(),
+    4,
+    path_sha()
+).toml()
+ .dict("しゃ")
+ .group("head_sr8");
