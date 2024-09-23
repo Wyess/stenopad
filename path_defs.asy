@@ -2136,6 +2136,29 @@ guide path_su_kya(guide next = path_kya(ha = -110)) {
     return base .. {dir(arc34, 0)}arc34;
 }
 
+guide path_hya(real ha = -155, real tn = 1.5, real ta = -75, real d = -130, pair dz = (0, 0)) {
+    return (0.0, 0.0){dir(ha)} ..tension tn .. {dir(ta)}(shift(dz) * 8 * dir(d));
+}
+
+guide path_hya_flat() {
+    return path_hya(ha = -115, d = -110);
+}
+
+guide path_su_hya(guide next = path_hya_flat()) {
+    real l1 = 0.5;
+    guide base = subarc(path_sa(), 0, -l1);
+    real l4 = 4.5;
+    real l24 = 2.0;
+    real l34 = 2.0;
+    bool direction = CCW;
+    pair z1 = relpoint(base, 1);
+    pair z4 = arcpoint(reverse(base), l4);
+    guide arc34 = prearc(shift(z4) * next, l34);
+    pair z3 = point(arc34, 0);
+    pair z2 = z4 + dir(z3 - z1) * (direction == CCW ? -I : I) * l24;
+    return base .. {dir(arc34, 0)}arc34;
+}
+
 //guide path_ku(path p = (0, 0)--dir(-135)) {
 //    guide base = xscale(0.9) * path_ka();
 //
