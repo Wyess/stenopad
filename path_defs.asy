@@ -2072,6 +2072,22 @@ guide path_su_ra(guide next = path_ra()) {
     );
 }
 
+guide path_sha(real a0 = -56, real tn = 1.2, real a1 = -142, pair dz = (0, 0)) {
+    guide g = (0.0, 0.0){dir(a0)} .. tension tn .. {dir(a1)}(shift(dz) * (0.0, -8.0));
+    return g;
+}
+
+guide path_su_sha(guide next = path_sha()) {
+    return  add_circle_14(
+        path_sa(),
+        next,
+        l1 = 1.9,
+        l4 = 2.5,
+        l24 = 2.8,
+        l34 = 2.0,
+        direction = CCW
+    );
+}
 
 //guide path_ku(path p = (0, 0)--dir(-135)) {
 //    guide base = xscale(0.9) * path_ka();
