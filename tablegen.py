@@ -21,7 +21,7 @@ for base in base_list:
         key = f"{base}{tail}"
         primary_list.append(key)
 
-secondary_list = []
+secondary_list = ["NULL"]
 for dir_s in config['direction']:
     for ori_s in config['orientation']:
         key = f"{dir_s}{ori_s}"
