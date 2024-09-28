@@ -60,19 +60,6 @@ class String:
             style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 0.425197; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-opacity: 1; background-color: #f0e68c;"
         >{{}}</svg>"""
 
-    #def get_chars(self, text):
-    #    chars = []
-    #    for word in parse_text(text):
-    #        for parts in partitions(word):
-    #            subwords = ["".join(part) for part in parts]
-    #            if all([subword in self.sh.dictionary for subword in subwords]):
-    #                for subword in subwords:
-    #                    for char_name in self.sh.dictionary[subword]:
-    #                        chars.append(Character(char_name, self.sh))
-    #                break
-    #        else:
-    #            chars.append(Character('Null', self.sh))
-    #    return chars
     def get_chars(self, text):
         chars = []
         for word in parse_text(text):
@@ -80,7 +67,7 @@ class String:
                 subwords = ["".join(part) for part in parts]
                 if all([subword in self.sh['dictionary'] for subword in subwords]):
                     for subword in subwords:
-                        for char_name in self.sh['dictionary'][subword]:
+                        for char_name in self.sh['dictionary'][subword]['chars']:
                             chars.append(Character(char_name, self.sh))
                     break
             else:

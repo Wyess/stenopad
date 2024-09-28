@@ -292,8 +292,7 @@ struct Glyph {
         if (this.key == 'default') {
             string name = lc(this.name);
             string char = this.name;
-            writeln('[[waseda.groups.' + name + ']]');
-            writeln('char = "' + char + '"');
+            writeln('[waseda.groups.' + name + '.' + char + ']');
             writeln();
         }
 
@@ -323,8 +322,7 @@ struct Glyph {
         if (name == "") name = lc(this.name);
         if (char == "") char = this.name;
         if (this.fout != null) {
-            writeln('[[waseda.groups.' + name + ']]');
-            writeln('char = "' + char + '"');
+            writeln('[waseda.groups.' + name + '.' + char +']');
             writeln();
         }
         
