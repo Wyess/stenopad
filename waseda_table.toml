@@ -1,0 +1,27 @@
+direction = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+orientation = ["", "L", "R"]
+tailtype = ["", "CL", "CR"]
+base = [
+    "NERSWR", # Shima
+    "SWLNEL", # Parx
+    "SELNEL", # Ha-sa
+    "ERSWR",  # Ma-sa
+    "SWLSEL", # Wa
+]
+
+[NELCL.EL]
+text = "すな"
+svg = "waseda_su_na.svg"
+html = """<img src="{}"><br>NELCL-EL(すな)"""
+
+[NELCL.NE]
+text = "すちゃ"
+
+[NELCL.E]
+text = "すか"
+
+[NELCL.NER]
+text = "すや"
+
+[NELCL.ER]
+text = "すま"
