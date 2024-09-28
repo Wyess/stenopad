@@ -46,7 +46,6 @@ class String:
         self.select_glyphs()
         bbox = self.layout()
         self.svg_template = f"""<svg
-            id="svg_root"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             version="1.1"
@@ -57,7 +56,7 @@ class String:
             data-text=""
             transform="scale(1, 1)"
             transform-origin="center"
-            style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 0.425197; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-opacity: 1; background-color: #f0e68c;"
+            style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 0.425197; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-opacity: 1; background-color: #FFFFFF;"
         >{{}}</svg>"""
 
     def get_chars(self, text):
