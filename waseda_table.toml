@@ -9,6 +9,9 @@ base = [
     "SWLSEL", # Wa
 ]
 
+[NELCL.NULL]
+text = "す"
+
 [NELCL.EL]
 text = "すな"
 svg = "waseda_su_na.svg"
@@ -25,3 +28,27 @@ text = "すや"
 
 [NELCL.ER]
 text = "すま"
+
+[NELCL.SE]
+text = "すえ"
+
+[NELCL.SEL]
+text = "すは"
+
+[NELCL.SER]
+text = "すら"
+
+[NELCL.S]
+text = "すう"
+
+[NELCL.SL]
+text = "すきゃ"
+
+[NELCL.SW]
+text = "すお"
+
+[NELCL.SWL]
+text = "すひゃ"
+
+[NELCL.SWR]
+text = "すさ"
