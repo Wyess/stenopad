@@ -2,7 +2,6 @@ import util;
 import glyph;
 import path_defs;
 
-write(mm);
 // TODO: Decomposition of complex ligatures
 //       - Ha-Sa as a simple example
 // TODO: Streamline the process
