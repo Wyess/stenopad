@@ -25,28 +25,40 @@ class Line:
     def clauses(self):
         return split_after(self.chars, lambda c: c.is_space)
 
+class Bbox:
+    def __init__(self, left, right, top, bottom):
+        self.left = left
+        self.right = right
+        self.top = top
+        self.bottom = bottom
+        self.width = right - left
+        self.height = bottom - top
+
+    def __str__(self):
+        return f"{self.left} {self.top} {self.width} {self.height}"
+
 class String:
-    def __init__(self, text, sh=None):
+    def __init__(self, text, sh=None, fixed_viewbox=True):
         self.text = text
         self.sh = sh
         self.chars = self.get_chars(text)
         self.connect()
         self.select_glyphs()
-        self.layout()
-        self.svg_template = """<svg
+        bbox = self.layout()
+        self.svg_template = f"""<svg
             id="svg_root"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             version="1.1"
-            viewBox="0 0 200 100"
-            width="200mm"
-            height="100mm"
+            viewBox="{'0 0 200 100' if fixed_viewbox else bbox}"
+            width="{200 if fixed_viewbox else bbox.width}mm"
+            height="{100 if fixed_viewbox else bbox.height}mm"
             preserveAspectRatio="xMinYMin meet"
             data-text=""
             transform="scale(1, 1)"
             transform-origin="center"
             style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 0.425197; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-opacity: 1; background-color: #f0e68c;"
-        >{}</svg>"""
+        >{{}}</svg>"""
 
     #def get_chars(self, text):
     #    chars = []
@@ -166,7 +178,7 @@ class String:
 
     def layout(self, right=5, reference_line=20, margin=5):
         if len(self.chars) == 0:
-            return
+            return Bbox(0, 0, 0, 0)
 
         cntx = Context(reference_line=reference_line, right=right)
 
@@ -177,6 +189,13 @@ class String:
         self.correct_inter_line(lines, margin=margin)
         self.correct_inter_clause(lines, margin=0)
         self.correct_left_and_top(lines, margin=margin)
+
+        left = math.floor(min([char.x + char.left for char in self.chars])) - margin
+        right = math.ceil(max([char.x + char.right for char in self.chars])) + margin
+        top = math.floor(min([char.y + char.top for char in self.chars])) - margin
+        bottom = math.ceil(max([char.y + char.bottom for char in self.chars])) + margin
+
+        return Bbox(left, right, top, bottom)
 
     def create_path_elements(self, to_animate=False, speed_mm_per_s=20):
         path_text = ""
