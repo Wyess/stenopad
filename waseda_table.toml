@@ -9,6 +9,12 @@ base = [
     "SWLSEL", # Wa
 ]
 
+[NE.NULL]
+text = "ちゃ"
+
+[NEL.NULL]
+text = "さ"
+
 [NELCL.NULL]
 text = "す"
 
@@ -52,3 +58,38 @@ text = "すひゃ"
 
 [NELCL.SWR]
 text = "すさ"
+
+[NER.NULL]
+text = "や"
+
+[E.NULL]
+text = "か"
+
+[ECL.NULL]
+text = "く"
+
+[EL.NULL]
+text = """
+あ
+な"""
+
+[ER.NULL]
+text = """
+い
+ま"""
+
+[SE.NULL]
+text = """え"""
+
+[SEL.NULL]
+text = """は"""
+
+[SER.NULL]
+text = """ら"""
+
+[SW.NULL]
+text = """お"""
+
+[SWL.NULL]
+text = """ひゃ"""
+
