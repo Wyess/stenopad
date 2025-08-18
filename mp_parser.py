@@ -35,26 +35,57 @@ class Lexer:
 
     def create_token_iterator(self, pattern, text):
         for mo in re.finditer(pattern, text):
-            yield (mo.lastgroup, mo.group())
+            if mo.lastgroup == 'SPACE':
+                continue
+            else:
+                yield (mo.lastgroup, mo.group())
 
 class Parser:
     def __init__(self, text):
         self.lexer = Lexer(text)
+        self.current_token = self.lexer.get_next_token()
+
+    def _consume(self, token_type):
+        print(f"_consume:{self.current_token=}")
+        if self.current_token[0] == token_type:
+            self.current_token = self.lexer.get_next_token()
+        else:
+            raise SyntaxError(f"{self.current_token} found where {token_type} expected")
 
     def parse(self):
+        if self.current_token[0] == 'EOS':
+            return []
         return self.parse_path_expression()
 
     def parse_path_expression(self):
-        """<path_expression> := <path_subexpression>
-                              | <path_subexpression><direction_specifier>
-                              | <path_subexpression><path_join> cycle"""
-        return self.parse_path_subexpression()
+        """<path_expression>
+            := <path_subexpression>
+             | <path_subexpression><direction_specifier>
+             | <path_subexpression><path_join> cycle
+        """
+        ps = self.parse_path_subexpression()
+        return [ps]
 
     def parse_path_subexpression(self):
-        return parse_path_kot()
+        """<path_subexpression> := <path_knot>
+                                 | <path_expression><path_join><path_knot>
+        """
+        return self.parse_path_knot()
 
     def parse_path_knot(self):
-        pass
+        self._consume("LEFT_PAREN")
+
+        x = int(self.current_token[1])
+        self._consume("NUMBER")
+
+        self._consume("COMMA")
+
+        y = int(self.current_token[1])
+        self._consume("NUMBER")
+
+        self._consume("RIGHT_PAREN")
+
+        return ("KNOT", (x, y))
 
     """
     <path_expression> := <path_subexpression>
