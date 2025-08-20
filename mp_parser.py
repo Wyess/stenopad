@@ -102,6 +102,42 @@ class Parser:
             right_tension = left_tension
         return ("TENSION", (left_tension, right_tension))
 
+    def parse_controls(self):
+        """
+        <controls> := controls <pair_primary>
+                    | controls <pair_primary> and <pair_primary>
+        """
+        self._consume('CONTROLS')
+        self._consume('LEFT_PAREN')
+
+        x0 = float(self.current_token[1])
+        self._consume('NUMBER')
+
+        self._consume('COMMA')
+
+        y0 = float(self.current_token[1])
+        self._consume('NUMBER')
+        self._consume('RIGHT_PAREN')
+
+        if self.current_token[0] == 'AND':
+            self._consume('AND')
+
+            self._consume('LEFT_PAREN')
+
+            x1 = float(self.current_token[1])
+            self._consume('NUMBER')
+
+            self._consume('COMMA')
+
+            y1 = float(self.current_token[1])
+            self._consume('NUMBER')
+
+            self._consume('RIGHT_PAREN')
+        else:
+            x1 = x0
+            y1 = y0
+
+        return ("CONTROLS", ((x0, y0), (x1, y1)))
 
     """
     <path_expression> := <path_subexpression>

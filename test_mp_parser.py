@@ -29,3 +29,13 @@ class MpParserTest(unittest.TestCase):
         code = "tension 1.2 and 1.5"
         res = Parser(code).parse_tension()
         self.assertEqual(res, ("TENSION", (1.2, 1.5)))
+
+    def test_parse_controls(self):
+        code = "controls (10, 20)"
+        res = Parser(code).parse_controls()
+        self.assertEqual(res, ("CONTROLS", ((10, 20), (10, 20))))
+
+    def test_parse_controls2(self):
+        code = "controls (10, 20) and (30, 40)"
+        res = Parser(code).parse_controls()
+        self.assertEqual(res, ("CONTROLS", ((10, 20), (30, 40))))
