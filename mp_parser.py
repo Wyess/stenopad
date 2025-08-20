@@ -74,12 +74,12 @@ class Parser:
     def parse_path_knot(self):
         self._consume("LEFT_PAREN")
 
-        x = int(self.current_token[1])
+        x = float(self.current_token[1])
         self._consume("NUMBER")
 
         self._consume("COMMA")
 
-        y = int(self.current_token[1])
+        y = float(self.current_token[1])
         self._consume("NUMBER")
 
         self._consume("RIGHT_PAREN")
