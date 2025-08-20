@@ -46,7 +46,6 @@ class Parser:
         self.current_token = self.lexer.get_next_token()
 
     def _consume(self, token_type):
-        print(f"_consume:{self.current_token=}")
         if self.current_token[0] == token_type:
             self.current_token = self.lexer.get_next_token()
         else:
@@ -86,6 +85,23 @@ class Parser:
         self._consume("RIGHT_PAREN")
 
         return ("KNOT", (x, y))
+
+    def parse_tension(self):
+        """
+        <tension> := tension <numeric_primary>
+                   | tension <numeric_primary> and <numeric_primary>
+        """
+        self._consume("TENSION")
+        left_tension = float(self.current_token[1])
+        self._consume("NUMBER")
+        if self.current_token[0] == 'AND':
+            self._consume('AND')
+            right_tension = float(self.current_token[1])
+            self._consume('NUMBER')
+        else:
+            right_tension = left_tension
+        return ("TENSION", (left_tension, right_tension))
+
 
     """
     <path_expression> := <path_subexpression>

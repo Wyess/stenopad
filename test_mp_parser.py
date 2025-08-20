@@ -19,3 +19,13 @@ class MpParserTest(unittest.TestCase):
         code = "(0, 0)"
         res = Parser(code).parse()
         self.assertEqual(res, [("KNOT", (0, 0))])
+
+    def test_parse_tension(self):
+        code = "tension 1.2"
+        res = Parser(code).parse_tension()
+        self.assertEqual(res, ("TENSION", (1.2, 1.2)))
+
+    def test_parse_tension2(self):
+        code = "tension 1.2 and 1.5"
+        res = Parser(code).parse_tension()
+        self.assertEqual(res, ("TENSION", (1.2, 1.5)))
