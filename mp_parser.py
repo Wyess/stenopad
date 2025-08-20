@@ -139,6 +139,29 @@ class Parser:
 
         return ("CONTROLS", ((x0, y0), (x1, y1)))
 
+    def parse_basic_path_join(self):
+        """
+        <basic_path_join> := ..
+                           | ...
+                           | .. <tension> ..
+                           | .. <controls> ..
+        """
+        if self.current_token[0] == 'DOUBLE_DOT':
+            self._consume('DOUBLE_DOT')
+            if self.current_token[0] == 'TENSION':
+                ret = ('BASIC_PATH_JOIN', self.parse_tension())
+                self._consume('DOUBLE_DOT')
+                return ret
+            elif self.current_token[0] == 'CONTROLS':
+                ret = ('BASIC_PATH_JOIN', self.parse_controls())
+                self._consume('DOUBLE_DOT')
+                return ret
+            else:
+                return ('BASIC_PATH_JOIN', 'CURVE')
+        elif self.current_token[0] == 'TRIPLE_DOT':
+            self._consume('TRIPLE_DOT')
+            return ('BASIC_PATH_JOIN', 'CURVE_WITHOUT_INFLECTION')
+
     """
     <path_expression> := <path_subexpression>
                        | <path_subexpression><direction_specifier>

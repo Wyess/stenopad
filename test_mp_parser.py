@@ -39,3 +39,23 @@ class MpParserTest(unittest.TestCase):
         code = "controls (10, 20) and (30, 40)"
         res = Parser(code).parse_controls()
         self.assertEqual(res, ("CONTROLS", ((10, 20), (30, 40))))
+
+    def test_parse_basic_path_join(self):
+        code = ".. (0, 0)"
+        res = Parser(code).parse_basic_path_join()
+        self.assertEqual(res, ('BASIC_PATH_JOIN', 'CURVE'))
+
+    def test_parse_basic_path_join_triple_dot(self):
+        code = "... (0, 0)"
+        res = Parser(code).parse_basic_path_join()
+        self.assertEqual(res, ('BASIC_PATH_JOIN', 'CURVE_WITHOUT_INFLECTION'))
+
+    def test_parse_basic_path_join_tension(self):
+        code = ".. tension 1 .. (0, 0)"
+        res = Parser(code).parse_basic_path_join()
+        self.assertEqual(res, ('BASIC_PATH_JOIN', ('TENSION', (1, 1))))
+
+    def test_parse_basic_path_join_controls(self):
+        code = ".. controls (0, 0) .. (0, 0)"
+        res = Parser(code).parse_basic_path_join()
+        self.assertEqual(res, ('BASIC_PATH_JOIN', ('CONTROLS', ((0, 0), (0, 0)))))
