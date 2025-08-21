@@ -59,3 +59,36 @@ class MpParserTest(unittest.TestCase):
         code = ".. controls (0, 0) .. (0, 0)"
         res = Parser(code).parse_basic_path_join()
         self.assertEqual(res, ('BASIC_PATH_JOIN', ('CONTROLS', ((0, 0), (0, 0)))))
+
+    def test_parse_direction_specifier_empty(self):
+        code = ".. (0 0)"
+        res = Parser(code).parse_direction_specifier()
+        self.assertEqual(res, ('DIRECTION_SPECIFIER', None))
+
+    def test_parse_direction_specifier_curl(self):
+        code = "{curl 2.0}"
+        res = Parser(code).parse_direction_specifier()
+        self.assertEqual(res, ('DIRECTION_SPECIFIER', ('CURL', 2.0)))
+
+    def test_parse_direction_specifier_two_numbers(self):
+        code = "{1.0, 2.0}"
+        res = Parser(code).parse_direction_specifier()
+        self.assertEqual(res, ('DIRECTION_SPECIFIER', ('PAIR', (1.0, 2.0))))
+
+    def test_parse_path_join_line(self):
+        code = "--"
+        res = Parser(code).parse_path_join()
+        self.assertEqual(res, ('PATH_JOIN', 'LINE'))
+
+    def test_parse_path_join(self):
+        code = "{1.0, 0.0} .. tension 1.3 .. {0.0, 1}"
+        res = Parser(code).parse_path_join()
+        exp = (
+            'PATH_JOIN',
+            (
+                ('DIRECTION_SPECIFIER', ('PAIR', (1.0, 0.0))),
+                ('BASIC_PATH_JOIN', ('TENSION', (1.3, 1.3))),
+                ('DIRECTION_SPECIFIER', ('PAIR', (0.0, 1.0)))
+            )
+        )
+        self.assertEqual(res, exp)

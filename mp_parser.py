@@ -162,6 +162,46 @@ class Parser:
             self._consume('TRIPLE_DOT')
             return ('BASIC_PATH_JOIN', 'CURVE_WITHOUT_INFLECTION')
 
+    def parse_direction_specifier(self):
+        """
+        <direction_specifier> := empty
+                               | { curl <numeric_expression> }
+                               | { <pair_expression> }
+                               | { <numeric_expression>, <numeric_expression> }
+        """
+        if self.current_token[0] == 'LEFT_BRACE':
+            self._consume('LEFT_BRACE')
+            if self.current_token[0] == 'CURL':
+                self._consume('CURL')
+                curl = float(self.current_token[1])
+                self._consume('NUMBER')
+                self._consume('RIGHT_BRACE')
+                return ('DIRECTION_SPECIFIER', ('CURL', curl))
+            else:
+                x = float(self.current_token[1])
+                self._consume('NUMBER')
+                self._consume('COMMA')
+                y = float(self.current_token[1])
+                self._consume('NUMBER')
+                self._consume('RIGHT_BRACE')
+                return ('DIRECTION_SPECIFIER', ('PAIR', (x, y)))
+        else:
+            return ('DIRECTION_SPECIFIER', None)
+
+    def parse_path_join(self):
+        """
+        <path_join> := --
+                     | <direction_specifier><basic_path_join><direction_specifier>
+        """
+        if self.current_token[0] == 'DOUBLE_DASH':
+            self._consume('DOUBLE_DASH')
+            return ('PATH_JOIN', 'LINE')
+        else:
+            left_direction_specifier = self.parse_direction_specifier()
+            basic_path_join = self.parse_basic_path_join()
+            right_direction_specifier = self.parse_direction_specifier()
+            return ('PATH_JOIN', (left_direction_specifier, basic_path_join, right_direction_specifier))
+
     """
     <path_expression> := <path_subexpression>
                        | <path_subexpression><direction_specifier>
