@@ -61,15 +61,33 @@ class Parser:
             := <path_subexpression>
              | <path_subexpression><direction_specifier>
              | <path_subexpression><path_join> cycle
+
         """
         ps = self.parse_path_subexpression()
-        return [ps]
+        if self.current_token[0] == 'EOS':
+            return [*ps]
+        elif self.current_token[0] == 'LEFT_BRACE':
+            ds = self.parse_direction_specifier()
+            return [*ps, *ds]
+        elif self.current_token[0] == 'CYCLE':
+            # <path_join> is already parsed in path_subexpression
+            self._consume('CYCLE')
+            return [*ps, ('CYCLE', None)]
 
     def parse_path_subexpression(self):
         """<path_subexpression> := <path_knot>
-                                 | <path_expression><path_join><path_knot>
+                                 | <path_subexpression><path_join><path_knot>
         """
-        return self.parse_path_knot()
+        res = []
+        res.append(self.parse_path_knot())
+        while True:
+            if self.current_token[0] in ('DOUBLE_DASH', 'LEFT_BRACE', 'DOUBLE_DOT', 'TRIPLE_DOT'):
+                res.append(self.parse_path_join())
+                if self.current_token[0] == 'LEFT_PAREN':
+                    res.append(self.parse_path_knot())
+            else:
+                break
+        return res
 
     def parse_path_knot(self):
         self._consume("LEFT_PAREN")
@@ -198,9 +216,12 @@ class Parser:
             return ('PATH_JOIN', 'LINE')
         else:
             left_direction_specifier = self.parse_direction_specifier()
-            basic_path_join = self.parse_basic_path_join()
-            right_direction_specifier = self.parse_direction_specifier()
-            return ('PATH_JOIN', (left_direction_specifier, basic_path_join, right_direction_specifier))
+            if self.current_token[0] == 'EOS':
+                return left_direction_specifier
+            else:
+                basic_path_join = self.parse_basic_path_join()
+                right_direction_specifier = self.parse_direction_specifier()
+                return ('PATH_JOIN', (left_direction_specifier, basic_path_join, right_direction_specifier))
 
     """
     <path_expression> := <path_subexpression>

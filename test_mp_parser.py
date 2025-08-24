@@ -20,6 +20,52 @@ class MpParserTest(unittest.TestCase):
         res = Parser(code).parse()
         self.assertEqual(res, [("KNOT", (0, 0))])
 
+    def test_path_expression_simple_curve(self):
+        code = "(0, 0) .. (1, 1)"
+        res = Parser(code).parse()
+        self.assertEqual(res, [
+            ("KNOT", (0, 0)),
+            ("PATH_JOIN", (
+                ("DIRECTION_SPECIFIER", None),
+                ('BASIC_PATH_JOIN', 'CURVE'),
+                ("DIRECTION_SPECIFIER", None),
+            )),
+            ("KNOT", (1, 1))
+        ])
+
+    def test_path_expression_simple_curve_ends_with_dir(self):
+        code = "(0, 0) .. (1, 1){1, 1}"
+        res = Parser(code).parse()
+        self.assertEqual(res, [
+            ("KNOT", (0, 0)),
+            ("PATH_JOIN", (
+                ("DIRECTION_SPECIFIER", None),
+                ('BASIC_PATH_JOIN', 'CURVE'),
+                ("DIRECTION_SPECIFIER", None),
+            )),
+            ("KNOT", (1, 1)),
+            ("DIRECTION_SPECIFIER", ("PAIR", (1, 1))),
+        ])
+
+    def test_path_expression_simple_curve_ends_with_cycle(self):
+        code = "(0, 0) .. (1, 1) .. cycle"
+        res = Parser(code).parse()
+        self.assertEqual(res, [
+            ("KNOT", (0, 0)),
+            ("PATH_JOIN", (
+                ("DIRECTION_SPECIFIER", None),
+                ('BASIC_PATH_JOIN', 'CURVE'),
+                ("DIRECTION_SPECIFIER", None),
+            )),
+            ("KNOT", (1, 1)),
+            ("PATH_JOIN", (
+                ("DIRECTION_SPECIFIER", None),
+                ('BASIC_PATH_JOIN', 'CURVE'),
+                ("DIRECTION_SPECIFIER", None),
+            )),
+            ('CYCLE', None),
+        ])
+
     def test_parse_tension(self):
         code = "tension 1.2"
         res = Parser(code).parse_tension()
