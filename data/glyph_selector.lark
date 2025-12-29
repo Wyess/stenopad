@@ -1,0 +1,19 @@
+?start: glyph_selector
+
+glyph_selector: tertiary
+              | "default" -> default
+
+atom: tag "[" index [":" index] "]" -> term
+    | "(" glyph_selector ")" -> paren_expr
+
+primary: atom
+       | unary_op primary
+!secondary: primary (primary_binop primary)*
+!tertiary: secondary (secondary_binop secondary)*
+
+!unary_op: "!"
+!primary_binop: "."
+!secondary_binop: "|"
+
+tag: /[a-z@][a-z0-9_]*/
+index: /0|-?[1-9][0-9]*/

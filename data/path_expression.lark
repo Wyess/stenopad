@@ -1,0 +1,64 @@
+!start: [path_expression+]
+
+path_expression: path_knot (path_join path_knot)* [direction_specifier]
+
+!path_knot: tertiary
+
+!path_join: "--" -> path_join_line
+          | "---" -> path_join_line_tension_infinity
+          | [direction_specifier] basic_path_join [direction_specifier] -> path_join_curve
+
+!direction_specifier: "{" "curl" expression "}" -> direction_specifier_curl
+                    | "{" expression "}" -> direction_specifier_pair
+
+!basic_path_join: ("&" | "&&") -> basic_path_join_concatenate
+                | ".." -> basic_path_join_curve
+                | "..." -> basic_path_join_curve_inflection_free
+                | ".." tension ".." -> basic_path_join_tension
+                | ".." controls ".." -> basic_path_join_controls
+
+tension: "tension" primary ["and" primary]
+
+controls: "controls" primary ["and" primary]
+
+#########################################################################
+
+atom: variable
+    | "(" expression ")"
+
+numeric_atom: number_or_fraction
+
+!primary: atom -> atom_primary
+        | numeric_atom -> numeric_primary
+        | unary_op primary -> unaryop_primary
+        | number_or_fraction atom -> scalar_multiplied_primary
+        | "(" expression "," expression ")" -> pair_primary
+        | "(" expression ":" expression ")" -> polar_pair_primary
+
+!secondary: primary (primary_binop primary)*
+
+!tertiary: secondary (secondary_binop secondary)*
+
+!expression: tertiary
+
+!unary_op: "+"
+         | "-"
+         | "++"
+         | "@"
+
+!primary_binop: "*"
+              | "/"
+
+!secondary_binop: "+"
+                | "-"
+
+number_or_fraction: number ["/" number]
+
+number: NUMBER
+variable: CNAME
+
+%import common.NUMBER
+%import common.CNAME
+%import common.WS
+%ignore WS
+
