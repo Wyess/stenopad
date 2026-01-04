@@ -1,0 +1,8 @@
+name = "Stenopad"
+packages = [ "tomli", "regex", "more_itertools",]
+
+[files]
+"./waseda_asy.toml" = "./waseda_asy.toml"
+"./shorthand_character.py" = "./shorthand_character.py"
+"./key_parser.py" = "./key_parser.py"
+"./text_parser.py" = "./text_parser.py"
