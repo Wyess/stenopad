@@ -68,7 +68,7 @@ def create_ligature(code, keys, ascents, names):
             'ascent': ascents[i],
             'path': create_paths(path_group),
             **get_dp(path_group),
-        **create_bbox(path_group),
+            **create_bbox(path_group),
         }
         if names[i]:
             glyph['name'] = names[i]
