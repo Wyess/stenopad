@@ -119,7 +119,7 @@ class String:
             char.idx = idx
 
     def __str__(self):
-        return self.create_path_elements()[0]
+        return self.create svg()[0]
 
     def __repr__(self):
         return f"String({'self.text'})"
