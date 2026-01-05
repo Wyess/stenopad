@@ -119,7 +119,7 @@ class String:
             char.idx = idx
 
     def __str__(self):
-        return self.create svg()[0]
+        return self.create_svg()[0]
 
     def __repr__(self):
         return f"String({'self.text'})"
@@ -199,7 +199,7 @@ class String:
 
     def layout(self, right=5, ref_line=20, margin=5):
         if len(self.chars) == 0:
-            return BBox(0, 0, 0, 0)
+            return Bbox(0, 0, 0, 0)
 
         cntx = Context(ref_line=ref_line, right=right)
 
