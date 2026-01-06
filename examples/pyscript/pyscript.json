@@ -1,0 +1,19 @@
+{
+    "name": "Stenopad",
+    "packages": [],
+    "files": {
+        "./src/character.py": "./character.py",
+        "./src/glyph_selector_lark.py": "./glyph_selector_lark.py",
+        "./src/glyph_selector_parser.py": "./glyph_selector_parser.py",
+        "./src/path_elements.py": "./path_elements.py",
+        "./src/path_expression_lark.py": "./path_expression_lark.py",
+        "./src/path_expression_parser.py": "./path_expression_parser.py",
+
+        "./src/point.py": "./point.py",
+        "./src/shorthand_string.py": "./shorthand_string.py",
+        "./src/waseda.json": "./waseda.json",
+        "./src/text_grammer_lark.py": "./text_grammer_lark.py" ,
+        "./src/text_parser.py": "./text_parser.py",
+        "./src/util.py": "./util.py"
+    }
+}

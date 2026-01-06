@@ -8,6 +8,7 @@ class InputTextTransformer(Transformer):
         super().__init__(visit_tokens)
         self.dict = dict_
         self.dict.setdefault('\n', ['Newline'])
+        self.maxlen = max(len(key) for key in dict_)
         self.sep = self.dict.get('SEPARATOR', '\x1F')
 
     def ensure_list(self, arg):
@@ -16,6 +17,16 @@ class InputTextTransformer(Transformer):
         else:
             return [arg]
 
+    def wordbreak(self, string):
+        while string:
+            word = string[:self.maxlen]
+            while len(word) > 1:
+                if word in self.dict:
+                    break
+                word = word[:-1]
+            string = string[len(word):]
+            yield word
+            
     def start(self, args):
         return args[0]
 
@@ -41,11 +52,10 @@ class InputTextTransformer(Transformer):
             schars = [schar for word in words for schar in self.WORD(word)]
             return schars
 
-        schars = [schar for char in tok for schar in self.ensure_list(self.dict.get(char, ['Null']))]
-        if any((schar != 'Null' for schar in schars)):
-            return schars
-        else:
-            return ['Null']
+        words = self.wordbreak(tok)
+
+        schars = [schar for char in words for schar in self.ensure_list(self.dict.get(char, ['Null']))]
+        return schars
 
     def WHITESPACE(self, tok):
         return self.ensure_list(self.dict.get(tok, ['Space']))
