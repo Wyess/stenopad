@@ -1219,9 +1219,17 @@ cdict = {
     },
 }
 
+trie = {}
+for key in wdict:
+    node = trie
+    for char in key:
+        node = node.setdefault(char, {})
+    node['word'] = key
+
 tdict = {
     'waseda': {
         'dictionary': wdict,
+        'trie': trie,
         'character': cdict,
     },
 }

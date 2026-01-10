@@ -4,9 +4,10 @@
 from text_grammer_lark import Lark_StandAlone, Transformer
 
 class InputTextTransformer(Transformer):
-    def __init__(self, dict_, visit_tokens=True):
+    def __init__(self, dict_, trie, visit_tokens=True):
         super().__init__(visit_tokens)
         self.dict = dict_
+        self.trie = trie
         self.dict.setdefault('\n', ['Newline'])
         self.maxlen = max(len(key) for key in dict_)
         self.sep = self.dict.get('SEPARATOR', '\x1F')
@@ -17,16 +18,23 @@ class InputTextTransformer(Transformer):
         else:
             return [arg]
 
-    def wordbreak(self, string):
-        while string:
-            word = string[:self.maxlen]
-            while len(word) > 1:
-                if word in self.dict:
+    def break_word(self, string):
+        n = len(string)
+        start = 0
+        while start < n:
+            node = self.trie
+            word = string[start]
+            for pos in range(start, n):
+                c = string[pos]
+                if c not in node:
                     break
-                word = word[:-1]
-            string = string[len(word):]
-            yield word
-            
+                node = node[c]
+                word = node.get('word', word)
+            chars = self.dict.get(word, 'Null')
+            start += len(word)
+            for c in self.ensure_list(chars):
+                yield c
+
     def start(self, args):
         return args[0]
 
@@ -52,10 +60,8 @@ class InputTextTransformer(Transformer):
             schars = [schar for word in words for schar in self.WORD(word)]
             return schars
 
-        words = self.wordbreak(tok)
+        return list(self.break_word(tok))
 
-        schars = [schar for char in words for schar in self.ensure_list(self.dict.get(char, ['Null']))]
-        return schars
 
     def WHITESPACE(self, tok):
         return self.ensure_list(self.dict.get(tok, ['Space']))
@@ -66,9 +72,9 @@ class InputTextTransformer(Transformer):
 #)
 parser = Lark_StandAlone()
 
-def parse_text(text, wdict):
+def parse_text(text, wdict, trie):
     tree = parser.parse(text)
-    return InputTextTransformer(wdict).transform(tree)
+    return InputTextTransformer(wdict, trie).transform(tree)
 if __name__ == "__main__":
     text = """
     あ-い  あい　うえ う-え お

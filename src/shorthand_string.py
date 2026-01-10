@@ -101,7 +101,7 @@ class String:
     #    return chars
     def get_chars(self, text):
         chars = []
-        for word in parse_text(text, self.sh['dictionary']):
+        for word in parse_text(text, self.sh['dictionary'], self.sh['trie']):
 
             chars.append(Character(word, self.sh))
         return chars
