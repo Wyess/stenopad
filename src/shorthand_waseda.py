@@ -282,18 +282,8 @@ wdict = {
     'ん': 'N',
 }
 
-def create_dot_glyph(x, y, w=0.1, h=0, key='default'):
-    return {
-        'key': key,
-        'path': [{'d': f'm{x} {-y}l{w} {h}', 'length': math.hypot(w, h)}],
-        'dx': x + w,
-        'dy': -(y + h),
-        'ascent': 0,
-        'top': -(y + h),
-        'bottom': -(y + h),
-        'left': x + w,
-        'right': x + w,
-    }
+def create_dot_glyph(x, y, r=0.08, key='default'):
+    return create_glyph(f"({x}, {y + r}){{0}} ... ({x + r}, {y}) .. ({x}, {y - r}) .. ({x - r}, {y}) .. {{0}}({x}, {y + r})", key=key)
 
 def create_pos_glyph(x, y, key='default'):
     return {
