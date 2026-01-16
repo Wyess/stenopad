@@ -274,6 +274,8 @@ wdict = {
     '物': 'Mono',
     '者': 'Mono',
     'もの': 'Mono',
+    'ら（点）': 'Ra(dot)',
+    'らｐ': 'Ra(dot)',
     'られ': ['PosRare', 'Wa'],
     'ろう': ['PosRou', 'A'],
     'わ': 'Wa',
@@ -362,6 +364,16 @@ cdict = {
         },
         'default_glyph': create_dot_glyph(2.5, 0),
         'glyphs': [],
+    },
+    'Ra(dot)': {
+        'tag': {
+            'ra_dot',
+            '@dot',
+        },
+        'default_glyph': create_dot_glyph(-4, 2),
+        'glyphs': [
+            create_dot_glyph(-7, 2, key='ho[-1]|hoku[-1]'),
+        ],
     },
     'Dakuten': {
         'tag': {
