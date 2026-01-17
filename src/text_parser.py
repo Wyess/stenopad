@@ -9,7 +9,6 @@ class InputTextTransformer(Transformer):
         self.dict = dict_
         self.trie = trie
         self.dict.setdefault('\n', ['Newline'])
-        self.maxlen = max(len(key) for key in dict_)
         self.sep = self.dict.get('SEPARATOR', '\x1F')
 
     def ensure_list(self, arg):
@@ -32,8 +31,7 @@ class InputTextTransformer(Transformer):
                 word = node.get('word', word)
             chars = self.dict.get(word, 'Null')
             start += len(word)
-            for c in self.ensure_list(chars):
-                yield c
+            yield from self.ensure_list(chars)
 
     def start(self, args):
         return args[0]
