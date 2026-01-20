@@ -14,47 +14,57 @@ vdict = {
 
 pd = {}
 pd["A."] = "O{-30} .. tension 1.2 .. 4E"
+pd["A"] = pd["A."] + "{90}"
+pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
+pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
 pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
 pd["I."] = "O{30} .. tension 1.0 .. 4E"
+pd["I"] = pd["I."] + "{-100}"
+pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
 pd["U"] = "O -- 4S"
 pd["E"] = "O -- 4SSE"
 pd["Ketsu"] = "O -- 8SE"
 pd["E(?=SW)"] = "O -- 4SE"
 pd["Shite"] = "O -- 3SE"
-pd["Sha"] = "O{-50} .. {-135}8S"
 pd["Sha."] = "O{-60} .. 8S"
+pd["Sha"] = pd["Sha."] + "{-135}"
 pd["O"] = "O -- 4SSW"
 pd["O(jog)"] = "O -- 4SSW -- ++(45: 1)"
 pd["Oo"] = "O --- 3.5SSW .. (4SSW + 0.5ESE) .. @(-1.3, -1)"
 pd["Kai"] = "O -- 4E"
+pd["Kai(jog)"] = pd["Kai"] + "-- ++(-170: 1)"
 pd["Ka"] = "O -- 8E"
+pd["Ka(jog)"] = pd["Ka"] + "-- ++(-170: 1)"
+pd["Karu"] = pd["Ka"] + "-- ++(0, -1.5)"
 pd["Ki"] = "O --- 7.5E .. 8E + 0.5N .. {-150}@(6, -1)"
 pd["Ki(?=EL)"] = "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (140: 1.3) .. ++(140: -1.3)"
 pd["Ku"] = "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)"
 pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
 pd["Ko"] = "O -- 16E"
+pd["Ko(jog)"] = pd["Ko"] + "-- ++(-170: 1)"
 pd["Koto"] = "O -- 8S"
+pd["Koto(jog)"] = pd["Koto"] + "-- ++(80: 1)"
 pd["Kon2"] = "O -- 8E -- ++4S"
 pd["Kokoro"] = "O -- 8E -- ++4SSW"
 pd["Kyou"] = "O -- ++(60: -3) -- ++(30: 2) -- ++(60:-3)"
 pd["Sa."] = "O{30} .. tension 1.3 .. (45: 8)"
+pd["Sa"] = pd["Sa."] + "{90}"
+pd["Sa(bend)"] = pd["Sa."] + "{120}"
 pd["Satsu."] = "(1.5, 0){90} .. tension 1.2 .. ++O{-60} .. ++(1.5, 0) .. tension 1.3 .. ++(45: 8)"
+pd["Satsu"] = pd["Satsu."] + "{90}"
 pd["SaHenki"] = "O{-90} .. tension 1.2 .. {180}(-120: 8)"
 pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-1.8, -1) + (130: 1.8) .. ++(130: -1.8)"
 pd["Shin"] = "O{30} .. tension 1.3 .. {150}(60: 8) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0) "
 pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
 pd["Su(?=EL)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. @(-2.5, -1) + (130: 2.8) .. ++(130: -2.8)"
+pd["Su"] = pd["Su(?=EL)"] + "{-30}"
 pd["Su(?=ER)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. tension 1.5 .. @(-2.5, -1) + (10: -2.5) .. ++(10: 2.5)"
 pd["So."] = "O{34} .. tension 1.6 .. (45: 16)"
+pd["So"] = pd["So."] + "{90}"
 pd["Shourai"] = "O -- 4E 2E -- ++4S"
-#pd["Su(?=S)"] = "O{30} .. tension 1.3 .. {140}(60: 8) .. @(-3.2, -1) + (9: 3.5) .. ++(90: -3.5)"
-#pd["Ta"] = "O -- (60: -8)"
-#pd["TaHenki"] = "O -- (45: 8)"
-#pd["Cha"] = "O -- (30: 8)"
-#pd["ChaHenki"] = "O -- (55: -8)"
 pd["Ta"] = "O -- (ta_angle: 8)"
-pd["Taxe"] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.5)"
 pd["Taxe."] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.1)"
+pd["Taxe"] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.5)"
 pd["TaHenki"] = "O -- (30: 8)"
 pd["Cha"] = "O -- (22.5: 8)"
 pd["Che"] = "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)"
@@ -68,7 +78,6 @@ pd["ToHenki"] = "O -- (to_henki_angle: 16)"
 pd["ToJoshi"] = "O -- (60: -4.0){30} .. {0}++(30: 1.9)"
 pd["Tsu"] = "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)"
 pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
-pd["Na."] = "O{-20} .. tension 1.7 .. 8E"
 pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
 pd["NoJoshi"] = "O{-30} .. tension 1.7 .. 8E .. {190}++(145:4)"
 pd["NaiHitei"] = "(60: 1.5) -- +(-120: 3)"
@@ -81,41 +90,26 @@ pd["Ho"] = "O{-90} .. tension 1.0 .. {0}(-60: 16)"
 pd["Hoku"] = "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {0}(-60: 16)"
 pd["Ho(up)"] = "O{-90} .. tension 1.0 .. {45}(-60: 16)"
 pd["Hoku(up)"] = "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {45}(-60: 16)"
-pd["Na."] = "O{-30} .. tension 1.3 .. 8E"
 pd["Ma."] = "O{30} .. tension 1.3 .. 8E"
 pd["MoJoshi."] = "O{20} .. tension 1.7 .. 8E .. ++(45: -4)"
 pd["Mo."] = "O{20} .. tension 1.8 .. 16E"
-pd["N"] = "O -- (45: 2) ++(45: 2) -- +0.1SW"
-pd["N$"] = "O -- (45: 2)"
-pd["Fu$"] = "O -- (30: 4)"
+pd["N"] = "O -- (45: 2)"
+pd["Fu"] = "O -- (30: 4)"
 pd["Koi"] = "O -- (30: 4)"
-pd["Futsu$"] = "(30: 1){-45} .. (-60: 0.8) .. {30}O -- (30: 4)"
-#pd["Wa"] = "O{-164} .. tension 1.4 .. (-124: 3){-71} .. tension 0.95 .. {19}++(-17: 2)"
+pd["Futsu"] = "(30: 1){-45} .. (-60: 0.8) .. {30}O -- (30: 4)"
 pd["Wa"] = "O{-164} .. tension 1.4 .. (-124: 3){-70} .. {20}(-80: 3)"
 pd["Wa."] = "O{-164} .. tension 1.4 .. (-124: 3){-70} .. (-80: 3)"
 pd["Wa(?=EL)"] = "O{-190} .. (-115: 3)"
 pd["Wa(?=E)"] = "O{-164} .. tension 1.4 .. (-124: 3){-70} .. {0}(-80: 3.2)"
 
-pd["A"] = pd["A."] + "{90}"
-pd["I"] = pd["I."] + "{-100}"
-pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
-pd["Ka(jog)"] = pd["Ka"] + "-- ++(-170: 1)"
-pd["Karu"] = pd["Ka"] + "-- ++(0, -1.5)"
-pd["Kai(jog)"] = pd["Kai"] + "-- ++(-170: 1)"
 pd["KiTa"] = "O --- 7.5E .. 8E + 1.3N .. {-120}(6.8, 0) + (60: 1.3) -- (6.8, 0)"
 pd["KeSaHenki"] = "O --- 15.5E .. 16E + 0.5N .. @(15.3, -1)+ (95: 1.5) .. ++(95: -1.5) & " + pd["SaHenki"]
-pd["Ko(jog)"] = pd["Ko"] + "-- ++(-170: 1)"
-pd["Koto(jog)"] = pd["Koto"] + "-- ++(80: 1)"
-pd["Sa"] = pd["Sa."] + "{90}"
-pd["Satsu"] = pd["Satsu."] + "{90}"
-pd["Sa(bend)"] = pd["Sa."] + "{120}"
 pd["Shi"] = pd["Shi(?=EL)"] + "{-30}"
 pd["Shimiru"] = pd["Shimi"] + " -- ++1.5S"
-pd["Su"] = pd["Su(?=EL)"] + "{-30}"
-pd["So"] = pd["So."] + "{90}"
 pd["Sore"] = "O{-90} .. {180}(45: -4)"
 pd["Se"] = "O{34} .. tension 1.9 .. {140}(50: 15) .. @(-1.7, -1) + (130: 2.0) .. {-60}++(130: -2.0)"
 pd["Sen"] = "O{34} .. tension 1.9 .. {140}(50: 15) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0)"
+pd["Na."] = "O{-30} .. tension 1.3 .. 8E"
 pd["Na"] = pd["Na."] + "{90}"
 pd["Nan"] = pd["Na."] + "{45}"
 pd["Naru"] = pd["Na."] + "{80} .. {S}++1.5S"
@@ -125,17 +119,16 @@ pd["Ii(?=S)"] = pd["I."] + "{-90} .. {90}@(-1.8, -1) "
 pd["Mi"] = pd["Ma."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
 pd["Me"] = pd["Mo."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
 pd["Me(?=S)"] = pd["Mo."] + "{-90} .. {90}@(-2.3, -1) "
-pd["Fu"] = pd['Fu$'] + "++(30: 2.5) -- ++0.1SW"
-pd["Futsu"] = pd['Futsu$'] + "++(30: 2.5) -- ++0.1SW"
 pd["Mo"] = pd["Mo."] + "{-80}"
 pd["MoJoshi"] = pd['MoJoshi.'] + "{-180}"
 pd["Mono"] = pd['Mo.'] + "{-90} .. {180}++(-145: 4)"
 pd["Nihon(jog)"] = pd["Nihon"] + "-- ++(-170: 1)"
 
-pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
 pd["Ni(?=EL)"] = pd["Na"] + " .. @(-0.5, -1) + (130: 1.7) .. ++(130: -1.7)"
+pd["Ni"] = pd["Ni(?=EL)"] + "{-30}"
+pd["NiNa"] = cat(("Ni(?=EL)", "Na"), pd)
 pd["Nu"] = pd["Na"] + " .. @(-4.5, -1) + (45: 1.7) .. {-135} ++(45: -1.7)"
-pd["Nure$"] = pd["Na"] + " .. tension 1.5 .. @(-3.0, -1) + (135: 2.7) .. {-30} ++(135: -3.7)"
+pd["Nure"] = pd["Na"] + " .. tension 1.5 .. @(-3.0, -1) + (135: 2.7) .. {-30} ++(135: -3.7)"
 pd["Mi(?=Na)"] = pd["Ma."] + "{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
 pd["Mi(?='E')"] = pd["Ma."] + "{-90} .. ++(210: 1.5) .. {SSE}@(-0.0, -1) + 1.2NNE -- ++1.2SSE"
 pd["Me(?=Na)"] = "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
@@ -145,11 +138,7 @@ pd["MaNa"] = pd["Ma."] + "&" + pd["Na"]
 pd["TsuMo"] = pd["Tsu(?=ER)"] + "&" + pd["Mo"]
 pd["WaNa"] = pd["Wa(?=EL)"] + "&" + pd["Na"]
 
-pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
-pd["Ni"] = pd["Ni(?=EL)"] + "{-30}"
-pd["NiNa"] = cat(("Ni(?=EL)", "Na"), pd)
 pd["AI"] = cat(("A.", "I"), pd)
-pd["Nure"] = pd["Nure$"] + "++(-30: 2) -- ++0.1S"
 
 
 wdict = {
@@ -950,9 +939,8 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pd['Nure']),
+        'default_glyph': create_glyph(pd['Nure'], post_offset=polar(1.5, -30)),
         'glyphs': [
-            create_glyph(pd['Nure$'], key=kdict['sp_or_eos']),
         ],
     },
     'Nihon': {
@@ -1027,25 +1015,24 @@ cdict = {
         'tag': {
             'n',
         },
-        'default_glyph': create_glyph(pd['N']),
+        'default_glyph': create_glyph(pd['N'], key=kdict['sp_or_eos'], post_offset=polar(2, 45)),
+
         'glyphs': [
-            create_glyph(pd['N$'], key=kdict['sp_or_eos']),
         ],
     },
     'Fu': {
         'tag': {
             'fu',
         },
-        'default_glyph': create_glyph(pd['Fu']),
+        'default_glyph': create_glyph(pd['Fu'], post_offset=polar(2.5, 30)),
         'glyphs': [
-            create_glyph(pd['Fu$'], key=kdict['sp_or_eos']),
         ],
     },
     'Futsu': {
         'tag': {
             'futsu',
         },
-        'default_glyph': create_glyph(pd['Futsu$'], post_offset=polar(2.5, 30)),
+        'default_glyph': create_glyph(pd['Futsu'], post_offset=polar(2.5, 30)),
         'glyphs': [
         ],
     },
