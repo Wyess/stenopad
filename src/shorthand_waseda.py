@@ -66,6 +66,7 @@ pd["Ta"] = "O -- (ta_angle: 8)"
 pd["Taxe."] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.1)"
 pd["Taxe"] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.5)"
 pd["TaHenki"] = "O -- (30: 8)"
+pd["Tajuon"] = "O -- 30E"
 pd["Cha"] = "O -- (22.5: 8)"
 pd["Che"] = "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)"
 pd["ChaHenki"] = "O -- (45: -8)"
@@ -160,6 +161,7 @@ wdict = {
     'うち（交差）': ['PosUchi', 'U'],
     'うちｃ': ['PosUchi', 'U'],
     'たい': 'Tai',
+    '多重音': ['PosTajuon', 'Tajuon'],
     'っ': 'SmallTsu',
     'え': 'E',
     'お': 'O',
@@ -764,6 +766,23 @@ cdict = {
         'default_glyph': create_glyph(pd['Taxe'], ascent=1.5),
         'glyphs': [
             create_glyph(pd['Taxe.'], ascent=1.5, key='!@head_sw[1].!' + kdict['sp_or_eos']),
+        ],
+    },
+    'Tajuon': {
+        'tag': {
+            'tajuon',
+            '@head_e',
+        },
+        'default_glyph': create_glyph(pd['Tajuon'], post_offset=(2, 0)),
+        'glyphs': [
+        ],
+    },
+    'PosTajuon': {
+        'tag': {
+            'pos_tajuon',
+        },
+        'default_glyph': create_pos_glyph(0, 5),
+        'glyphs': [
         ],
     },
     'ChaHenki': {
