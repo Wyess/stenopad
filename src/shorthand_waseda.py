@@ -298,7 +298,7 @@ kdict = {
 
 cdict = {
     'Null': {
-        'tag': {},
+        'tag': {'null'},
         'default_glyph': {
             'key': 'default',
             'path': [{'d': 'M2 -2v4h4v-4h-4l4 4', 'length': 0}],
@@ -889,7 +889,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['ToJoshi'], ascent=-1.5),
         'glyphs': [
-            create_glyph(pd['Oo'], key='!'+kdict['sp_or_eos'], name='Oo')
+            create_glyph(pd['Oo'], key=f"!({kdict['sp_or_eos']}).!null[1]", name='Oo')
         ],
     },
     'Na': {
