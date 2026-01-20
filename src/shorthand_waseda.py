@@ -12,152 +12,133 @@ vdict = {
     'to_henki_angle': -115,
 }
 
-pdict = {
-    "A.": "O{-30} .. tension 1.2 .. 4E",
-    "Ai": "O{170} .. 3.5N .. {-170}O",
-    "I.": "O{30} .. tension 1.0 .. 4E",
-    "U": "O -- 4S",
-    "E": "O -- 4SSE",
-    "Ketsu": "O -- 8SE",
-    "E(?=SW)": "O -- 4SE",
-    "Shite": "O -- 3SE",
-    "Sha": "O{-50} .. {-135}8S",
-    "Sha.": "O{-60} .. 8S",
-    "O": "O -- 4SSW",
-    "O(jog)": "O -- 4SSW -- ++(45: 1)",
-    "Oo": "O --- 3.5SSW .. (4SSW + 0.5ESE) .. @(-1.3, -1)",
-    "Kai": "O -- 4E",
-    "Ka": "O -- 8E",
-    "Ki": "O --- 7.5E .. 8E + 0.5N .. {-150}@(6, -1)",
-    "Ki(?=EL)": "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (140: 1.3) .. ++(140: -1.3)",
-    "Ku": "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)",
-    "Ke": "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)",
-    "Ko": "O -- 16E",
-    "Koto": "O -- 8S",
-    "Kon2": "O -- 8E -- ++4S",
-    "Kokoro": "O -- 8E -- ++4SSW",
-    "Kyou": "O -- ++(60: -3) -- ++(30: 2) -- ++(60:-3)",
-    "Sa.": "O{30} .. tension 1.3 .. (45: 8)",
-    "Satsu.": "(1.5, 0){90} .. tension 1.2 .. ++O{-60} .. ++(1.5, 0) .. tension 1.3 .. ++(45: 8)",
-    "SaHenki": "O{-90} .. tension 1.2 .. {180}(-120: 8)",
-    "Shi(?=EL)": "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-1.8, -1) + (130: 1.8) .. ++(130: -1.8)",
-    "Shin": "O{30} .. tension 1.3 .. {150}(60: 8) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0) ",
-    "Shimi": "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE",
-    "Su(?=EL)": "O{30} .. tension 1.3 .. {140}(60: 6.5) .. @(-2.5, -1) + (130: 2.8) .. ++(130: -2.8)",
+pd = {}
+pd["A."] = "O{-30} .. tension 1.2 .. 4E"
+pd["A"] = pd["A."] + "{90}"
+pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
+pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
+pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
+pd["I."] = "O{30} .. tension 1.0 .. 4E"
+pd["I"] = pd["I."] + "{-100}"
+pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
+pd["U"] = "O -- 4S"
+pd["E"] = "O -- 4SSE"
+pd["Ketsu"] = "O -- 8SE"
+pd["E(?=SW)"] = "O -- 4SE"
+pd["Shite"] = "O -- 3SE"
+pd["Sha."] = "O{-60} .. 8S"
+pd["Sha"] = pd["Sha."] + "{-135}"
+pd["O"] = "O -- 4SSW"
+pd["O(jog)"] = "O -- 4SSW -- ++(45: 1)"
+pd["Oo"] = "O --- 3.5SSW .. (4SSW + 0.5ESE) .. @(-1.3, -1)"
+pd["Kai"] = "O -- 4E"
+pd["Kai(jog)"] = pd["Kai"] + "-- ++(-170: 1)"
+pd["Ka"] = "O -- 8E"
+pd["Ka(jog)"] = pd["Ka"] + "-- ++(-170: 1)"
+pd["Karu"] = pd["Ka"] + "-- ++(0, -1.5)"
+pd["Ki"] = "O --- 7.5E .. 8E + 0.5N .. {-150}@(6, -1)"
+pd["Ki(?=EL)"] = "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (140: 1.3) .. ++(140: -1.3)"
+pd["Ku"] = "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)"
+pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
+pd["Ko"] = "O -- 16E"
+pd["Ko(jog)"] = pd["Ko"] + "-- ++(-170: 1)"
+pd["Koto"] = "O -- 8S"
+pd["Koto(jog)"] = pd["Koto"] + "-- ++(80: 1)"
+pd["Kon2"] = "O -- 8E -- ++4S"
+pd["Kokoro"] = "O -- 8E -- ++4SSW"
+pd["Kyou"] = "O -- ++(60: -3) -- ++(30: 2) -- ++(60:-3)"
+pd["Sa."] = "O{30} .. tension 1.3 .. (45: 8)"
+pd["Sa"] = pd["Sa."] + "{90}"
+pd["Sa(bend)"] = pd["Sa."] + "{120}"
+pd["Satsu."] = "(1.5, 0){90} .. tension 1.2 .. ++O{-60} .. ++(1.5, 0) .. tension 1.3 .. ++(45: 8)"
+pd["Satsu"] = pd["Satsu."] + "{90}"
+pd["SaHenki"] = "O{-90} .. tension 1.2 .. {180}(-120: 8)"
+pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-1.8, -1) + (130: 1.8) .. ++(130: -1.8)"
+pd["Shin"] = "O{30} .. tension 1.3 .. {150}(60: 8) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0) "
+pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
+pd["Su(?=EL)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. @(-2.5, -1) + (130: 2.8) .. ++(130: -2.8)"
+pd["Su"] = pd["Su(?=EL)"] + "{-30}"
+pd["Su(?=ER)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. tension 1.5 .. @(-2.5, -1) + (10: -2.5) .. ++(10: 2.5)"
+pd["So."] = "O{34} .. tension 1.6 .. (45: 16)"
+pd["So"] = pd["So."] + "{90}"
+pd["Shourai"] = "O -- 4E 2E -- ++4S"
+pd["Ta"] = "O -- (ta_angle: 8)"
+pd["Taxe."] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.1)"
+pd["Taxe"] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.5)"
+pd["TaHenki"] = "O -- (30: 8)"
+pd["Cha"] = "O -- (22.5: 8)"
+pd["Che"] = "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)"
+pd["ChaHenki"] = "O -- (45: -8)"
+pd["TeJoshi"] = "O -- (60: -4.0){100} .. {145}++(108: 1.9)"
+pd["TeJoshi(?=Ha)"] = "O --- (60: -3.0) .. (60: -4.0) + (150: 0.5) .. tension 1.1 .. (60: -4) + (80: 1.3) .. {-90}(60:-4)"
+pd["Terx"] = "O --- (60: -3.0) .. (60: -4.0) + (150: 0.3) .. tension 1.1 .. (60: -4) + (90: 1.2){-90} .. {-90}(60:-4) + S"
+pd["To"] = "O -- (40: 16)"
+pd["To(?=E)"] = "O -- (45: 16)"
+pd["ToHenki"] = "O -- (to_henki_angle: 16)"
+pd["ToJoshi"] = "O -- (60: -4.0){30} .. {0}++(30: 1.9)"
+pd["Tsu"] = "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)"
+pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
+pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
+pd["NoJoshi"] = "O{-30} .. tension 1.7 .. 8E .. {190}++(145:4)"
+pd["NaiHitei"] = "(60: 1.5) -- +(-120: 3)"
+pd["NakuHitei"] = "(0, 1.5) -- (0, -1.5)"
+pd["Nihon"] = "O -- +4E 2S -- ++4E"
+pd["Ha"] = "O{-90} .. tension 1.0 .. {0}(-60: 8)"
+pd["Hi"] = "O{-90} .. tension 1.0 .. {20}(-60: 8) .. @(-1.2, -1) + (45: 2) .. {-135}++(45: -2)"
+pd["Hur"] = "O{-90} .. tension 1.0 .. {0}(-60: 8) .. ++(110: 3.5){150}"
+pd["Ho"] = "O{-90} .. tension 1.0 .. {0}(-60: 16)"
+pd["Hoku"] = "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {0}(-60: 16)"
+pd["Ho(up)"] = "O{-90} .. tension 1.0 .. {45}(-60: 16)"
+pd["Hoku(up)"] = "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {45}(-60: 16)"
+pd["Ma."] = "O{30} .. tension 1.3 .. 8E"
+pd["MoJoshi."] = "O{20} .. tension 1.7 .. 8E .. ++(45: -4)"
+pd["Mo."] = "O{20} .. tension 1.8 .. 16E"
+pd["N"] = "O -- (45: 2)"
+pd["Fu"] = "O -- (30: 4)"
+pd["Koi"] = "O -- (30: 4)"
+pd["Futsu"] = "(30: 1){-45} .. (-60: 0.8) .. {30}O -- (30: 4)"
+pd["Wa"] = "O{-164} .. tension 1.4 .. (-124: 3){-70} .. {20}(-80: 3)"
+pd["Wa."] = "O{-164} .. tension 1.4 .. (-124: 3){-70} .. (-80: 3)"
+pd["Wa(?=EL)"] = "O{-190} .. (-115: 3)"
+pd["Wa(?=E)"] = "O{-164} .. tension 1.4 .. (-124: 3){-70} .. {0}(-80: 3.2)"
 
-    "Su(?=ER)": "O{30} .. tension 1.3 .. {140}(60: 6.5) .. tension 1.5 .. @(-2.5, -1) + (10: -2.5) .. ++(10: 2.5)",
+pd["KiTa"] = "O --- 7.5E .. 8E + 1.3N .. {-120}(6.8, 0) + (60: 1.3) -- (6.8, 0)"
+pd["KeSaHenki"] = "O --- 15.5E .. 16E + 0.5N .. @(15.3, -1)+ (95: 1.5) .. ++(95: -1.5) & " + pd["SaHenki"]
+pd["Shi"] = pd["Shi(?=EL)"] + "{-30}"
+pd["Shimiru"] = pd["Shimi"] + " -- ++1.5S"
+pd["Sore"] = "O{-90} .. {180}(45: -4)"
+pd["Se"] = "O{34} .. tension 1.9 .. {140}(50: 15) .. @(-1.7, -1) + (130: 2.0) .. {-60}++(130: -2.0)"
+pd["Sen"] = "O{34} .. tension 1.9 .. {140}(50: 15) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0)"
+pd["Na."] = "O{-30} .. tension 1.3 .. 8E"
+pd["Na"] = pd["Na."] + "{90}"
+pd["Nan"] = pd["Na."] + "{45}"
+pd["Naru"] = pd["Na."] + "{80} .. {S}++1.5S"
+pd["Ma"] = pd["Ma."] + "{-90}"
+pd["Ii"] = pd["I."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
+pd["Ii(?=S)"] = pd["I."] + "{-90} .. {90}@(-1.8, -1) "
+pd["Mi"] = pd["Ma."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
+pd["Me"] = pd["Mo."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
+pd["Me(?=S)"] = pd["Mo."] + "{-90} .. {90}@(-2.3, -1) "
+pd["Mo"] = pd["Mo."] + "{-80}"
+pd["MoJoshi"] = pd['MoJoshi.'] + "{-180}"
+pd["Mono"] = pd['Mo.'] + "{-90} .. {180}++(-145: 4)"
+pd["Nihon(jog)"] = pd["Nihon"] + "-- ++(-170: 1)"
 
-    "So.": "O{34} .. tension 1.6 .. (45: 16)",
-    "Shourai": "O -- 4E 2E -- ++4S",
+pd["Ni(?=EL)"] = pd["Na"] + " .. @(-0.5, -1) + (130: 1.7) .. ++(130: -1.7)"
+pd["Ni"] = pd["Ni(?=EL)"] + "{-30}"
+pd["NiNa"] = cat(("Ni(?=EL)", "Na"), pd)
+pd["Nu"] = pd["Na"] + " .. @(-4.5, -1) + (45: 1.7) .. {-135} ++(45: -1.7)"
+pd["Nure"] = pd["Na"] + " .. tension 1.5 .. @(-3.0, -1) + (135: 2.7) .. {-30} ++(135: -3.7)"
+pd["Mi(?=Na)"] = pd["Ma."] + "{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
+pd["Mi(?='E')"] = pd["Ma."] + "{-90} .. ++(210: 1.5) .. {SSE}@(-0.0, -1) + 1.2NNE -- ++1.2SSE"
+pd["Me(?=Na)"] = "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
+pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
+pd["KiNa"] = pd["Ki(?=EL)"] + "&" +  pd["Na"]
+pd["MaNa"] = pd["Ma."] + "&" + pd["Na"]
+pd["TsuMo"] = pd["Tsu(?=ER)"] + "&" + pd["Mo"]
+pd["WaNa"] = pd["Wa(?=EL)"] + "&" + pd["Na"]
 
-    #"Su(?=S)": "O{30} .. tension 1.3 .. {140}(60: 8) .. @(-3.2, -1) + (9: 3.5) .. ++(90: -3.5)",
-    #"Ta": "O -- (60: -8)",
-    #"TaHenki": "O -- (45: 8)",
-    #"Cha": "O -- (30: 8)",
-    #"ChaHenki": "O -- (55: -8)",
-    "Ta": "O -- (ta_angle: 8)",
-    "Taxe": "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.5)",
-    "Taxe.": "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.1)",
-    "TaHenki": "O -- (30: 8)",
-    "Cha": "O -- (22.5: 8)",
-    "Che": "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)",
-    "ChaHenki": "O -- (45: -8)",
-    "TeJoshi": "O -- (60: -4.0){100} .. {145}++(108: 1.9)",
-    "TeJoshi(?=Ha)": "O --- (60: -3.0) .. (60: -4.0) + (150: 0.5) .. tension 1.1 .. (60: -4) + (80: 1.3) .. {-90}(60:-4)",
-    "Terx": "O --- (60: -3.0) .. (60: -4.0) + (150: 0.3) .. tension 1.1 .. (60: -4) + (90: 1.2){-90} .. {-90}(60:-4) + S",
-    "To": "O -- (40: 16)",
-    "To(?=E)": "O -- (45: 16)",
-    "ToHenki": "O -- (to_henki_angle: 16)",
-    "ToJoshi": "O -- (60: -4.0){30} .. {0}++(30: 1.9)",
-    "Tsu": "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)",
-    "Tsu(?=ER)": "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)",
-    "Na.": "O{-20} .. tension 1.7 .. 8E",
-    "Nu(?=S)": "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S",
-    "NoJoshi": "O{-30} .. tension 1.7 .. 8E .. {190}++(145:4)",
-    "NaiHitei": "(60: 1.5) -- +(-120: 3)",
-    "NakuHitei": "(0, 1.5) -- (0, -1.5)",
-    "Nihon": "O -- +4E 2S -- ++4E",
-    "Ha": "O{-90} .. tension 1.0 .. {0}(-60: 8)",
-    "Hi": "O{-90} .. tension 1.0 .. {20}(-60: 8) .. @(-1.2, -1) + (45: 2) .. {-135}++(45: -2)",
-    "Hur": "O{-90} .. tension 1.0 .. {0}(-60: 8) .. ++(110: 3.5){150}",
-    "Ho": "O{-90} .. tension 1.0 .. {0}(-60: 16)",
-    "Hoku": "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {0}(-60: 16)",
-    "Ho(up)": "O{-90} .. tension 1.0 .. {45}(-60: 16)",
-    "Hoku(up)": "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {45}(-60: 16)",
-    "Na.": "O{-30} .. tension 1.3 .. 8E",
-    "Ma.": "O{30} .. tension 1.3 .. 8E",
-    "MoJoshi.": "O{20} .. tension 1.7 .. 8E .. ++(45: -4)",
-    "Mo.": "O{20} .. tension 1.8 .. 16E",
-    "N": "O -- (45: 2) ++(45: 2) -- +0.1SW",
-    "N$": "O -- (45: 2)",
-    "Fu$": "O -- (30: 4)",
-    "Koi": "O -- (30: 4)",
-    "Futsu$": "(30: 1){-45} .. (-60: 0.8) .. {30}O -- (30: 4)",
-    #"Wa": "O{-164} .. tension 1.4 .. (-124: 3){-71} .. tension 0.95 .. {19}++(-17: 2)",
-    "Wa": "O{-164} .. tension 1.4 .. (-124: 3){-70} .. {20}(-80: 3)",
-    "Wa.": "O{-164} .. tension 1.4 .. (-124: 3){-70} .. (-80: 3)",
-    "Wa(?=EL)": "O{-190} .. (-115: 3)",
-    "Wa(?=E)": "O{-164} .. tension 1.4 .. (-124: 3){-70} .. {0}(-80: 3.2)",
-
-}
-pdict.update({
-    "A": pdict["A."] + "{90}",
-    "I": pdict["I."] + "{-100}",
-    "I(?=Ta)": pdict["I."] + "{ta_angle}",
-    "Ka(jog)": pdict["Ka"] + "-- ++(-170: 1)",
-    "Karu": pdict["Ka"] + "-- ++(0, -1.5)",
-    "Kai(jog)": pdict["Kai"] + "-- ++(-170: 1)",
-    "KiTa": "O --- 7.5E .. 8E + 1.3N .. {-120}(6.8, 0) + (60: 1.3) -- (6.8, 0)",
-    "KeSaHenki": "O --- 15.5E .. 16E + 0.5N .. @(15.3, -1)+ (95: 1.5) .. ++(95: -1.5) & " + pdict["SaHenki"],
-    "Ko(jog)": pdict["Ko"] + "-- ++(-170: 1)",
-    "Koto(jog)": pdict["Koto"] + "-- ++(80: 1)",
-    "Sa": pdict["Sa."] + "{90}",
-    "Satsu": pdict["Satsu."] + "{90}",
-    "Sa(bend)": pdict["Sa."] + "{120}",
-    "Shi": pdict["Shi(?=EL)"] + "{-30}",
-    "Shimiru": pdict["Shimi"] + " -- ++1.5S",
-    "Su": pdict["Su(?=EL)"] + "{-30}",
-    "So": pdict["So."] + "{90}",
-    "Sore": "O{-90} .. {180}(45: -4)",
-    "Se": "O{34} .. tension 1.9 .. {140}(50: 15) .. @(-1.7, -1) + (130: 2.0) .. {-60}++(130: -2.0)",
-    "Sen": "O{34} .. tension 1.9 .. {140}(50: 15) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0)",
-    "Na": pdict["Na."] + "{90}",
-    "Nan": pdict["Na."] + "{45}",
-    "Naru": pdict["Na."] + "{80} .. {S}++1.5S",
-    "Ma": pdict["Ma."] + "{-90}",
-    "Ii": pdict["I."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)",
-    "Ii(?=S)": pdict["I."] + "{-90} .. {90}@(-1.8, -1) ",
-    "Mi": pdict["Ma."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)",
-    "Me": pdict["Mo."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)",
-    "Me(?=S)": pdict["Mo."] + "{-90} .. {90}@(-2.3, -1) ",
-    "Fu": pdict['Fu$'] + "++(30: 2.5) -- ++0.1SW",
-    "Futsu": pdict['Futsu$'] + "++(30: 2.5) -- ++0.1SW",
-    "Mo": pdict["Mo."] + "{-80}",
-    "MoJoshi": pdict['MoJoshi.'] + "{-180}",
-    "Mono": pdict['Mo.'] + "{-90} .. {180}++(-145: 4)",
-    "Nihon(jog)": pdict["Nihon"] + "-- ++(-170: 1)",
-})
-pdict.update({
-    "Ah(?=EL)": pdict["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)",
-    "Ni(?=EL)": pdict["Na"] + " .. @(-0.5, -1) + (130: 1.7) .. ++(130: -1.7)",
-    "Nu": pdict["Na"] + " .. @(-4.5, -1) + (45: 1.7) .. {-135} ++(45: -1.7)",
-    "Nure$": pdict["Na"] + " .. tension 1.5 .. @(-3.0, -1) + (135: 2.7) .. {-30} ++(135: -3.7)",
-    "Mi(?=Na)": pdict["Ma."] + "{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pdict['Na'],
-    "Mi(?='E')": pdict["Ma."] + "{-90} .. ++(210: 1.5) .. {SSE}@(-0.0, -1) + 1.2NNE -- ++1.2SSE",
-    "Me(?=Na)": "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pdict['Na'],
-    "SuMa": pdict["Su(?=ER)"] + '&' + pdict['Ma'],
-    "KiNa": pdict["Ki(?=EL)"] + "&" +  pdict["Na"],
-    "MaNa": pdict["Ma."] + "&" + pdict["Na"],
-    "TsuMo": pdict["Tsu(?=ER)"] + "&" + pdict["Mo"],
-    "WaNa": pdict["Wa(?=EL)"] + "&" + pdict["Na"]
-})
-pdict.update({
-    "Ah": pdict["Ah(?=EL)"] + "{-30}",
-    "Ni": pdict["Ni(?=EL)"] + "{-30}",
-    "NiNa": cat(("Ni(?=EL)", "Na"), pdict),
-    "AI": cat(("A.", "I"), pdict),
-    "Nure": pdict["Nure$"] + "++(-30: 2) -- ++0.1S",
-})
+pd["AI"] = cat(("A.", "I"), pd)
 
 
 wdict = {
@@ -389,9 +370,9 @@ cdict = {
             'a',
             'el4',
         },
-        'default_glyph': create_glyph(pdict['A']),
+        'default_glyph': create_glyph(pd['A']),
         'glyphs': [
-            create_glyph(pdict['AI'], key='i[1]')
+            create_glyph(pd['AI'], key='i[1]')
         ],
     },
     'Ai': {
@@ -399,7 +380,7 @@ cdict = {
             'ai',
             'cr4',
         },
-        'default_glyph': create_glyph(pdict['Ai'], ascent=-2),
+        'default_glyph': create_glyph(pd['Ai'], ascent=-2),
         'glyphs': [
         ],
     },
@@ -408,9 +389,9 @@ cdict = {
             'i',
             'er4',
         },
-        'default_glyph': create_glyph(pdict['I']),
+        'default_glyph': create_glyph(pd['I']),
         'glyphs': [
-            create_glyph(pdict['I(?=Ta)'], key='ta[1]'),
+            create_glyph(pd['I(?=Ta)'], key='ta[1]'),
         ],
     },
     'Ii': {
@@ -420,9 +401,9 @@ cdict = {
             '@head_er4',
             'er4cr1',
         },
-        'default_glyph': create_glyph(pdict['Ii']),
+        'default_glyph': create_glyph(pd['Ii']),
         'glyphs': [
-             create_glyph(pdict['Ii(?=S)']),
+             create_glyph(pd['Ii(?=S)']),
         ],
     },
     'U': {
@@ -430,7 +411,7 @@ cdict = {
             'u',
             's4',
         },
-        'default_glyph': create_glyph(pdict['U']),
+        'default_glyph': create_glyph(pd['U']),
         'glyphs': [
         ],
     },
@@ -440,7 +421,7 @@ cdict = {
             's4',
             '@head_s',
         },
-        'default_glyph': create_glyph(pdict['U']),
+        'default_glyph': create_glyph(pd['U']),
         'glyphs': [
         ],
     },
@@ -449,7 +430,7 @@ cdict = {
             'shourai',
             'e4-s4',
         },
-        'default_glyph': create_glyph(pdict['Shourai']),
+        'default_glyph': create_glyph(pd['Shourai']),
         'glyphs': [
         ],
     },
@@ -460,9 +441,9 @@ cdict = {
             '@head_se4',
             '@head_se',
         },
-        'default_glyph': create_glyph(pdict['E']),
+        'default_glyph': create_glyph(pd['E']),
         'glyphs': [
-            create_glyph(pdict['E(?=SW)'], key='@head_sw[1]'),
+            create_glyph(pd['E(?=SW)'], key='@head_sw[1]'),
         ],
     },
     'Shite': {
@@ -470,7 +451,7 @@ cdict = {
             'shite',
             'se3',
         },
-        'default_glyph': create_glyph(pdict['Shite']),
+        'default_glyph': create_glyph(pd['Shite']),
         'glyphs': [
         ],
     },
@@ -481,9 +462,9 @@ cdict = {
             '@head_sw',
             '@tail_sw',
         },
-        'default_glyph': create_glyph(pdict['O']),
+        'default_glyph': create_glyph(pd['O']),
         'glyphs': [
-            create_glyph(pdict['O(jog)'], key='@head_sw[1]'),
+            create_glyph(pd['O(jog)'], key='@head_sw[1]'),
         ],
     },
     'Oo': {
@@ -492,9 +473,9 @@ cdict = {
             'sw4cl1',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['Oo'], name='Oo'),
+        'default_glyph': create_glyph(pd['Oo'], name='Oo'),
         'glyphs': [
-            create_glyph(pdict['Oo'], name='Oo'),
+            create_glyph(pd['Oo'], name='Oo'),
         ],
     },
     'Ka': {
@@ -503,9 +484,9 @@ cdict = {
             'e8',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Ka']),
+        'default_glyph': create_glyph(pd['Ka']),
         'glyphs': [
-            create_glyph(pdict['Ka(jog)'], key='@head_e[1]'),
+            create_glyph(pd['Ka(jog)'], key='@head_e[1]'),
         ],
     },
     'Kai': {
@@ -514,9 +495,9 @@ cdict = {
             'e4',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Kai']),
+        'default_glyph': create_glyph(pd['Kai']),
         'glyphs': [
-            create_glyph(pdict['Kai(jog)'], key='@head_e[1]'),
+            create_glyph(pd['Kai(jog)'], key='@head_e[1]'),
         ],
     },
     'Karu': {
@@ -525,7 +506,7 @@ cdict = {
             'e8s1f',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Karu'], post_offset=(0, -2.5)),
+        'default_glyph': create_glyph(pd['Karu'], post_offset=(0, -2.5)),
         'glyphs': [
         ],
     },
@@ -534,17 +515,17 @@ cdict = {
             'ki',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Ki']),
+        'default_glyph': create_glyph(pd['Ki']),
         'glyphs': [
-            create_glyph(pdict['KiTa'], key='ta[1]'),
-            create_glyph(pdict['KiNa'], key='@head_el8[1]'),
+            create_glyph(pd['KiTa'], key='ta[1]'),
+            create_glyph(pd['KiNa'], key='@head_el8[1]'),
         ],
     },
     'Kyou': {
         'tag': {
             'kyou',
         },
-        'default_glyph': create_glyph(pdict['Kyou'], ascent=2),
+        'default_glyph': create_glyph(pd['Kyou'], ascent=2),
         'glyphs': [
         ],
     },
@@ -553,7 +534,7 @@ cdict = {
             'ku',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Ku']),
+        'default_glyph': create_glyph(pd['Ku']),
         'glyphs': [
         ],
     },
@@ -562,9 +543,9 @@ cdict = {
             'ke',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Ke']),
+        'default_glyph': create_glyph(pd['Ke']),
         'glyphs': [
-            create_glyph(pdict["KeSaHenki"], key="sa_henki[1]"),
+            create_glyph(pd["KeSaHenki"], key="sa_henki[1]"),
         ],
     },
     'Ketsu': { 
@@ -575,7 +556,7 @@ cdict = {
             '@tail_se',
             '@tail_se8',
         },
-        'default_glyph': create_glyph(pdict['Ketsu']),
+        'default_glyph': create_glyph(pd['Ketsu']),
         'glyphs': [
         ],
     },
@@ -585,9 +566,9 @@ cdict = {
             'e16',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Ko']),
+        'default_glyph': create_glyph(pd['Ko']),
         'glyphs': [
-            create_glyph(pdict['Ko(jog)'], key='@head_e[1]'),
+            create_glyph(pd['Ko(jog)'], key='@head_e[1]'),
         ],
     },
     'Koi': {
@@ -596,9 +577,9 @@ cdict = {
             'ne4',
             '@head_ne',
         },
-        'default_glyph': create_glyph(pdict['Koi']),
+        'default_glyph': create_glyph(pd['Koi']),
         'glyphs': [
-            #create_glyph(pdict['Ko(jog)'], key='@head_e[1]'),
+            #create_glyph(pd['Ko(jog)'], key='@head_e[1]'),
         ],
     },
     'Koto': {
@@ -608,9 +589,9 @@ cdict = {
             '@head_s',
             '@tail_s',
         },
-        'default_glyph': create_glyph(pdict['Koto']),
+        'default_glyph': create_glyph(pd['Koto']),
         'glyphs': [
-            create_glyph(pdict['Koto(jog)'], key='@head_s[1]'),
+            create_glyph(pd['Koto(jog)'], key='@head_s[1]'),
         ],
     },
     'Kon2': {
@@ -619,7 +600,7 @@ cdict = {
             'e8s4f',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Kon2'], post_offset=(0, -3)),
+        'default_glyph': create_glyph(pd['Kon2'], post_offset=(0, -3)),
         'glyphs': [
         ],
     },
@@ -629,7 +610,7 @@ cdict = {
             'e8sw4f',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Kokoro'], post_offset=polar(-2.5, 60)),
+        'default_glyph': create_glyph(pd['Kokoro'], post_offset=polar(-2.5, 60)),
         'glyphs': [
         ],
     },
@@ -638,16 +619,16 @@ cdict = {
             'sa',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['Sa'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['Sa'], ascent=-1.5),
         'glyphs': [
-            create_glyph(pdict['SaHenki'], key="@head_e[-1]", name='SaHenki'),
+            create_glyph(pd['SaHenki'], key="@head_e[-1]", name='SaHenki'),
         ],
     },
     'Satsu': {
         'tag': {
             'satsu',
         },
-        'default_glyph': create_glyph(pdict['Satsu'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['Satsu'], ascent=-1.5),
         'glyphs': [
         ],
     },
@@ -656,7 +637,7 @@ cdict = {
             'sa_henki',
             '@head_swr',
         },
-        'default_glyph': create_glyph(pdict['SaHenki'], name='SaHenki'),
+        'default_glyph': create_glyph(pd['SaHenki'], name='SaHenki'),
         'glyphs': [
         ],
     },
@@ -665,7 +646,7 @@ cdict = {
             'shi',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['Shi'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['Shi'], ascent=-1.5),
         'glyphs': [
         ],
     },
@@ -674,7 +655,7 @@ cdict = {
             'shin',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['Shin'], ascent=-1.5, post_offset=polar(3, 30)),
+        'default_glyph': create_glyph(pd['Shin'], ascent=-1.5, post_offset=polar(3, 30)),
         'glyphs': [
         ],
     },
@@ -683,7 +664,7 @@ cdict = {
             'sha',
             '@head_sr',
         },
-        'default_glyph': create_glyph(pdict['Sha'], ascent=4),
+        'default_glyph': create_glyph(pd['Sha'], ascent=4),
         'glyphs': [
         ],
     },
@@ -692,7 +673,7 @@ cdict = {
             'shimi',
             '@head_ner',
         },
-        'default_glyph': create_glyph(pdict['Shimi'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['Shimi'], ascent=-1.5),
         'glyphs': [
         ],
     },
@@ -701,7 +682,7 @@ cdict = {
             'shimiru',
             '@head_ner',
         },
-        'default_glyph': create_glyph(pdict['Shimiru'], ascent=-1.5, post_offset=(0, -2.5)),
+        'default_glyph': create_glyph(pd['Shimiru'], ascent=-1.5, post_offset=(0, -2.5)),
         'glyphs': [
         ],
     },
@@ -710,9 +691,9 @@ cdict = {
             'su',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['Su'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['Su'], ascent=-1.5),
         'glyphs': [
-            create_glyph(pdict['SuMa'], key='@head_er8[1]', ascent=-1.5),
+            create_glyph(pd['SuMa'], key='@head_er8[1]', ascent=-1.5),
         ],
     },
     'Se': {
@@ -720,7 +701,7 @@ cdict = {
             'se',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['Se'], ascent=-8.0),
+        'default_glyph': create_glyph(pd['Se'], ascent=-8.0),
         'glyphs': [
         ],
     },
@@ -729,7 +710,7 @@ cdict = {
             'sen',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['Sen'], ascent=-8.0, post_offset=polar(3, 30)),
+        'default_glyph': create_glyph(pd['Sen'], ascent=-8.0, post_offset=polar(3, 30)),
         'glyphs': [
         ],
     },
@@ -738,7 +719,7 @@ cdict = {
             'so',
             '@head_nel',
         },
-        'default_glyph': create_glyph(pdict['So'], ascent=-8.0),
+        'default_glyph': create_glyph(pd['So'], ascent=-8.0),
         'glyphs': [
         ],
     },
@@ -747,7 +728,7 @@ cdict = {
             'sore',
             '@head_swr',
         },
-        'default_glyph': create_glyph(pdict['Sore'], ascent=2.0, post_offset=(-2, -0.5)),
+        'default_glyph': create_glyph(pd['Sore'], ascent=2.0, post_offset=(-2, -0.5)),
         'glyphs': [
         ],
     },
@@ -764,9 +745,9 @@ cdict = {
             'ta',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['Ta'], ascent=1.5),
+        'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
-            create_glyph(pdict['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])', ascent=1.5, name='TaHenki'),
+            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])', ascent=1.5, name='TaHenki'),
         ],
     },
     'Taxe': {
@@ -774,9 +755,9 @@ cdict = {
             'taxe',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['Taxe'], ascent=1.5),
+        'default_glyph': create_glyph(pd['Taxe'], ascent=1.5),
         'glyphs': [
-            create_glyph(pdict['Taxe.'], ascent=1.5, key='!@head_sw[1].!' + kdict['sp_or_eos']),
+            create_glyph(pd['Taxe.'], ascent=1.5, key='!@head_sw[1].!' + kdict['sp_or_eos']),
         ],
     },
     'ChaHenki': {
@@ -784,7 +765,7 @@ cdict = {
             'cha_henki',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['ChaHenki'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['ChaHenki'], ascent=-1.5),
         'glyphs': [
         ],
     },
@@ -793,7 +774,7 @@ cdict = {
             'ta_henki',
             '@head_ne',
         },
-        'default_glyph': create_glyph(pdict['TaHenki'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['TaHenki'], ascent=-1.5),
         'glyphs': [
         ],
     },
@@ -802,9 +783,9 @@ cdict = {
             'cha',
             '@head_ne',
         },
-        'default_glyph': create_glyph(pdict['Cha'], ascent=-1),
+        'default_glyph': create_glyph(pd['Cha'], ascent=-1),
         'glyphs': [
-            create_glyph(pdict['ChaHenki'], key='ta_henki[-1]|cha[-1]', ascent=-1, name='ChaHenki'),
+            create_glyph(pd['ChaHenki'], key='ta_henki[-1]|cha[-1]', ascent=-1, name='ChaHenki'),
         ],
     },
     'Che': {
@@ -812,7 +793,7 @@ cdict = {
             'che',
             '@head_ne',
         },
-        'default_glyph': create_glyph(pdict['Che'], ascent=-1),
+        'default_glyph': create_glyph(pd['Che'], ascent=-1),
         'glyphs': [
         ],
     },
@@ -821,9 +802,9 @@ cdict = {
             'tsu',
             '@head_s',
         },
-        'default_glyph': create_glyph(pdict['Tsu'], ascent=2),
+        'default_glyph': create_glyph(pd['Tsu'], ascent=2),
         'glyphs': [
-            create_glyph(pdict['TsuMo'], ascent=2, key='@head_er16[1]'),
+            create_glyph(pd['TsuMo'], ascent=2, key='@head_er16[1]'),
         ],
     },
     'SmallTsu': {
@@ -840,9 +821,9 @@ cdict = {
             'te_joshi',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['TeJoshi'], ascent=-1),
+        'default_glyph': create_glyph(pd['TeJoshi'], ascent=-1),
         'glyphs': [
-            create_glyph(pdict['TeJoshi(?=Ha)'], ascent=-1, key='ha[1]'),
+            create_glyph(pd['TeJoshi(?=Ha)'], ascent=-1, key='ha[1]'),
         ],
     },
     'Terx': {
@@ -851,7 +832,7 @@ cdict = {
             '@head_sw',
             '@head_sw4',
         },
-        'default_glyph': create_glyph(pdict['Terx'], ascent=1, post_offset=(0, -0.5)),
+        'default_glyph': create_glyph(pd['Terx'], ascent=1, post_offset=(0, -0.5)),
         'glyphs': [
         ],
     },
@@ -860,10 +841,10 @@ cdict = {
             'to',
             '@head_ne',
         },
-        'default_glyph': create_glyph(pdict['To'], ascent=-2.5),
+        'default_glyph': create_glyph(pd['To'], ascent=-2.5),
         'glyphs': [
-            create_glyph(pdict['To(?=E)'], key='@head_e[1]', ascent=-2.5),
-            create_glyph(pdict['ToHenki'], key='@head_ne[-1]', ascent=2.5, name='ToHenki'),
+            create_glyph(pd['To(?=E)'], key='@head_e[1]', ascent=-2.5),
+            create_glyph(pd['ToHenki'], key='@head_ne[-1]', ascent=2.5, name='ToHenki'),
         ],
     },
     'ToHenki': {
@@ -871,9 +852,9 @@ cdict = {
             'to_henki',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['ToHenki'], ascent=-2.5, name='ToHenki'),
+        'default_glyph': create_glyph(pd['ToHenki'], ascent=-2.5, name='ToHenki'),
         'glyphs': [
-            create_glyph(pdict['ToHenki'], key='@head_e[1]', ascent=-2.5),
+            create_glyph(pd['ToHenki'], key='@head_e[1]', ascent=-2.5),
         ],
     },
     'ToJoshi': {
@@ -881,9 +862,9 @@ cdict = {
             'to_joshi',
             '@head_sw',
         },
-        'default_glyph': create_glyph(pdict['ToJoshi'], ascent=-1.5),
+        'default_glyph': create_glyph(pd['ToJoshi'], ascent=-1.5),
         'glyphs': [
-            create_glyph(pdict['Oo'], key='!'+kdict['sp_or_eos'], name='Oo')
+            create_glyph(pd['Oo'], key='!'+kdict['sp_or_eos'], name='Oo')
         ],
     },
     'Na': {
@@ -892,7 +873,7 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['Na']),
+        'default_glyph': create_glyph(pd['Na']),
         'glyphs': [
         ],
     },
@@ -902,7 +883,7 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['Naru'], post_offset=(0, -2)),
+        'default_glyph': create_glyph(pd['Naru'], post_offset=(0, -2)),
         'glyphs': [
         ],
     },
@@ -912,7 +893,7 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['Nan'], post_offset=polar(2.5, 45)),
+        'default_glyph': create_glyph(pd['Nan'], post_offset=polar(2.5, 45)),
         'glyphs': [
         ],
     },
@@ -920,7 +901,7 @@ cdict = {
         'tag': {
             'nai_hitei',
         },
-        'default_glyph': create_glyph("1.5W + " + pdict['NaiHitei']),
+        'default_glyph': create_glyph("1.5W + " + pd['NaiHitei']),
         'glyphs': [
         ],
     },
@@ -938,7 +919,7 @@ cdict = {
         'tag': {
             'naku_hitei',
         },
-        'default_glyph': create_glyph(pdict['NakuHitei']),
+        'default_glyph': create_glyph(pd['NakuHitei']),
         'glyphs': [
         ],
     },
@@ -948,7 +929,7 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['Ni']),
+        'default_glyph': create_glyph(pd['Ni']),
         'glyphs': [
         ],
     },
@@ -958,9 +939,9 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['Nu']),
+        'default_glyph': create_glyph(pd['Nu']),
         'glyphs': [
-            create_glyph(pdict['Nu(?=S)'], key='@head_s[1]'),
+            create_glyph(pd['Nu(?=S)'], key='@head_s[1]'),
 
         ],
     },
@@ -970,9 +951,8 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['Nure']),
+        'default_glyph': create_glyph(pd['Nure'], post_offset=polar(1.5, -30)),
         'glyphs': [
-            create_glyph(pdict['Nure$'], key=kdict['sp_or_eos']),
         ],
     },
     'Nihon': {
@@ -980,9 +960,9 @@ cdict = {
             'nihon',
             '@head_e',
         },
-        'default_glyph': create_glyph(pdict['Nihon']),
+        'default_glyph': create_glyph(pd['Nihon']),
         'glyphs': [
-            create_glyph(pdict['Nihon(jog)'], key='@head_e[1]'),
+            create_glyph(pd['Nihon(jog)'], key='@head_e[1]'),
         ],
     },
     'NoJoshi': {
@@ -991,9 +971,9 @@ cdict = {
             '@head_el',
             '@head_el8',
         },
-        'default_glyph': create_glyph(pdict['NoJoshi']),
+        'default_glyph': create_glyph(pd['NoJoshi']),
         'glyphs': [
-            create_glyph(pdict['Nu(?=S)'], key='@head_s[1]'),
+            create_glyph(pd['Nu(?=S)'], key='@head_s[1]'),
         ],
     },
     'Ha': {
@@ -1001,7 +981,7 @@ cdict = {
             'ha',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pdict['Ha']),
+        'default_glyph': create_glyph(pd['Ha']),
         'glyphs': [
         ],
     },
@@ -1010,7 +990,7 @@ cdict = {
             'hi',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pdict['Hi']),
+        'default_glyph': create_glyph(pd['Hi']),
         'glyphs': [
         ],
     },
@@ -1019,7 +999,7 @@ cdict = {
             'hur',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pdict['Hur'], ascent=4),
+        'default_glyph': create_glyph(pd['Hur'], ascent=4),
         'glyphs': [
         ],
     },
@@ -1028,9 +1008,9 @@ cdict = {
             'ho',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pdict['Ho'], ascent=6),
+        'default_glyph': create_glyph(pd['Ho'], ascent=6),
         'glyphs': [
-            create_glyph(pdict['Ho(up)'], ascent=6, key="@head_e[1]|@head_el[1]")
+            create_glyph(pd['Ho(up)'], ascent=6, key="@head_e[1]|@head_el[1]")
         ],
     },
     'Hoku': {
@@ -1038,34 +1018,33 @@ cdict = {
             'hoku',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pdict['Hoku'], ascent=6),
+        'default_glyph': create_glyph(pd['Hoku'], ascent=6),
         'glyphs': [
-            create_glyph(pdict['Hoku(up)'], ascent=6, key="@head_e[1]|@head_el[1]")
+            create_glyph(pd['Hoku(up)'], ascent=6, key="@head_e[1]|@head_el[1]")
         ],
     },
     'N': {
         'tag': {
             'n',
         },
-        'default_glyph': create_glyph(pdict['N']),
+        'default_glyph': create_glyph(pd['N'], key=kdict['sp_or_eos'], post_offset=polar(2, 45)),
+
         'glyphs': [
-            create_glyph(pdict['N$'], key=kdict['sp_or_eos']),
         ],
     },
     'Fu': {
         'tag': {
             'fu',
         },
-        'default_glyph': create_glyph(pdict['Fu']),
+        'default_glyph': create_glyph(pd['Fu'], post_offset=polar(2.5, 30)),
         'glyphs': [
-            create_glyph(pdict['Fu$'], key=kdict['sp_or_eos']),
         ],
     },
     'Futsu': {
         'tag': {
             'futsu',
         },
-        'default_glyph': create_glyph(pdict['Futsu$'], post_offset=polar(2.5, 30)),
+        'default_glyph': create_glyph(pd['Futsu'], post_offset=polar(2.5, 30)),
         'glyphs': [
         ],
     },
@@ -1075,9 +1054,9 @@ cdict = {
             '@head_er',
             '@head_er8',
         },
-        'default_glyph': create_glyph(pdict['Ma']),
+        'default_glyph': create_glyph(pd['Ma']),
         'glyphs': [
-            create_glyph(pdict['MaNa'], key='@head_el8[1]'),
+            create_glyph(pd['MaNa'], key='@head_el8[1]'),
         ],
     },
     'Mi': {
@@ -1086,10 +1065,10 @@ cdict = {
             '@head_er',
             '@head_er8',
         },
-        'default_glyph': create_glyph(pdict['Mi']),
+        'default_glyph': create_glyph(pd['Mi']),
         'glyphs': [
-            create_glyph(pdict['Mi(?=Na)'], key='@head_el8[1]'),
-            create_glyph(pdict["Mi(?='E')"], key='@head_se[1]'),
+            create_glyph(pd['Mi(?=Na)'], key='@head_el8[1]'),
+            create_glyph(pd["Mi(?='E')"], key='@head_se[1]'),
         ],
     },
     'Me': {
@@ -1098,10 +1077,10 @@ cdict = {
             '@head_er',
             '@head_er16',
         },
-        'default_glyph': create_glyph(pdict['Me']),
+        'default_glyph': create_glyph(pd['Me']),
         'glyphs': [
-            create_glyph(pdict["Me(?=Na)"], key='@head_el8[1]'),
-            create_glyph(pdict["Me(?=S)"], key='@head_s[1]|@head_sw[1]'),
+            create_glyph(pd["Me(?=Na)"], key='@head_el8[1]'),
+            create_glyph(pd["Me(?=S)"], key='@head_s[1]|@head_sw[1]'),
         ],
     },
     'Mo': {
@@ -1110,7 +1089,7 @@ cdict = {
             '@head_er',
             '@head_er16',
         },
-        'default_glyph': create_glyph(pdict['Mo']),
+        'default_glyph': create_glyph(pd['Mo']),
         'glyphs': [
         ],
     },
@@ -1119,7 +1098,7 @@ cdict = {
             'mo_joshi',
             '@head_er',
         },
-        'default_glyph': create_glyph(pdict['MoJoshi']),
+        'default_glyph': create_glyph(pd['MoJoshi']),
         'glyphs': [
         ],
     },
@@ -1127,7 +1106,7 @@ cdict = {
         'tag': {
             'mono',
         },
-        'default_glyph': create_glyph(pdict['Mono']),
+        'default_glyph': create_glyph(pd['Mono']),
         'glyphs': [
         ],
     },
@@ -1135,16 +1114,16 @@ cdict = {
         'tag': {
             'wa',
         },
-        'default_glyph': create_glyph(pdict['Wa'], ascent=1.0),
+        'default_glyph': create_glyph(pd['Wa'], ascent=1.0),
         'glyphs': [
-            create_glyph(pdict['Wa(?=E)'], ascent=1.0, key='@head_e[1]'),
+            create_glyph(pd['Wa(?=E)'], ascent=1.0, key='@head_e[1]'),
         ],
     },
     'Wagaku': {
         'tag': {
             'wagaku',
         },
-        'default_glyph': create_glyph(pdict['WaNa'], ascent=1.0),
+        'default_glyph': create_glyph(pd['WaNa'], ascent=1.0),
         'glyphs': [
         ],
     },
