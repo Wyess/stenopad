@@ -85,6 +85,7 @@ pd["NakuHitei"] = "(0, 1.5) -- (0, -1.5)"
 pd["Nihon"] = "O -- +4E 2S -- ++4E"
 pd["Ha"] = "O{-90} .. tension 1.0 .. {0}(-60: 8)"
 pd["Hi"] = "O{-90} .. tension 1.0 .. {20}(-60: 8) .. @(-1.2, -1) + (45: 2) .. {-135}++(45: -2)"
+pd["Hu"] = "O{-90} .. tension 1.0 .. {0}(-60: 8) .. @(-5, -1){180}"
 pd["Hur"] = "O{-90} .. tension 1.0 .. {0}(-60: 8) .. ++(110: 3.5){150}"
 pd["Ho"] = "O{-90} .. tension 1.0 .. {0}(-60: 16)"
 pd["Hoku"] = "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {0}(-60: 16)"
@@ -238,6 +239,8 @@ wdict = {
     'のｊ': 'NoJoshi',
     'は': 'Ha',
     'ひ': 'Hi',
+    'ふ': 'Hu',
+    'はな': 'Hu',
     'フ': 'Fu',
     'ふつ': 'Futsu',
     'ふｒ': 'Hur',
@@ -991,6 +994,15 @@ cdict = {
             '@head_sel',
         },
         'default_glyph': create_glyph(pd['Hi']),
+        'glyphs': [
+        ],
+    },
+    'Hu': {
+        'tag': {
+            'hu',
+            '@head_sel',
+        },
+        'default_glyph': create_glyph(pd['Hu']),
         'glyphs': [
         ],
     },
