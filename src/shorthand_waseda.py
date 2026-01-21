@@ -214,6 +214,7 @@ wdict = {
     'た（え略）': 'Taxe',
     'たぇ': 'Taxe',
     'だけ': ['PosDake', 'Ta'],
+    'たまに': ['Ta', 'PosTamani', 'Ni'],
     'つ': 'Tsu',
     'て（助詞）': 'TeJoshi',
     'てｊ': 'TeJoshi',
@@ -1204,6 +1205,14 @@ cdict = {
         'default_glyph': create_pos_glyph(-2, 1),
         'glyphs': [
             create_pos_glyph(-0.8, 1.5, key='ta[-1]')
+        ],
+    },
+    'PosTamani': {
+        'tag': {
+            'pos_tamani',
+        },
+        'default_glyph': create_pos_glyph(0.5, 4.5),
+        'glyphs': [
         ],
     },
     'DotKa': {
