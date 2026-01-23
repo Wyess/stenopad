@@ -421,6 +421,8 @@ cdict = {
         'tag': {
             'u',
             's4',
+            '@head_s',
+            '@tail_s',
         },
         'default_glyph': create_glyph(pd['U']),
         'glyphs': [
@@ -431,6 +433,7 @@ cdict = {
             'tai',
             's4',
             '@head_s',
+            '@tail_s',
         },
         'default_glyph': create_glyph(pd['U']),
         'glyphs': [
@@ -767,7 +770,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
-            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])', ascent=1.5, name='TaHenki'),
+            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]', ascent=1.5, name='TaHenki'),
         ],
     },
     'Taxe': {
