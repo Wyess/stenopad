@@ -221,6 +221,7 @@ wdict = {
     'て（助詞）': 'TeJoshi',
     'てｊ': 'TeJoshi',
     'テｒ': 'Terx',
+    'てｌ': 'Terx',
     'と': 'To',
     'と（助詞）': 'ToJoshi',
     'とｊ': 'ToJoshi',
