@@ -40,6 +40,7 @@ pd["Ki"] = "O --- 7.5E .. 8E + 0.5N .. {-150}@(6, -1)"
 pd["Ki(?=EL)"] = "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (140: 1.3) .. ++(140: -1.3)"
 pd["Ku"] = "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)"
 pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
+pd["Ker"] = "O -- 16E -- ++4NW"
 pd["Ko"] = "O -- 16E"
 pd["Ko(jog)"] = pd["Ko"] + "-- ++(-170: 1)"
 pd["Koto"] = "O -- 8S"
@@ -181,6 +182,7 @@ wdict = {
     'け': 'Ke',
     'けつ': 'Ketsu',
     'べつ': 'Ketsu',
+    'けｒ': 'Ker',
     'こ': 'Ko',
     'こい': 'Koi',
     'こえ': 'Koi',
@@ -566,6 +568,15 @@ cdict = {
             '@tail_se8',
         },
         'default_glyph': create_glyph(pd['Ketsu']),
+        'glyphs': [
+        ],
+    },
+    'Ker': {
+        'tag': {
+            'ker',
+            '@head_e',
+        },
+        'default_glyph': create_glyph(pd['Ker']),
         'glyphs': [
         ],
     },
