@@ -13,6 +13,7 @@ vdict = {
 }
 
 pd = {}
+pd["1"] = "O -- (-115: 22)"
 pd["A."] = "O{-30} .. tension 1.2 .. 4E"
 pd["A"] = pd["A."] + "{90}"
 pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
@@ -153,6 +154,7 @@ wdict = {
     ' ': 'Space',
     '　': 'Space',
     '\n': 'Newline',
+    '１': '1',
     'あ': 'A',
     'あい': 'Ai',
     '雨': ['A', 'PosAme', 'E'],
@@ -351,6 +353,13 @@ cdict = {
             'left': 0,
             'right': 0,
         },
+        'glyphs': [],
+    },
+    '1': {
+        'tag': {
+            '1',
+        },
+        'default_glyph': create_glyph(pd['1'], post_offset=polar(7, 45)),
         'glyphs': [],
     },
     'Aru(dot)': {
