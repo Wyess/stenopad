@@ -73,6 +73,7 @@ pd["Che"] = "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)"
 pd["ChaHenki"] = "O -- (45: -8)"
 pd["TeJoshi"] = "O -- (60: -4.0){100} .. {145}++(108: 1.9)"
 pd["TeJoshi(?=Ha)"] = "O --- (60: -3.0) .. (60: -4.0) + (150: 0.5) .. tension 1.1 .. (60: -4) + (80: 1.3) .. {-90}(60:-4)"
+pd["TeJoshi(?=ER)"] = "O --- (60: -3.0) .. (60: -4.0) + (150: 0.5) .. tension 1.1 .. @(-2.1, -1)"
 pd["Terx"] = "O --- (60: -3.0) .. (60: -4.0) + (150: 0.3) .. tension 1.1 .. (60: -4) + (90: 1.2){-90} .. {-90}(60:-4) + S"
 pd["To"] = "O -- (40: 16)"
 pd["To(?=E)"] = "O -- (45: 16)"
@@ -118,6 +119,7 @@ pd["Na"] = pd["Na."] + "{90}"
 pd["Nan"] = pd["Na."] + "{45}"
 pd["Naru"] = pd["Na."] + "{80} .. {S}++1.5S"
 pd["Ma"] = pd["Ma."] + "{-90}"
+pd["TeJoshi(?=Ma)"] = cat(("TeJoshi(?=ER)", "Ma"), pd)
 pd["Ii"] = pd["I."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
 pd["Ii(?=S)"] = pd["I."] + "{-90} .. {90}@(-1.8, -1) "
 pd["Mi"] = pd["Ma."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
@@ -866,6 +868,7 @@ cdict = {
         'default_glyph': create_glyph(pd['TeJoshi'], ascent=-1),
         'glyphs': [
             create_glyph(pd['TeJoshi(?=Ha)'], ascent=-1, key='ha[1]'),
+            create_glyph(pd['TeJoshi(?=Ma)'], ascent=-1, key='@head_er8[1]'),
         ],
     },
     'Terx': {
@@ -1157,6 +1160,7 @@ cdict = {
         'tag': {
             'mo_joshi',
             '@head_er',
+            '@head_er8',
         },
         'default_glyph': create_glyph(pd['MoJoshi']),
         'glyphs': [
