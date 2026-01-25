@@ -63,6 +63,7 @@ pd["Su"] = pd["Su(?=EL)"] + "{-30}"
 pd["Su(?=ER)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. tension 1.5 .. @(-2.5, -1) + (10: -2.5) .. ++(10: 2.5)"
 pd["So."] = "O{34} .. tension 1.6 .. (45: 16)"
 pd["So"] = pd["So."] + "{90}"
+pd["Sho"] = pd["So."] + "{130} .. @(-5, -1) + (130: 5.0) .. ++(130: -5.0){-30}"
 pd["Shourai"] = "O -- 4E 2E -- ++4S"
 pd["Ta"] = "O -- (ta_angle: 8)"
 pd["Taxe."] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.1)"
@@ -200,6 +201,7 @@ wdict = {
     'さつｃ': ['PosTsuKousa', 'Sa'],
     'し': 'Shi',
     'しゃ': 'Sha',
+    'しょ': 'Sho',
     'して': 'Shite',
     '将来': 'Shourai',
     'しみ': 'Shimi',
@@ -701,6 +703,15 @@ cdict = {
             '@head_sr',
         },
         'default_glyph': create_glyph(pd['Sha'], ascent=4),
+        'glyphs': [
+        ],
+    },
+    'Sho': {
+        'tag': {
+            'sho',
+            '@head_nel',
+        },
+        'default_glyph': create_glyph(pd['Sho'], ascent=4),
         'glyphs': [
         ],
     },
