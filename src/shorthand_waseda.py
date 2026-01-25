@@ -36,6 +36,7 @@ pd["Kai"] = "O -- 4E"
 pd["Kai(jog)"] = pd["Kai"] + "-- ++(-170: 1)"
 pd["Ka"] = "O -- 8E"
 pd["Ka(jog)"] = pd["Ka"] + "-- ++(-170: 1)"
+pd["Kaki"] = "O -- 7.5E .. 8E + 0.7S {-120} .. tension 1.1 .. @(-0.0, -2) + (-130: 1.3) .. ++(-130: -1.3){45}"
 pd["Karu"] = pd["Ka"] + "-- ++(0, -1.5)"
 pd["Ki"] = "O --- 7.5E .. 8E + 0.5N .. {-150}@(6, -1)"
 pd["Ki(?=EL)"] = "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (140: 1.3) .. ++(140: -1.3)"
@@ -173,6 +174,8 @@ wdict = {
     'え': 'E',
     'お': 'O',
     'か': 'Ka',
+    'かき': 'Kaki',
+    'けれど': 'Kaki',
     '傘': ['Ka', 'Sa'],
     'か（点）': 'DotKa',
     'かｐ': 'DotKa',
@@ -527,6 +530,15 @@ cdict = {
         'default_glyph': create_glyph(pd['Kai']),
         'glyphs': [
             create_glyph(pd['Kai(jog)'], key='@head_e[1]'),
+        ],
+    },
+    'Kaki': {
+        'tag': {
+            'kaki',
+            '@head_e',
+        },
+        'default_glyph': create_glyph(pd['Kaki']),
+        'glyphs': [
         ],
     },
     'Karu': {
