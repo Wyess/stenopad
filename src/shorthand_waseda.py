@@ -237,6 +237,7 @@ wdict = {
     'と': 'To',
     'と（助詞）': 'ToJoshi',
     'とｊ': 'ToJoshi',
+    'とこ': 'Toko',
     'とにかく': ['O', 'Na', 'PosKakuHead', 'Ka'],
     'ちゃ': 'Cha',
     'ちぇ': 'Che',
@@ -956,6 +957,15 @@ cdict = {
         'default_glyph': create_glyph(pd['ToJoshi'], ascent=-1.5),
         'glyphs': [
             create_glyph(pd['Oo'], key=f"!({kdict['sp_or_eos']}).!null[1]", name='Oo')
+        ],
+    },
+    'Toko': {
+        'tag': {
+            'toko',
+            '@head_ne',
+        },
+        'default_glyph': create_glyph(pd['Fu'], ascent=-1.5),
+        'glyphs': [
         ],
     },
     'Na': {
