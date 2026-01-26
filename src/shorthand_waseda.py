@@ -1004,6 +1004,7 @@ cdict = {
         },
         'default_glyph': create_glyph("1.5W + " + pd['NaiHitei']),
         'glyphs': [
+            create_glyph("(-1.0, 0.6) + " + pd['NaiHitei'], key='i[-1]'),
         ],
     },
     'PosNaku': {
