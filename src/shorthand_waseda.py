@@ -175,6 +175,7 @@ wdict = {
     'お': 'O',
     'か': 'Ka',
     'かき': 'Kaki',
+    'かくｔ': ['PosKakuHead', 'Ka'],
     'けれど': 'Kaki',
     '傘': ['Ka', 'Sa'],
     'か（点）': 'DotKa',
@@ -235,6 +236,7 @@ wdict = {
     'と': 'To',
     'と（助詞）': 'ToJoshi',
     'とｊ': 'ToJoshi',
+    'とにかく': ['O', 'Na', 'PosKakuHead', 'Ka'],
     'ちゃ': 'Cha',
     'ちぇ': 'Che',
     'てｒ': 'Che',
@@ -519,6 +521,14 @@ cdict = {
         'default_glyph': create_glyph(pd['Ka']),
         'glyphs': [
             create_glyph(pd['Ka(jog)'], key='@head_e[1]'),
+        ],
+    },
+    'PosKakuHead': {
+        'tag': {
+            'pos_kaku_head',
+        },
+        'default_glyph': create_pos_glyph(-2, 0),
+        'glyphs': [
         ],
     },
     'Kai': {
