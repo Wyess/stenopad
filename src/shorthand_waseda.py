@@ -497,9 +497,9 @@ cdict = {
             '@head_sw',
             '@tail_sw',
         },
-        'default_glyph': create_glyph(pd['O']),
+        'default_glyph': create_glyph(pd['O'], ascent=2),
         'glyphs': [
-            create_glyph(pd['O(jog)'], key='@head_sw[1]'),
+            create_glyph(pd['O(jog)'], key='@head_sw[1]', ascent=2),
         ],
     },
     'Oo': {
