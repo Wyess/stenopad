@@ -143,6 +143,7 @@ pd["Nure"] = pd["Na"] + " .. tension 1.5 .. @(-3.0, -1) + (135: 2.7) .. {-30} ++
 pd["Mi(?=Na)"] = pd["Ma."] + "{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
 pd["Mi(?='E')"] = pd["Ma."] + "{-90} .. ++(210: 1.5) .. {SSE}@(-0.0, -1) + 1.2NNE -- ++1.2SSE"
 pd["Me(?=Na)"] = "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
+pd["Ya"] = "O{70} .. {0}(40: 8)"
 pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
 pd["KiNa"] = pd["Ki(?=EL)"] + "&" +  pd["Na"]
 pd["MaNa"] = pd["Ma."] + "&" + pd["Na"]
@@ -282,6 +283,7 @@ wdict = {
     '物': 'Mono',
     '者': 'Mono',
     'もの': 'Mono',
+    'や': 'Ya',
     'ら（点）': 'Ra(dot)',
     'らｐ': 'Ra(dot)',
     'られ': ['PosRare', 'Wa'],
@@ -1229,6 +1231,15 @@ cdict = {
             'mono',
         },
         'default_glyph': create_glyph(pd['Mono']),
+        'glyphs': [
+        ],
+    },
+    'Ya': {
+        'tag': {
+            'ya',
+            '@ner',
+        },
+        'default_glyph': create_glyph(pd['Ya']),
         'glyphs': [
         ],
     },
