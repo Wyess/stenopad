@@ -206,6 +206,7 @@ wdict = {
     'さつ（交差）': ['PosTsuKousa', 'Sa'],
     'さつｃ': ['PosTsuKousa', 'Sa'],
     'し': 'Shi',
+    'しｐ': 'DotShi',
     'しゃ': 'Sha',
     'しょ': 'Sho',
     'して': 'Shite',
@@ -714,6 +715,14 @@ cdict = {
         'default_glyph': create_glyph(pd['Shi'], ascent=-1.5),
         'glyphs': [
             create_glyph(pd['Shi(?=E)'], ascent=-1.5, key='@head_e[1]'),
+        ],
+    },
+    'DotShi': {
+        'tag': {
+            'dot_shi',
+        },
+        'default_glyph': create_dot_glyph(-4, 1.5),
+        'glyphs': [
         ],
     },
     'Shin': {
