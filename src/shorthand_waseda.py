@@ -10,6 +10,7 @@ from path_expression_parser import create_path_expression_parser
 vdict = {
     'ta_angle': -120,
     'to_henki_angle': -115,
+    'ha_ascent': 4,
 }
 
 pd = {}
@@ -1113,7 +1114,7 @@ cdict = {
             'ha',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pd['Ha']),
+        'default_glyph': create_glyph(pd['Ha'], ascent=vdict['ha_ascent']),
         'glyphs': [
         ],
     },
@@ -1122,7 +1123,7 @@ cdict = {
             'hi',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pd['Hi']),
+        'default_glyph': create_glyph(pd['Hi'], ascent=vdict['ha_ascent']),
         'glyphs': [
         ],
     },
@@ -1131,7 +1132,7 @@ cdict = {
             'hu',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pd['Hu']),
+        'default_glyph': create_glyph(pd['Hu'], ascent=vdict['ha_ascent']),
         'glyphs': [
         ],
     },
@@ -1140,7 +1141,7 @@ cdict = {
             'hur',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pd['Hur'], ascent=4),
+        'default_glyph': create_glyph(pd['Hur'], ascent=vdict['ha_ascent']),
         'glyphs': [
         ],
     },
@@ -1149,7 +1150,7 @@ cdict = {
             'hure',
             '@head_sel',
         },
-        'default_glyph': create_glyph(pd['Hure']),
+        'default_glyph': create_glyph(pd['Hure'], ascent=vdict['ha_ascent']),
         'glyphs': [
         ],
     },
