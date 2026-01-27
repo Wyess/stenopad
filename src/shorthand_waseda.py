@@ -88,6 +88,8 @@ pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
 pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
 pd["NoJoshi"] = "O{-30} .. tension 1.7 .. 8E .. {190}++(145:4)"
 pd["NaiHitei"] = "(60: 1.5) -- +(-120: 3)"
+pd["NaiHitei_SE(120)"] = "(120: 1.5) -- +(-60: 3)"
+pd["NaiHitei_SE(150)"] = "(150: 1.5) -- +(-30: 3)"
 pd["NakuHitei"] = "(0, 1.5) -- (0, -1.5)"
 pd["Nihon"] = "O -- +4E 2S -- ++4E"
 pd["Ha"] = "O{-90} .. tension 1.0 .. {0}(-60: 8)"
@@ -1031,6 +1033,7 @@ cdict = {
         'default_glyph': create_glyph("1.5W + " + pd['NaiHitei']),
         'glyphs': [
             create_glyph("(-1.0, 0.6) + " + pd['NaiHitei'], key='i[-1]'),
+            create_glyph("(1.4, 1.9) + " + pd['NaiHitei_SE(150)'], key='tar[-1]'),
         ],
     },
     'PosNaku': {
