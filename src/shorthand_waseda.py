@@ -24,6 +24,7 @@ pd["I."] = "O{30} .. tension 1.0 .. 4E"
 pd["I"] = pd["I."] + "{-100}"
 pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
 pd["U"] = "O -- 4S"
+pd["U(jog)"] = pd["U"] + "-- ++(80: 1)"
 pd["E"] = "O -- 4SSE"
 pd["Ketsu"] = "O -- 8SE"
 pd["E(?=SW)"] = "O -- 4SE"
@@ -459,6 +460,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['U']),
         'glyphs': [
+            create_glyph(pd['U(jog)'], key='@head_s[1]|@head_sel[1]'),
         ],
     },
     'Tai': {
@@ -470,6 +472,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['U']),
         'glyphs': [
+            create_glyph(pd['U(jog)'], key='@head_s[1]|@head_sel[1]'),
         ],
     },
     'Shourai': {
