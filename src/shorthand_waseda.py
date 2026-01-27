@@ -376,7 +376,7 @@ cdict = {
         'tag': {
             '1',
         },
-        'default_glyph': create_glyph(pd['1'], post_offset=polar(7, 45)),
+        'default_glyph': create_glyph(pd['1'], ascent=14, post_offset=polar(7, 45)),
         'glyphs': [],
     },
     'Aru(dot)': {
