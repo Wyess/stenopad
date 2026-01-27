@@ -146,6 +146,7 @@ pd["Me(?=Na)"] = "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) 
 pd["Ya"] = "O{70} .. {0}(40: 8)"
 pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
 pd["KiNa"] = pd["Ki(?=EL)"] + "&" +  pd["Na"]
+pd["NaI"] = pd["Na."] + "&" + pd["I"]
 pd["MaNa"] = pd["Ma."] + "&" + pd["Na"]
 pd["TsuMo"] = pd["Tsu(?=ER)"] + "&" + pd["Mo"]
 pd["WaNa"] = pd["Wa(?=EL)"] + "&" + pd["Na"]
@@ -425,6 +426,8 @@ cdict = {
         'tag': {
             'i',
             'er4',
+            '@head_er',
+            '@head_er4',
         },
         'default_glyph': create_glyph(pd['I']),
         'glyphs': [
@@ -988,6 +991,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Na']),
         'glyphs': [
+            create_glyph(pd['NaI'], key='@head_er4[1]'),
         ],
     },
     'Naru': {
