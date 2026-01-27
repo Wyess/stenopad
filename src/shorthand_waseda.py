@@ -227,6 +227,7 @@ wdict = {
     'する（点）': 'DotSuru',
     'するｐ': 'DotSuru',
     'た': 'Ta',
+    'たｒ': 'Tar',
     '誰': 'Taxe',
     'た（え略）': 'Taxe',
     'たぇ': 'Taxe',
@@ -835,6 +836,15 @@ cdict = {
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
             create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]', ascent=1.5, name='TaHenki'),
+        ],
+    },
+    'Tar': {
+        'tag': {
+            'tar',
+            '@head_sw',
+        },
+        'default_glyph': create_glyph(pd['Ta'], ascent=1.5, post_offset=polar(1.5, vdict['ta_angle'])),
+        'glyphs': [
         ],
     },
     'Taxe': {
