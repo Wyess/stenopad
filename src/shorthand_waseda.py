@@ -907,6 +907,7 @@ cdict = {
         'glyphs': [
             create_pos_glyph(-2, 4, key='@tail_se8[-1].@head_sw4[1]'),
             create_pos_glyph(-1, 0, key='a[-1].@head_sw[1]'),
+            create_pos_glyph(-4, -2.5, key='to[-1].@head_sw[1]'),
         ],
     },
     'TeJoshi': {
