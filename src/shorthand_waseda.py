@@ -17,6 +17,7 @@ pd = {}
 pd["1"] = "O -- (-115: 22)"
 pd["A."] = "O{-30} .. tension 1.2 .. 4E"
 pd["A"] = pd["A."] + "{90}"
+pd["A(bend)"] = "O{-30} .. tension 1.1 .. 4E{120}"
 pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
 pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
 pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
@@ -415,7 +416,8 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['A']),
         'glyphs': [
-            create_glyph(pd['AI'], key='i[1]')
+            create_glyph(pd['AI'], key='i[1]'),
+            create_glyph(pd['A(bend)'], key='@head_e[1]|@head_nel[1]')
         ],
     },
     'Ai': {
