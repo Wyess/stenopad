@@ -266,8 +266,18 @@ class PathExpressionTransformer(Transformer):
         return args[0]
 
     def pair_primary(self, args):
-        lparen, x, comma, y, rparen = args
-        return Point(x, y)
+        _, x, _, y, _, a, _ = args
+        if a is None:
+            return Point(x, y)
+        else:
+            rad = math.radians(a)
+            cos = math.cos(rad)
+            sin = math.sin(rad)
+            x, y = (
+                cos * x - sin * y,
+                sin * x + cos * y
+            )
+            return Point(x, y)
 
     def atpair_primary(self, args):
         lparen, arclength, comma, path_index, rparen = args
