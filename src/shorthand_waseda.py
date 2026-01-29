@@ -1300,7 +1300,7 @@ cdict = {
     'Yu': {
         'tag': {
             'yu',
-            '@jead_ner',
+            '@head_ner',
         },
         'default_glyph': create_glyph(pd['Yu']),
         'glyphs': [
