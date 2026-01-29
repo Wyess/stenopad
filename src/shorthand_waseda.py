@@ -258,6 +258,7 @@ wdict = {
     'な': 'Na',
     'なか（点）': 'DotNaka',
     'なかｐ': 'DotNaka',
+    'ながら': ['Na', 'DotShi'], 
     'なる': 'Naru',
     'なん': 'Nan',
     '何': 'Nan',
@@ -751,6 +752,7 @@ cdict = {
         },
         'default_glyph': create_dot_glyph(-4, 1.5),
         'glyphs': [
+            create_dot_glyph(-3.5, 0, key='na[-1]'),
         ],
     },
     'Shin': {
