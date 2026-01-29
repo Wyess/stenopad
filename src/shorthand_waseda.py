@@ -717,6 +717,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Sa'], ascent=-1.5),
         'glyphs': [
             create_glyph(pd['SaHenki'], key="@head_e[-1]", name='SaHenki'),
+            create_glyph(pd['Sa(bend)'], key="@head_e[1]|@head_er[1]"),
         ],
     },
     'Satsu': {
