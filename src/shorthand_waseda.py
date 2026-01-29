@@ -47,6 +47,7 @@ pd["Ku"] = "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)"
 pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
 pd["Ker"] = "O -- 16E -- ++4NW"
 pd["Ko"] = "O -- 16E"
+pd["Kou"] = "O -- 4E 2E -- ++1S"
 pd["Ko(jog)"] = pd["Ko"] + "-- ++(-170: 1)"
 pd["Koto"] = "O -- 8S"
 pd["Koto(jog)"] = pd["Koto"] + "-- ++(80: 1)"
@@ -205,6 +206,7 @@ wdict = {
     'けｒ': 'Ker',
     'こ': 'Ko',
     'こい': 'Koi',
+    'こう': 'Kou',
     'こえ': 'Koi',
     'こく': 'Koi',
     '心': 'Kokoro',
@@ -661,6 +663,17 @@ cdict = {
         'default_glyph': create_glyph(pd['Koi']),
         'glyphs': [
             #create_glyph(pd['Ko(jog)'], key='@head_e[1]'),
+        ],
+    },
+    'Kou': {
+        'tag': {
+            'kou',
+            'e4_s1',
+            '@head_e',
+        },
+        'default_glyph': create_glyph(pd['Kou']),
+        'glyphs': [
+            create_glyph(pd['Kai'], key='@head_swl[1]|@head_swr[1]|@head_sw[1]|@head_sl[1]|@head_sr[1]|@head_s[1]|@head_sel[1]|@head_ser[1]|@head_se[1]|@head_el[1]', post_offset=(-2, 0)),
         ],
     },
     'Koto': {
