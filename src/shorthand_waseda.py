@@ -67,6 +67,7 @@ pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
 pd["Su(?=EL)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. @(-2.5, -1) + (130: 2.8) .. ++(130: -2.8)"
 pd["Su"] = pd["Su(?=EL)"] + "{-30}"
 pd["Su(?=ER)"] = "O{30} .. tension 1.3 .. {140}(60: 6.5) .. tension 1.5 .. @(-2.5, -1) + (10: -2.5) .. ++(10: 2.5)"
+pd["Subete"] = "O -- 4E{-164} .. tension 1.4 .. +(-124: 3){-70} .. {20}+(-80: 3)"
 pd["So."] = "O{34} .. tension 1.6 .. (45: 16)"
 pd["So"] = pd["So."] + "{90}"
 pd["Sho"] = pd["So."] + "{130} .. @(-5, -1) + (130: 5.0) .. ++(130: -5.0){-30}"
@@ -152,6 +153,7 @@ pd["Me(?=Na)"] = "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) 
 pd["Ya"] = "O{70} .. {0}(40: 8)"
 pd["Yu"] = "O{70} .. {-30}(40: 8) .. tension 1.1 .. @(-0.0, -1) + (-135: 1.4) .. ++(-135: -1.4){45}"
 pd["Yu(?=E)"] = "O{70} .. {-40}(40: 8) .. +(-0.8, -1.0) .. {0}  +(180: 1) .. +(0, 0){0}"
+pd["Yo"] = "O{70} .. tension 1.7 .. {0}(45: 16)"
 pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(-60: 8)"
 pd["Rai"] = "O{-35} .. tension 1.2 .. {-120}(-60: 4)"
 pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
@@ -230,6 +232,7 @@ wdict = {
     'しん': 'Shin',
     '新聞': 'Sen',
     'す': 'Su',
+    'すべて': 'Subete',
     'せ': 'Se',
     'せん': 'Sen',
     'そ': 'So',
@@ -300,6 +303,7 @@ wdict = {
     'もの': 'Mono',
     'や': 'Ya',
     'ゆ': 'Yu',
+    'よ': 'Yo',
     'ら': 'Ra',
     'ら（点）': 'Ra(dot)',
     'らｐ': 'Ra(dot)',
@@ -815,6 +819,15 @@ cdict = {
             create_glyph(pd['SuMa'], key='@head_er8[1]', ascent=-1.5),
         ],
     },
+    'Subete': {
+        'tag': {
+            'subete',
+            '@head_e',
+        },
+        'default_glyph': create_glyph(pd['Subete'], ascent=1.0),
+        'glyphs': [
+        ],
+    },
     'Se': {
         'tag': {
             'se',
@@ -1307,6 +1320,15 @@ cdict = {
         'default_glyph': create_glyph(pd['Yu']),
         'glyphs': [
             create_glyph(pd['Yu(?=E)'], key='@head_e[1]'),
+        ],
+    },
+    'Yo': {
+        'tag': {
+            'yo',
+            '@head_ner',
+        },
+        'default_glyph': create_glyph(pd['Yo']),
+        'glyphs': [
         ],
     },
     'Ra': {
