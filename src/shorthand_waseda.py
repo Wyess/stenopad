@@ -153,6 +153,7 @@ pd["Ya"] = "O{70} .. {0}(40: 8)"
 pd["Yu"] = "O{70} .. {-30}(40: 8) .. tension 1.1 .. @(-0.0, -1) + (-135: 1.4) .. ++(-135: -1.4){45}"
 pd["Yu(?=E)"] = "O{70} .. {-40}(40: 8) .. +(-0.8, -1.0) .. {0}  +(180: 1) .. +(0, 0){0}"
 pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(-60: 8)"
+pd["Rai"] = "O{-35} .. tension 1.2 .. {-120}(-60: 4)"
 pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
 pd["KiNa"] = pd["Ki(?=EL)"] + "&" +  pd["Na"]
 pd["NaI"] = pd["Na."] + "&" + pd["I"]
@@ -302,6 +303,7 @@ wdict = {
     'ら': 'Ra',
     'ら（点）': 'Ra(dot)',
     'らｐ': 'Ra(dot)',
+    'らい': 'Rai',
     'られ': ['PosRare', 'Wa'],
     'ろう': ['PosRou', 'A'],
     'わ': 'Wa',
@@ -1313,6 +1315,16 @@ cdict = {
             '@head_ser',
         },
         'default_glyph': create_glyph(pd['Ra']),
+        'glyphs': [
+        ],
+    },
+    'Rai': {
+        'tag': {
+            'rai',
+            '@head_ser',
+            '@head_ser4',
+        },
+        'default_glyph': create_glyph(pd['Rai']),
         'glyphs': [
         ],
     },
