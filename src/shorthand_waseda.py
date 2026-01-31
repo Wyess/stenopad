@@ -78,6 +78,7 @@ pd["Taxe"] = "O -- (ta_angle: 8) (ta_angle: 7) -- ++(-45: 0.5)"
 pd["TaHenki"] = "O -- (30: 8)"
 pd["Tajuon"] = "O -- 30E"
 pd["Cha"] = "O -- (22.5: 8)"
+pd["Chi"] = "O -- (7.5, 0, ta_angle) .. (8, -0.5, ta_angle) .. {45}@(-2, -2)"
 pd["Che"] = "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)"
 pd["ChaHenki"] = "O -- (45: -8)"
 pd["TeJoshi"] = "O -- (60: -4.0){100} .. {145}++(108: 1.9)"
@@ -249,6 +250,7 @@ wdict = {
     'たぇ': 'Taxe',
     'だけ': ['PosDake', 'Ta'],
     'たまに': ['Ta', 'PosTamani', 'Ni'],
+    'ち': 'Chi',
     'つ': 'Tsu',
     'て（助詞）': 'TeJoshi',
     'てｊ': 'TeJoshi',
@@ -948,6 +950,15 @@ cdict = {
         'default_glyph': create_glyph(pd['Cha'], ascent=-1),
         'glyphs': [
             create_glyph(pd['ChaHenki'], key='ta_henki[-1]|cha[-1]', ascent=-1, name='ChaHenki'),
+        ],
+    },
+    'Chi': {
+        'tag': {
+            'chi',
+            '@head_sw',
+        },
+        'default_glyph': create_glyph(pd['Chi'], ascent=1.5),
+        'glyphs': [
         ],
     },
     'Che': {
