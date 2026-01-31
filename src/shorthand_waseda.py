@@ -60,6 +60,7 @@ pd["Sa(bend)"] = pd["Sa."] + "{120}"
 pd["Satsu."] = "(1.5, 0){90} .. tension 1.2 .. ++O{-60} .. ++(1.5, 0) .. tension 1.3 .. ++(45: 8)"
 pd["Satsu"] = pd["Satsu."] + "{90}"
 pd["SaHenki"] = "O{-90} .. tension 1.2 .. {180}(-120: 8)"
+pd["YaSa"] = "O{75} .. tension 1.5 .. {-45}(45: 8) & O{-45} .. tension 1.5 .. {195}(-120: 8)"
 pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-1.8, -1) + (130: 1.8) .. ++(130: -1.8)"
 pd["Shi(?=E)"] = "O{30} .. tension 1.3 .. {130}(60: 7) .. @(-0.7, -1) + (180: 1.4){0} .. ++(180: -1.4)"
 pd["Shin"] = "O{30} .. tension 1.3 .. {150}(60: 8) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0) "
@@ -730,6 +731,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Sa'], ascent=-1.5),
         'glyphs': [
+            create_glyphs(pd['YaSa'], keys=['', '@tail_ner[-1]'], ascents=[0, 0], names=[None, 'SaHenki'], post_offsets=[(0, 0), (0, 0)])[1],
             create_glyph(pd['SaHenki'], key="@head_e[-1]", name='SaHenki'),
             create_glyph(pd['Sa(bend)'], key="@head_e[1]|@head_er[1]"),
         ],
@@ -749,6 +751,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['SaHenki'], name='SaHenki'),
         'glyphs': [
+            create_glyphs(pd['YaSa'], keys=['', '@tail_ner[-1]'], ascents=[0, 0], names=[None, 'SaHenki'], post_offsets=[(0, 0), (0, 0)])[1],
         ],
     },
     'Shi': {
@@ -1322,9 +1325,11 @@ cdict = {
         'tag': {
             'ya',
             '@ner',
+            '@tail_ner',
         },
         'default_glyph': create_glyph(pd['Ya']),
         'glyphs': [
+            create_glyph(pd['YaSa'], key='sa_henki[1]'),
         ],
     },
     'Yu': {
