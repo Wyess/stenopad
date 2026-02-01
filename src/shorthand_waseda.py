@@ -62,6 +62,7 @@ pd["Satsu"] = pd["Satsu."] + "{90}"
 pd["SaHenki"] = "O{-90} .. tension 1.2 .. {180}(-120: 8)"
 pd["(?<=NER)Sa"] = "O{-45} .. tension 1.5 .. {240 - 45}(-8, -1.5, 45)"
 pd["(?<=NER)Su"] = "O{-45} .. tension 1.5 .. {195 - 45}(-8, -1.5, 45) .. {0}@(-5, -1)"
+pd["(?<=NER)Su(?=ER8)"] = "O{-45} .. tension 1.5 .. {225 - 45}(-7.5, -2.0, 45) .. {30}@(-6.0, -1)"
 pd["YaSa"] = "&".join(("O{120 - 45} .. tension 1.5 .. {-45}(8, -1.5, 45)", pd["(?<=NER)Sa"]))
 pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-1.8, -1) + (130: 1.8) .. ++(130: -1.8)"
 pd["Shi(?=E)"] = "O{30} .. tension 1.3 .. {130}(60: 7) .. @(-0.7, -1) + (180: 1.4){0} .. ++(180: -1.4)"
@@ -828,6 +829,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Su'], ascent=-1.5),
         'glyphs': [
+            create_glyph(pd['(?<=NER)Su(?=ER8)'], key='@tail_ner[-1].@head_er8[1]'),
             create_glyph(pd['(?<=NER)Su'], key='@tail_ner[-1]'),
             create_glyph(pd['SuMa'], key='@head_er8[1]', ascent=-1.5),
         ],
