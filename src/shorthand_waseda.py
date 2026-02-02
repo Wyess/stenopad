@@ -9,6 +9,7 @@ from path_expression_parser import create_path_expression_parser
 
 vdict = {
     'ta_angle': -120,
+    'ta_henki_angle': 30,
     'to_henki_angle': -115,
     'ha_ascent': 4,
 }
@@ -166,6 +167,7 @@ pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(-60: 8)"
 pd["Rai"] = "O{-35} .. tension 1.2 .. {-120}(-60: 4)"
 pd["Ro"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16)"
 pd["Re"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16) .. @(-2.5, -1) + (-125: 0.8) .. {45}@(-2.4, -2)"
+pd["Re(?='TaHenki')"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16) .. {ta_henki_angle}@(-2.0, -1) + (ta_henki_angle: -1.5) -- @(-2.0, -2)"
 pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
 pd["KiNa"] = pd["Ki(?=EL)"] + "&" +  pd["Na"]
 pd["NaI"] = pd["Na."] + "&" + pd["I"]
@@ -897,7 +899,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
-            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]', ascent=1.5, name='TaHenki'),
+            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]|@tail_ser16cr1[-1]', ascent=1.5, name='TaHenki'),
         ],
     },
     'Tar': {
@@ -1393,9 +1395,11 @@ cdict = {
         'tag': {
             're',
             '@head_ser',
+            '@tail_ser16cr1',
         },
         'default_glyph': create_glyph(pd['Re'], ascent=5),
         'glyphs': [
+            create_glyph(pd["Re(?='TaHenki')"], ascent=5, key='ta_henki[1]'),
         ],
     },
     'Ro': {
