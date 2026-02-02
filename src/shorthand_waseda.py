@@ -95,6 +95,7 @@ pd["To"] = "O -- (40: 16)"
 pd["To(?=E)"] = "O -- (45: 16)"
 pd["ToHenki"] = "O -- (to_henki_angle: 16)"
 pd["ToJoshi"] = "O -- (60: -4.0){30} .. {0}++(30: 1.9)"
+pd["Tori"] = "O -- 7.5S{S} .. (0.5, -8) .. {135}@(-2.5, -1)"
 pd["Tsu"] = "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)"
 pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
 pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
@@ -270,6 +271,8 @@ wdict = {
     'とｊ': 'ToJoshi',
     'とこ': 'Toko',
     'とにかく': ['O', 'Na', 'PosKakuHead', 'Ka'],
+    'とり': 'Tori',
+    'とれ': 'Tori',
     'ちゃ': 'Cha',
     'ちぇ': 'Che',
     'てｒ': 'Che',
@@ -1063,6 +1066,15 @@ cdict = {
             '@head_ne',
         },
         'default_glyph': create_glyph(pd['Fu'], ascent=-1.5),
+        'glyphs': [
+        ],
+    },
+    'Tori': {
+        'tag': {
+            'tori',
+            '@head_s',
+        },
+        'default_glyph': create_glyph(pd['Tori'], ascent=4),
         'glyphs': [
         ],
     },
