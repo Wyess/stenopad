@@ -96,6 +96,7 @@ pd["To(?=E)"] = "O -- (45: 16)"
 pd["ToHenki"] = "O -- (to_henki_angle: 16)"
 pd["ToJoshi"] = "O -- (60: -4.0){30} .. {0}++(30: 1.9)"
 pd["Tori"] = "O -- 7.5S{S} .. (0.5, -8) .. {135}@(-2.5, -1)"
+pd["Tori(?=SW)"] = "O -- 7.5S{S} .. (0.5, -8) .. tension 1.2 .. {ta_angle}@(-0.0, -2) + (ta_angle: -0.9) -- ++(ta_angle: 0.9)"
 pd["Tsu"] = "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)"
 pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
 pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
@@ -1078,6 +1079,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Tori'], ascent=4),
         'glyphs': [
+            create_glyph(pd['Tori(?=SW)'], ascent=4, key='@head_sw[1]'),
         ],
     },
     'Na': {
