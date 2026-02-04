@@ -23,6 +23,8 @@ pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
 pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
 pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
 pd["I."] = "O{30} .. tension 1.0 .. 4E"
+pd["Itsu."] = "(45: 1.6){S} .. O{N} .. (45: 1.6) .. tension 1.0 .. 4E"
+pd["Itsu"] = pd["Itsu."] + "{-100}"
 pd["I"] = pd["I."] + "{-100}"
 pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
 pd["U"] = "O -- 4S"
@@ -194,6 +196,7 @@ wdict = {
     'あるｐ': 'Aru(dot)',
     'い': 'I',
     'いい': 'Ii',
+    'いつ': 'Itsu',
     'いる': ['PosIru', 'I'],
     'う': 'U',
     'うち（交差）': ['PosUchi', 'U'],
@@ -486,6 +489,16 @@ cdict = {
         'default_glyph': create_glyph(pd['Ii']),
         'glyphs': [
              create_glyph(pd['Ii(?=S)']),
+        ],
+    },
+    'Itsu': {
+        'tag': {
+            'itsu',
+            'cr1er4',
+            '@head_cr1er',
+        },
+        'default_glyph': create_glyph(pd['Itsu']),
+        'glyphs': [
         ],
     },
     'U': {
