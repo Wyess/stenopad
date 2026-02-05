@@ -141,6 +141,7 @@ pd["Na."] = "O{-30} .. tension 1.3 .. 8E"
 pd["Na"] = pd["Na."] + "{90}"
 pd["Nan"] = pd["Na."] + "{45}"
 pd["Naru"] = pd["Na."] + "{80} .. {S}++1.5S"
+pd["ItsuNa"] = '&'.join((pd["Itsu."], pd["Na"]))
 pd["Ma"] = pd["Ma."] + "{-90}"
 pd["TeJoshi(?=Ma)"] = cat(("TeJoshi(?=ER)", "Ma"), pd)
 pd["Ii"] = pd["I."] + "{-90} .. @(-0.7, -1) + (60: -1.8) .. {60}++(60: 1.8)"
@@ -499,6 +500,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Itsu']),
         'glyphs': [
+            create_glyph(pd['ItsuNa'], key='@head_el8[1]'),
         ],
     },
     'U': {
