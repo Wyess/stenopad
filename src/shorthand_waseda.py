@@ -436,6 +436,7 @@ cdict = {
         },
         'default_glyph': create_dot_glyph(-4, 2),
         'glyphs': [
+            create_dot_glyph(-8, 5, key='(ho[-1]|hoku[-1]).mo_joshi[1]'),
             create_dot_glyph(-7, 2, key='ho[-1]|hoku[-1]'),
         ],
     },
