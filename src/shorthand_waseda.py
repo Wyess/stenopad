@@ -87,6 +87,7 @@ pd["Tajuon"] = "O -- 30E"
 pd["Cha"] = "O -- (22.5: 8)"
 pd["Chi"] = "O -- (7.5, 0, ta_angle) .. (8, -0.5, ta_angle) .. {45}@(-2, -2)"
 pd["Tsumori"] = "O -- (7.0, 0, ta_angle) .. (8, -1.0, ta_angle) .. {40}@(-3.8, -2)"
+pd["Tsumori(?=E)"] = "O -- (7.0, 0, ta_angle) .. (8, -1.0, ta_angle) .. {0}@(-3.0, -2) + 1.5W .. {0}++1.5E"
 pd["Che"] = "O -- (22.5: 7.5){22.5} .. ++(22.5-90: 0.9) .. @(-1.0, -2)"
 pd["ChaHenki"] = "O -- (45: -8)"
 pd["TeJoshi"] = "O -- (60: -4.0){100} .. {145}++(108: 1.9)"
@@ -268,6 +269,7 @@ wdict = {
     'たまに': ['Ta', 'PosTamani', 'Ni'],
     'ち': 'Chi',
     'つ': 'Tsu',
+    'つもり': 'Tsumori',
     'て（助詞）': 'TeJoshi',
     'てｊ': 'TeJoshi',
     'テｒ': 'Terx',
@@ -1025,6 +1027,16 @@ cdict = {
             create_pos_glyph(-2, 4, key='@tail_se8[-1].@head_sw4[1]'),
             create_pos_glyph(-1, 0, key='a[-1].@head_sw[1]'),
             create_pos_glyph(-4, -2.5, key='to[-1].@head_sw[1]'),
+        ],
+    },
+    'Tsumori': {
+        'tag': {
+            'tsumori',
+            '@head_sw',
+        },
+        'default_glyph': create_glyph(pd['Tsumori'], ascent=2),
+        'glyphs': [
+             create_glyph(pd['Tsumori(?=E)'], ascent=2, key='@head_e[1]'),
         ],
     },
     'TeJoshi': {
