@@ -39,7 +39,10 @@ class GlyphSelectorTransformer(Transformer):
                 char = char.prev
             if char is None:
                 return tag == 'sos'
-        return tag in char.tag
+        if 'tag' in char.glyph:
+            return tag in char.glyph['tag']
+        else:
+            return tag in char.tag
 
     def paren_expr(self, args):
         return args[0]

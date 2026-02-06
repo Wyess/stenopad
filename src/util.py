@@ -33,7 +33,7 @@ def get_dp(paths, post_offset):
         'dy': -dp[1] / u - post_offset[1]
     }
 
-def create_glyphs(code, keys, ascents, names, post_offsets):
+def create_glyphs(code, keys, ascents, names, post_offsets, tags=None):
     #path_groups = parse_path_expression(code)
     path_groups = path_expression_parser.parse(code)
     glyphs = []
@@ -49,12 +49,14 @@ def create_glyphs(code, keys, ascents, names, post_offsets):
         }
         if names[i]:
             glyph['name'] = names[i]
+        if tags and tags[i] is not None:
+            glyph['tag'] = tags[i]
         glyphs.append(glyph)
 
     return glyphs
 
-def create_glyph(code, key='default', ascent=0, name=None, post_offset=(0, 0)):
-    return create_glyphs(code, [key], [ascent], [name], [post_offset])[0]
+def create_glyph(code, key='default', ascent=0, name=None, post_offset=(0, 0), tag=None):
+    return create_glyphs(code, [key], [ascent], [name], [post_offset], [tag])[0]
 
 def create_ligature(code, keys, ascents, names):
     #path_groups = parse_path_expression(code)

@@ -58,7 +58,7 @@ class Character:
 
     @property
     def name(self):
-        return self.glyph.get('name', self._name)
+        return self._name
 
     @property
     def is_marker(self):
@@ -102,16 +102,18 @@ class Character:
     @property
     def glyphs(self):
         try:
-            return self.sh['character'][self._name]['glyphs']
+            return self.sh['character'][self.name]['glyphs']
         except KeyError:
             print('except KeyError:')
             return []
 
     def select_glyph(self):
-        for glyph in self.glyphs:
+        for i, glyph in enumerate(self.glyphs):
             if parse_glyph_selector(glyph['key'], self):
                 self.glyph = glyph
-                return self.name
+                return i
+        self.glyph = self.char['default_glyph']
+        return -1
 
     def bak_create_path_element(self, time_s=0, to_animate=False, speed_mm_per_s=20):
         path_elem = ""
