@@ -257,13 +257,9 @@ class String:
         return frames
 
     def select_glyphs(self):
-        indices = [-1] * len(self.chars)
-        new_indices = [char.select_glyph() for char in self.chars]
-        count = 0
-
-        while new_indices != indices:
-            indices = new_indices
-            new_indices = [char.select_glyph() for char in self.chars]
-            assert count < 10, "Too many iterations in select_glyphs()"
-            count += 1
+        for count in range(10):
+            changed_list = [char.select_glyph() for char in self.chars]
+            if not any(changed_list):
+                return
+        raise Exception("Too many iterations in select_glyphs()")
 

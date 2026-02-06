@@ -108,12 +108,12 @@ class Character:
             return []
 
     def select_glyph(self):
-        for i, glyph in enumerate(self.glyphs):
+        for glyph in self.glyphs:
             if parse_glyph_selector(glyph['key'], self):
-                self.glyph = glyph
-                return i
-        self.glyph = self.char['default_glyph']
-        return -1
+                self.glyph, changed = (glyph, self.glyph is not glyph)
+                return changed
+        self.glyph, changed = self.char['default_glyph'], (self.glyph is not self.char['default_glyph'])
+        return changed
 
     def bak_create_path_element(self, time_s=0, to_animate=False, speed_mm_per_s=20):
         path_elem = ""
