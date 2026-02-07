@@ -1,5 +1,4 @@
 from text_parser import parse_text
-#from more_itertools import ( pairwise, split_after, partitions)
 import math
 import logging
 import random
@@ -86,19 +85,6 @@ class String:
             <rect x="{bbox.left}" y="{bbox.top}" width="100%" height="100%" fill="rgb(255 255 255)" />
             {{}}</svg>"""
 
-    #def get_chars(self, text):
-    #    chars = []
-    #    for word in parse_text(text):
-    #        for parts in partitions(word):
-    #            subwords = ["".join(part) for part in parts]
-    #            if all([subword in self.sh.dictionary for subword in subwords]):
-    #                for subword in subwords:
-    #                    for char_name in self.sh.dictionary[subword]:
-    #                        chars.append(Character(char_name, self.sh))
-    #                break
-    #        else:
-    #            chars.append(Character('Null', self.sh))
-    #    return chars
     def get_chars(self, text):
         chars = []
         for word in parse_text(text, self.sh['dictionary'], self.sh['trie']):
@@ -108,7 +94,6 @@ class String:
 
     def connect(self):
         base = None
-        idx = 0
         for char in self.chars:
             char.prev = base
             if char.is_marker:
@@ -116,7 +101,6 @@ class String:
             elif base:
                 base.next = char
             base = char
-            char.idx = idx
 
     def __str__(self):
         return self.create_svg()[0]
@@ -257,9 +241,8 @@ class String:
         return frames
 
     def select_glyphs(self):
-        for count in range(10):
-            changed_list = [char.select_glyph() for char in self.chars]
-            if not any(changed_list):
+        for _ in range(10):
+            if sum(char.select_glyph() for char in self.chars) == 0:
                 return
         raise Exception("Too many iterations in select_glyphs()")
 
