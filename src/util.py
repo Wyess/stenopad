@@ -33,8 +33,7 @@ def get_dp(paths, post_offset):
         'dy': -dp[1] / u - post_offset[1]
     }
 
-def create_glyphs(code, keys, ascents, names, post_offsets, tags=None):
-    #path_groups = parse_path_expression(code)
+def create_glyphs(code, keys, ascents, post_offsets, tags=None):
     path_groups = path_expression_parser.parse(code)
     glyphs = []
     for i, path_group in enumerate(path_groups):
@@ -47,19 +46,16 @@ def create_glyphs(code, keys, ascents, names, post_offsets, tags=None):
             **get_dp(path_group, post_offsets[i]),
             **create_bbox(path_group),
         }
-        if names[i]:
-            glyph['name'] = names[i]
         if tags and tags[i] is not None:
             glyph['tag'] = tags[i]
         glyphs.append(glyph)
 
     return glyphs
 
-def create_glyph(code, key='default', ascent=0, name=None, post_offset=(0, 0), tag=None):
-    return create_glyphs(code, [key], [ascent], [name], [post_offset], [tag])[0]
+def create_glyph(code, key='default', ascent=0, post_offset=(0, 0), tag=None):
+    return create_glyphs(code, [key], [ascent], [post_offset], [tag])[0]
 
-def create_ligature(code, keys, ascents, names):
-    #path_groups = parse_path_expression(code)
+def create_ligature(code, keys, ascents):
     path_groups = path_expression_parser.parse(code)
     glyphs = []
     for i, path_group in enumerate(path_groups):
@@ -72,8 +68,6 @@ def create_ligature(code, keys, ascents, names):
             **get_dp(path_group),
             **create_bbox(path_group),
         }
-        if names[i]:
-            glyph['name'] = names[i]
         glyphs.append(glyph)
 
     return glyphs

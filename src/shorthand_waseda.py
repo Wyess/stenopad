@@ -366,6 +366,30 @@ kdict = {
     'sp_or_eos': 'eos[1]|space[1]|newline[1]',
 }
 
+tagdict = {
+    'oo': {
+        'oo',
+        'sw4cl1',
+        '@head_sw',
+    },
+    'sa_henki': {
+        'sa_henki',
+        '@head_swr'
+    },
+    'ta_henki': {
+        'ta_henki',
+        '@head_ne',
+    },
+    'cha_henki': {
+        'cha_henki',
+        '@head_sw',
+    },
+    'to_henki': {
+        'to_henki',
+        '@head_sw',
+    },
+}
+
 cdict = {
     'Null': {
         'tag': {'null'},
@@ -573,14 +597,10 @@ cdict = {
         ],
     },
     'Oo': {
-        'tag': {
-            'oo',
-            'sw4cl1',
-            '@head_sw',
-        },
-        'default_glyph': create_glyph(pd['Oo'], name='Oo'),
+        'tag': tagdict['oo'],
+        'default_glyph': create_glyph(pd['Oo']),
         'glyphs': [
-            create_glyph(pd['Oo'], name='Oo'),
+            create_glyph(pd['Oo']),
         ],
     },
     'Ka': {
@@ -763,8 +783,8 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Sa'], ascent=-1.5),
         'glyphs': [
-            create_glyphs(pd['YaSa'], keys=['', '@tail_ner[-1]'], ascents=[0, 0], names=[None, 'SaHenki'], post_offsets=[(0, 0), (0, 0)])[1],
-            create_glyph(pd['SaHenki'], key="@head_e[-1]", name='SaHenki'),
+            create_glyphs(pd['YaSa'], keys=['', '@tail_ner[-1]'], ascents=[0, 0], post_offsets=[(0, 0), (0, 0)], tags=[{}, {'sa_henki', '@head_swr'}])[1],
+            create_glyph(pd['SaHenki'], key="@head_e[-1]", tag=tagdict['sa_henki']),
             create_glyph(pd['Sa(bend)'], key="@head_e[1]|@head_er[1]"),
         ],
     },
@@ -777,13 +797,10 @@ cdict = {
         ],
     },
     'SaHenki': {
-        'tag': {
-            'sa_henki',
-            '@head_swr',
-        },
-        'default_glyph': create_glyph(pd['SaHenki'], name='SaHenki'),
+        'tag': tagdict['sa_henki'],
+        'default_glyph': create_glyph(pd['SaHenki'], tag=tagdict['sa_henki']),
         'glyphs': [
-            create_glyphs(pd['YaSa'], keys=['', '@tail_ner[-1]'], ascents=[0, 0], names=[None, 'SaHenki'], post_offsets=[(0, 0), (0, 0)])[1],
+            create_glyphs(pd['YaSa'], keys=['', '@tail_ner[-1]'], ascents=[0, 0], post_offsets=[(0, 0), (0, 0)])[1],
         ],
     },
     'Shi': {
@@ -923,7 +940,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
-            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]|@tail_ser16cr1[-1]', ascent=1.5, name='TaHenki'),
+            create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]|@tail_ser16cr1[-1]', ascent=1.5, tag=tagdict['ta_henki']),
         ],
     },
     'Tar': {
@@ -972,10 +989,7 @@ cdict = {
         ],
     },
     'TaHenki': {
-        'tag': {
-            'ta_henki',
-            '@head_ne',
-        },
+        'tag': tagdict['ta_henki'],
         'default_glyph': create_glyph(pd['TaHenki'], ascent=-1.5),
         'glyphs': [
         ],
@@ -987,7 +1001,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Cha'], ascent=-1),
         'glyphs': [
-            create_glyph(pd['ChaHenki'], key='ta_henki[-1]|cha[-1]', ascent=-1, name='ChaHenki'),
+            create_glyph(pd['ChaHenki'], key='ta_henki[-1]|cha[-1]', ascent=-1, tag=tagdict['cha_henki']),
         ],
     },
     'Chi': {
@@ -1068,15 +1082,12 @@ cdict = {
         'default_glyph': create_glyph(pd['To'], ascent=-2.5),
         'glyphs': [
             create_glyph(pd['To(?=E)'], key='@head_e[1]', ascent=-2.5),
-            create_glyph(pd['ToHenki'], key='@head_ne[-1]', ascent=2.5, name='ToHenki'),
+            create_glyph(pd['ToHenki'], key='@head_ne[-1]', ascent=2.5, tag=tagdict['to_henki']),
         ],
     },
     'ToHenki': {
-        'tag': {
-            'to_henki',
-            '@head_sw',
-        },
-        'default_glyph': create_glyph(pd['ToHenki'], ascent=-2.5, name='ToHenki'),
+        'tag': tagdict['to_henki'],
+        'default_glyph': create_glyph(pd['ToHenki'], ascent=-2.5),
         'glyphs': [
             create_glyph(pd['ToHenki'], key='@head_e[1]', ascent=-2.5),
         ],
@@ -1088,7 +1099,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['ToJoshi'], ascent=-1.5),
         'glyphs': [
-            create_glyph(pd['Oo'], key=f"!({kdict['sp_or_eos']}).!null[1]", name='Oo')
+            create_glyph(pd['Oo'], key=f"!({kdict['sp_or_eos']}).!null[1]", tag=tagdict['oo'])
         ],
     },
     'Toko': {
