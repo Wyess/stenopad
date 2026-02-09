@@ -8,6 +8,7 @@ import math
 from path_expression_parser import create_path_expression_parser
 
 vdict = {
+    'i_head_angle': 30,
     'ta_angle': -120,
     'ta_henki_angle': 30,
     'to_henki_angle': -115,
@@ -22,7 +23,7 @@ pd["A(bend)"] = "O{-30} .. tension 1.1 .. 4E{120}"
 pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (130: 1.7) .. ++(130: -1.7)"
 pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
 pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
-pd["I."] = "O{30} .. tension 1.0 .. 4E"
+pd["I."] = "O{i_head_angle} .. tension 1.0 .. 4E"
 pd["Itsu."] = "(45: 1.6){S} .. O{N} .. (45: 1.6) .. tension 1.0 .. 4E"
 pd["Itsu"] = pd["Itsu."] + "{-100}"
 pd["I"] = pd["I."] + "{-100}"
@@ -69,6 +70,7 @@ pd["(?<=NER)Su"] = "O{-45} .. tension 1.5 .. {195 - 45}(-8, -1.5, 45) .. {0}@(-5
 pd["(?<=NER)Su(?=ER8)"] = "O{-45} .. tension 1.5 .. {225 - 45}(-7.3, -2.5, 45) .. {30}@(-6.0, -1)"
 pd["YaSa"] = "&".join(("O{120 - 45} .. tension 1.5 .. {-45}(8, -1.5, 45)", pd["(?<=NER)Sa"]))
 pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-1.8, -1) + (130: 1.8) .. ++(130: -1.8)"
+pd["Shi(?=ER4)"] = "O{30} .. tension 1.3 .. {150}(60: 7) .. @(-0.6, -1) + (i_head_angle: -1.4) .. ++(i_head_angle: 1.4){i_head_angle}"
 pd["Shi(?=E)"] = "O{30} .. tension 1.3 .. {130}(60: 7) .. @(-0.7, -1) + (180: 1.4){0} .. ++(180: -1.4)"
 pd["Shin"] = "O{30} .. tension 1.3 .. {150}(60: 8) .. tension 1.1 .. @(-0.4, -1) + (195: 2.0) ..  @(-0.4, -2) + (30: -1.5) -- ++(30: 3.0) "
 pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
@@ -816,6 +818,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Shi'], ascent=-1.5),
         'glyphs': [
             create_glyph(pd['ShiHenki'], key="@head_e[-1]|@head_ne[-1]", tag=tagdict['shi_henki']),
+            create_glyph(pd['Shi(?=ER4)'], ascent=-1.5, key='@head_er4[1]'),
             create_glyph(pd['Shi(?=E)'], ascent=-1.5, key='@head_e[1]'),
         ],
     },
