@@ -260,6 +260,7 @@ wdict = {
     'せ': 'Se',
     'せん': 'Sen',
     'そ': 'So',
+    'そん': 'Son',
     'それ': 'Sore',
     '其': 'Sore',
     'する（点）': 'DotSuru',
@@ -925,6 +926,15 @@ cdict = {
             '@head_nel',
         },
         'default_glyph': create_glyph(pd['So'], ascent=-8.0),
+        'glyphs': [
+        ],
+    },
+    'Son': {
+        'tag': {
+            'son',
+            '@head_nel',
+        },
+        'default_glyph': create_glyph(pd['So'], ascent=-8.0, post_offset=(0, 2)),
         'glyphs': [
         ],
     },
