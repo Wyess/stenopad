@@ -330,6 +330,7 @@ wdict = {
     'も': 'Mo',
     'も（助詞）': 'MoJoshi',
     'もｊ': 'MoJoshi',
+    'むｒ': 'MoJoshi',
     '物': 'Mono',
     '者': 'Mono',
     'もの': 'Mono',
