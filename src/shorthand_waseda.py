@@ -9,6 +9,7 @@ from path_expression_parser import create_path_expression_parser
 
 vdict = {
     'i_head_angle': 30,
+    'shii_tail_angle': -70,
     'ta_angle': -120,
     'ta_henki_angle': 30,
     'to_henki_angle': -115,
@@ -179,6 +180,7 @@ pd["Yo"] = "O{70} .. tension 1.7 .. {0}(45: 16)"
 pd["Yoru"] = "O{70} .. tension 1.7 .. {-90}(45: 16) .. +0.5S"
 pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(-60: 8)"
 pd["Rai"] = "O{-35} .. tension 1.2 .. {-120}(-60: 4)"
+pd["Shii"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(-120: 4)"
 pd["Ro"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16)"
 pd["Re"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16) .. @(-2.5, -1) + (-125: 0.8) .. {45}@(-2.4, -2)"
 pd["Re(?='TaHenki')"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16) .. {ta_henki_angle}@(-2.0, -1) + (ta_henki_angle: -1.5) -- @(-2.0, -2)"
@@ -247,6 +249,8 @@ wdict = {
     'さつ（交差）': ['PosTsuKousa', 'Sa'],
     'さつｃ': ['PosTsuKousa', 'Sa'],
     'し': 'Shi',
+    'しい': 'Shii',
+    'ひい': 'Shii',
     'しｐ': 'DotShi',
     'しゃ': 'Sha',
     'しょ': 'Sho',
@@ -830,6 +834,17 @@ cdict = {
             create_glyph(pd['ShiHenki'], key="@head_e[-1]|@head_ne[-1]", tag=tagdict['shi_henki']),
             create_glyph(pd['Shi(?=ER4)'], ascent=-1.5, key='@head_er4[1]'),
             create_glyph(pd['Shi(?=E)'], ascent=-1.5, key='@head_e[1]'),
+        ],
+    },
+    'Shii': {
+        'tag': {
+            'shii',
+            '@swl4',
+            '@head_swl',
+            '@head_swl4',
+        },
+        'default_glyph': create_glyph(pd['Shii'], ascent=1.0, post_offset=polar(1.5, vdict['shii_tail_angle'])),
+        'glyphs': [
         ],
     },
     'DotShi': {
