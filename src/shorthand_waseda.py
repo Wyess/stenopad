@@ -66,6 +66,7 @@ pd["Satsu"] = pd["Satsu."] + "{90}"
 pd["SaHenki"] = "O{-90} .. tension 1.2 .. {180}(-120: 8)"
 pd["ShiHenki"] = "O{-90} .. tension 1.2 .. {135}(-120: 8) .. {-30}@(-2, -1)"
 pd["ShiHenki(?=SW4)"] = "O{-90} .. tension 1.2 .. {135}(-120: 8) .. {SSW}@(-0.5, -1) + NNE -- ++SSW"
+pd["ShiHenki(?=ER4)"] = "O{-90} .. tension 1.2 .. {200}(-110: 8) .. {i_head_angle}@(-2.8, -1)"
 pd["(?<=NER)Sa"] = "O{-45} .. tension 1.5 .. {240 - 45}(-8, -1.5, 45)"
 pd["(?<=NER)Su"] = "O{-45} .. tension 1.5 .. {195 - 45}(-8, -1.5, 45) .. {0}@(-5, -1)"
 pd["(?<=NER)Su(?=ER8)"] = "O{-45} .. tension 1.5 .. {225 - 45}(-7.3, -2.5, 45) .. {30}@(-6.0, -1)"
@@ -825,6 +826,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Shi'], ascent=-1.5),
         'glyphs': [
             create_glyph(pd['ShiHenki(?=SW4)'], key="(@head_e[-1]|@head_ne[-1]).@head_sw4[1]", tag=tagdict['shi_henki']),
+            create_glyph(pd['ShiHenki(?=ER4)'], key="(@head_e[-1]|@head_ne[-1]).@head_er4[1]", tag=tagdict['shi_henki']),
             create_glyph(pd['ShiHenki'], key="@head_e[-1]|@head_ne[-1]", tag=tagdict['shi_henki']),
             create_glyph(pd['Shi(?=ER4)'], ascent=-1.5, key='@head_er4[1]'),
             create_glyph(pd['Shi(?=E)'], ascent=-1.5, key='@head_e[1]'),
