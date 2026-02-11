@@ -630,7 +630,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ka']),
         'glyphs': [
-            create_glyph(pd['Ka(jog)'], key='@head_e[1]'),
+            create_glyph(pd['Ka(jog)'], key='@head_e[1]|@head_ser[1]'),
         ],
     },
     'PosKakuHead': {
