@@ -120,6 +120,7 @@ pd["NaiHitei_SE(150)"] = "(150: 1.5) -- +(-30: 3)"
 pd["NakuHitei"] = "(0, 1.5) -- (0, -1.5)"
 pd["Nihon"] = "O -- +4E 2S -- ++4E"
 pd["Ha"] = "O{-90} .. tension 1.0 .. {0}(-60: 8)"
+pd["Hakari"] = "O{-90} .. tension 1.0 .. {0}(-60: 8) -- ++(0, -3)"
 pd["Hi"] = "O{-90} .. tension 1.0 .. {20}(-60: 8) .. @(-1.2, -1) + (45: 2) .. {-135}++(45: -2)"
 pd["Hu"] = "O{-90} .. tension 1.0 .. {0}(-60: 8) .. @(-5, -1){180}"
 pd["Hure"] = "O{-90} .. tension 1.0 .. {0}(-60: 8) .. ++(90: 2.5) .. {-60}@(-0.5: -2) + (115: 2) -- @(-0.5, -3) + (-60: 1.0)"
@@ -323,6 +324,7 @@ wdict = {
     'の（助詞）': 'NoJoshi',
     'のｊ': 'NoJoshi',
     'は': 'Ha',
+    'はかり': 'Hakari',
     'ひ': 'Hi',
     '人': ['Hi', 'O'],
     'ふ': 'Hu',
@@ -1316,6 +1318,15 @@ cdict = {
             '@head_sel',
         },
         'default_glyph': create_glyph(pd['Ha'], ascent=vdict['ha_ascent']),
+        'glyphs': [
+        ],
+    },
+    'Hakari': {
+        'tag': {
+            'hakari',
+            '@head_sel',
+        },
+        'default_glyph': create_glyph(pd['Hakari'], ascent=vdict['ha_ascent']),
         'glyphs': [
         ],
     },
