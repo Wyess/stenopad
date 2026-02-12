@@ -331,6 +331,7 @@ wdict = {
     'ふｒ': 'Hur',
     '問題': 'Futsu',
     'ほ': 'Ho',
+    'れば': 'Ho',
     'ほく': 'Hoku',
     'ま': 'Ma',
     'まつ（交差）': ['PosTsuKousa', 'Ma'],
