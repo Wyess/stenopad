@@ -186,6 +186,7 @@ pd["Yoru"] = "O{70} .. tension 1.7 .. {-90}(45: 16) .. +0.5S"
 pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(-60: 8)"
 pd["Rai"] = "O{-35} .. tension 1.2 .. {-120}(-60: 4)"
 pd["Shii"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(-120: 4)"
+pd["Shiku"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(-120: 8)"
 pd["Ro"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16)"
 pd["Re"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16) .. @(-2.5, -1) + (-125: 0.8) .. {45}@(-2.4, -2)"
 pd["Re(?='TaHenki')"] = "O{-30} .. tension 1.5 .. {-140}(-60: 16) .. {ta_henki_angle}@(-2.0, -1) + (ta_henki_angle: -1.5) -- @(-2.0, -2)"
@@ -256,6 +257,8 @@ wdict = {
     'し': 'Shi',
     'しい': 'Shii',
     'ひい': 'Shii',
+    'しく': 'Shiku',
+    'ひく': 'Shiku',
     'しｐ': 'DotShi',
     'しゃ': 'Sha',
     'しょ': 'Sho',
@@ -853,6 +856,17 @@ cdict = {
             '@head_swl4',
         },
         'default_glyph': create_glyph(pd['Shii'], ascent=1.0, post_offset=polar(1.5, vdict['shii_tail_angle'])),
+        'glyphs': [
+        ],
+    },
+    'Shiku': {
+        'tag': {
+            'shiku',
+            '@swl8',
+            '@head_swl',
+            '@head_swl8',
+        },
+        'default_glyph': create_glyph(pd['Shiku'], ascent=1.0, post_offset=polar(1.5, vdict['shii_tail_angle'])),
         'glyphs': [
         ],
     },
