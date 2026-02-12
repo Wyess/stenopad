@@ -9,6 +9,7 @@ from path_expression_parser import create_path_expression_parser
 
 vdict = {
     'i_head_angle': 30,
+    'o_angle': -120,
     'shii_tail_angle': -70,
     'ta_angle': -120,
     'ta_henki_angle': 30,
@@ -37,7 +38,7 @@ pd["E(?=SW)"] = "O -- 4SE"
 pd["Shite"] = "O -- 3SE"
 pd["Sha."] = "O{-60} .. 8S"
 pd["Sha"] = pd["Sha."] + "{-135}"
-pd["O"] = "O -- 4SSW"
+pd["O"] = "O -- (4, 0, o_angle)"
 pd["O(jog)"] = "O -- 4SSW -- ++(45: 1)"
 pd["Oo"] = "O --- 3.5SSW .. (4SSW + 0.5ESE) .. @(-1.3, -1)"
 pd["Kai"] = "O -- 4E"
@@ -128,6 +129,7 @@ pd["Hoku(up)"] = "(45: -1.5) .. {90}O{-90} .. tension 1.0 .. {45}(-60: 16)"
 pd["Ma."] = "O{30} .. tension 1.3 .. 8E"
 pd["MoJoshi."] = "O{30} .. tension 1.7 .. 8E .. ++(45: -4)"
 pd["Mo."] = "O{20} .. tension 1.8 .. 16E"
+pd["Mo(?=SW4)"] = pd["Mo."] + "{o_angle}"
 pd["N"] = "O -- (45: 2)"
 pd["Fu"] = "O -- (30: 4)"
 pd["Toki"] = "O -- (3.5, 0, 30) .. {30+90}(4, 0.5, 30) .. (3.7, 1.1, 30) .. {-45}@(-1.1, -2)"
@@ -1423,6 +1425,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Mo']),
         'glyphs': [
+            create_glyph(pd['Mo(?=SW4)'], key='@head_sw4[1]'),
         ],
     },
     'MoJoshi': {
