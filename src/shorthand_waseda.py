@@ -180,6 +180,7 @@ pd["Mi(?=Na)"] = pd["Ma."] + "{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5
 pd["Mi(?='E')"] = pd["Ma."] + "{-90} .. ++(210: 1.5) .. {SSE}@(-0.0, -1) + 1.2NNE -- ++1.2SSE"
 pd["Me(?=Na)"] = "O{20} .. tension 1.8 .. 16E{-120} .. @(-0.5, -1) + (180: 1.5) .. ++(180: -1.5)" + "&" + pd['Na']
 pd["Ya"] = "O{70} .. {0}(40: 8)"
+pd["Ya(?=SW8)"] = "O{70} .. {ta_angle}(40: 8)"
 pd["Yu"] = "O{70} .. {-30}(40: 8) .. tension 1.1 .. @(-0.0, -1) + (-135: 1.4) .. ++(-135: -1.4){45}"
 pd["Yu(?=E)"] = "O{70} .. {-40}(40: 8) .. +(-0.8, -1.0) .. {0}  +(180: 1) .. +(0, 0){0}"
 pd["Yo"] = "O{70} .. tension 1.7 .. {0}(45: 16)"
@@ -1005,6 +1006,7 @@ cdict = {
         'tag': {
             'ta',
             '@head_sw',
+            '@head_sw8',
         },
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
@@ -1485,6 +1487,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Ya']),
         'glyphs': [
             create_glyph(pd['YaSa'], key='sa_henki[1]|su[1]'),
+            create_glyph(pd['Ya(?=SW8)'], key='@head_sw8[1]'),
         ],
     },
     'Yu': {
