@@ -32,7 +32,7 @@ numeric_atom: number_or_fraction
         | numeric_atom -> numeric_primary
         | unary_op primary -> unaryop_primary
         | number_or_fraction atom -> scalar_multiplied_primary
-        | "(" expression "," expression ["," expression] ")" -> pair_primary
+        | "(" expression "," expression [":" expression] ")" -> pair_primary
         | "(" expression ":" expression ")" -> polar_pair_primary
 
 !secondary: primary (primary_binop primary)*

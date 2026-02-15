@@ -284,7 +284,7 @@ class PathExpressionTransformer(Transformer):
         return ArcPoint(arclength, path_index)
 
     def polar_pair_primary(self, args):
-        lparen, angle, colon, length, rparen = args
+        lparen, length, colon,angle, rparen = args
         rad = math.radians(angle)
         return Point(length * math.cos(rad), length * math.sin(rad))
 
