@@ -173,6 +173,7 @@ pd["Mono"] = pd['Mo.'] + "{-90} .. {180}++(4: -145)"
 pd["Nihon(jog)"] = pd["Nihon"] + "-- ++(1: -170)"
 
 pd["Ni(?=EL)"] = pd["Na"] + " .. @(-0.5, -1) + (1.7: 130) .. ++(-1.7: 130)"
+pd["Ni(?=SEL)"] = pd["Na"] + " .. @(-1.8, -1) + (1.9: 60) .. {-90}++(-1.9: 60)"
 pd["Ni"] = pd["Ni(?=EL)"] + "{-30}"
 pd["NiNa"] = cat(("Ni(?=EL)", "Na"), pd)
 pd["Ni(?=E)"] = pd["Na"] + " .. tension 0.9 .. @(-0.3, -1) + (0.8: 180){0} .. ++(-0.8: 180)"
@@ -1274,6 +1275,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Ni']),
         'glyphs': [
             create_glyph(pd['Ni(?=E)'], key='@head_e[1]'),
+            create_glyph(pd['Ni(?=SEL)'], key='@head_sel[1]')
         ],
     },
     'Nu': {
