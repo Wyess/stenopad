@@ -1111,6 +1111,7 @@ cdict = {
         },
         'default_glyph': create_pos_glyph(0, -2),
         'glyphs': [
+            create_pos_glyph(-2, 0.5, key='@tail_el8[-1].@head_sw[1]'),
             create_pos_glyph(-2, 4, key='@tail_se8[-1].@head_sw4[1]'),
             create_pos_glyph(-1, 0, key='a[-1].@head_sw[1]'),
             create_pos_glyph(-4, -2.5, key='to[-1].@head_sw[1]'),
@@ -1209,6 +1210,7 @@ cdict = {
             'na',
             '@head_el',
             '@head_el8',
+            '@tail_el8',
         },
         'default_glyph': create_glyph(pd['Na']),
         'glyphs': [
