@@ -1022,6 +1022,7 @@ cdict = {
         'tag': {
             'tar',
             '@head_sw',
+            '@head_sw8',
         },
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5, post_offset=polar(1.5, vdict['ta_angle'])),
         'glyphs': [
