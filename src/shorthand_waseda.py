@@ -99,6 +99,7 @@ pd["TaHenki"] = "O -- (8: 30)"
 pd["Tajuon"] = "O -- 30E"
 pd["Cha"] = "O -- (8: 22.5)"
 pd["Chi"] = "O -- (7.5, 0: ta_angle) .. (8, -0.5: ta_angle) .. {45}@(-2, -2)"
+pd["Chi(?=E)"] = "O -- (7.5: ta_angle){ta_angle} .. (8, -0.5: ta_angle) .. {0}@(-0.9, -2) + (-1.2, 0) .. ++(1.2, 0)"
 pd["Tsumori"] = "O -- (7.0, 0: ta_angle) .. (8, -1.0: ta_angle) .. {40}@(-3.8, -2)"
 pd["Tsumori(?=E)"] = "O -- (7.0, 0: ta_angle) .. (8, -1.0: ta_angle) .. {0}@(-3.0, -2) + 1.5W .. {0}++1.5E"
 pd["Che"] = "O -- (7.5: 22.5){22.5} .. ++(0.9: 22.5-90) .. @(-1.0, -2)"
@@ -1087,6 +1088,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Chi'], ascent=1.5),
         'glyphs': [
+            create_glyph(pd['Chi(?=E)'], ascent=1.5, key='@head_e[1]'),
         ],
     },
     'Che': {
