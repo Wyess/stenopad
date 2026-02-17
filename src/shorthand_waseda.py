@@ -15,6 +15,7 @@ vdict = {
     'ta_henki_angle': 30,
     'to_henki_angle': -115,
     'ha_ascent': 4,
+    'ya_ascent': -4,
 }
 
 
@@ -1491,10 +1492,10 @@ cdict = {
             '@ner',
             '@tail_ner',
         },
-        'default_glyph': create_glyph(pd['Ya']),
+        'default_glyph': create_glyph(pd['Ya'], ascent=vdict['ya_ascent']),
         'glyphs': [
-            create_glyph(pd['YaSa'], key='sa_henki[1]|su[1]'),
-            create_glyph(pd['Ya(?=SW8)'], key='@head_sw8[1]'),
+            create_glyph(pd['YaSa'], key='sa_henki[1]|su[1]', ascent=vdict['ya_ascent']),
+            create_glyph(pd['Ya(?=SW8)'], key='@head_sw8[1]', ascent=vdict['ya_ascent']),
         ],
     },
     'Yu': {
@@ -1502,9 +1503,9 @@ cdict = {
             'yu',
             '@head_ner',
         },
-        'default_glyph': create_glyph(pd['Yu']),
+        'default_glyph': create_glyph(pd['Yu'], ascent=vdict['ya_ascent']),
         'glyphs': [
-            create_glyph(pd['Yu(?=E)'], key='@head_e[1]'),
+            create_glyph(pd['Yu(?=E)'], key='@head_e[1]', ascent=vdict['ya_ascent']),
         ],
     },
     'Yo': {
