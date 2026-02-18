@@ -16,6 +16,7 @@ vdict = {
     'to_henki_angle': -115,
     'ha_ascent': 4,
     'ya_ascent': -4,
+    'rai_tail_angle': -120,
 }
 
 
@@ -192,7 +193,7 @@ pd["Yu(?=E)"] = "O{70} .. {-40}(8: 40) .. +(-0.8, -1.0) .. {0}  +(1: 180) .. +(0
 pd["Yo"] = "O{70} .. tension 1.7 .. {0}(16: 45)"
 pd["Yoru"] = "O{70} .. tension 1.7 .. {-90}(16: 45) .. +0.5S"
 pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(8: -60)"
-pd["Rai"] = "O{-35} .. tension 1.2 .. {-120}(4: -60)"
+pd["Rai"] = "O{-35} .. tension 1.2 .. {rai_tail_angle}(4: -60)"
 pd["Shii"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(4: -120)"
 pd["Shiku"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(8: -120)"
 pd["Ro"] = "O{-30} .. tension 1.5 .. {-140}(16: -60)"
@@ -234,6 +235,7 @@ wdict = {
     'か': 'Ka',
     'かき': 'Kaki',
     'かくｔ': ['PosKakuHead', 'Ka'],
+    'から': 'Kara',
     'けれど': 'Kaki',
     '傘': ['Ka', 'Sa'],
     'か（点）': 'DotKa',
@@ -1547,6 +1549,16 @@ cdict = {
             '@head_ser4',
         },
         'default_glyph': create_glyph(pd['Rai']),
+        'glyphs': [
+        ],
+    },
+    'Kara': {
+        'tag': {
+            'kara',
+            '@head_ser',
+            '@head_ser4',
+        },
+        'default_glyph': create_glyph(pd['Rai'], post_offset=polar(1.5, vdict['rai_tail_angle'])),
         'glyphs': [
         ],
     },
