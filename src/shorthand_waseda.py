@@ -82,6 +82,7 @@ pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-1.8, -1) + (1.8: 1
 pd["Shi(?=ER4)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-0.6, -1) + (-1.4: i_head_angle) .. ++(1.4: i_head_angle){i_head_angle}"
 pd["Shi(?=E)"] = "O{30} .. tension 1.3 .. {130}(7: 60) .. @(-0.7, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
 pd["Su(?=E)"] = "O{30} .. tension 1.3 .. {110}(7: 60) .. tension 2 .. @(-3.0, -1) + (1.2: 180){0} .. ++(-1.2: 180)"
+pd["Su(?=SEL)"] = "O{30} .. tension 1.3 .. {120}(7: 50) .. tension 1 .. {S}@(-4.0, -1)"
 pd["Shin"] = "O{30} .. tension 1.3 .. {150}(8: 60) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30) "
 pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
 pd["Su(?=EL)"] = "O{30} .. tension 1.3 .. {140}(6.5: 60) .. @(-2.5, -1) + (2.8: 130) .. ++(-2.8: 130)"
@@ -942,6 +943,7 @@ cdict = {
             create_glyph(pd['(?<=NER)Su(?=ER8)'], key='@tail_ner[-1].@head_er8[1]'),
             create_glyph(pd['(?<=NER)Su'], key='@tail_ner[-1]'),
             create_glyph(pd['Su(?=E)'], key='@head_e[1]', ascent=-1.5),
+            create_glyph(pd['Su(?=SEL)'], key='@head_sel[1]', ascent=-1.5),
             create_glyph(pd['SuMa'], key='@head_er8[1]', ascent=-1.5),
         ],
     },
