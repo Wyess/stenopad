@@ -92,6 +92,7 @@ pd["Su(?=ER)"] = "O{30} .. tension 1.3 .. {140}(6.5: 60) .. tension 1.5 .. @(-2.
 pd["Subete"] = "O -- 4E{-164} .. tension 1.4 .. +(3: -124){-70} .. {20}+(3: -80)"
 pd["So."] = "O{34} .. tension 1.6 .. (16: 45)"
 pd["So"] = pd["So."] + "{90}"
+pd["So(?=SWL)"] = "O{30} .. tension 1.6 .. (16: 45){60}"
 pd["Sho"] = pd["So."] + "{130} .. @(-5, -1) + (5.0: 130) .. ++(-5.0: 130){-30}"
 pd["Shourai"] = "O -- 4E 2E -- ++4S"
 pd["Ta"] = "O -- (8: ta_angle)"
@@ -196,6 +197,7 @@ pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(8: -60)"
 pd["Rai"] = "O{-35} .. tension 1.2 .. {rai_tail_angle}(4: -60)"
 pd["Shii"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(4: -120)"
 pd["Shiku"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(8: -120)"
+pd["(?<=NEL)Shiku"] = "O{180+60} .. tension 1.2 .. {shii_tail_angle}(8: -110)"
 pd["Ro"] = "O{-30} .. tension 1.5 .. {-140}(16: -60)"
 pd["Re"] = "O{-30} .. tension 1.5 .. {-140}(16: -60) .. @(-2.5, -1) + (0.8: -125) .. {45}@(-2.4, -2)"
 pd["Re(?='TaHenki')"] = "O{-30} .. tension 1.5 .. {-140}(16: -60) .. {ta_henki_angle}@(-2.0, -1) + (-1.5: ta_henki_angle) -- @(-2.0, -2)"
@@ -879,6 +881,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Shiku'], ascent=1.0, post_offset=polar(1.5, vdict['shii_tail_angle'])),
         'glyphs': [
+            create_glyph(pd['(?<=NEL)Shiku'], ascent=1.0, post_offset=polar(1.5, vdict['shii_tail_angle']), key='@tail_nel[-1]'),
         ],
     },
     'DotShi': {
@@ -981,9 +984,11 @@ cdict = {
         'tag': {
             'so',
             '@head_nel',
+            '@tail_nel',
         },
         'default_glyph': create_glyph(pd['So'], ascent=-8.0),
         'glyphs': [
+            create_glyph(pd['So(?=SWL)'], ascent=-8.0, key='@head_swl[1]'),
         ],
     },
     'Son': {
