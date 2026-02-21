@@ -175,6 +175,7 @@ pd["Mi(?=E)"] = pd["Ma."] + "{-90} .. tension 1.1 .. {0}@(-0.4, -1) + 0.90W .. {
 pd["Me(?=S)"] = pd["Mo."] + "{-90} .. {90}@(-2.3, -1) "
 pd["Mo"] = pd["Mo."] + "{-80}"
 pd["MoJoshi"] = pd['MoJoshi.'] + "{-180}"
+pd["Omoi"] = "&&".join((pd['O'], pd['MoJoshi']))
 pd["Mono"] = pd['Mo.'] + "{-90} .. {180}++(4: -145)"
 pd["Nihon(jog)"] = pd["Nihon"] + "-- ++(1: -170)"
 
@@ -235,6 +236,9 @@ wdict = {
     'っ': 'SmallTsu',
     'え': 'E',
     'お': 'O',
+    'お': 'O',
+    '思い': 'Omoi',
+    '思い出': ['Omoi', 'PosOmoidasu'],
     'か': 'Ka',
     'かき': 'Kaki',
     'かくｔ': ['PosKakuHead', 'Ka'],
@@ -643,6 +647,22 @@ cdict = {
         'default_glyph': create_glyph(pd['Oo']),
         'glyphs': [
             create_glyph(pd['Oo']),
+        ],
+    },
+    'Omoi': {
+        'tag': {
+            '@head_sw',
+        },
+        'default_glyph': create_glyph(pd['Omoi']),
+        'glyphs': [
+        ],
+    },
+    'PosOmoidasu': {
+        'tag': {
+            'pos_omoidasu',
+        },
+        'default_glyph': create_pos_glyph(1, 1.5),
+        'glyphs': [
         ],
     },
     'Ka': {
