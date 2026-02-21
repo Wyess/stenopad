@@ -157,6 +157,7 @@ pd["Shi"] = pd["Shi(?=EL)"] + "{-30}"
 pd["Shimiru"] = pd["Shimi"] + " -- ++1.5S"
 pd["Sore"] = "O{-90} .. {180}(-4: 45)"
 pd["Se"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-1.7, -1) + (2.0: 130) .. {-60}++(-2.0: 130)"
+pd["Se(?=SEL)"] = "O{34} .. tension 1.9 .. {100}(15: 50) .. {-90}@(-2.9, -1)"
 pd["Se(?=E)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.9, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
 pd["Sen"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30)"
 pd["Na."] = "O{-30} .. tension 1.3 .. 8E"
@@ -969,6 +970,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Se'], ascent=-8.0),
         'glyphs': [
             create_glyph(pd['Se(?=E)'], ascent=-8.0, key='@head_e[1]'),
+            create_glyph(pd['Se(?=SEL)'], ascent=-8.0, key='@head_sel[1]'),
         ],
     },
     'Sen': {
