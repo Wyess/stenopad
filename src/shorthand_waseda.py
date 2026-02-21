@@ -123,6 +123,9 @@ pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) 
 pd["NoJoshi"] = "O{-30} .. tension 1.7 .. 8E .. {190}++(4: 145)"
 pd["No."] = "O{-20} .. tension 1.8 .. 16E"
 pd["No"] = pd["No."] + "{90}"
+pd["Ne(?=EL)"] = pd["No"] + " .. @(-0.5, -1) + (1.7: 130) .. ++(-1.7: 130)"
+pd["Ne"] = pd["Ne(?=EL)"] + "{-30}"
+
 pd["NaiHitei"] = "(1.5: 60) -- +(3: -120)"
 pd["NaiHitei_SE(120)"] = "(1.5: 120) -- +(3: -60)"
 pd["NaiHitei_SE(150)"] = "(1.5: 150) -- +(3: -30)"
@@ -339,6 +342,7 @@ wdict = {
     'に': 'Ni',
     'ぬ': 'Nu',
     'ぬれ': 'Nure',
+    'ね': 'Ne',
     'の': 'No',
     'の（助詞）': 'NoJoshi',
     'のｊ': 'NoJoshi',
@@ -1346,6 +1350,15 @@ cdict = {
         'default_glyph': create_glyph(pd['Nihon']),
         'glyphs': [
             create_glyph(pd['Nihon(jog)'], key='@head_e[1]'),
+        ],
+    },
+    'Ne': {
+        'tag': {
+            'ne',
+            '@head_el',
+        },
+        'default_glyph': create_glyph(pd['Ne']),
+        'glyphs': [
         ],
     },
     'No': {
