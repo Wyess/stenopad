@@ -377,6 +377,9 @@ wdict = {
     '者': 'Mono',
     'もの': 'Mono',
     'や': 'Ya',
+    'やら': 'Yan',
+    'やり': 'Yan',
+    'やん': 'Yan',
     'ゆ': 'Yu',
     'よ': 'Yo',
     'よる': 'Yoru',
@@ -1568,6 +1571,16 @@ cdict = {
         'glyphs': [
             create_glyph(pd['YaSa'], key='sa_henki[1]|su[1]', ascent=vdict['ya_ascent']),
             create_glyph(pd['Ya(?=SW8)'], key='@head_sw8[1]', ascent=vdict['ya_ascent']),
+        ],
+    },
+    'Yan': {
+        'tag': {
+            'yan',
+            '@ner',
+            '@tail_nerf',
+        },
+        'default_glyph': create_glyph(pd['Ya'], ascent=vdict['ya_ascent'], post_offset=(1.5, 0)),
+        'glyphs': [
         ],
     },
     'Yu': {
