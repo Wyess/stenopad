@@ -65,6 +65,7 @@ pd["Koto"] = "O -- 8S"
 pd["Koto(jog)"] = pd["Koto"] + "-- ++(1: 80)"
 pd["Kon2"] = "O -- 8E -- ++4S"
 pd["Kokoro"] = "O -- 8E -- ++4SSW"
+pd["Koro"] = "O -- 4E 2E -- ++3.5S{60} .. ++2NE"
 pd["Kyou"] = "O -- ++(-3: 60) -- ++(2: 30) -- ++(-3: 60)"
 pd["Sa."] = "O{30} .. tension 1.3 .. (8: 45)"
 pd["Sa"] = pd["Sa."] + "{90}"
@@ -272,6 +273,7 @@ wdict = {
     'こく': 'Koi',
     '心': 'Kokoro',
     '事': 'Koto',
+    'ころ': 'Koro',
     'コン': 'Kon2',
     'さ': 'Sa',
     'さつ（交差）': ['PosTsuKousa', 'Sa'],
@@ -845,6 +847,16 @@ cdict = {
             '@head_e',
         },
         'default_glyph': create_glyph(pd['Kokoro'], post_offset=polar(-2.5, 60)),
+        'glyphs': [
+        ],
+    },
+    'Koro': {
+        'tag': {
+            'koro',
+            'e4-s4ne2f',
+            '@head_e',
+        },
+        'default_glyph': create_glyph(pd['Koro'], post_offset=polar(1.5, 45)),
         'glyphs': [
         ],
     },
