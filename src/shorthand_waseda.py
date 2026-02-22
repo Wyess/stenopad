@@ -301,6 +301,7 @@ wdict = {
     'そ': 'So',
     'そん': 'Son',
     'それ': 'Sore',
+    'その': 'Sore',
     '其': 'Sore',
     'する（点）': 'DotSuru',
     'するｐ': 'DotSuru',
