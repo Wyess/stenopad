@@ -139,6 +139,7 @@ pd["Hu"] = "O{-90} .. tension 1.0 .. {0}(8: -60) .. @(-5, -1){180}"
 pd["Hure"] = "O{-90} .. tension 1.0 .. {0}(8: -60) .. ++(2.5: 90) .. {-60}@(-2: -0.5) + (2: 115) -- @(-0.5, -3) + (1.0: -60)"
 pd["Hur"] = "O{-90} .. tension 1.0 .. {0}(8: -60) .. ++(3.5: 110){150}"
 pd["Ho"] = "O{-90} .. tension 1.0 .. {0}(16: -60)"
+pd["Ho(up)"] = "O{-90} .. tension 1.0 .. {45}(16: -50)"
 pd["Hoku"] = "(-1.5: 45) .. {90}O{-90} .. tension 1.0 .. {0}(16: -60)"
 pd["Ho(up)"] = "O{-90} .. tension 1.0 .. {45}(16: -60)"
 pd["Hoku(up)"] = "(-1.5: 45) .. {90}O{-90} .. tension 1.0 .. {45}(16: -60)"
@@ -364,6 +365,7 @@ wdict = {
     'ほ': 'Ho',
     'れば': 'Ho',
     'ほく': 'Hoku',
+    'ほん': 'Hon',
     'ま': 'Ma',
     'まつ（交差）': ['PosTsuKousa', 'Ma'],
     'まつｃ': ['PosTsuKousa', 'Ma'],
@@ -1469,6 +1471,15 @@ cdict = {
         'default_glyph': create_glyph(pd['Hoku'], ascent=6),
         'glyphs': [
             create_glyph(pd['Hoku(up)'], ascent=6, key="@head_e[1]|@head_el[1]")
+        ],
+    },
+    'Hon': {
+        'tag': {
+            'hon',
+            '@head_sel',
+        },
+        'default_glyph': create_glyph(pd['Ho(up)'], ascent=6, post_offset=polar(2, 50)),
+        'glyphs': [
         ],
     },
     'N': {
