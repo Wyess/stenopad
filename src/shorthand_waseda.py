@@ -57,6 +57,7 @@ pd["Ki(?=SW4)"] = "O --- (8 - 0.5, 0) .. (8, 0.5) .. {o_angle}(8 - 1.3, 0) - (1.
 pd["Ki(?=EL)"] = "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (1.3: 140) .. ++(-1.3: 140)"
 pd["Ku"] = "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)"
 pd["Ku(?=SER4)"] = "O --- 7.5E .. (8, 2) .. (5.0, 3.0) .. (3.0, 1.8) .. {-35}(6, 0)"
+pd["Ku(?=EL8)"] = "O --- 7.5E .. (8, 2) .. (6, 0.5) - (2.5, 0: na_head_angle - 20) .. {na_head_angle}(6, 0.5)"
 pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
 pd["Ker"] = "O -- 16E -- ++4NW"
 pd["Ko"] = "O -- 16E"
@@ -123,7 +124,7 @@ pd["Tori"] = "O -- 7.5S{S} .. (0.5, -8) .. {135}@(-2.5, -1)"
 pd["Tori(?=SW)"] = "O -- 7.5S{S} .. (0.5, -8) .. tension 1.2 .. {ta_angle}@(-0.0, -2) + (-0.9: ta_angle) -- ++(0.9: ta_angle)"
 pd["Tsu"] = "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)"
 pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
-pd["Nu(?=S)"] = "O{na_hrad_angle} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
+pd["Nu(?=S)"] = "O{na_head_angle} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
 pd["NoJoshi"] = "O{na_head_angle} .. tension 1.7 .. 8E .. {190}++(4: 145)"
 pd["No."] = "O{-20} .. tension 1.8 .. 16E"
 pd["No"] = pd["No."] + "{90}"
@@ -765,6 +766,7 @@ cdict = {
         'default_glyph': create_glyph(pd['Ku']),
         'glyphs': [
             create_glyph(pd['Ku(?=SER4)'], key='@head_ser4[1]'),
+            create_glyph(pd['Ku(?=EL8)'], key='@head_el8[1]'),
         ],
     },
     'Ke': { 
