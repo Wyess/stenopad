@@ -356,6 +356,7 @@ wdict = {
     'のｊ': 'NoJoshi',
     'は': 'Ha',
     'はかり': 'Hakari',
+    '話': ['PosJodan', 'Fa'],
     'ひ': 'Hi',
     '人': ['Hi', 'O'],
     'ふ': 'Hu',
@@ -1709,6 +1710,14 @@ cdict = {
             'wagaku',
         },
         'default_glyph': create_glyph(pd['WaNa'], ascent=1.0),
+        'glyphs': [
+        ],
+    },
+    'PosJodan': {
+        'tag': {
+            'pos_jofan',
+        },
+        'default_glyph': create_pos_glyph(0, 8),
         'glyphs': [
         ],
     },
