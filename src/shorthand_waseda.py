@@ -13,6 +13,7 @@ vdict = {
     'shii_tail_angle': -70,
     'ta_angle': -120,
     'ta_henki_angle': 30,
+    'na_head_angle': -30,
     'to_henki_angle': -115,
     'ha_ascent': 4,
     'ya_ascent': -4,
@@ -122,8 +123,8 @@ pd["Tori"] = "O -- 7.5S{S} .. (0.5, -8) .. {135}@(-2.5, -1)"
 pd["Tori(?=SW)"] = "O -- 7.5S{S} .. (0.5, -8) .. tension 1.2 .. {ta_angle}@(-0.0, -2) + (-0.9: ta_angle) -- ++(0.9: ta_angle)"
 pd["Tsu"] = "O -- 3.5S{S} .. 4S + 0.5W .. {45}@(-1.2, -2)"
 pd["Tsu(?=ER)"] = "O -- 3.5S{S} .. 4S + 1.0W .. @(-0.9, -2)"
-pd["Nu(?=S)"] = "O{-30} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
-pd["NoJoshi"] = "O{-30} .. tension 1.7 .. 8E .. {190}++(4: 145)"
+pd["Nu(?=S)"] = "O{na_hrad_angle} .. tension 1.7 .. 8E .. tension 1.3 .. {-90}@(-3.2, -1) + 1.3N .. ++1.3S"
+pd["NoJoshi"] = "O{na_head_angle} .. tension 1.7 .. 8E .. {190}++(4: 145)"
 pd["No."] = "O{-20} .. tension 1.8 .. 16E"
 pd["No"] = pd["No."] + "{90}"
 pd["Ne(?=EL)"] = pd["No"] + " .. @(-0.5, -1) + (1.7: 130) .. ++(-1.7: 130)"
@@ -170,7 +171,7 @@ pd["Se"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-1.7, -1) + (2.0: 130) ..
 pd["Se(?=SEL)"] = "O{34} .. tension 1.9 .. {100}(15: 50) .. {-90}@(-2.9, -1)"
 pd["Se(?=E)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.9, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
 pd["Sen"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30)"
-pd["Na."] = "O{-30} .. tension 1.3 .. 8E"
+pd["Na."] = "O{na_head_angle} .. tension 1.3 .. 8E"
 pd["Na"] = pd["Na."] + "{90}"
 pd["Nan"] = pd["Na."] + "{45}"
 pd["Naru"] = pd["Na."] + "{80} .. {S}++1.5S"
