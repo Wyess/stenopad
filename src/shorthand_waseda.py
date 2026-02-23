@@ -85,6 +85,7 @@ pd["Shi(?=ER4)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-0.6, -1) + (-1.4:
 pd["Shi(?=E)"] = "O{30} .. tension 1.3 .. {130}(7: 60) .. @(-0.7, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
 pd["Su(?=E)"] = "O{30} .. tension 1.3 .. {110}(7: 60) .. tension 2 .. @(-3.0, -1) + (1.2: 180){0} .. ++(-1.2: 180)"
 pd["Su(?=SEL)"] = "O{30} .. tension 1.3 .. {120}(7: 50) .. tension 1 .. {S}@(-4.0, -1)"
+pd["Suxe"] = "O{30} .. tension 1.3 .. {120}(7: 60) .. ++(-2.5, -2.0){S} .. {65}@(-2.0, -2)"
 pd["Shin"] = "O{30} .. tension 1.3 .. {150}(8: 60) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30) "
 pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
 pd["Su(?=EL)"] = "O{30} .. tension 1.3 .. {140}(6.5: 60) .. @(-2.5, -1) + (2.8: 130) .. ++(-2.8: 130)"
@@ -109,6 +110,7 @@ pd["Tsumori(?=E)"] = "O -- (7.0, 0: ta_angle) .. (8, -1.0: ta_angle) .. {0}@(-3.
 pd["Che"] = "O -- (7.5: 22.5){22.5} .. ++(0.9: 22.5-90) .. @(-1.0, -2)"
 pd["ChaHenki"] = "O -- (-8: 45)"
 pd["TeJoshi"] = "O -- (-4.0: 60){100} .. {145}++(1.9: 108)"
+pd["(?<=Suxe)TeJoshi"] = "O -- (-4.0: 80){100} .. {145}++(1.3: 108)"
 pd["TeJoshi(?=Ha)"] = "O --- (-3.0: 60) .. (-4.0: 60) + (0.5: 150) .. tension 1.1 .. (-4: 60) + (1.3: 80) .. {-90}(-4: 60)"
 pd["TeJoshi(?=ER)"] = "O --- (-3.0: 60) .. (-4.0: 60) + (0.5: 150) .. tension 1.1 .. @(-2.1, -1)"
 pd["Terx"] = "O --- (-3.0: 60) .. (-4.0: 60) + (0.3: 150) .. tension 1.1 .. (-4: 60) + (1.2: 90){-90} .. {-90}(-4: 60) + S"
@@ -305,6 +307,7 @@ wdict = {
     'それ': 'Sore',
     'その': 'Sore',
     '其': 'Sore',
+    'すぇ': 'Suxe',
     'する（点）': 'DotSuru',
     'するｐ': 'DotSuru',
     'た': 'Ta',
@@ -1000,6 +1003,15 @@ cdict = {
             create_glyph(pd['SuMa'], key='@head_er8[1]', ascent=-1.5),
         ],
     },
+    'Suxe': {
+        'tag': {
+            'suxe',
+            '@head_nel',
+        },
+        'default_glyph': create_glyph(pd['Suxe'], ascent=-1.5),
+        'glyphs': [
+        ],
+    },
     'Subete': {
         'tag': {
             'subete',
@@ -1197,6 +1209,8 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['TeJoshi'], ascent=-1),
         'glyphs': [
+            create_glyph(pd['(?<=Suxe)TeJoshi'], ascent=-1, key='suxe[-1]'),
+
             create_glyph(pd['TeJoshi(?=Ha)'], ascent=-1, key='ha[1]'),
             create_glyph(pd['TeJoshi(?=Ma)'], ascent=-1, key='@head_er8[1]'),
         ],
