@@ -269,6 +269,7 @@ wdict = {
     '君': 'Ki',
     'きょう': 'Kyou',
     'く': 'Ku',
+    '々': 'Kurikaeshi',
     'け': 'Ke',
     'けつ': 'Ketsu',
     'べつ': 'Ketsu',
@@ -769,6 +770,14 @@ cdict = {
         'glyphs': [
             create_glyph(pd['Ku(?=SER4)'], key='@head_ser4[1]'),
             create_glyph(pd['Ku(?=EL8)'], key='@head_el8[1]'),
+        ],
+    },
+    'Kurikaeshi': {
+        'tag': {
+            'kurikaeshi',
+        },
+        'default_glyph': create_dot_glyph(*polar(1.2, -135)),
+        'glyphs': [
         ],
     },
     'Ke': { 
