@@ -142,6 +142,7 @@ pd["NaiHitei_SE(150)"] = "(1.5: 150) -- +(3: -30)"
 pd["NakuHitei"] = "(0, 1.5) -- (0, -1.5)"
 pd["Nihon"] = "O -- +4E 2S -- ++4E"
 pd["Ha"] = "O{-90} .. tension 1.0 .. {0}(8: -60)"
+pd["Ha(?=SER8)"] = "O{-90} .. tension 1.0 .. {ra_head_angle}(8: -60)"
 pd["Hakari"] = "O{-90} .. tension 1.0 .. {0}(8: -60) -- ++(0, -3)"
 pd["Hi"] = "O{-90} .. tension 1.0 .. {20}(8: -60) .. @(-1.2, -1) + (2: 45) .. {-135}++(-2: 45)"
 pd["Hu"] = "O{-90} .. tension 1.0 .. {0}(8: -60) .. @(-5, -1){180}"
@@ -1460,6 +1461,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ha'], ascent=vdict['ha_ascent']),
         'glyphs': [
+            create_glyph(pd['Ha(?=SER8)'], ascent=vdict['ha_ascent'], key='@head_ser8[1]'),
         ],
     },
     'Hakari': {
@@ -1688,6 +1690,7 @@ cdict = {
         'tag': {
             'ra',
             '@head_ser',
+            '@head_ser8',
         },
         'default_glyph': create_glyph(pd['Ra']),
         'glyphs': [
