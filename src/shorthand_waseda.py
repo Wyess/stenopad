@@ -164,6 +164,8 @@ pd["Toki(?=SEL)"] = "O -- (3.5, 0: 30) .. {30+90}(4, 0.5: 30) .. (3.7, 1.0: 30) 
 pd["Koi"] = "O -- (4: 30)"
 pd["Futsu"] = "(1: 30){-45} .. (0.8: -60) .. {30}O -- (4: 30)"
 pd["Wa"] = "O{-164} .. tension 1.4 .. (3: -124){-70} .. {20}(3: -80)"
+pd["Wa(?=SER4)"] = "O{-164} .. tension 1.4 .. (3: -124){-70} .. {rai_head_angle}(4: -90)"
+pd["Wa(?=SER8)"] = "O{-164} .. tension 1.4 .. (3: -124){-70} .. {ra_head_angle}(4: -90)"
 pd["Fa"] = "O{-164} .. tension 1.4 .. (6: -124){-70} .. {20}(6: -80)"
 pd["Wa."] = "O{-164} .. tension 1.4 .. (3: -124){-70} .. (3: -80)"
 pd["Wa(?=EL)"] = "O{-190} .. (3: -115)"
@@ -1752,6 +1754,8 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Wa'], ascent=1.0),
         'glyphs': [
+            create_glyph(pd['Wa(?=SER4)'], ascent=1.0, key='@head_ser4[1]'),
+            create_glyph(pd['Wa(?=SER8)'], ascent=1.0, key='@head_ser8[1]'),
             create_glyph(pd['Wa(?=E)'], ascent=1.0, key='@head_e[1]'),
         ],
     },
