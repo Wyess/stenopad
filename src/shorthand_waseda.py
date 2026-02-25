@@ -212,6 +212,7 @@ pd["Yo"] = "O{70} .. tension 1.7 .. {0}(16: 45)"
 pd["Yoru"] = "O{70} .. tension 1.7 .. {-90}(16: 45) .. +0.5S"
 pd["Ra"] = "O{-35} .. tension 1.2 .. {-120}(8: -60)"
 pd["Rai"] = "O{-35} .. tension 1.2 .. {rai_tail_angle}(4: -60)"
+pd["Ru"] = "O{-35} .. tension 1.2 .. {-120}(8: -60) .. @(-2.7, -1) + (-3, 0: 45) {50}.. {30}++(3, 0: 45)"
 pd["Shii"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(4: -120)"
 pd["Shiku"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(8: -120)"
 pd["(?<=NEL)Shiku"] = "O{180+60} .. tension 1.2 .. {shii_tail_angle}(8: -110)"
@@ -405,6 +406,7 @@ wdict = {
     'らｐ': 'Ra(dot)',
     'らい': 'Rai',
     'られ': ['PosRare', 'Wa'],
+    'る': 'Ru',
     'れ': 'Re',
     'ろ': 'Ro',
     'ろう': ['PosRou', 'A'],
@@ -1706,6 +1708,16 @@ cdict = {
             '@head_ser4',
         },
         'default_glyph': create_glyph(pd['Rai'], post_offset=polar(1.5, vdict['rai_tail_angle'])),
+        'glyphs': [
+        ],
+    },
+    'Ru': {
+        'tag': {
+            'ru',
+            '@head_ser',
+            '@head_ser8',
+        },
+        'default_glyph': create_glyph(pd['Ru']),
         'glyphs': [
         ],
     },
