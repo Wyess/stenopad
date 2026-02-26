@@ -1166,6 +1166,7 @@ cdict = {
         },
         'default_glyph': create_pos_glyph(0, 5),
         'glyphs': [
+            create_pos_glyph(-11, 6, key='ne[-2].mo_joshi[-1]'),
         ],
     },
     'ChaHenki': {
