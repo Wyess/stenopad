@@ -16,6 +16,7 @@ vdict = {
     'na_head_angle': -30,
     'to_henki_angle': -115,
     'ha_ascent': 4,
+    'ma_head_angle': 30,
     'ya_ascent': -4,
     'ra_head_angle': -35,
     'rai_head_angle': -35,
@@ -84,7 +85,7 @@ pd["ShiHenki(?=SW4)"] = "O{-90} .. tension 1.2 .. {135}(8: -120) .. {SSW}@(-0.5,
 pd["ShiHenki(?=ER4)"] = "O{-90} .. tension 1.2 .. {200}(8: -110) .. {i_head_angle}@(-2.8, -1)"
 pd["(?<=NER)Sa"] = "O{-45} .. tension 1.5 .. {240 - 45}(-8, -1.5: 45)"
 pd["(?<=NER)Su"] = "O{-45} .. tension 1.5 .. {195 - 45}(-8, -1.5: 45) .. {0}@(-5, -1)"
-pd["(?<=NER)Su(?=ER8)"] = "O{-45} .. tension 1.5 .. {225 - 45}(-7.3, -2.5: 45) .. {30}@(-6.0, -1)"
+pd["(?<=NER)Su(?=ER8)"] = "O{-45} .. tension 1.5 .. {225 - 45}(-7.3, -2.5: 45) .. {ma_head_angle}@(-6.0, -1)"
 pd["YaSa"] = "&".join(("O{120 - 45} .. tension 1.5 .. {-45}(8, -1.5: 45)", pd["(?<=NER)Sa"]))
 pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-1.8, -1) + (1.8: 130) .. ++(-1.8: 130)"
 pd["Shi(?=ER4)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-0.6, -1) + (-1.4: i_head_angle) .. ++(1.4: i_head_angle){i_head_angle}"
@@ -134,6 +135,7 @@ pd["NoJoshi"] = "O{na_head_angle} .. tension 1.7 .. 8E .. {190}++(4: 145)"
 pd["No."] = "O{-20} .. tension 1.8 .. 16E"
 pd["No"] = pd["No."] + "{90}"
 pd["Ne(?=EL)"] = pd["No"] + " .. @(-0.5, -1) + (1.7: 130) .. ++(-1.7: 130)"
+pd["Ne(?=ER8)"] = pd["No"] + " .. @(-0.3, -1) + (-1.0, 0.8: ma_head_angle) .. {ma_head_angle} @(-0.3, -2) + (-1.2: ma_head_angle) .. {ma_head_angle}++(1.2: ma_head_angle)"
 pd["Ne"] = pd["Ne(?=EL)"] + "{-30}"
 
 pd["NaiHitei"] = "(1.5: 60) -- +(3: -120)"
@@ -153,8 +155,8 @@ pd["Ho(up)"] = "O{-90} .. tension 1.0 .. {45}(16: -50)"
 pd["Hoku"] = "(-1.5: 45) .. {90}O{-90} .. tension 1.0 .. {0}(16: -60)"
 pd["Ho(up)"] = "O{-90} .. tension 1.0 .. {45}(16: -60)"
 pd["Hoku(up)"] = "(-1.5: 45) .. {90}O{-90} .. tension 1.0 .. {45}(16: -60)"
-pd["Ma."] = "O{30} .. tension 1.3 .. 8E"
-pd["MoJoshi."] = "O{30} .. tension 1.7 .. 8E .. ++(-4: 45)"
+pd["Ma."] = "O{ma_head_angle} .. tension 1.3 .. 8E"
+pd["MoJoshi."] = "O{ma_head_angle} .. tension 1.7 .. 8E .. ++(-4: 45)"
 pd["Mo."] = "O{20} .. tension 1.8 .. 16E"
 pd["Mo(?=SW4)"] = pd["Mo."] + "{o_angle}"
 pd["N"] = "O -- (2: 45)"
@@ -1434,6 +1436,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ne']),
         'glyphs': [
+            create_glyph(pd['Ne(?=ER8)'], key='@head_er8[1]'),
         ],
     },
     'No': {
