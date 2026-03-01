@@ -221,6 +221,7 @@ pd["Yoru"] = "O{70} .. tension 1.7 .. {-90}(16: 45) .. +0.5S"
 pd["Ra"] = "O{ra_head_angle} .. tension 1.2 .. {-120}(8: -60)"
 pd["Rai"] = "O{rai_head_angle} .. tension 1.2 .. {rai_tail_angle}(4: -60)"
 pd["Ru"] = "O{ra_head_angle} .. tension 1.2 .. {-120}(8: -60) .. @(-2.7, -1) + (-3, 0: 45) {50}.. {30}++(3, 0: 45)"
+pd["Ru(?=SER4)"] = "O{ra_head_angle} .. tension 1.2 .. {-140}(8: -60) .. @(-1.8, -1) + (-2.2, -0.8: rai_head_angle) .. {rai_head_angle}++(2.2, 0.8: rai_head_angle)"
 pd["Shii"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(4: -120)"
 pd["Shiku"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(8: -120)"
 pd["(?<=NEL)Shiku"] = "O{180+60} .. tension 1.2 .. {shii_tail_angle}(8: -110)"
@@ -1733,6 +1734,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ru']),
         'glyphs': [
+            create_glyph(pd['Ru(?=SER4)'], key='@head_ser4[1]')
         ],
     },
     'Re': {
