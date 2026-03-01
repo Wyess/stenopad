@@ -226,6 +226,7 @@ pd["Shiku"] = "O{180+30} .. tension 1.2 .. {shii_tail_angle}(8: -120)"
 pd["(?<=NEL)Shiku"] = "O{180+60} .. tension 1.2 .. {shii_tail_angle}(8: -110)"
 pd["Ro"] = "O{-30} .. tension 1.5 .. {-140}(16: -60)"
 pd["Re"] = "O{-30} .. tension 1.5 .. {-140}(16: -60) .. @(-2.5, -1) + (0.8: -125) .. {45}@(-2.4, -2)"
+pd["Re(?=SER8)"] = "O{-30} .. tension 1.5 .. {-110}(16: -60) .. @(-0.2, -1) + (-1.4, -0.5: ra_head_angle).. {ra_head_angle}++(1.4, 0.5: ra_head_angle)"
 pd["Re(?='TaHenki')"] = "O{-30} .. tension 1.5 .. {-140}(16: -60) .. {ta_henki_angle}@(-2.0, -1) + (-1.5: ta_henki_angle) -- @(-2.0, -2)"
 pd["SuMa"] = pd["Su(?=ER)"] + '&' + pd['Ma']
 pd["KiNa"] = pd["Ki(?=EL)"] + "&" +  pd["Na"]
@@ -1742,6 +1743,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Re'], ascent=5),
         'glyphs': [
+            create_glyph(pd["Re(?=SER8)"], ascent=5, key='@head_ser8[1]'),
             create_glyph(pd["Re(?='TaHenki')"], ascent=5, key='ta_henki[1]'),
         ],
     },
