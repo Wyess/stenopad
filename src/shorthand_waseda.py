@@ -102,6 +102,9 @@ pd["Subete"] = "O -- 4E{-164} .. tension 1.4 .. +(3: -124){-70} .. {20}+(3: -80)
 pd["So."] = "O{34} .. tension 1.6 .. (16: 45)"
 pd["So"] = pd["So."] + "{90}"
 pd["So(?=SWL)"] = "O{30} .. tension 1.6 .. (16: 45){60}"
+pd["So(henki)."] = "O{-90} .. tension 1.6 .. (16: -120)"
+pd["So(henki)"] = pd["So(henki)."] + "{180}"
+pd["(?<=ER16)So(henki)"] = "O{-45} .. tension 1.6 .. (16: -120){-170}"
 pd["Sho"] = pd["So."] + "{130} .. @(-5, -1) + (5.0: 130) .. ++(-5.0: 130){-30}"
 pd["Shourai"] = "O -- 4E 2E -- ++4S"
 pd["Ta"] = "O -- (8: ta_angle)"
@@ -197,6 +200,7 @@ pd["Me"] = pd["Mo."] + "{-90} .. @(-0.7, -1) + (-1.8: 60) .. {60}++(1.8: 60)"
 pd["Mi(?=E)"] = pd["Ma."] + "{-90} .. tension 1.1 .. {0}@(-0.4, -1) + 0.90W .. {0}+0.9E"
 pd["Me(?=S)"] = pd["Mo."] + "{-90} .. {90}@(-2.3, -1) "
 pd["Mo"] = pd["Mo."] + "{-80}"
+pd["Mo(?=SWR16)"] = pd["Mo."] + "{-45}"
 pd["MoJoshi"] = pd['MoJoshi.'] + "{-180}"
 pd["Omoi"] = "&&".join((pd['O'], pd['MoJoshi']))
 pd["Mono"] = pd['Mo.'] + "{-90} .. {180}++(4: -145)"
@@ -726,6 +730,7 @@ cdict = {
             'ka',
             'e8',
             '@head_e',
+            '@tail_e',
         },
         'default_glyph': create_glyph(pd['Ka']),
         'glyphs': [
@@ -1094,6 +1099,8 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['So'], ascent=-8.0),
         'glyphs': [
+            create_glyph(pd['(?<=ER16)So(henki)'], ascent=-8.0, key='@tail_er16[-1]', tag={'@head_swr16'}),
+            create_glyph(pd['So(henki)'], ascent=-8.0, key='@tail_e[-1]', tag={'@head_swr16'}),
             create_glyph(pd['So(?=SWL)'], ascent=-8.0, key='@head_swl[1]'),
         ],
     },
@@ -1622,10 +1629,13 @@ cdict = {
             'mo',
             '@head_er',
             '@head_er16',
+            '@tail_er',
+            '@tail_er16',
         },
         'default_glyph': create_glyph(pd['Mo']),
         'glyphs': [
             create_glyph(pd['Mo(?=SW4)'], key='@head_sw4[1]'),
+            create_glyph(pd['Mo(?=SWR16)'], key='@head_swr16[1]'),
         ],
     },
     'MoJoshi': {
