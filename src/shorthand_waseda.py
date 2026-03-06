@@ -42,6 +42,7 @@ pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
 pd["U"] = "O -- 4S"
 pd["U(jog)"] = pd["U"] + "-- ++(1: 80)"
 pd["E"] = "O -- 4SSE"
+pd["Eru"] = "O{-80} .. (3, -0.5: -60) .. (4, 0: -60) .. (3, 0.5: -60) .. {140}O"
 pd["Ketsu"] = "O -- 8SE"
 pd["E(?=SW)"] = "O -- 4SE"
 pd["Shite"] = "O -- 3SE"
@@ -267,6 +268,7 @@ wdict = {
     '多重音': ['PosTajuon', 'Tajuon'],
     'っ': 'SmallTsu',
     'え': 'E',
+    'える': 'Eru',
     'お': 'O',
     'お': 'O',
     '思い': 'Omoi',
@@ -686,6 +688,16 @@ cdict = {
             'se3',
         },
         'default_glyph': create_glyph(pd['Shite']),
+        'glyphs': [
+        ],
+    },
+    'Eru': {
+        'tag': {
+            'eru',
+            'seo4',
+            '@head_seo4',
+        },
+        'default_glyph': create_glyph(pd['Eru']),
         'glyphs': [
         ],
     },
