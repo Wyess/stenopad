@@ -189,6 +189,7 @@ pd["Se(?=E)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.9, -1) + (1.4: 18
 pd["Sen"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30)"
 pd["Na."] = "O{na_head_angle} .. tension 1.3 .. 8E"
 pd["Na"] = pd["Na."] + "{90}"
+pd["Natsu"] = "(1.8, -0.3: na_head_angle){90} .. O{-90} .. (1.8, -0.3: na_head_angle) .. tension 1.3 .. {90}8E"
 pd["Nan"] = pd["Na."] + "{45}"
 pd["Naru"] = pd["Na."] + "{80} .. {S}++1.5S"
 pd["ItsuNa"] = '&'.join((pd["Itsu."], pd["Na"]))
@@ -362,6 +363,7 @@ wdict = {
     'ちぇ': 'Che',
     'てｒ': 'Che',
     'な': 'Na',
+    'なつ': 'Natsu',
     'なか（点）': 'DotNaka',
     'なかｐ': 'DotNaka',
     'ながら': ['Na', 'DotShi'], 
@@ -1359,6 +1361,16 @@ cdict = {
         'default_glyph': create_glyph(pd['Na']),
         'glyphs': [
             create_glyph(pd['NaI'], key='@head_er4[1]'),
+        ],
+    },
+    'Natsu': {
+        'tag': {
+            'natsu',
+            '@head_cl1',
+            '@tail_el8',
+        },
+        'default_glyph': create_glyph(pd['Natsu']),
+        'glyphs': [
         ],
     },
     'Naru': {
