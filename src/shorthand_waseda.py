@@ -11,6 +11,7 @@ vdict = {
     'i_head_angle': 30,
     'o_angle': -120,
     'shii_tail_angle': -70,
+    'sa_head_angle': 30,
     'ta_angle': -120,
     'ta_henki_angle': 30,
     'na_head_angle': -30,
@@ -75,7 +76,7 @@ pd["Kon2"] = "O -- 8E -- ++4S"
 pd["Kokoro"] = "O -- 8E -- ++4SSW"
 pd["Koro"] = "O -- 4E 2E -- ++3.5S{60} .. ++2NE"
 pd["Kyou"] = "O -- ++(-3: 60) -- ++(2: 30) -- ++(-3: 60)"
-pd["Sa."] = "O{30} .. tension 1.3 .. (8: 45)"
+pd["Sa."] = "O{sa_head_angle} .. tension 1.3 .. (8: 45)"
 pd["Sa"] = pd["Sa."] + "{90}"
 pd["Sa(bend)"] = pd["Sa."] + "{120}"
 pd["Satsu."] = "(1.5, 0){90} .. tension 1.2 .. ++O{-60} .. ++(1.5, 0) .. tension 1.3 .. ++(8: 45)"
@@ -88,17 +89,17 @@ pd["(?<=NER)Sa"] = "O{-45} .. tension 1.5 .. {240 - 45}(-8, -1.5: 45)"
 pd["(?<=NER)Su"] = "O{-45} .. tension 1.5 .. {195 - 45}(-8, -1.5: 45) .. {0}@(-5, -1)"
 pd["(?<=NER)Su(?=ER8)"] = "O{-45} .. tension 1.5 .. {225 - 45}(-7.3, -2.5: 45) .. {ma_head_angle}@(-6.0, -1)"
 pd["YaSa"] = "&".join(("O{120 - 45} .. tension 1.5 .. {-45}(8, -1.5: 45)", pd["(?<=NER)Sa"]))
-pd["Shi(?=EL)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-1.8, -1) + (1.8: 130) .. ++(-1.8: 130)"
-pd["Shi(?=ER4)"] = "O{30} .. tension 1.3 .. {150}(7: 60) .. @(-0.6, -1) + (-1.4: i_head_angle) .. ++(1.4: i_head_angle){i_head_angle}"
-pd["Shi(?=E)"] = "O{30} .. tension 1.3 .. {130}(7: 60) .. @(-0.7, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
-pd["Su(?=E)"] = "O{30} .. tension 1.3 .. {110}(7: 60) .. tension 2 .. @(-3.0, -1) + (1.2: 180){0} .. ++(-1.2: 180)"
-pd["Su(?=SEL)"] = "O{30} .. tension 1.3 .. {120}(7: 50) .. tension 1 .. {S}@(-4.0, -1)"
-pd["Suxe"] = "O{30} .. tension 1.3 .. {120}(7: 60) .. ++(-2.5, -2.0){S} .. {65}@(-2.0, -2)"
-pd["Shin"] = "O{30} .. tension 1.3 .. {150}(8: 60) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30) "
+pd["Shi(?=EL)"] = "O{sa_head_angle} .. tension 1.3 .. {150}(7: 60) .. @(-1.8, -1) + (1.8: 130) .. ++(-1.8: 130)"
+pd["Shi(?=ER4)"] = "O{sa_head_angle} .. tension 1.3 .. {150}(7: 60) .. @(-0.6, -1) + (-1.4: i_head_angle) .. ++(1.4: i_head_angle){i_head_angle}"
+pd["Shi(?=E)"] = "O{sa_head_angle} .. tension 1.3 .. {130}(7: 60) .. @(-0.7, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
+pd["Su(?=E)"] = "O{sa_head_angle} .. tension 1.3 .. {110}(7: 60) .. tension 2 .. @(-3.0, -1) + (1.2: 180){0} .. ++(-1.2: 180)"
+pd["Su(?=SEL)"] = "O{sa_head_angle} .. tension 1.3 .. {120}(7: 50) .. tension 1 .. {S}@(-4.0, -1)"
+pd["Suxe"] = "O{sa_head_angle} .. tension 1.3 .. {120}(7: 60) .. ++(-2.5, -2.0){S} .. {65}@(-2.0, -2)"
+pd["Shin"] = "O{sa_head_angle} .. tension 1.3 .. {150}(8: 60) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30) "
 pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
-pd["Su(?=EL)"] = "O{30} .. tension 1.3 .. {140}(6.5: 60) .. @(-2.5, -1) + (2.8: 130) .. ++(-2.8: 130)"
+pd["Su(?=EL)"] = "O{sa_head_angle} .. tension 1.3 .. {140}(6.5: 60) .. @(-2.5, -1) + (2.8: 130) .. ++(-2.8: 130)"
 pd["Su"] = pd["Su(?=EL)"] + "{-30}"
-pd["Su(?=ER)"] = "O{30} .. tension 1.3 .. {140}(6.5: 60) .. tension 1.5 .. @(-2.5, -1) + (-2.5: 10) .. ++(2.5: 10)"
+pd["Su(?=ER)"] = "O{sa_head_angle} .. tension 1.3 .. {140}(6.5: 60) .. tension 1.5 .. @(-2.5, -1) + (-2.5: 10) .. ++(2.5: 10)"
 pd["Subete"] = "O -- 4E{-164} .. tension 1.4 .. +(3: -124){-70} .. {20}+(3: -80)"
 pd["So."] = "O{34} .. tension 1.6 .. (16: 45)"
 pd["So"] = pd["So."] + "{90}"
@@ -184,6 +185,8 @@ pd["Shi"] = pd["Shi(?=EL)"] + "{-30}"
 pd["Shimiru"] = pd["Shimi"] + " -- ++1.5S"
 pd["Sore"] = "O{-90} .. {180}(-4: 45)"
 pd["Se"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-1.7, -1) + (2.0: 130) .. {-60}++(-2.0: 130)"
+pd["Se(?=NEL8)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.5, -1) + (-1.4, 0.5: sa_head_angle) .. {sa_head_angle}++(1.4, -0.5: sa_head_angle)"
+
 pd["Se(?=SEL)"] = "O{34} .. tension 1.9 .. {100}(15: 50) .. {-90}@(-2.9, -1)"
 pd["Se(?=E)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.9, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
 pd["Sen"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30)"
@@ -939,6 +942,7 @@ cdict = {
         'tag': {
             'sa',
             '@head_nel',
+            '@head_nel8',
         },
         'default_glyph': create_glyph(pd['Sa'], ascent=-1.5),
         'glyphs': [
@@ -1057,6 +1061,7 @@ cdict = {
         'tag': {
             'su',
             '@head_nel',
+            '@head_nel8',
         },
         'default_glyph': create_glyph(pd['Su'], ascent=-1.5),
         'glyphs': [
@@ -1092,6 +1097,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Se'], ascent=-8.0),
         'glyphs': [
+            create_glyph(pd['Se(?=NEL8)'], ascent=-8.0, key='@head_nel8[1]'),
             create_glyph(pd['Se(?=E)'], ascent=-8.0, key='@head_e[1]'),
             create_glyph(pd['Se(?=SEL)'], ascent=-8.0, key='@head_sel[1]'),
         ],
