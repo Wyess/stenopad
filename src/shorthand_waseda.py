@@ -106,6 +106,9 @@ pd["So"] = pd["So."] + "{90}"
 pd["So(?=SWL)"] = "O{30} .. tension 1.6 .. (16: 45){60}"
 pd["So(henki)."] = "O{-90} .. tension 1.6 .. (16: -120)"
 pd["So(henki)"] = pd["So(henki)."] + "{180}"
+pd["Se(henki)"] = "O{-90} .. tension 1.9 .. {150}(16: -120) .. {-30}@(-2.1, -1)"
+pd["(?<=ER16)Se(henki)"] = "O{-45} .. tension 1.9 .. {150}(16: -120) .. {-30}@(-2.1, -1)"
+pd["(?<=ER16)Se(henki)(?=NEL8)"] = "O{-45} .. tension 1.9 .. {-150}(16: -110) .. @(-2.2, -1) + (-1.9, 0.1: sa_head_angle) .. {sa_head_angle}++(1.9, -0.1: sa_head_angle)"
 pd["(?<=ER16)So(henki)"] = "O{-45} .. tension 1.6 .. (16: -120){-170}"
 pd["Sho"] = pd["So."] + "{130} .. @(-5, -1) + (5.0: 130) .. ++(-5.0: 130){-30}"
 pd["Shourai"] = "O -- 4E 2E -- ++4S"
@@ -1097,6 +1100,10 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Se'], ascent=-8.0),
         'glyphs': [
+
+            create_glyph(pd['(?<=ER16)Se(henki)(?=NEL8)'], ascent=-8.0, key='@tail_er16[-1].@head_nel8[1]', tag={'@head_swr16'}),
+            create_glyph(pd['(?<=ER16)Se(henki)'], ascent=-8.0, key='@tail_er16[-1]', tag={'@head_swr16'}),
+            create_glyph(pd['Se(henki)'], ascent=-8.0, key='@tail_e[-1]'),
             create_glyph(pd['Se(?=NEL8)'], ascent=-8.0, key='@head_nel8[1]'),
             create_glyph(pd['Se(?=E)'], ascent=-8.0, key='@head_e[1]'),
             create_glyph(pd['Se(?=SEL)'], ascent=-8.0, key='@head_sel[1]'),
