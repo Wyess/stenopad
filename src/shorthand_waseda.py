@@ -192,6 +192,8 @@ pd["Se(?=NEL8)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.5, -1) + (-1.4
 
 pd["Se(?=SEL)"] = "O{34} .. tension 1.9 .. {100}(15: 50) .. {-90}@(-2.9, -1)"
 pd["Se(?=E)"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. @(-0.9, -1) + (1.4: 180){0} .. ++(-1.4: 180)"
+pd["Sezu"] = "O .. (-0.5, 0.5) .. (0, 1) .. (0.5, 0.5) .. O"
+pd["Sezu(?=EL8)"] = "O{na_head_angle} .. (0.5, -0.5) .. (0, -1) .. (-0.5, -0.5) .. {na_head_angle}O"
 pd["Sen"] = "O{34} .. tension 1.9 .. {140}(15: 50) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30)"
 pd["Na."] = "O{na_head_angle} .. tension 1.3 .. 8E"
 pd["Na"] = pd["Na."] + "{90}"
@@ -333,6 +335,7 @@ wdict = {
     'す': 'Su',
     'すべて': 'Subete',
     'せ': 'Se',
+    'せず': ['PosSezu', 'Sezu'],
     'せん': 'Sen',
     'そ': 'So',
     'そん': 'Son',
@@ -1107,6 +1110,25 @@ cdict = {
             create_glyph(pd['Se(?=NEL8)'], ascent=-8.0, key='@head_nel8[1]'),
             create_glyph(pd['Se(?=E)'], ascent=-8.0, key='@head_e[1]'),
             create_glyph(pd['Se(?=SEL)'], ascent=-8.0, key='@head_sel[1]'),
+        ],
+    },
+    'Sezu': {
+        'tag': {
+            'sezu',
+            '@head_cr',
+            '@head_cr1',
+        },
+        'default_glyph': create_glyph(pd['Sezu'], ascent=0),
+        'glyphs': [
+            create_glyph(pd['Sezu(?=EL8)'], ascent=0, key='@head_el8[1]')
+        ],
+    },
+    'PosSezu': {
+        'tag': {
+            'pos_sezu',
+        },
+        'default_glyph': create_pos_glyph(*polar(3, -45)),
+        'glyphs': [
         ],
     },
     'Sen': {
