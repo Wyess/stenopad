@@ -98,6 +98,8 @@ pd["Suxe"] = "O{sa_head_angle} .. tension 1.3 .. {120}(7: 60) .. ++(-2.5, -2.0){
 pd["Shin"] = "O{sa_head_angle} .. tension 1.3 .. {150}(8: 60) .. tension 1.1 .. @(-0.4, -1) + (2.0: 195) ..  @(-0.4, -2) + (-1.5: 30) -- ++(3.0: 30) "
 pd["Shimi"] = "O{90} .. tension 1.2 .. {-45}4NE .. tension 1.2 .. {-135}2ESE"
 pd["Su(?=EL)"] = "O{sa_head_angle} .. tension 1.3 .. {140}(6.5: 60) .. @(-2.5, -1) + (2.8: 130) .. ++(-2.8: 130)"
+pd["Su(?=S)"] = "O{sa_head_angle} .. tension 1.3 .. {140}(8: 60) .. {-90}@(-5.0, -1) + (2.0: 90) -- ++(-2.0: 90)"
+pd["Suru"] = pd["Su(?=S)"] + "-- ++(0, -1.5)"
 pd["Su"] = pd["Su(?=EL)"] + "{-30}"
 pd["Su(?=ER)"] = "O{sa_head_angle} .. tension 1.3 .. {140}(6.5: 60) .. tension 1.5 .. @(-2.5, -1) + (-2.5: 10) .. ++(2.5: 10)"
 pd["Subete"] = "O -- 4E{-164} .. tension 1.4 .. +(3: -124){-70} .. {20}+(3: -80)"
@@ -343,6 +345,7 @@ wdict = {
     'その': 'Sore',
     '其': 'Sore',
     'すぇ': 'Suxe',
+    'する': 'Suru',
     'する（点）': 'DotSuru',
     'すれば': ['DotSuru', 'Ho'],
     'するｐ': 'DotSuru',
@@ -1075,7 +1078,17 @@ cdict = {
             create_glyph(pd['(?<=NER)Su'], key='@tail_ner[-1]'),
             create_glyph(pd['Su(?=E)'], key='@head_e[1]', ascent=-1.5),
             create_glyph(pd['Su(?=SEL)'], key='@head_sel[1]', ascent=-1.5),
+            create_glyph(pd['Su(?=S)'], key='@head_s[1]', ascent=-1.5),
             create_glyph(pd['SuMa'], key='@head_er8[1]', ascent=-1.5),
+        ],
+    },
+    'Suru': {
+        'tag': {
+            'suru',
+            '@head_nel',
+        },
+        'default_glyph': create_glyph(pd['Suru'], ascent=-1.5, post_offset=(0, -2)),
+        'glyphs': [
         ],
     },
     'Suxe': {
