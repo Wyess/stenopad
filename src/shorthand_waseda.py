@@ -63,6 +63,7 @@ pd["Ki(?=SEL)"] = "O --- (8 - 0.5, 0) .. (8, 0.5) .. ++(-0.4, 0.9) ..{-90}(8 - 1
 pd["Ki(?=SW4)"] = "O --- (8 - 0.5, 0) .. (8, 0.5) .. {o_angle}(8 - 1.3, 0) - (1.2, 0: o_angle) -- (8 - 1.3, 0)"
 pd["Ki(?=EL)"] = "O --- 7.5E .. 8E + 0.5N .. tension 1.1 .. @(7.5, -1) + (1.3: 140) .. ++(-1.3: 140)"
 pd["Ku"] = "O --- 7.5E .. 8E + 2.0N .. {-140}@(4.5, -1)"
+pd["Ku(?='Wa')"] = "O --- 7.5E .. (8, 2) .. {-135}@(4.5, -1)"
 pd["Ku(?=SER4)"] = "O --- 7.5E .. (8, 2) .. (5.0, 3.0) .. (3.0, 1.8) .. {rai_head_angle}(6, 0)"
 pd["Ku(?=EL8)"] = "O --- 7.5E .. (8, 2) .. (6, 0.5) - (2.5, 0: na_head_angle - 20) .. {na_head_angle}(6, 0.5)"
 pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
@@ -176,6 +177,7 @@ pd["Toki"] = "O -- (3.5, 0: 30) .. {30+90}(4, 0.5: 30) .. (3.7, 1.1: 30) .. {-45
 pd["Toki(?=SEL)"] = "O -- (3.5, 0: 30) .. {30+90}(4, 0.5: 30) .. (3.7, 1.0: 30) .. {S}@(-1.6, -2)"
 pd["Koi"] = "O -- (4: 30)"
 pd["Futsu"] = "(1: 30){-45} .. (0.8: -60) .. {30}O -- (4: 30)"
+pd["(?<=CL4)Wa"] = "O{-135} .. tension 1.4 .. (3: -114){-70} .. {20}(3: -70)"
 pd["Wa"] = "O{-164} .. tension 1.4 .. (3: -124){-70} .. {20}(3: -80)"
 pd["Wa(?=NEL8)"] = "O{-164} .. tension 1.4 .. (3.8: -124){-70} .. {sa_head_angle}(3: -80)"
 pd["Wa(?=SER4)"] = "O{-164} .. tension 1.4 .. (3: -124){-70} .. {rai_head_angle}(4: -90)"
@@ -827,9 +829,11 @@ cdict = {
         'tag': {
             'ku',
             '@head_e',
+            '@tail_cl4',
         },
         'default_glyph': create_glyph(pd['Ku']),
         'glyphs': [
+            create_glyph(pd["Ku(?='Wa')"], key='wa[1]'),
             create_glyph(pd['Ku(?=SER4)'], key='@head_ser4[1]'),
             create_glyph(pd['Ku(?=EL8)'], key='@head_el8[1]'),
         ],
@@ -1849,6 +1853,8 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Wa'], ascent=1.0),
         'glyphs': [
+            create_glyph(pd['(?<=CL4)Wa'], ascent=1.0, key='@tail_cl4[-1]'),
+
             create_glyph(pd['Wa(?=SER4)'], ascent=1.0, key='@head_ser4[1]'),
             create_glyph(pd['Wa(?=SER8)'], ascent=1.0, key='@head_ser8[1]'),
             create_glyph(pd['Wa(?=NEL8)'], ascent=1.0, key='@head_nel8[1]'),
