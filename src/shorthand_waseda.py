@@ -840,6 +840,7 @@ cdict = {
         },
         'default_glyph': create_dot_glyph(*polar(1.2, -135)),
         'glyphs': [
+            create_dot_glyph(*polar(1.2, -120), key='toki[-1]')
         ],
     },
     'Ke': { 
