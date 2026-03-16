@@ -1784,7 +1784,7 @@ cdict = {
             'yo',
             '@head_ner',
         },
-        'default_glyph': create_glyph(pd['Yo']),
+        'default_glyph': create_glyph(pd['Yo'], ascent=-7),
         'glyphs': [
         ],
     },
@@ -1793,7 +1793,7 @@ cdict = {
             'yoru',
             '@head_ner',
         },
-        'default_glyph': create_glyph(pd['Yoru'], post_offset=(0, -2.0)),
+        'default_glyph': create_glyph(pd['Yoru'], ascent=-7, post_offset=(0, -2.0)),
         'glyphs': [
         ],
     },
