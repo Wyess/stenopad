@@ -38,6 +38,9 @@ pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
 pd["I."] = "O{i_head_angle} .. tension 1.0 .. 4E"
 pd["Itsu."] = "(1.6: 45){S} .. O{N} .. (1.6: 45) .. tension 1.0 .. 4E"
 pd["Itsu"] = pd["Itsu."] + "{-100}"
+pd["Ichi."] = "(1.6: 45)+(0.2, 1){S} .. O{N} .. (1.6: 45) .. tension 1.0 .. 4E"
+pd["Ichi"] = pd["Ichi."] + "{-100}"
+pd["Ichi(?=SW4)"] = "(1.6: 45)+(0.2, 1){S} .. O{N} .. (1.6: 45) .. tension 0.9 .. 4E{o_angle}"
 pd["I"] = pd["I."] + "{-100}"
 pd["I(?=Ta)"] = pd["I."] + "{ta_angle}"
 pd["U"] = "O -- 4S"
@@ -276,6 +279,8 @@ wdict = {
     'い': 'I',
     'いい': 'Ii',
     'いつ': 'Itsu',
+    'いち': 'Ichi',
+    'いき': 'Ichi',
     'いる': ['PosIru', 'I'],
     'う': 'U',
     'うち（交差）': ['PosUchi', 'U'],
@@ -655,6 +660,17 @@ cdict = {
         'default_glyph': create_glyph(pd['Itsu']),
         'glyphs': [
             create_glyph(pd['ItsuNa'], key='@head_el8[1]'),
+        ],
+    },
+    'Ichi': {
+        'tag': {
+            'ichi',
+            'xcr1er4',
+            '@head_xcr1er',
+        },
+        'default_glyph': create_glyph(pd['Ichi']),
+        'glyphs': [
+            create_glyph(pd['Ichi(?=SW4)'], key='@head_sw4[1]'),
         ],
     },
     'U': {
