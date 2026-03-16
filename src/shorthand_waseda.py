@@ -67,6 +67,8 @@ pd["Ku(?='Wa')"] = "O --- 7.5E .. (8, 2) .. {-135}@(4.5, -1)"
 pd["Ku(?=SER4)"] = "O --- 7.5E .. (8, 2) .. (5.0, 3.0) .. (3.0, 1.8) .. {rai_head_angle}(6, 0)"
 pd["Ku(?=EL8)"] = "O --- 7.5E .. (8, 2) .. (6, 0.5) - (2.5, 0: na_head_angle - 20) .. {na_head_angle}(6, 0.5)"
 pd["Ke"] = "O --- 15.5E .. 16E + 0.5N .. {-150}@(14, -1)"
+pd["KuKagi"] = "(1.5: 45) .. {180}O"
+pd["KuKagi(?=NEL8)"] = "(1.5: 75) .. {210}O"
 pd["Ker"] = "O -- 16E -- ++4NW"
 pd["Ko"] = "O -- 16E"
 pd["Kou"] = "O -- 4E 2E -- ++1S"
@@ -304,6 +306,7 @@ wdict = {
     '君': 'Ki',
     'きょう': 'Kyou',
     'く': 'Ku',
+    'くｋ': 'KuKagi',
     '々': 'Kurikaeshi',
     'け': 'Ke',
     'けつ': 'Ketsu',
@@ -845,6 +848,15 @@ cdict = {
         'default_glyph': create_dot_glyph(*polar(1.2, -135)),
         'glyphs': [
             create_dot_glyph(*polar(1.2, -120), key='toki[-1]')
+        ],
+    },
+    'KuKagi': {
+        'tag': {
+            'ku_kagi',
+        },
+        'default_glyph': create_glyph(pd['KuKagi']),
+        'glyphs': [
+            create_glyph(pd['KuKagi(?=NEL8)'], key='@head_nel8[1]', ascent=-1.5),
         ],
     },
     'Ke': { 
