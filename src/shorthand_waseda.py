@@ -35,6 +35,8 @@ pd["A(bend)"] = "O{-30} .. tension 1.1 .. 4E{120}"
 pd["Ah(?=EL)"] = pd["A"] + " .. @(-0.9, -1) + (1.7: 130) .. ++(-1.7: 130)"
 pd["Ah"] = pd["Ah(?=EL)"] + "{-30}"
 pd["Ai"] = "O{170} .. 3.5N .. {-170}O"
+pd["Asa"] = "O{170} .. 3.5N .. {-180}O .. {60}1.5N"
+pd["Asa(?=ER8)"] = "O{170} .. 3.5N .. {180}O .. {30}0.8N"
 pd["I."] = "O{i_head_angle} .. tension 1.0 .. 4E"
 pd["Itsu."] = "(1.6: 45){S} .. O{N} .. (1.6: 45) .. tension 1.0 .. 4E"
 pd["Itsu"] = pd["Itsu."] + "{-100}"
@@ -273,6 +275,7 @@ wdict = {
     '２ｒ': '2r',
     'あ': 'A',
     'あい': 'Ai',
+    'あさ': 'Asa',
     '雨': ['A', 'PosAme', 'E'],
     'ある（点）': 'Aru(dot)',
     'あるｐ': 'Aru(dot)',
@@ -625,6 +628,17 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ai'], ascent=-2),
         'glyphs': [
+        ],
+    },
+    'Asa': {
+        'tag': {
+            'asa',
+        },
+        'default_glyph': create_glyph(pd['Asa'], ascent=-2),
+        'glyphs': [
+            create_glyph(pd['Asa(?=ER8)'], ascent=-2, key='@head_er8[1]'),
+
+
         ],
     },
     'I': {
