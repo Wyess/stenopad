@@ -126,6 +126,7 @@ pd["Ta"] = "O -- (8: ta_angle)"
 pd["Taxe."] = "O -- (8: ta_angle) (7: ta_angle) -- ++(0.1: -45)"
 pd["Taxe"] = "O -- (8: ta_angle) (7: ta_angle) -- ++(0.5: -45)"
 pd["TaHenki"] = "O -- (8: 30)"
+pd["TaHenki(jog)"] = "O -- (8: 30) -- ++(-0.5, -0.1: 30)"
 pd["Tajuon"] = "O -- 30E"
 pd["Cha"] = "O -- (8: 22.5)"
 pd["Chi"] = "O -- (7.5, 0: ta_angle) .. (8, -0.5: ta_angle) .. {45}@(-2, -2)"
@@ -1249,6 +1250,7 @@ cdict = {
         },
         'default_glyph': create_glyph(pd['Ta'], ascent=1.5),
         'glyphs': [
+            create_glyph(pd['TaHenki(jog)'], key='((ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]|@tail_ser16cr1[-1]).(@head_er[1])', ascent=1.5, tag=tagdict['ta_henki']),
             create_glyph(pd['TaHenki'], key='(ta[-1]|@tail_s[-1])|(ta[-2].pos_dake[-1])|@tail_s[-1]|@tail_ser16cr1[-1]', ascent=1.5, tag=tagdict['ta_henki']),
         ],
     },
