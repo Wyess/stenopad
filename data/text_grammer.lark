@@ -1,0 +1,6 @@
+start: text
+text: (WHITESPACE | WORD)*
+
+WORD: /\S+/
+WHITESPACE: /\s/
+
