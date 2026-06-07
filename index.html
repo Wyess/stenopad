@@ -83,16 +83,66 @@ body, html {
     border: 1px solid #aaa;
     border-radius: 4px;
 }
+/* 💡 追加：ダウンロードボタンをプレビューエリア上部に綺麗に横並び固定 */
+.download-buttons {
+    position: sticky;   /* スクロールしても最上部に残り続けるようにする */
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 8px;           /* ボタン同士の間隔 */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9); /* 背後を少し透けさせる */
+    backdrop-filter: blur(4px);                 /* すりガラス効果 */
+    border-bottom: 1px solid #eee;
+    z-index: 10;        /* SVGより手前に表示 */
+    margin-bottom: 15px;
+}
+
+.download-buttons button {
+    flex: 1;            /* ボタンの幅を均等にする */
+    padding: 10px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: background-color 0.2s;
+}
+
+/* ボタンをタップ・クリックしたときのフィードバック */
+.download-buttons button:active {
+    background-color: #ddd;
+}
+
+/* 💡 既存のスタイルを微調整（余白を整える） */
+#steno-svg-output {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 20px; /* 下部に少し余裕を持たせる */
+}
 </style>
 </head>
 <body>
 
     <div class="app-container">
         <div class="preview-area">
+<div class="download-buttons" style="margin-top: 10px;">
+    <button id="btn_svg">SVG保存</button>
+    <button id="btn_anisvg">アニメーションSVG保存</button>
+    <button id="btn_png">PNG保存</button>
+</div>
             <div id="steno-svg-output">
                 <p style="color: #999; text-align: center; margin-top: 40px;">ここに速記文字（SVG）が表示されます</p>
             </div>
         </div>
+
+<script type="module">
+</script>
 
         <div class="input-area">
             <textarea id="steno-input" placeholder="ここに入力してください..."></textarea>

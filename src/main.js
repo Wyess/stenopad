@@ -1,8 +1,11 @@
 import { ShorthandString } from './ShorthandString.js';
+import { downloadSvg, downloadAnimatedSvg, downloadPng } from './downloader.js';
 
 const stenoInput = document.getElementById('steno-input');
 const stenoSvgOutput = document.getElementById('steno-svg-output');
 const appContainer = document.querySelector('.app-container');
+
+let wasedaData;
 
 // 速記定義を保持する Map
 let stenoDefinitions = new Map();
@@ -28,7 +31,8 @@ async function loadAssets() {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const wasedaData = await response.json();
+        //const wasedaData = await response.json();
+        wasedaData = await response.json();
 
         const waseda = wasedaData.waseda || {};
 
@@ -85,10 +89,12 @@ function handleInputChange(event) {
     }
 
     // ロジックの実行
-    const stenoString = new ShorthandString(text, wordDictionary, stenoDefinitions);
+    //const stenoString = new ShorthandString(text, wordDictionary, stenoDefinitions);
+    const stenoString = new ShorthandString(text, wasedaData.waseda);
 
     // ★ 暫定の青丸デバッグを、本物のSVG描画に差し替え！
-    stenoSvgOutput.innerHTML = stenoString.generateSVG();
+    //stenoSvgOutput.innerHTML = stenoString.toString();
+    stenoSvgOutput.innerHTML = stenoString.createSvg({toAnimate: false})[0];
 }
 
 /**
@@ -123,3 +129,21 @@ function createDebugSVG(characters) {
 
 window.addEventListener('DOMContentLoaded', init);
 
+let currentShorthand = null; 
+
+// 例: テキスト入力時に描画・保持
+document.getElementById("steno-input").addEventListener("input", (e) => {
+    currentShorthand = new ShorthandString(e.target.value, wasedaData.waseda);
+    document.getElementById("steno-svg-output").innerHTML = currentShorthand.toString();
+});
+
+// 各ボタンのイベントバインディング
+document.getElementById("btn_svg").addEventListener("click", () => {
+    if (currentShorthand) downloadSvg(currentShorthand);
+});
+document.getElementById("btn_anisvg").addEventListener("click", () => {
+    if (currentShorthand) downloadAnimatedSvg(currentShorthand);
+});
+document.getElementById("btn_png").addEventListener("click", () => {
+    if (currentShorthand) downloadPng(currentShorthand);
+});
