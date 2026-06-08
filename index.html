@@ -126,6 +126,7 @@ body, html {
     padding-bottom: 20px; /* 下部に少し余裕を持たせる */
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gifshot/0.3.2/gifshot.min.js"></script>
 </head>
 <body>
 
@@ -135,14 +136,22 @@ body, html {
     <button id="btn_svg">SVG保存</button>
     <button id="btn_anisvg">アニメーションSVG保存</button>
     <button id="btn_png">PNG保存</button>
+    <button id="btn_anigif">GIFアニメ保存</button>
+    <button id="btn_video">動画保存 (WebM)</button>
+
 </div>
+    <div id="video-progress-container" style="display: none; margin-top: 10px; width: 100%; max-width: 300px;">
+        <div style="font-size: 14px; color: #666; margin-bottom: 4px;">動画を生成中... (<span id="progress-text">0</span>%)</div>
+        <div style="width: 100%; height: 8px; background-color: #ddd; border-radius: 4px; overflow: hidden;">
+            <div id="progress-bar" style="width: 0%; height: 100%; background-color: #007bff; transition: width 0.1s;"></div>
+        </div>
+    </div>
+
             <div id="steno-svg-output">
                 <p style="color: #999; text-align: center; margin-top: 40px;">ここに速記文字（SVG）が表示されます</p>
             </div>
         </div>
 
-<script type="module">
-</script>
 
         <div class="input-area">
             <textarea id="steno-input" placeholder="ここに入力してください..."></textarea>

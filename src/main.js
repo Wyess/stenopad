@@ -1,15 +1,16 @@
 import { ShorthandString } from './ShorthandString.js';
-import { downloadSvg, downloadAnimatedSvg, downloadPng } from './downloader.js';
+import { downloadSvg, downloadAnimatedSvg, downloadPng, downloadShorthandGif } from './downloader.js';
 
 const stenoInput = document.getElementById('steno-input');
 const stenoSvgOutput = document.getElementById('steno-svg-output');
 const appContainer = document.querySelector('.app-container');
+const STORAGE_KEY = "stenopad_saved_text";
 
 let wasedaData;
 
 // 速記定義を保持する Map
-let stenoDefinitions = new Map();
-let wordDictionary = new Map();   // dictionary の内容を保持
+//let stenoDefinitions = new Map();
+//let wordDictionary = new Map();   // dictionary の内容を保持
 
 
 function adjustHeight() {
@@ -26,7 +27,7 @@ function adjustHeight() {
 async function loadAssets() {
     try {
         stenoSvgOutput.innerHTML = `<p style="color: #666; text-align: center; margin-top: 40px;">定義データを読み込み中...</p>`;
-        
+
         const response = await fetch('./src/waseda.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,26 +37,32 @@ async function loadAssets() {
 
         const waseda = wasedaData.waseda || {};
 
-        // 1. 単語辞書 (dictionary) の展開
-        if (waseda.dictionary) {
-            Object.entries(waseda.dictionary).forEach(([word, target]) => {
-                wordDictionary.set(word, target);
-            });
-        }
-
-        // 2. 速記文字定義 (character) の展開
-        if (waseda.character) {
-            Object.entries(waseda.character).forEach(([charName, data]) => {
-                stenoDefinitions.set(charName, data);
-            });
-        }
-
-        console.log(`データの読み込みが完了しました。 (単語辞書: ${wordDictionary.size}件, 文字定義: ${stenoDefinitions.size}件)`);
+//        // 1. 単語辞書 (dictionary) の展開
+//        if (waseda.dictionary) {
+//            Object.entries(waseda.dictionary).forEach(([word, target]) => {
+//                wordDictionary.set(word, target);
+//            });
+//        }
+//
+//        // 2. 速記文字定義 (character) の展開
+//        if (waseda.character) {
+//            Object.entries(waseda.character).forEach(([charName, data]) => {
+//                stenoDefinitions.set(charName, data);
+//            });
+//        }
+//
+//        console.log(`データの読み込みが完了しました。 (単語辞書: ${wordDictionary.size}件, 文字定義: ${stenoDefinitions.size}件)`);
         stenoSvgOutput.innerHTML = `<p style="color: #999; text-align: center; margin-top: 40px;">準備完了。ここに入力された速記文字が表示されます。</p>`;
-        
+
         stenoInput.disabled = false;
         stenoInput.focus();
 
+        const savedText = localStorage.getItem(STORAGE_KEY);
+        if (savedText) {
+            stenoInput.value = savedText;
+            const inputEvent = new Event("input", { bubbles: true });
+            stenoInput.dispatchEvent(inputEvent);
+}
     } catch (error) {
         console.error("アセットの読み込みに失敗しました:", error);
         stenoSvgOutput.innerHTML = `<p style="color: #dc3545; text-align: center; margin-top: 40px;">データの読み込みに失敗しました: ${error.message}</p>`;
@@ -104,11 +111,11 @@ function handleInputChange(event) {
 function createDebugSVG(characters) {
     const tokenCount = characters.length;
     const svgHeight = Math.max(Math.ceil(tokenCount / 10) * 80, 120);
-    
+
     let contents = '';
     for (let i = 0; i < tokenCount; i++) {
         const charObj = characters[i];
-        
+
         // 1区画の座標計算
         const cx = (i % 10) * 75 + 45;
         const cy = Math.floor(i / 10) * 80 + 40;
@@ -147,3 +154,58 @@ document.getElementById("btn_anisvg").addEventListener("click", () => {
 document.getElementById("btn_png").addEventListener("click", () => {
     if (currentShorthand) downloadPng(currentShorthand);
 });
+document.getElementById("btn_anigif").addEventListener("click", () => {
+    if (currentShorthand) downloadShorthandGif(currentShorthand);
+});
+import { downloadShorthandVideo } from './downloader.js';
+
+const progressContainer = document.getElementById("video-progress-container");
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
+const btnVideo = document.getElementById("btn_video");
+
+btnVideo.addEventListener("click", () => {
+    if (!currentShorthand) return;
+
+    // 生成開始時にプログレスバーを表示し、ボタンを無効化
+    progressContainer.style.display = "block";
+    btnVideo.disabled = true;
+    progressBar.style.width = "0%";
+    progressText.innerText = "0";
+
+    downloadShorthandVideo(
+        currentShorthand,
+        // 進捗中の処理 (onProgress)
+        (percent) => {
+            progressBar.style.width = `${percent}%`;
+            progressText.innerText = percent;
+        },
+        // 完了時の処理 (onComplete)
+        () => {
+            // 少し余韻を持たせてからバーを隠し、ボタンを戻す
+            setTimeout(() => {
+                progressContainer.style.display = "none";
+                btnVideo.disabled = false;
+            }, 1000);
+        }
+    );
+});
+
+
+
+// 【画面の状態変化を監視】
+document.addEventListener("visibilitychange", () => {
+    // 💡 画面が裏に隠れた（hidden）瞬間にLocalStorageへ書き込む
+    if (document.hidden) {
+        localStorage.setItem(STORAGE_KEY, stenoInput.value);
+    } else {
+        // 【ロード時】復元処理
+        const savedText = localStorage.getItem(STORAGE_KEY);
+        if (savedText) {
+            stenoInput.value = savedText;
+            const inputEvent = new Event("input", { bubbles: true });
+            stenoInput.dispatchEvent(inputEvent);
+        }
+    }
+});
+
