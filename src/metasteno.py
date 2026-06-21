@@ -46,6 +46,14 @@ class Path:
             object.__setattr__(clone, key, value)
         return clone
 
+    def __matmul__(self, other):
+        match other:
+            case set() as s:
+                return self._replace(elem=self.elem._replace(right_angle=s.pop()))
+
+            case _:
+                raise SyntaxError(other)
+
     def __rshift__(self, other):
         match other:
             case Point() as p:
@@ -107,8 +115,15 @@ class Path:
             case Op.CURVE:
                 if is_end:
                     if pt2.left_angle is None:
-                        angle = None
-                        curl = 1
+                        if pt2.right_angle is None:
+                            angle = None
+                            curl = 1
+                        elif pt2.right_angle.imag != 0:
+                            angle = None
+                            curl = pt2.right_angle.imag
+                        else:
+                            angle = pt2.right_angle
+                            curl = 1
                     elif pt2.left_angle.imag != 0:
                         angle = None
                         curl = pt2.left_angle.imag
