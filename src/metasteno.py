@@ -49,39 +49,24 @@ class Path:
     def __rshift__(self, other):
         match other:
             case Point() as p:
-                #if p.left_angle is None:
-                #    p.left_angle = self.elem.next_left_angle
-
-                #p.left_tension = self.elem.next_left_tension
-                #p.connected_from = Op.CURVE
-                #return Path(elem=other, prev=self)
                 if p.left_angle is None:
                     left_angle = self.elem.next_left_angle
                 else:
                     left_angle = p.left_angle
                 left_tension = self.elem.next_left_tension
-                connected_from = Op.CURVE
-                return Path(elem=p._replace(left_angle=left_angle, left_tension=left_tension, connected_from=connected_from), prev=self)
+                return Path(elem=p._replace(left_angle=left_angle, left_tension=left_tension, connected_from=Op.CURVE), prev=self)
 
             case set() as s if len(s) == 1:
-                #self.elem.next_left_angle = s.pop()
-                #return self
                 elem = self.elem._replace(next_left_angle=s.pop())
                 return self._replace(elem=elem)
 
             case Complex() as t:
                 t1 = t.real
                 t2 = None if t.imag == 0 else t.imag
-                #self.elem.right_tension = t1
-                #self.elem.next_left_tension = t2
                 elem = self.elem._replace(right_tension=t1, next_left_tension=t2)
-                #return self
                 return self._replace(elem=elem)
 
             case (Real(), Real()) as t:
-                #self.elem.right_tension = t[0]
-                #self.elem.next_left_tension = t[1]
-                #return self
                 elem = self.elem._replace(right_tension= t[0], next_left_tension=t[1])
                 return self._replace(elem=elem)
 
@@ -153,11 +138,7 @@ class Path:
                 subpath = self.create_metapost_path(elems[:i])
                 p = subpath.at(subpath.end() + arc_pos)
                 new_elem = elem._replace(x=elems[i].x +p[0] / pyx.unit.length(1), y=elems[i].y + p[1] / pyx.unit.length(1))
-                #elems[i].x += p[0] / pyx.unit.length(1)
-                #elems[i].y += p[1] / pyx.unit.length(1)
             elif elems[i].is_relative:
-                #elems[i].x += x
-                #elems[i].y += y
                 new_elem = elem._replace(x=elem.x + x, y=elem.y + y)
             else:
                 new_elem = elem
@@ -222,7 +203,6 @@ class Point:
     def _replace(self, **changes):
         clone = copy.copy(self)
         for key, value in changes.items():
-            #setattr(clone, key, value)
             object.__setattr__(clone, key, value)
         return clone
 
@@ -264,13 +244,9 @@ class Point:
                 pass
 
             case Real() as len_:
-                #self.arc_pos = len_
-                #return self
                 return self._replace(arc_pos=len_)
 
             case set() as s if len(s) == 1:
-                #self.right_angle = s.pop()
-                #return self
                 return self._replace(right_angle=s.pop())
 
             case _:
@@ -279,8 +255,6 @@ class Point:
     def __rmatmul__(self, other):
         match other:
             case set() as s if len(s) == 1:
-                #self.left_angle = s.pop()
-                #return self
                 return self._replace(left_angle=s.pop())
 
             case _:
@@ -290,33 +264,20 @@ class Point:
         return Path(elem=self, prev=None) >> other
 
     def __pos__(self):
-        #self.is_relative = True
-        #return self
         return self._replace(is_relative=True)
 
     def __neg__(self):
-        #self.neg_count += 1
-        #self.x = -self.x
-        #self.y = -self.y
-        #return self
         return self._replace(neg_count=self.neg_count + 1, x=-self.x, y=-self.y)
 
     def __sub__(self, other):
         match other:
             case Point() as p if p.neg_count == 0:
-                #new_pt = copy.copy(p)
-                #new_pt.x -= p.x
-                #new_pt.y -= p.y
                 return self._replace(x=x - p.x, y=y-p.y)
 
             case Point() as p if 1 <= p.neg_count <= 2:
                 if p.neg_count == 1:
-                    #p.connected_from = Op.LINE2
-                    #p.x = -p.x
-                    #p.y = -p.y
                     return Path(elem=p._replace(connected_from=Op.LINE2, x=-p.x, y=-p.y), prev=Path(elem=self, prev=None))
                 elif p.neg_count == 2:
-                    #p.connected_from = Op.LINE3
                     return Path(elem=p._replace(connected_from=Op.LINE3), prev=Path(elem=self, prev=None))
 
             case _:
