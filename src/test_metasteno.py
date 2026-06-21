@@ -5,6 +5,16 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 import pytest
 from metasteno import z, Op
+from pyx.metapost.path import (
+    beginknot,
+    endknot,
+    smoothknot,
+    roughknot,
+    tensioncurve,
+    controlcurve,
+    line,
+)
+import pyx
 
 
 
@@ -48,6 +58,19 @@ METASTENO_TEST_CASES = [
     (
         z[0]@{-30} >> 1.2 >> {90}@z[4] >> z[1.7: 130]@-0.9 >> {-30}@+z[-1.7: 130],
         "M0 -0C1.5789 0.911581 4 1.23646 4 -0C4 -1.0811 2.73734 -1.33797 2.42189 -0.614522C2.16892 -0.034356 2.90504 0.335811 3.51463 0.687754"
+    ),
+
+    (
+		z[0]@{2j} >> {4j}@z[1, 1]@{5j} >> {3j}@z[2, 0],
+        pyx.metapost.path.path(
+            [
+                beginknot(0, 0, curl=1),
+                tensioncurve(),
+                roughknot(1, 1, lcurl=4, rcurl=5),
+                tensioncurve(),
+                endknot(2, 0, curl=3)
+            ]
+        ).returnSVGdata()
     ),
 ]
 

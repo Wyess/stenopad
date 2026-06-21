@@ -106,15 +106,44 @@ class Path:
 
             case Op.CURVE:
                 if is_end:
+                    if pt2.left_angle is None:
+                        angle = None
+                        curl = 1
+                    elif pt2.left_angle.imag != 0:
+                        angle = None
+                        curl = pt2.left_angle.imag
+                    else:
+                        angle = pt2.left_angle
+                        curl = 1
                     knot = endknot(pt2.x, pt2.y,
-                            angle=pt2.left_angle)
+                            angle=angle, curl=curl)
                 elif (pt2.left_angle is None 
                       and pt2.right_angle is None):
                     knot = smoothknot(pt2.x, pt2.y)
                 else:
+                    if pt2.left_angle is None:
+                        lcurl = 1
+                        langle = None
+                    elif pt2.left_angle.imag != 0:
+                        lcurl = pt2.left_angle.imag
+                        langle = None
+                    else:
+                        lcurl = 1
+                        langle = pt2.left_angle
+
+                    if pt2.right_angle is None:
+                        rcurl = None
+                        rangle = None
+                    elif pt2.right_angle.imag != 0:
+                        rcurl = pt2.right_angle.imag
+                        rangle = None
+                    else:
+                        rcurl = None
+                        rangle = pt2.right_angle
+
                     knot = roughknot(pt2.x, pt2.y, 
-                            langle=pt2.left_angle,
-                            rangle=pt2.right_angle)
+                            langle=langle, lcurl=lcurl,
+                            rangle=rangle, rcurl=rcurl)
                 tn1 = 1.0 if pt1.right_tension is None else pt1.right_tension
                 tn2 = pt2.left_tension
                 return tensioncurve(ltension=tn1, rtension=tn2), knot
@@ -124,10 +153,19 @@ class Path:
 
     def create_metapost_path(self, elems):
         x, y = elems[0].x, elems[0].y
+        if elems[0].right_angle is None:
+            angle = None
+            curl = 1
+        elif elems[0].right_angle.imag != 0:
+            angle = None
+            curl = elems[0].right_angle.imag
+        else:
+            angle = elems[0].right_angle
+            curl = 1
         segs = [
             beginknot(
                 elems[0].x, elems[0].y,
-                angle=elems[0].right_angle
+                angle=angle, curl=curl
             )
         ]
         for i, elem in enumerate(elems[1:], start=1):
@@ -327,4 +365,15 @@ z = Point
 
 pyx.unit.set(defaultunit="pt")
 
-
+path = "z[0]@{2j}>> {4j}@z[1, 1]@{5j} >> {3j}@z[2, 0]"
+print(path)
+print(eval(path).resolve())
+print(pyx.metapost.path.path(
+    [
+        beginknot(0, 0, curl=2),
+        tensioncurve(),
+        roughknot(1, 1, lcurl=4, rcurl=5),
+        tensioncurve(),
+        endknot(2, 0, curl=3)
+    ]
+).returnSVGdata())
