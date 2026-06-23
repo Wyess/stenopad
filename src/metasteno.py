@@ -78,6 +78,16 @@ class Path:
                 elem = self.elem._replace(right_tension= t[0], next_left_tension=t[1])
                 return self._replace(elem=elem)
 
+            case Path() as p:
+                others = list(p)
+                cur = p
+                while cur.prev is not None:
+                    cur = cur.prev
+                cur = Path(elem=others[0]._replace(connected_from=Op.CURVE), prev=self)
+                for elem in others[1:]:
+                    cur = Path(elem=elem, prev=cur)
+                return cur
+
             case _:
                 raise SyntaxError(other)
 
