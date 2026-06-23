@@ -112,6 +112,15 @@ class Path:
             yield current
             current = current.prev
 
+    def make_linear_segment(self, x1, y1, x2, y2):
+        cp1_x = x1 + (x2 - x1) / 3.0
+        cp1_y = y1 + (y2 - y1) / 3.0
+
+        cp2_x = x1 + 2.0 * (x2 - x1) / 3.0
+        cp2_y = y1 + 2.0 * (y2 - y1) / 3.0
+
+        return pyx.metapost.path.controlcurve_pt((cp1_x, cp1_y), (cp2_x, cp2_y))
+
     def _create_segment(self, pt1, pt2, is_end=False):
         match pt2.connected_from:
             case Op.LINE2:
@@ -120,7 +129,7 @@ class Path:
                 
             case Op.LINE3:
                 knot = (smoothknot, endknot)[is_end](pt2.x, pt2.y)
-                return line(keepangles=True), knot
+                return self.make_linear_segment(pt1.x, pt1.y, pt2.x, pt2.y), knot
 
             case Op.CURVE:
                 if is_end:
