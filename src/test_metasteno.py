@@ -4,7 +4,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 import pytest
-from metasteno import z, Op
+from metasteno import Point as z, Op
 from pyx.metapost.path import (
     beginknot,
     endknot,
@@ -81,6 +81,10 @@ METASTENO_TEST_CASES = [
         z[0]@{-30} >> 1.2 >> {2j}@z[4],
 
         ((z[0]@{-30} >> 1.2 >> z[4])@{2j}).resolve()
+    ),
+    (
+        (z[0] >> z[1]) -- (z[2] >> z[3]),
+        ((z[0] >> z[1] -- z[2] >> z[3])).resolve()
     ),
 ]
 

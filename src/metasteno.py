@@ -6,6 +6,7 @@ from numbers import Integral, Real, Complex
 import copy
 from enum import Enum
 
+import pyx
 from pyx.metapost.path import (
     beginknot,
     endknot,
@@ -15,7 +16,7 @@ from pyx.metapost.path import (
     controlcurve,
     line,
 )
-import pyx
+pyx.unit.set(defaultunit="pt")
 
 
 class Op(Enum):
@@ -42,7 +43,6 @@ class Path:
     def _replace(self, **changes):
         clone = copy.copy(self)
         for key, value in changes.items():
-            #setattr(clone, key, value)
             object.__setattr__(clone, key, value)
         return clone
 
@@ -91,23 +91,52 @@ class Path:
             case _:
                 raise SyntaxError(other)
 
+    def __neg__(self):
+        others = list(self)
+        cur = Path(elem=others[0]._replace(neg_count=others[0].neg_count+1))
+        for elem in others[1:]:
+            cur = Path(elem=elem, prev=cur)
+        return cur
+
+    def __sub__(self, other):
+        others = list(other)
+        match other:
+            case Path() as p if 1 <= p.top().elem.neg_count <= 2:
+                if p.top().elem.neg_count == 1:
+                    cur = Path(elem=others[0]._replace(connected_from=Op.LINE2), prev=self)
+                elif p.top().elem.neg_count == 2:
+                    cur = Path(elem=others[0]._replace(connected_from=Op.LINE3), prev=self)
+                else:
+                    raise SyntaxError(other)
+            case _:
+                raise SyntaxError(other)
+        for elem in others[1:]:
+            cur = Path(elem=elem, prev=cur)
+        return cur
+
+    def top(self):
+        cur = self
+        while cur.prev is not None:
+            cur = cur.prev
+        return cur
+
     def __str__(self):
         return f"Path({self.elem},{self.prev})"
 
     def __iter__(self):
         nodes = []
         current = self
-        
+
         while current is not None:
             nodes.append(current.elem)
             current = current.prev
-            
+
         for el in reversed(nodes):
             yield el
 
     def __reversed__(self):
         current = self
-        
+
         while current is not None:
             yield current
             current = current.prev
@@ -121,15 +150,16 @@ class Path:
 
         return pyx.metapost.path.controlcurve_pt((cp1_x, cp1_y), (cp2_x, cp2_y))
 
-    def _create_segment(self, pt1, pt2, is_end=False):
+    def _create_segment(self, pt1, pt2, pt3, is_end=False):
         match pt2.connected_from:
             case Op.LINE2:
-                knot = (smoothknot, endknot)[is_end](pt2.x, pt2.y)
+                knot = (roughknot, endknot)[is_end](pt2.x, pt2.y)
                 return line(), knot
-                
+
             case Op.LINE3:
-                knot = (smoothknot, endknot)[is_end](pt2.x, pt2.y)
+                knot = (roughknot, endknot)[is_end](pt2.x, pt2.y)
                 return self.make_linear_segment(pt1.x, pt1.y, pt2.x, pt2.y), knot
+                #return line(keepangles=True), knot
 
             case Op.CURVE:
                 if is_end:
@@ -151,6 +181,8 @@ class Path:
                         curl = 1
                     knot = endknot(pt2.x, pt2.y,
                             angle=angle, curl=curl)
+                elif pt3.connected_from != Op.CURVE:
+                    knot = roughknot(pt2.x, pt2.y)
                 elif (pt2.left_angle is None 
                       and pt2.right_angle is None):
                     knot = smoothknot(pt2.x, pt2.y)
@@ -218,26 +250,20 @@ class Path:
             x = new_elem.x 
             y = new_elem.y
             elems[i] = new_elem
-
-            segs.extend(
-                self._create_segment(
-                    elems[i-1], elems[i], is_end
+            if is_end:
+                new_segs = self._create_segment(
+                    elems[i-1], elems[i], None, is_end
                 )
-            )
+            else:
+                new_segs = self._create_segment(
+                    elems[i-1], elems[i], elems[i+1], is_end
+                )
+            segs.extend(new_segs)
         return pyx.metapost.path.path(segs)
 
     def resolve(self):
         elems = list(self)
         return self.create_metapost_path(elems).returnSVGdata()
-    """
-    beginknot,
-    endknot,
-    smoothknot,
-    roughknot,
-    tensioncurve,
-    controlcurve,
-    line,
-    """
 
 class Point:
     def __init__(self, x=0, y=None):
@@ -250,7 +276,7 @@ class Point:
 
         self.right_angle = None
         self.right_tension = None
-        
+
         self.left_angle = None
         self.left_tension = None
 
@@ -354,60 +380,3 @@ class Point:
 
             case _:
                 raise SyntaxError(other)
-
-def save_debug_html(metasteno_expr, points_list, svg_path_d, filename="debug.html"):
-    # 💡 スマホの画面幅でも見やすいようにCSSを調整したHTMLテンプレート
-    html_content = f"""<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaSteno Debugger</title>
-    <style>
-        body {{ font-family: sans-serif; background: #121212; color: #e0e0e0; padding: 10px; margin: 0; }}
-        h3 {{ color: #00ffcc; margin-bottom: 5px; font-size: 14px; }}
-        pre {{ background: #1e1e1e; padding: 8px; border-radius: 4px; overflow-x: auto; font-size: 12px; border: 1px solid #333; }}
-        .canvas-container {{ background: #fff; border-radius: 8px; padding: 10px; text-align: center; margin-top: 15px; }}
-        svg {{ max-width: 100%; height: auto; background: #fafafa; }}
-    </style>
-</head>
-<body>
-
-    <h3>1. Input Expression</h3>
-    <pre>{metasteno_expr}</pre>
-
-    <h3>2. Processed Points</h3>
-    <pre>""" + "\n".join([str(p) for p in points_list]) + f"""</pre>
-
-    <h3>3. Generated SVG Path</h3>
-    <pre>{svg_path_d}</pre>
-
-    <h3>4. Visualized Output</h3>
-    <div class="canvas-container">
-        <svg width="300" height="200" viewBox="-50 -50 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path d="{svg_path_d}" fill="none" stroke="#4a90e2" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-    </div>
-
-</body>
-</html>
-"""
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(html_content)
-
-z = Point
-
-pyx.unit.set(defaultunit="pt")
-
-path = "z[0]@{2j}>> {4j}@z[1, 1]@{5j} >> {3j}@z[2, 0]"
-print(path)
-print(eval(path).resolve())
-print(pyx.metapost.path.path(
-    [
-        beginknot(0, 0, curl=2),
-        tensioncurve(),
-        roughknot(1, 1, lcurl=4, rcurl=5),
-        tensioncurve(),
-        endknot(2, 0, curl=3)
-    ]
-).returnSVGdata())
