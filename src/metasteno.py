@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
+from __future__ import annotations
 from math import radians as rad
 from cmath import rect
 from numbers import Integral, Real, Complex
 import copy
 from enum import Enum
+from dataclasses import dataclass, replace
 
 import pyx
 from pyx.metapost.path import (
@@ -28,28 +30,15 @@ class CoordMode(Enum):
     ABS = 0
     REL = 1
 
-
+@dataclass(frozen=True, slots=True)
 class Path:
-    def __init__(self, elem, prev=None):
-        self.elem = elem
-        self.prev = prev
-        object.__setattr__(self, "_initialized", True)
-
-    def __setattr__(self, name, value):
-        if getattr(self, "_initialized", False):
-            raise AttributeError(f"{self.__class__.__name__}")
-        super().__setattr__(name, value)
-
-    def _replace(self, **changes):
-        clone = copy.copy(self)
-        for key, value in changes.items():
-            object.__setattr__(clone, key, value)
-        return clone
+    elem: Point
+    prev: Path | None = None
 
     def __matmul__(self, other):
         match other:
             case set() as s:
-                return self._replace(elem=self.elem._replace(right_angle=s.pop()))
+                return replace(self, elem=replace(self.elem, right_angle=s.pop()))
 
             case _:
                 raise SyntaxError(other)
@@ -62,28 +51,28 @@ class Path:
                 else:
                     left_angle = p.left_angle
                 left_tension = self.elem.next_left_tension
-                return Path(elem=p._replace(left_angle=left_angle, left_tension=left_tension, connected_from=Op.CURVE), prev=self)
+                return Path(elem=replace(p, left_angle=left_angle, left_tension=left_tension, connected_from=Op.CURVE), prev=self)
 
             case set() as s if len(s) == 1:
-                elem = self.elem._replace(next_left_angle=s.pop())
-                return self._replace(elem=elem)
+                elem = replace(self.elem, next_left_angle=s.pop())
+                return replace(self, elem=elem)
 
             case Complex() as t:
                 t1 = t.real
                 t2 = None if t.imag == 0 else t.imag
-                elem = self.elem._replace(right_tension=t1, next_left_tension=t2)
-                return self._replace(elem=elem)
+                elem = replace(self.elem, right_tension=t1, next_left_tension=t2)
+                return replace(self, elem=elem)
 
             case (Real(), Real()) as t:
-                elem = self.elem._replace(right_tension= t[0], next_left_tension=t[1])
-                return self._replace(elem=elem)
+                elem = replace(self.elem, right_tension= t[0], next_left_tension=t[1])
+                return replace(self, elem=elem)
 
             case Path() as p:
                 others = list(p)
                 cur = p
                 while cur.prev is not None:
                     cur = cur.prev
-                cur = Path(elem=others[0]._replace(connected_from=Op.CURVE), prev=self)
+                cur = Path(elem=replace(others[0], connected_from=Op.CURVE), prev=self)
                 for elem in others[1:]:
                     cur = Path(elem=elem, prev=cur)
                 return cur
@@ -93,7 +82,7 @@ class Path:
 
     def __neg__(self):
         others = list(self)
-        cur = Path(elem=others[0]._replace(neg_count=others[0].neg_count+1))
+        cur = Path(elem=replace(others[0], neg_count=others[0].neg_count+1))
         for elem in others[1:]:
             cur = Path(elem=elem, prev=cur)
         return cur
@@ -103,9 +92,9 @@ class Path:
         match other:
             case Path() as p if 1 <= p.top().elem.neg_count <= 2:
                 if p.top().elem.neg_count == 1:
-                    cur = Path(elem=others[0]._replace(connected_from=Op.LINE2), prev=self)
+                    cur = Path(elem=replace(others[0], connected_from=Op.LINE2), prev=self)
                 elif p.top().elem.neg_count == 2:
-                    cur = Path(elem=others[0]._replace(connected_from=Op.LINE3), prev=self)
+                    cur = Path(elem=replace(others[0], connected_from=Op.LINE3), prev=self)
                 else:
                     raise SyntaxError(other)
             case _:
@@ -119,9 +108,6 @@ class Path:
         while cur.prev is not None:
             cur = cur.prev
         return cur
-
-    def __str__(self):
-        return f"Path({self.elem},{self.prev})"
 
     def __iter__(self):
         nodes = []
@@ -148,7 +134,7 @@ class Path:
         cp2_x = x1 + 2.0 * (x2 - x1) / 3.0
         cp2_y = y1 + 2.0 * (y2 - y1) / 3.0
 
-        return pyx.metapost.path.controlcurve_pt((cp1_x, cp1_y), (cp2_x, cp2_y))
+        return pyx.metapost.path.controlcurve((cp1_x, cp1_y), (cp2_x, cp2_y))
 
     def _create_segment(self, pt1, pt2, pt3, is_end=False):
         match pt2.connected_from:
@@ -241,9 +227,9 @@ class Path:
                 # TODO: Use the index also
                 subpath = self.create_metapost_path(elems[:i])
                 p = subpath.at(subpath.end() + arc_pos)
-                new_elem = elem._replace(x=elems[i].x +p[0] / pyx.unit.length(1), y=elems[i].y + p[1] / pyx.unit.length(1))
+                new_elem = replace(elem, x=elems[i].x +p[0] / pyx.unit.length(1), y=elems[i].y + p[1] / pyx.unit.length(1))
             elif elems[i].is_relative:
-                new_elem = elem._replace(x=elem.x + x, y=elem.y + y)
+                new_elem = replace(elem, x=elem.x + x, y=elem.y + y)
             else:
                 new_elem = elem
 
@@ -265,44 +251,31 @@ class Path:
         elems = list(self)
         return self.create_metapost_path(elems).returnSVGdata()
 
+@dataclass(frozen=True, slots=True)
 class Point:
-    def __init__(self, x=0, y=None):
-        if y is None:
-            self.x = x.real
-            self.y = x.imag
-        else:
-            self.x = x
-            self.y = y
+    x: float
+    y: float | None = None
 
-        self.right_angle = None
-        self.right_tension = None
+    right_angle: float | None = None
+    right_tension: float | None = None
 
-        self.left_angle = None
-        self.left_tension = None
+    left_angle: float | None = None
+    left_tension: float | None = None
 
-        self.next_left_angle = None
-        self.next_left_tension = None
+    next_left_angle: float | None = None
+    next_left_tension: float | None = None
 
-        self.neg_count = 0
-        self.connected_from = None
-        self.ox = None
-        self.oy = None
-        self.arc_pos = None
-        self.is_relative = False
+    neg_count: int = 0
+    connected_from: Op | None = None
+    arc_pos: float | None = None
+    is_relative: bool = False
 
-        object.__setattr__(self, "_initialized", True)
-
-    def __setattr__(self, name, value):
-        if getattr(self, "_initialized", False):
-            raise AttributeError(f"{self.__class__.__name__}")
-        super().__setattr__(name, value)
-
-
-    def _replace(self, **changes):
-        clone = copy.copy(self)
-        for key, value in changes.items():
-            object.__setattr__(clone, key, value)
-        return clone
+    def __post_init__(self):
+        if self.y is None:
+            x = self.x.real
+            y = self.x.imag
+            object.__setattr__(self, "x", x)
+            object.__setattr__(self, "y", y)
 
     def __class_getitem__(self, key):
         match key:
@@ -330,22 +303,16 @@ class Point:
             case _:
                 raise TypeError(key)
 
-    def __str__(self):
-        items = [f"{k}={v}" for k, v in vars(self).items() if v is not None and not k.startswith("_")]
-        return f"{self.__class__.__name__}({', '.join(items)})"
-
-    __repr__ = __str__
-
     def __matmul__(self, other):
         match other:
             case (Real() as len_, int(index)):
                 pass
 
             case Real() as len_:
-                return self._replace(arc_pos=len_)
+                return replace(self, arc_pos=len_)
 
             case set() as s if len(s) == 1:
-                return self._replace(right_angle=s.pop())
+                return replace(self, right_angle=s.pop())
 
             case _:
                 raise SyntaxError(other)
@@ -353,7 +320,7 @@ class Point:
     def __rmatmul__(self, other):
         match other:
             case set() as s if len(s) == 1:
-                return self._replace(left_angle=s.pop())
+                return replace(self, left_angle=s.pop())
 
             case _:
                 raise SyntaxError(other)
@@ -362,21 +329,22 @@ class Point:
         return Path(elem=self, prev=None) >> other
 
     def __pos__(self):
-        return self._replace(is_relative=True)
+        return replace(self, is_relative=True)
 
     def __neg__(self):
-        return self._replace(neg_count=self.neg_count + 1, x=-self.x, y=-self.y)
+        return replace(self, neg_count=self.neg_count + 1, x=-self.x, y=-self.y)
 
     def __sub__(self, other):
         match other:
             case Point() as p if p.neg_count == 0:
-                return self._replace(x=x - p.x, y=y-p.y)
+                return replace(self, x=x - p.x, y=y-p.y)
 
             case Point() as p if 1 <= p.neg_count <= 2:
                 if p.neg_count == 1:
-                    return Path(elem=p._replace(connected_from=Op.LINE2, x=-p.x, y=-p.y), prev=Path(elem=self, prev=None))
+                    return Path(elem=replace(p, connected_from=Op.LINE2, x=-p.x, y=-p.y), prev=Path(elem=self, prev=None))
                 elif p.neg_count == 2:
-                    return Path(elem=p._replace(connected_from=Op.LINE3), prev=Path(elem=self, prev=None))
+                    return Path(elem=replace(p, connected_from=Op.LINE3), prev=Path(elem=self, prev=None))
 
             case _:
                 raise SyntaxError(other)
+
