@@ -6,7 +6,6 @@ import operator
 from glom import glom
 
 class Reference:
-    # __slots__ を指定して重たい __dict__ を排除しつつ、属性を固定化する
     __slots__ = ("target", "path", "history", "_initialized")
 
     def __init__(self, target: str, path: str | None = None, history: tuple[tuple[Callable, Any], ...] = ()):

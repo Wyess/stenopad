@@ -61,7 +61,6 @@ class ShorthandDefBuilder:
         return self
 
     def _convert_paths_in_glyph(self, glyph_data):
-        """引数で渡されたグリフデータ（辞書）内の path を SVG 文字列に置換するヘルパー"""
         if glyph_data and 'path' in glyph_data:
             glyph_data['path'] = [
                 p.resolve() if type(p).__name__ == "Path" else p
@@ -69,7 +68,6 @@ class ShorthandDefBuilder:
             ]
 
     def build(self):
-        #return self.pool
         resolved_result = resolve_dependencies(self.pool)
         for char_key, char_content in resolved_result.get('character', {}).items():
 
@@ -87,13 +85,11 @@ class ShorthandDefBuilder:
 
 class ShorthandCharBuilder:
     def __init__(self, parent, name):
-        #self.pool = KeyBasedDefaultDict()
         self._char = Character(name)
         self.name = name
         self.parent = parent
 
     def _flush(self):
-        #self.parent.pool['character'][self.name] = self.pool
         self.parent.pool['character'][self.name] = smart_asdict(self._char)
 
     def __getattr__(self, name):
@@ -162,7 +158,6 @@ class Character:
 
 class ShorthandGlyphBuilder:
     def __init__(self, parent, key):
-        self.pool = KeyBasedDefaultDict()
         self.parent = parent
         self.key = key
         self._glyph = Glyph(key)

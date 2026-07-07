@@ -4,8 +4,6 @@ from graphlib import TopologicalSorter
 from reference import Reference 
 from typing import Any
 from dataclasses import replace, is_dataclass, fields
-from flatten_dict import flatten
-#from metasteno import Point, Path
 
 def collect_dependencies(node) -> set[str]:
     deps = set()
@@ -62,43 +60,16 @@ def resolve_nested_structure(node, pool: dict, current_path: list[str] = None) -
 
     return node
 
-#def expand_shortcuts(node, current_section: str) -> Any:
-## 📄 66行目をこのように変更
-#    if hasattr(node, "expand_shortcuts"):
-#        return node.expand_shortcuts(current_section)
-#
-#    if type(node).__name__ in ("Path", "Point"):
-#        return node
-#    if isinstance(node, Reference):
-#        if node.target.startswith("."):
-#            new_target = f"{current_section}{node.target}" 
-#            return replace(node, target=new_target)
-#        elif node.target.startswith("$"):
-#            new_target = f"variable.{node.target[1:]}" 
-#            return replace(node, target=new_target)
-#        return node
-#    elif isinstance(node, dict):
-#        return {k: expand_shortcuts(v, current_section) for k, v in node.items()}
-#    elif isinstance(node, (list, tuple, set)):
-#        return type(node)([expand_shortcuts(item, current_section) for item in node])
-#    elif isinstance(node, Path):
-#        return type(node)([expand_shortcuts(item, current_section) for item in node])
-#        
-#    return node
-
 def flatten_data(data):
     flat_data = {}
     for section_key, section_dict in data.items():
         for element_key, value in section_dict.items():
             full_key = f"{section_key}.{element_key}"
-            #expanded_value = expand_shortcuts(value, current_section=section_key)
-            #flat_data[full_key] = expanded_value
             flat_data[full_key] = value
     return flat_data
 
 def resolve_dependencies(data):
     flat_data = flatten_data(data)
-    #flat_data = flatten(data, reducer='dot')
 
     ts = TopologicalSorter()
     
