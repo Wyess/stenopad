@@ -7,6 +7,7 @@ from numbers import Integral, Real, Complex
 import copy
 from enum import Enum
 from dataclasses import dataclass, replace
+from reference import Reference
 
 import pyx
 from pyx.metapost.path import (
@@ -34,6 +35,24 @@ class CoordMode(Enum):
 class Path:
     elem: Point
     prev: Path | None = None
+
+    def resolve_references(self, pool):
+        def _v(val):
+            if type(val).__name__ == "Reference":
+                return val.resolve(pool)
+            return val
+
+        resolved_elem = replace(
+            self.elem,
+            x=_v(self.elem.x), y=_v(self.elem.y),
+            right_angle=_v(self.elem.right_angle), right_tension=_v(self.elem.right_tension),
+            left_angle=_v(self.elem.left_angle), left_tension=_v(self.elem.left_tension),
+            next_left_angle=_v(self.elem.next_left_angle), next_left_tension=_v(self.elem.next_left_tension)
+        )
+
+        resolved_prev = self.prev.resolve_references(pool) if self.prev is not None else None
+
+        return replace(self, elem=resolved_elem, prev=resolved_prev)
 
     def __matmul__(self, other):
         match other:
@@ -68,7 +87,7 @@ class Path:
                 return replace(self, elem=elem)
 
             case Path() as p:
-                others = list(p)
+                others = p.to_list()
                 cur = p
                 while cur.prev is not None:
                     cur = cur.prev
@@ -81,14 +100,14 @@ class Path:
                 raise SyntaxError(other)
 
     def __neg__(self):
-        others = list(self)
+        others = self.to_list()
         cur = Path(elem=replace(others[0], neg_count=others[0].neg_count+1))
         for elem in others[1:]:
             cur = Path(elem=elem, prev=cur)
         return cur
 
     def __sub__(self, other):
-        others = list(other)
+        others = other.to_list()
         match other:
             case Path() as p if 1 <= p.top().elem.neg_count <= 2:
                 if p.top().elem.neg_count == 1:
@@ -109,7 +128,7 @@ class Path:
             cur = cur.prev
         return cur
 
-    def __iter__(self):
+    def to_list(self):
         nodes = []
         current = self
 
@@ -117,8 +136,7 @@ class Path:
             nodes.append(current.elem)
             current = current.prev
 
-        for el in reversed(nodes):
-            yield el
+        return list(reversed(nodes))
 
     def __reversed__(self):
         current = self
@@ -248,22 +266,26 @@ class Path:
         return pyx.metapost.path.path(segs)
 
     def resolve(self):
-        elems = list(self)
+        elems = self.to_list()
         return self.create_metapost_path(elems).returnSVGdata()
+        #return self
+
+# float だけでなく、遅延評価オブジェクト（Expr / Reference）も受け取れるようにする
+ValueType = float | complex | Reference | None
 
 @dataclass(frozen=True, slots=True)
 class Point:
-    x: float
-    y: float | None = None
+    x: ValueType
+    y: ValueType = None
 
-    right_angle: float | None = None
-    right_tension: float | None = None
+    right_angle: ValueType = None
+    right_tension: ValueType = None
 
-    left_angle: float | None = None
-    left_tension: float | None = None
+    left_angle: ValueType = None
+    left_tension: ValueType = None
 
-    next_left_angle: float | None = None
-    next_left_tension: float | None = None
+    next_left_angle: ValueType = None
+    next_left_tension: ValueType = None
 
     neg_count: int = 0
     connected_from: Op | None = None
@@ -271,6 +293,7 @@ class Point:
     is_relative: bool = False
 
     def __post_init__(self):
+        #return
         if self.y is None:
             x = self.x.real
             y = self.x.imag
