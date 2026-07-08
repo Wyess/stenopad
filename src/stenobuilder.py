@@ -123,7 +123,7 @@ def smart_asdict(obj):
     if isinstance(obj, (Path, Point)):
         return obj
 
-    if isinstance(obj, (list, tuple)):
+    if isinstance(obj, (list, tuple, set)):
         return type(obj)(smart_asdict(i) for i in obj)
 
     if isinstance(obj, dict):
