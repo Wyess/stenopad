@@ -63,24 +63,24 @@ class ShorthandDefBuilder:
     def _convert_paths_in_glyph(self, glyph_data):
         if glyph_data and 'path' in glyph_data:
             glyph_data['path'] = [
-                p.resolve() if type(p).__name__ == "Path" else p
+                p.resolve() if isinstance(p, Path) else p
                 for p in glyph_data['path']
             ]
 
     def build(self):
-        resolved_result = resolve_dependencies(self.pool)
-        for char_key, char_content in resolved_result.get('character', {}).items():
+        res = resolve_dependencies(self.pool)
+        char_dict = res.get('character', {})
 
-            if 'default_glyph' in char_content and char_content['default_glyph'] is not None:
-                self._convert_paths_in_glyph(char_content['default_glyph'])
+        for char in char_dict.values():
+            glyph = char.get('default_glyph')
+            if glyph:
+                self._convert_paths_in_glyph(glyph)
 
-            if 'glyphs' in char_content and isinstance(char_content['glyphs'], list):
-                for sub_glyph in char_content['glyphs']:
-                    self._convert_paths_in_glyph(sub_glyph)
+            glyphs = char.get('glyphs', [])
+            for glyph in glyphs:
+                self._convert_paths_in_glyph(glyph)
 
-        return resolved_result
-
-
+        return res
 
 
 class ShorthandCharBuilder:
