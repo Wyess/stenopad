@@ -79,8 +79,8 @@ export class TextParser {
      * 連続する空白・改行が次の通常単語の前に正しくマージされるように処理します
      */
     parse(text) {
-        // Larkパーサーの代わりに、正規表現で「非空白の連続（WORD）」と「空白の連続（WHITESPACE）」に分解
-        const tokens = text.match(/\s+|\S+/g) || [];
+        // Larkパーサーの代わりに、正規表現で「非空白の連続（WORD）」と「空白（WHITESPACE」に分解
+        const tokens = text.match(/\s|\S+/g) || [];
         
         const args = tokens.map(tok => {
             if (/\s/.test(tok)) {
