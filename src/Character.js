@@ -260,7 +260,7 @@ export class Character {
         if (this.clipPaths && this.clipPaths.length > 0) {
             const id = Math.floor(Math.random() * 0x10000);
             const dStr = this.clipPaths.map(cp => cp['d']).join('');
-            const elem = `<clipPath id="clip_${id}"><path d="${dStr}"/></clipPath>`;
+            const elem = `<clipPath id="clip_${id}" clipPathUnits="userSpaceOnUse"><path d="${dStr}" clip-rule="nonzero"/></clipPath>`;
             const attr = `clip-path="url(#clip_${id})"`;
             return [elem, attr];
         }
