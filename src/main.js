@@ -144,6 +144,12 @@ document.getElementById("steno-input").addEventListener("input", (e) => {
     document.getElementById("steno-svg-output").innerHTML = currentShorthand.toString();
 });
 
+document.getElementById("steno-svg-output").addEventListener("click", (e) => {
+    const text = document.getElementById("steno-input").value;
+    currentShorthand = new ShorthandString(text, wasedaData.waseda);
+    document.getElementById("steno-svg-output").innerHTML = currentShorthand.createSvg({toAnimate: true})[0];
+});
+
 // 各ボタンのイベントバインディング
 document.getElementById("btn_svg").addEventListener("click", () => {
     if (currentShorthand) downloadSvg(currentShorthand);
