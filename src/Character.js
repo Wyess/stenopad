@@ -122,8 +122,8 @@ export class Character {
     _evaluateSelector(selectorStr) {
         if (!selectorStr || selectorStr.trim() === "" || selectorStr === "default") return true;
 
-        const tokenRegex = /\||\.|!|\(|\)|[a-z@][a-z0-9_]*\[-?\d+(?::-?\d+)?\]/g;
-        const tokens = selectorStr.match(tokenRegex) || [];
+        const tokenRegex = /(\||\.|!|\(|\)|[a-z@][a-z0-9_]*\[-?\d+(?::-?\d+)?\])/;
+        const tokens = selectorStr.split(tokenRegex).filter(Boolean);
         let tokenIndex = 0;
 
         const peek = () => tokens[tokenIndex];
