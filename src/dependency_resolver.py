@@ -9,8 +9,9 @@ def collect_dependencies(node) -> set[str]:
     deps = set()
     if isinstance(node, Reference):
         deps.add(node.target)
-        for op, rhs in node.history:
-            deps.update(collect_dependencies(rhs))
+        for op, op_type, *rest in node.history:
+            for node in rest:
+                deps.update(collect_dependencies(rest))
     elif isinstance(node, dict):
         for v in node.values():
             deps.update(collect_dependencies(v))
@@ -25,10 +26,6 @@ def collect_dependencies(node) -> set[str]:
     return deps
 
 def resolve_nested_structure(node, pool: dict, current_path: list[str] = None) -> Any:
-    if hasattr(node, "resolve_references"):
-        path = node.resolve_references(pool)
-        return path
-
     if current_path is None:
         current_path = []
 
@@ -37,6 +34,8 @@ def resolve_nested_structure(node, pool: dict, current_path: list[str] = None) -
             return pool.get(node.target)
         else:
             return node.resolve(pool)
+    elif hasattr(node, "resolve"):
+        return node.resolve(pool)
     elif isinstance(node, dict):
         resolved_dict = {}
         for k, v in node.items():
@@ -49,7 +48,11 @@ def resolve_nested_structure(node, pool: dict, current_path: list[str] = None) -
                 resolved_dict[k] = resolve_nested_structure(v, pool, new_path)
         return resolved_dict
     elif isinstance(node, (list, tuple, set)):
-        resolved_list = [resolve_nested_structure(item, pool, current_path) for item in node]
+        resolved_list = [
+            resolve_nested_structure(
+                item, pool, current_path
+            ) for item in node
+        ]
         return type(node)(resolved_list)
     elif is_dataclass(node):
         changes = {}
