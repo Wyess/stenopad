@@ -131,18 +131,29 @@ export class Character {
 
         const parseOr = () => {
             let result = parseAnd();
-            while (peek() === '|') { consume(); const right = parseAnd(); result = result || right; }
+            while (peek() === '|') {
+                consume();
+                const right = parseAnd();
+                result = result || right;
+            }
             return result;
         };
 
         const parseAnd = () => {
             let result = parseNot();
-            while (peek() === '.') { consume(); const right = parseNot(); result = result && right; }
+            while (peek() === '.') {
+                consume();
+                const right = parseNot();
+                result = result && right;
+            }
             return result;
         };
 
         const parseNot = () => {
-            if (peek() === '!') { consume(); return !parsePrimary(); }
+            if (peek() === '!') {
+                consume();
+                return !parsePrimary();
+            }
             return parsePrimary();
         };
 
