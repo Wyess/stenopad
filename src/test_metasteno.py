@@ -75,16 +75,20 @@ METASTENO_TEST_CASES = [
     (
         z[0]@{-30} >> 1.2 >> {90}@z[4],
 
-        ((z[0]@{-30} >> 1.2 >> z[4])@{90}).resolve()
+        ((z[0]@{-30} >> 1.2 >> z[4])@{90}).returnSvgData()
     ),
     (
         z[0]@{-30} >> 1.2 >> {2j}@z[4],
 
-        ((z[0]@{-30} >> 1.2 >> z[4])@{2j}).resolve()
+        ((z[0]@{-30} >> 1.2 >> z[4])@{2j}).returnSvgData()
     ),
     (
-        (z[0] >> z[1]) -- (z[2] >> z[3]),
-        ((z[0] >> z[1] -- z[2] >> z[3])).resolve()
+        z[0] -- z[10] -- z[20] >> z[0]@-1,
+        (z[0] -- z[10] -- z[20] >> z[19]).returnSvgData(),
+    ),
+    (
+        z[0] -- z[10] -- z[20] >> z[0]@(-1, -2),
+        (z[0] -- z[10] -- z[20] >> z[9]).returnSvgData(),
     ),
 ]
 
@@ -97,5 +101,62 @@ def test_metasteno_svg_outputs(expr, expected_svg):
         assert str(expr) == expected_svg
     else:
         # 最終出力されるSVGのd属性が1ミリの狂いもなく一致するかチェック！
-        assert expr.resolve() == expected_svg
+        assert expr.returnSvgData() == expected_svg
 
+def test_pastpoint_exception():
+    with pytest.raises(AssertionError):
+        (z[0] -- z[10] >> z[0]@(-1, -2)).returnSvgData()
+
+METASTENO_PATH_TEST_CASES = (
+    # Path -- Path
+    (
+        (z[0] >> z[1]) -- (z[2] >> z[3]),
+         z[0] >> z[1]  --  z[2] >> z[3],
+    ),
+    # Path -- Point
+    (
+        (z[0] -- z[1]) -- z[2],
+         z[0] -- z[1]  -- z[2],
+    ),
+    # Path concatenation
+    (
+        z[0]@{-30} >> {90}@z[4] & z[0]@{30} >> {-90}@z[4],
+        z[0]@{-30} >> {90}@z[4]@{30} >> {-90}@z[8]
+    ),
+    # Path move
+    (
+        (z[0, 1] >> {90}@z[3, 4]) + z[10, 20],
+        z[10, 21] >> {90}@z[13, 24],
+    ),
+    # Path move (ignore relative points)
+    (
+        (z[0, 1] >> {90}@+z[3, 4]) + z[10, 20],
+        z[10, 21] >> {90}@+z[3, 4],
+    ),
+    # Path moveto
+    (
+        (z[0, 1] >> {90}@z[3, 4]) @ z[10, 20],
+        z[10, 20] >> {90}@z[13, 23],
+    ),
+    # Path moveto (ignore relative points)
+    (
+        (z[0, 1] >> {90}@+z[3, 4]) @ z[10, 20],
+        z[10, 20] >> {90}@+z[3, 4],
+    ),
+    # Path scale
+    (
+        (z[0, 1] >> {90}@z[3, 4]) * 2,
+        z[0, 2] >> {90}@z[6, 8],
+    ),
+)
+@pytest.mark.parametrize("mspath1, mspath2", METASTENO_PATH_TEST_CASES)
+def test_path_equality(mspath1, mspath2):
+    assert mspath1 == mspath2
+
+def test_get_head_angle():
+    p = z[0]@{-30} >> {90}@z[4]
+    assert p.get_head_angle() == -30
+
+def test_get_tail_angle():
+    p = z[0]@{-30} >> {90}@z[4]
+    assert p.get_tail_angle() == 90

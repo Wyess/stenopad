@@ -83,12 +83,23 @@ class Reference:
     def __truediv__(self, other: Any) -> Reference:
         return self._clone_with(history=(*self.history, (operator.truediv, other)))
 
+    def __mod__(self, other: Any) -> Reference:
+        return self._clone_with(history=(*self.history, (operator.mod, other)))
+
+    def __rmod__(self, other: Any) -> Reference:
+        return self._clone_with(history=(*self.history, (lambda current: other % current, None)))
+
+    def __floordiv__(self, other: Any) -> Reference:
+        return self._clone_with(history=(*self.history, (operator.floordiv, other)))
+
     def __rshift__(self, other: Any) -> Reference:
         return self._clone_with(history=(*self.history, (operator.rshift, other)))
 
-
     def __rtruediv__(self, other: Any) -> Reference:
         return self._clone_with(history=(*self.history, (lambda current: other / current, None)))
+
+    def __rfloordiv__(self, other: Any) -> Reference:
+        return self._clone_with(history=(*self.history, (lambda current: other // current, None)))
 
     def __neg__(self) -> Reference:
         return self._clone_with(history=(*self.history, (operator.neg, None)))
