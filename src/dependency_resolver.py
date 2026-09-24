@@ -10,8 +10,7 @@ def collect_dependencies(node) -> set[str]:
     if isinstance(node, Reference):
         deps.add(node.target)
         for op, op_type, *rest in node.history:
-            for node in rest:
-                deps.update(collect_dependencies(rest))
+            deps.update(collect_dependencies(rest))
     elif isinstance(node, dict):
         for v in node.values():
             deps.update(collect_dependencies(v))
@@ -22,7 +21,7 @@ def collect_dependencies(node) -> set[str]:
         for field in fields(node):
             val = getattr(node, field.name)
             deps.update(collect_dependencies(val))
-            
+
     return deps
 
 def resolve_nested_structure(node, pool: dict, current_path: list[str] = None) -> Any:

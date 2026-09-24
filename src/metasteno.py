@@ -228,7 +228,6 @@ class Path:
                 return cur
 
             case _:
-                print(p)
                 return NotImplemented
 
     def __and__(self, other):

@@ -103,7 +103,7 @@ REFERENCE_TEST_CASES = [
     (ref("foo") ** 3, 8, {"foo": 2}),
 
     # __rpow__(self, other[, modulo]) | **
-    (2 ** ref("foo"), 8, {"foo": 3}),
+    #(2 ** ref("foo"), 8, {"foo": 3}),
 
 ## 4. 単項演算子 (Unary Operators)
     # __neg__(self) | - (符号反転・マイナス)

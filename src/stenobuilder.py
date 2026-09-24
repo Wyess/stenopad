@@ -472,15 +472,15 @@ if __name__ == '__main__':
         .word("あ", "A")
         .var(aha=-30, atn=1.1, ata=90)
         .path('a', pref("a~")@{90})
-        .path("A.@head_er4", pref("a~")@{vref("iha")})
+        #.path("A:@head_er4", pref("a~")@{vref("iha")})
         .path('a~', z[0]@{-30} >> 1.1 >> z[4])
 
         .char("A")
             .model("el4")
             .glyph()
                 .path("a")
-            .glyph("@head_er4[1]")
-                .path("A.@head_er4")
+            #.glyph("@head_er4[1]")
+            #    .path("A:@head_er4")
 
 
         .word("あん", "An")
