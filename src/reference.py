@@ -56,8 +56,7 @@ class Reference:
                 current_val = op(current_val)
             elif op_type == Op.BINARY:
                 other = rest[0]
-                #if hasattr(other, "resolve"):
-                if isinstance(other, Reference):
+                if hasattr(other, "resolve"):
                     current_val = op(current_val, other.resolve(env))
                 else:
                     current_val = op(current_val, other)

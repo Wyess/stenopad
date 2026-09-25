@@ -83,8 +83,8 @@ def resolve_dependencies(data):
     ts.prepare()
     while ts.is_active():
         for r in ts.get_ready():
-            if isinstance(flat_data[r], Reference):
-                pool[r] = flat_data[r].resolve(pool)
+            if hasattr(flat_data[r], "resolve"):
+                pool[r] = resolve_nested_structure(flat_data[r].resolve(pool), pool)
             else:
                 pool[r] = resolve_nested_structure(flat_data[r], pool)
                 
