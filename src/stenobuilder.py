@@ -1153,7 +1153,7 @@ if __name__ == '__main__':
 
         .word("ち", "Chi")
         .path("chi", pref("ki") * (1, -1, -120))
-        .path("chi_henki", pref("ki") * (1, 1, 40))
+        .path("chi_henki", pref("ki.@head_sel") * (1, 1, 40))
         .char("Chi")
             .ascent("Ta")
             .model("sw8cr1")
