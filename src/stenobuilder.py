@@ -1535,10 +1535,14 @@ if __name__ == '__main__':
     builder = (
         builder
         .root().path("ki.@head_sel", z[0] --- z[7.5] >> z[8, 0.6] >> {180}@z[7.4, 1.3] >> {-90}@z[0]@(-1.3, -2))
+        .path("ki.@head_s", z[0] --- z[7.5] >> z[8, 0.6] >> {180}@z[7.4, 1.3] >> {-90}@z[0]@(-1.3, -2))
 
         .char("Ki")
             .glyph("@head_sel[1]")
                 .path("ki.@head_sel")
+
+            .glyph("@head_s[1]")
+                .path("ki.@head_s")
     )
 
     res = builder.build()
