@@ -902,6 +902,7 @@ if __name__ == '__main__':
             .glyph()
                 .path("sa")
             .glyph("@head_e[-1]")
+                .model("swr8")
                 .path("sa_henki")
 
         # @head_nel4[0]: soi
