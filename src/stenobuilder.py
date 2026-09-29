@@ -318,6 +318,12 @@ class ShorthandGlyphBuilder:
     def model(self, model):
         tags = model2tags(model)
         for tag in tags:
+            self._glyph.tag(tag)
+        return self
+
+    def model(self, model):
+        tags = model2tags(model)
+        for tag in tags:
             self._glyph.tag.add(tag)
         return self
 
