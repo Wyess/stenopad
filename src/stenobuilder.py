@@ -1584,6 +1584,15 @@ if __name__ == '__main__':
             >> {-30}@+z[1.1: -30 + 5]
         )
 
+        .path("ki.@head_sr",
+            z[0]
+            --- z[8 - 0.5]
+            >> z[8, 0.5]
+            >> 1.4
+            >> {-60 + 5}@z[-1.1: -60 + 5]@(-0.2, -2)
+            >> {-60}@+z[1.1: -60 + 5]
+        )
+
         .char("Ki")
             .glyph("@head_sel[1]")
                 .path("ki.@head_sel")
@@ -1608,6 +1617,9 @@ if __name__ == '__main__':
 
             .glyph("@head_nel[1]")
                 .path("ki.@head_nel")
+
+            .glyph("@head_sr[1]")
+                .path("ki.@head_sr")
     )
 
     res = builder.build()
