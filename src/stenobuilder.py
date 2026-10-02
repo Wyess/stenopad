@@ -1084,7 +1084,7 @@ if __name__ == '__main__':
         .path("sha", pref("sha~")@{-135})
         .char("Sha")
             .ascent(4)
-            .tag("@head_sr8")
+            .model("sr8")
             .glyph()
                 .path("sha")
 
