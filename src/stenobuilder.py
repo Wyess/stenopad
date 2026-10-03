@@ -1094,7 +1094,7 @@ if __name__ == '__main__':
         .path("kya", pref("kya~")@{-45})
         .char("Kya")
             .ascent(4)
-            .tag("@head_sl8")
+            .model("sl8")
             .glyph()
                 .path("kya")
 
@@ -1593,6 +1593,13 @@ if __name__ == '__main__':
             >> {-60}@+z[1.1: -60 + 5]
         )
 
+        .path("ki.@head_sl",
+            z[0]
+            --- z[8 - 0.5]
+            >> z[8, 0.5]
+            >> {-120}@z[0]@(-1.9)
+        )
+
         .char("Ki")
             .glyph("@head_sel[1]")
                 .path("ki.@head_sel")
@@ -1620,6 +1627,9 @@ if __name__ == '__main__':
 
             .glyph("@head_sr[1]")
                 .path("ki.@head_sr")
+
+            .glyph("@head_sl[1]")
+                .path("ki.@head_sl")
     )
 
     res = builder.build()
