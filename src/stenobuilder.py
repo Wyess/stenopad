@@ -1211,11 +1211,15 @@ if __name__ == '__main__':
         .word("ひい", "Shii")
         .word("ひー", "Shii")
         .path("shii", z[0]@{-160} >> 1.5 >> {-70}@z[4: -120])
+        .path("shii(upright)", z[0]@{-135} >> 1.0 >> {-60}@z[4: -110])
         .char("Shii")
             .ascent(2)
             .model("swl4")
             .glyph()
                 .path("shii")
+                .flick(1)
+            .glyph("@tail_ecl[-1]")
+                .path("shii(upright)")
                 .flick(1)
 
         #  @head_uner16[0]: iwayuru
@@ -1600,6 +1604,13 @@ if __name__ == '__main__':
             >> {-120}@z[0]@(-1.9)
         )
 
+        .path("ki.@head_swl",
+            z[0]
+            --- z[8 - 0.5]
+            >> z[8, 0.5]
+            >> {-135}@z[0]@(-2.0)
+        )
+
         .char("Ki")
             .glyph("@head_sel[1]")
                 .path("ki.@head_sel")
@@ -1630,6 +1641,9 @@ if __name__ == '__main__':
 
             .glyph("@head_sl[1]")
                 .path("ki.@head_sl")
+
+            .glyph("@head_swl[1]")
+                .path("ki.@head_swl")
     )
 
     res = builder.build()
