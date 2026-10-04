@@ -1314,10 +1314,17 @@ if __name__ == '__main__':
             z[-2.5, -2.5] >>
             {30}@z[0, -3.5]
         )
+        .path("wa(upright)",
+            z[0]@{-135} >> 1.0 >>
+            z[-1.5, -3.0] >>
+            {30}@z[1.0, -3.5]
+        )
         .char("Wa")
             .tag("@head_uel4")
             .glyph()
                 .path("wa")
+            .glyph("@tail_ecl[-1]")
+                .path("wa(upright)")
 
         # @head_usl8[0]: kyar
         .word("きゃｒ", "Kyar")
