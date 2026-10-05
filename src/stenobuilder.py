@@ -1552,6 +1552,22 @@ if __name__ == '__main__':
     builder = waseda_lc(builder)
     builder = (
         builder.root()
+        .path("ki",
+            z[0]
+            --- z[8 - 0.5]
+            >> z[8, 0.5]
+            >> {-135}@z[0]@(-1.5, -2)
+        )
+
+        .path("ki.@head_e",
+            z[0]
+            --- z[8 - 0.5]
+            >> z[8, 0.5]
+            >> {180}@z[8 - 0.5, 1.0]
+            >> {0}@z[8 - 1.0]
+            >> z[8 - 0.5]
+        )
+
         .path("ki.@head_sel",
             z[0]
             --- z[7.5]
@@ -1668,7 +1684,15 @@ if __name__ == '__main__':
             >> {-80}@+z[1.1: -80+5]
         )
 
+        .word("き", "Ki")
         .char("Ki")
+            .model("e8cl1")
+            .glyph()
+                .path("ki")
+
+            .glyph("@head_e[1]")
+                .path("ki.@head_e")
+
             .glyph("@head_sel[1]")
                 .path("ki.@head_sel")
 

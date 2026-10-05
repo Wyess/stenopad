@@ -60,7 +60,6 @@ def waseda_lc(builder):
     builder = (
         builder.root()
         .word("けい", "Kei")
-        .word("き", "Ki")
         .word("く", "Ku")
         .word("け", "Ke")
         .word("百万", "Hyakuman")
@@ -69,7 +68,6 @@ def waseda_lc(builder):
 
     ecl1_len = {
         "Kei": 4.5,
-        "Ki": 8,
         "Ku": 8,
         "Ke": 16,
         "Hyakuman": 25
