@@ -534,7 +534,8 @@ class Path:
                 new_elem = replace(
                     elem,
                     x=elem.x + x,
-                    y=elem.y + y
+                    y=elem.y + y,
+                    is_relative=False,
                 )
             else:
                 new_elem = elem
