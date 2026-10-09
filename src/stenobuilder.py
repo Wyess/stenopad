@@ -85,6 +85,9 @@ def cref(target: str):
 def aref(target: str):
     return Reference(f"character.{target}")["ascent"]
 
+def pmod(target: str, param: dict):
+    return pref(target).apply(Path.modify, param)
+
 class ShorthandDefBuilder:
     def __init__(self):
         self.pool = KeyBasedDefaultDict()
@@ -101,6 +104,9 @@ class ShorthandDefBuilder:
     def path(self, name, path):
         self.pool["path"][name] = path
         return self
+
+    def pmod(self, name1, name2, param):
+        return self.path(name1, pref(name2).apply(Path.modify, param))
 
     def variable(self, **kwargs):
         for k, v in kwargs.items():

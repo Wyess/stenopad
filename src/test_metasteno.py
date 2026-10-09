@@ -160,3 +160,13 @@ def test_get_head_angle():
 def test_get_tail_angle():
     p = z[0]@{-30} >> {90}@z[4]
     assert p.get_tail_angle() == 90
+
+METASTENO_PATH_MODIFICATION_TEST_CASES = (
+    (
+        (z[0] -- z[1]).modify((1, {'x': 2}),),
+        z[0] -- z[2]
+    ),
+)
+@pytest.mark.parametrize("path1, path2", METASTENO_PATH_MODIFICATION_TEST_CASES)
+def test_path_mod(path1, path2):
+    assert path1 == path2

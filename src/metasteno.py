@@ -370,6 +370,16 @@ class Path:
             yield current
             current = current.prev
 
+    def modify(self, param):
+        cur = None
+        for i, node in enumerate(self):
+            if i in param:
+                elem = replace(node, **param[i])
+            else:
+                elem = node
+            cur = Path(prev=cur, elem=elem)
+        return cur
+
     def line(self, x1, y1, x2, y2):
         cp1_x = x1 + (x2 - x1) / 3.0
         cp1_y = y1 + (y2 - y1) / 3.0
