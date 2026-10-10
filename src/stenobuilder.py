@@ -1558,11 +1558,6 @@ if __name__ == '__main__':
     builder = waseda_lc(builder)
     builder = (
         builder.root()
-        .pmod("ke",
-            "ki",
-            {1: {'x': 15.5}}
-        )
-
         .path("ki",
             z[0]
             --- z[8 - 0.5]
@@ -1696,6 +1691,7 @@ if __name__ == '__main__':
         )
 
         .word("き", "Ki")
+        .word("百万", "Masuru")
         .char("Ki")
             .model("e8cl1")
             .glyph()
@@ -1747,7 +1743,86 @@ if __name__ == '__main__':
                 .path("ki.@head_oswr")
     )
 
-    res = builder.build()
+    glyph_selectors = [
+        #"default",
+        "@head_e[1]",
+        "@head_sel[1]",
+        "@head_s[1]",
+        "@head_swr[1]",
+        "@head_el[1]",
+        "@head_er[1]",
+        "e[1]",
+        "@head_ser[1]",
+        "@head_nel[1]",
+        "@head_sr[1]",
+        "@head_sl[1]",
+        "@head_swl[1]",
+        "o[1]",
+        "@head_uswl[1]",
+        "@head_oswr[1]",
+    ]
+    params = [
+        {
+            "name": "Ke",
+            "parent": "Ki",
+            "word": "け",
+            "model": "e16cl1",
+            "len": 16,
+        },
+        {
+            "name": "Kei",
+            "parent": "Ki",
+            "word": "けい",
+            "model": "e4cl1",
+            "len": 4.5,
+        },
+        {
+            "name": "Masuru",
+            "parent": "Ki",
+            "word": "まする",
+            "model": "e25cl1",
+            "len": 25,
+        },
+    ]
+
+    for param in params:
+        char_name = param["name"]
+        char_name_lower = char_name.lower()
+        parent_name = param["parent"]
+        parent_name_lower = parent_name.lower()
+        path_name = char_name_lower
+        path_name_parent = parent_name_lower
+
+        builder = (
+            builder.root()
+            .word(param["word"], char_name)
+            .pmod(path_name,
+                path_name_parent,
+                {1: {'x': param["len"] - 0.5}}
+            )
+            .char(char_name)
+                .model(param["model"])
+                .glyph()
+                    .path(char_name_lower)
+        )
+
+        for glyph_selector in glyph_selectors:
+            path_name = char_name_lower + "." + glyph_selector
+            path_name_parent = parent_name_lower + "." + glyph_selector.split("[")[0]
+
+            builder = (
+                builder.root()
+                .pmod(path_name,
+                    path_name_parent,
+                    {1: {'x': param["len"] - 0.5}}
+                )
+                .char(char_name)
+                    .glyph(glyph_selector)
+                    .path(path_name)
+            )
+
+
+    res = builder.root().build()
 
     del res["path"]
     del res["variable"]
