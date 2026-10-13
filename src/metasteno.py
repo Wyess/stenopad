@@ -711,6 +711,18 @@ class Point:
             y=-self.y
         )
 
+    def __add__(self, other):
+        match other:
+            case Point() as p:
+                return replace(
+                    self,
+                    x=self.x + p.x,
+                    y=self.y + p.y
+                )
+
+            case _:
+                return NotImplemented
+
     def __sub__(self, other):
         match other:
             case Point() as p if p.neg_count == 0:
