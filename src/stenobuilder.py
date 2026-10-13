@@ -896,6 +896,21 @@ if __name__ == '__main__':
             .glyph("@head_e[-1]")
                 .path("so_henki")
 
+        .word("せ", "Se")
+        .path("se",
+            z[0]@{25}
+            >> 1.8
+            >> {135}@z[16: 45]
+            >> {-30-0}@z[-1.5: -30-0]@(-1.5)
+            >> 1.1
+            >> {-30}@+z[1.5: -30-0]
+        )
+        .char("Se")
+            .ascent("So")
+            .model("nel16cl1")
+            .glyph()
+                .path("se")
+
         # @head_nel8[0]: sa
         .word("さ", "Sa")
         .path("sa~", z[0]@{30} >> 1.3 >> z[8: 45])
