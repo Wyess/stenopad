@@ -550,11 +550,63 @@ if __name__ == '__main__':
 
         .word("つ", "Tsu")
         .path("tsu", pref("kei") * (1, -1, -90))
+        .path("tsu.@head_e", pref("kei.@head_s") * (1, -1, -90))
+        .path("tsu.@head_el", pref("kei.@head_sr") * (1, -1, -90))
+        .path("tsu.@head_er", pref("kei.@head_sl") * (1, -1, -90)@{(30,)})
+        .path("tsu.@head_ne", pref("kei.o") * (1, -1, -90)@{(40,)})
         .char("Tsu")
             .ascent("U")
             .model("s4cr1")
             .glyph()
                 .path("tsu")
+
+            .glyph("@head_e[1]")
+                .path("tsu.@head_e")
+
+            .glyph("@head_ne[1]")
+                .path("tsu.@head_ne")
+
+            #.glyph("@head_sel[1]")
+            #    .path("tsu.@head_sel")
+
+            #.glyph("@head_s[1]")
+            #    .path("tsu.@head_s")
+
+            #.glyph("@head_swr[1]")
+            #    .path("tsu.@head_swr")
+
+            .glyph("@head_el[1]")
+                .path("tsu.@head_el")
+
+            .glyph("@head_er[1]")
+                .path("tsu.@head_er")
+
+            #.glyph("e[1]")
+            #    .path("tsu.e")
+
+            #.glyph("@head_ser[1]")
+            #    .path("tsu.@head_ser")
+
+            #.glyph("@head_nel[1]")
+            #    .path("tsu.@head_nel")
+
+            #.glyph("@head_sr[1]")
+            #    .path("tsu.@head_sr")
+
+            #.glyph("@head_sl[1]")
+            #    .path("tsu.@head_sl")
+
+            #.glyph("@head_swl[1]")
+            #    .path("tsu.@head_swl")
+
+            #.glyph("o[1]")
+            #    .path("tsu.o")
+
+            #.glyph("@head_uswl[1]")
+            #    .path("tsu.@head_uswl")
+
+            #.glyph("@head_oswr[1]")
+            #    .path("tsu.@head_oswr")
 
         .word("ことです", "Kotodesu")
         .path("kotodesu", pref("ki") * (1, -1, -90))
