@@ -554,6 +554,13 @@ if __name__ == '__main__':
         .path("tsu.@head_el", pref("kei.@head_sr") * (1, -1, -90))
         .path("tsu.@head_er", pref("kei.@head_sl") * (1, -1, -90)@{(30,)})
         .path("tsu.@head_ne", pref("kei.o") * (1, -1, -90)@{(40,)})
+        .path("tsu.@head_ner",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {vref("yaha_rotated")}@z[0]@(-2.2)
+        )
+
         .char("Tsu")
             .ascent("U")
             .model("s4cr1")
@@ -589,6 +596,11 @@ if __name__ == '__main__':
 
             #.glyph("@head_nel[1]")
             #    .path("tsu.@head_nel")
+
+            .glyph("@head_ner[1]")
+                .model("s4cr1")
+                .tag("@rotate_ner")
+                .path("tsu.@head_ner")
 
             #.glyph("@head_sr[1]")
             #    .path("tsu.@head_sr")
@@ -869,12 +881,16 @@ if __name__ == '__main__':
         # @head_ner8[0]: ya
         # pd["Ya"] = "O{70} .. {0}(8: 40)"
         .word("や", "Ya")
+        .var(yaha_rotated=65)
         .path("ya", z[0]@{70} >> {0}@z[8: 40])
+        .path("ya-rotated", z[0]@{vref("yaha_rotated")} >> {0}@z[8: 35])
         .char("Ya")
             .ascent(-2)
-            .tag("@head_ner8")
+            .model("ner8")
             .glyph()
                 .path("ya")
+            .glyph("@rotate_ner[-1]")
+                .path("ya-rotated")
 
         # @head_ner4[0]: yai
         .word("やい", "Yai")
