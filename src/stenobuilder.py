@@ -566,6 +566,13 @@ if __name__ == '__main__':
             >> +z[-0.5, -0.5]
             >> {vref("yaha_rotated")}@z[0]@(-2.2)
         )
+        .path("tsu.@head_nel",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {20}@z[-1.1: 20]@(-1.3, -1)
+            >> {30}@+z[1.1: 20]
+        )
 
         .char("Tsu")
             .ascent("U")
@@ -600,8 +607,8 @@ if __name__ == '__main__':
             #.glyph("@head_ser[1]")
             #    .path("tsu.@head_ser")
 
-            #.glyph("@head_nel[1]")
-            #    .path("tsu.@head_nel")
+            .glyph("@head_nel[1]")
+                .path("tsu.@head_nel")
 
             .glyph("@head_ner[1]")
                 .model("s4cr1")
