@@ -92,7 +92,11 @@ class Path:
         match other:
             case set() as s:
                 angle = s.pop()
-                if self.elem.connected_from != Op.CURVE:
+                if isinstance(angle,tuple):
+                    angle = angle[0]
+                    left_angle = angle
+                    right_angle = None
+                elif self.elem.connected_from != Op.CURVE:
                     left_angle = None
                     right_angle = angle
                 elif self.elem.left_angle is None:
