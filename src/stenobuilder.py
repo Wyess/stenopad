@@ -553,7 +553,13 @@ if __name__ == '__main__':
         .path("tsu.@head_e", pref("kei.@head_s") * (1, -1, -90))
         .path("tsu.@head_el", pref("kei.@head_sr") * (1, -1, -90))
         .path("tsu.@head_er", pref("kei.@head_sl") * (1, -1, -90)@{(30,)})
-        .path("tsu.@head_ne", pref("kei.o") * (1, -1, -90)@{(40,)})
+        .path("tsu.@head_ne",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {40}@z[-1.1: 40]@(-0.9, -2)
+            >> {40}@+z[1.1: 40]
+        )
         .path("tsu.@head_ner",
             z[0]
             --- z[-3.5j]
