@@ -580,6 +580,14 @@ if __name__ == '__main__':
             >> {-55}@z[-0.6: -55]@(-0.0, -2)
             >> {-55}@+z[0.6: -55]
         )
+        .path("tsu.@head_sel",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {90}@+z[-0.5, 0.5]
+            >> {-90}@+z[1.0, 0.5]
+            >> +z[-1j]
+        )
 
         .char("Tsu")
             .ascent("U")
@@ -593,8 +601,8 @@ if __name__ == '__main__':
             .glyph("@head_ne[1]")
                 .path("tsu.@head_ne")
 
-            #.glyph("@head_sel[1]")
-            #    .path("tsu.@head_sel")
+            .glyph("@head_sel[1]")
+                .path("tsu.@head_sel")
 
             #.glyph("@head_s[1]")
             #    .path("tsu.@head_s")
