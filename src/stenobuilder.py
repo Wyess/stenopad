@@ -596,6 +596,22 @@ if __name__ == '__main__':
             >> {-25}@z[-0.7: -25]@(-0.2, -2)
             >> {-30}@+z[0.7: -25]
         )
+        .path("tsu[0].o",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {90}@+z[-0.5, 0.5]
+            >> {-90}@+z[1.0, 0.5]
+            >> {-120}@+z[0]@(-3)
+        )
+        .path("tsu.@head_oswr",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {90}@+z[-0.5, 0.5]
+            >> {-90}@+z[1.0, 0.5]
+            >> {-80}@+z[0]@(-3)
+        )
 
         .char("Tsu")
             .ascent("U")
@@ -647,14 +663,15 @@ if __name__ == '__main__':
             #.glyph("@head_swl[1]")
             #    .path("tsu.@head_swl")
 
-            #.glyph("o[1]")
-            #    .path("tsu.o")
+            .glyph("o[1]")
+                .path("tsu[0].o")
 
             #.glyph("@head_uswl[1]")
             #    .path("tsu.@head_uswl")
 
-            #.glyph("@head_oswr[1]")
-            #    .path("tsu.@head_oswr")
+            .glyph("@head_oswr[1]")
+                .path("tsu.@head_oswr")
+
 
         .word("ことです", "Kotodesu")
         .path("kotodesu", pref("ki") * (1, -1, -90))
