@@ -620,6 +620,13 @@ if __name__ == '__main__':
             >> {-90}@+z[1.0, 0.5]
             >> +z[-1j]
         )
+        .path("tsu.@head_osel",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {-80}@z[-0.3: -80]@(-0.0, -2)
+            >> {-80}@+z[0.3: -80]
+        )
 
         .char("Tsu")
             .ascent("U")
@@ -679,6 +686,9 @@ if __name__ == '__main__':
 
             .glyph("@head_oswr[1]")
                 .path("tsu.@head_oswr")
+
+            .glyph("@head_osel[1]")
+                .path("tsu.@head_osel")
 
 
         .word("ことです", "Kotodesu")
