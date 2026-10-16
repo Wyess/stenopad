@@ -2000,7 +2000,7 @@ if __name__ == '__main__':
         )
 
         for glyph_selector in glyph_selectors:
-            path_name = char_name_lower + "." + glyph_selector
+            path_name = char_name_lower + "." + glyph_selector.split("[")[0]
             path_name_parent = parent_name_lower + "." + glyph_selector.split("[")[0]
 
             builder = (
