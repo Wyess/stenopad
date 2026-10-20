@@ -664,8 +664,8 @@ if __name__ == '__main__':
             .glyph("@head_s[1]")
                 .path("tsu.@head_s")
 
-            #.glyph("@head_swr[1]")
-            #    .path("tsu.@head_swr")
+            .glyph("@head_swr[1]")
+                .path("tsu.@head_s")
 
             .glyph("@head_el[1]")
                 .path("tsu.@head_el")
