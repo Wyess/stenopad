@@ -628,6 +628,15 @@ if __name__ == '__main__':
             >> {-80}@+z[0.3: -80]
         )
 
+        .path("tsu[0].wa",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {90}@+z[-0.5, 0.5]
+            >> {-90}@+z[1.0, 0.5]
+            >> {-135}@+z[0]@(-3)
+        )
+
         .char("Tsu")
             .ascent("U")
             .model("s4cr1")
@@ -689,6 +698,9 @@ if __name__ == '__main__':
 
             .glyph("@head_osel[1]")
                 .path("tsu.@head_osel")
+
+            .glyph("wa[1]")
+                .path("tsu[0].wa")
 
 
         .word("ことです", "Kotodesu")
@@ -1516,7 +1528,7 @@ if __name__ == '__main__':
             .tag("@head_uel4")
             .glyph()
                 .path("wa")
-            .glyph("@tail_ecl[-1]")
+            .glyph("@tail_ecl[-1]|@tail_scr[-1]")
                 .path("wa(upright)")
 
         # @head_usl8[0]: kyar
