@@ -653,6 +653,13 @@ if __name__ == '__main__':
             >> {-90}@+z[1.0, 0.6]
             >> {-120}@z[0]@(-0.6, -2)
         )
+        .path("tsu.@head_sr",
+            z[0]
+            --- z[-3.5j]
+            >> +z[-0.5, -0.5]
+            >> {-55}@z[-0.6: -55]@(-0.0, - 2)
+            >> {-60}@+z[0.6: -55]
+        )
 
         .char("Tsu")
             .ascent("U")
@@ -695,8 +702,8 @@ if __name__ == '__main__':
                 .tag("@rotate_ner")
                 .path("tsu.@head_ner")
 
-            #.glyph("@head_sr[1]")
-            #    .path("tsu.@head_sr")
+            .glyph("@head_sr[1]")
+                .path("tsu.@head_sr")
 
             .glyph("@head_sl[1]")
                 .path("tsu.@head_sl")
