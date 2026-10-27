@@ -1333,7 +1333,7 @@ if __name__ == '__main__':
                 .path("ni.@head_sel")
             .glyph("@head_ser[1]")
                 .path("ni.@head_ser")
-            .glyph("sha[1]")
+            .glyph("@head_sr[1]")
                 .path("ni.@head_sr")
             .glyph("@head_sl[1]")
                 .path("ni.@head_sl")
@@ -1938,9 +1938,9 @@ if __name__ == '__main__':
         .path("ki.@head_s",
             z[0]
             --- z[8 - 0.5]
-            >> +z[0.5, 0.6]
-            >> {180}@+z[-0.6, 0.7]
-            >> {-90}@z[0]@(-1.3, -2)
+            >> +z[0.5, 0.5]
+            >> {-90}@z[-1: -90]@(-1.1, -1)
+            >> {-90}@+z[1: -90]
         )
 
         .path("ki.@head_swr",
