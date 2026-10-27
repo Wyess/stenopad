@@ -1266,6 +1266,13 @@ if __name__ == '__main__':
             >> {40}@z[-1.0: 40]@(-0.3, -2)
             >> {40}@+z[1.0: 40]
         )
+        .path("ni.@head_sw(-120)",
+            z[0]@{-30}
+            >> 1.3
+            >> {90}@z[8]
+            >> {-120}@z[-1.9: -120]@(-2.4)
+            >> {-120}@+z[1.9: -120]
+        )
         .char("Ni")
             .ascent("Na")
             .model("el8cl1")
@@ -1283,6 +1290,8 @@ if __name__ == '__main__':
                 .path("ni.@head_nel")
             .glyph("koi[1]")
                 .path("ni.@head_ne(40)")
+            .glyph("o[1]")
+                .path("ni.@head_sw(-120)")
 
         # @head_ser16[0]: ro
         .word("ろ", "Ro")
