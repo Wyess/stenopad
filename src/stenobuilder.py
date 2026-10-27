@@ -1287,6 +1287,13 @@ if __name__ == '__main__':
             >> {-90-20}@z[-1.5: -90-10]@(-1.8)
             >> {-90}@+z[1.5: -90-10]
         )
+        .path("ni.@head_ser",
+            z[0]@{-30}
+            >> 1.3
+            >> {90}@z[8]
+            >> {-30+20}@z[-1.2: -30+10]@(-0.5)
+            >> {-30}@+z[1.2: -30+10]
+        )
         .char("Ni")
             .ascent("Na")
             .model("el8cl1")
@@ -1310,6 +1317,8 @@ if __name__ == '__main__':
                 .path("ni.@head_se(-55)")
             .glyph("@head_sel[1]")
                 .path("ni.@head_sel")
+            .glyph("@head_ser[1]")
+                .path("ni.@head_ser")
 
         # @head_ser16[0]: ro
         .word("ろ", "Ro")
